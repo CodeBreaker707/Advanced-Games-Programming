@@ -16,8 +16,8 @@ VOut VShader(float4 position : POSITION, float4 color : COLOR)
 	VOut output;
 
 	color.rb *= red_fraction;
+	position.xy *= scale;
 	output.position = position;
-	output.position.xy *= scale;
 	output.color = color;
 
 	return output;
