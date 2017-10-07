@@ -42,7 +42,7 @@ struct POS_COL_VERTEX
 };
 
 // Rename for each tutorial
-char		g_Tutorial_03_Exercise_01[100] = "Tutorial 03 Exercise 01\0";
+char		g_Tutorial_04_Exercise_01[100] = "Tutorial 04 Exercise 01\0";
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -129,7 +129,7 @@ HRESULT InitialiseWindow(HINSTANCE hInstance, int nCmdShow)
 	g_hInst = hInstance;
 	RECT rc = { 0, 0, 1280, 768};
 	AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
-	g_hWnd = CreateWindow(Manikandan, g_Tutorial_03_Exercise_01, WS_OVERLAPPEDWINDOW,
+	g_hWnd = CreateWindow(Manikandan, g_Tutorial_04_Exercise_01, WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left,
 		rc.bottom - rc.top, NULL, NULL, hInstance, NULL);
 	if (!g_hWnd)
