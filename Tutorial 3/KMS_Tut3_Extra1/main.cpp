@@ -207,8 +207,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_LBUTTONDOWN:
 
 		vertices[0].Col.x += 0.05;
-		vertices[1].Col.x += 0.05;
-		vertices[2].Col.x += 0.05;
+		vertices[1].Col.y += 0.05;
+		vertices[2].Col.z += 0.05;
 
 		// Lock the buffer to allow writing
 		g_pImmediateContext->Map(g_pVertexBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);

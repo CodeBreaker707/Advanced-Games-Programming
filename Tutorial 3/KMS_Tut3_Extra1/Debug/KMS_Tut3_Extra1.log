@@ -98,7 +98,7 @@ d:\manikandan\documents\advanced games programming\advanced-games-programming\tu
 d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 3\kms_tut3_extra1\main.cpp(209): warning C4305: '+=': truncation from 'double' to 'FLOAT'
 d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 3\kms_tut3_extra1\main.cpp(210): warning C4305: '+=': truncation from 'double' to 'FLOAT'
 d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 3\kms_tut3_extra1\main.cpp(211): warning C4305: '+=': truncation from 'double' to 'FLOAT'
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 3\kms_tut3_extra1\main.cpp(320): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 3\kms_tut3_extra1\main.cpp(321): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 3\kms_tut3_extra1\main.cpp(316): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 3\kms_tut3_extra1\main.cpp(317): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
   KMS_Tut3_Extra1.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 3\KMS_Tut3_Extra1\Debug\KMS_Tut3_Extra1.exe
   KMS_Tut3_Extra1.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 3\KMS_Tut3_Extra1\Debug\KMS_Tut3_Extra1.pdb (Partial PDB)
