@@ -536,7 +536,7 @@ HRESULT InitialiseGraphics()// 03-01
 	D3D11_INPUT_ELEMENT_DESC iedesc[] =
 	{
 		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "COLOR", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 		{"TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA,0 }
 	};
 
@@ -557,9 +557,9 @@ HRESULT InitialiseGraphics()// 03-01
 	ZeroMemory(&sampler_desc, sizeof(sampler_desc));
 	sampler_desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 	//sampler_desc.Filter = D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT;
-	sampler_desc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
-	sampler_desc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
-	sampler_desc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+	sampler_desc.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
+	sampler_desc.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP;
+	sampler_desc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
 	sampler_desc.MaxLOD = D3D11_FLOAT32_MAX;
 
 	g_pD3DDevice->CreateSamplerState(&sampler_desc, &g_pSampler0);
@@ -645,13 +645,13 @@ void RenderFrame(void)
 
 	cb0_values.WorldViewProjection = world2 * view * projection;
 
-	g_pImmediateContext->PSSetSamplers(0, 1, &g_pSampler0);
-	g_pImmediateContext->PSSetShaderResources(0, 1, &g_pTexture0);
-
 	// upload the new values for the constant buffer
 	g_pImmediateContext->UpdateSubresource(g_pConstantBuffer0, 0, 0, &cb0_values, 0, 0);
 
 	g_pImmediateContext->VSSetConstantBuffers(0, 1, &g_pConstantBuffer0);
+
+	g_pImmediateContext->PSSetSamplers(0, 1, &g_pSampler0);
+	g_pImmediateContext->PSSetShaderResources(0, 1, &g_pTexture0);
 
 	g_pImmediateContext->Draw(36, 0);
 
