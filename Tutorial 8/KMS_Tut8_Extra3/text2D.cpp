@@ -174,10 +174,10 @@ void Text2D::RenderText(void)
 				texy=  2.0/NUMLINES; // third line
 				texx  = (c-'0') *1.0 /26.0;
 			}
-			else // add any symbol code here
+			else if (c >= '/' && c <= ':') // add any symbol code here
 			{
-				texx=0;
-				texy=  3.0/NUMLINES;
+				texy = 3.0 / NUMLINES;
+				texx = (c - '/') * 1.0/26.0;
 				//symbols to display can go here
 			}
 

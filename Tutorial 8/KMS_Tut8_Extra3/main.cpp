@@ -1,5 +1,6 @@
 #define _XM_NO_INTRINSICS_
 #define XM_NO_ALIGNMENT
+#include <string>
 #include <windows.h>
 #include <d3d11.h>
 #include <d3dx11.h>
@@ -654,8 +655,8 @@ void RenderFrame(void)
 	world2 *= XMMatrixTranslation(0, 0, z_position2);
 
 	cb0_values.WorldViewProjection = world2 * view * projection;
-	g_2DText0->AddText("ManikX", -0.98, +0.95, 0.08);
-	g_2DText1->AddText("GamerLord707", -0.98, +0.7, 0.08);
+	g_2DText0->AddText("Health:" + to_string(90) + '/' + to_string(100), -0.98, +0.95, 0.04);
+	g_2DText1->AddText("GamerLord707", -0.98, +0.7, 0.04);
 	// upload the new values for the constant buffer
 	g_pImmediateContext->UpdateSubresource(g_pConstantBuffer0, 0, 0, &cb0_values, 0, 0);
 

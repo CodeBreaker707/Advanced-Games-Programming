@@ -83,10 +83,10 @@ d:\directx sdk\include\xnamath.h(2732): warning C4838: conversion from 'unsigned
 d:\directx sdk\include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra3\main.cpp(369): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
 d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra3\main.cpp(370): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra3\main.cpp(610): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra3\main.cpp(657): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra3\main.cpp(371): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra3\main.cpp(611): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
 d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra3\main.cpp(658): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra3\main.cpp(659): warning C4305: 'argument': truncation from 'double' to 'float'
   KMS_Tut8_Extra3.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 8\KMS_Tut8_Extra3\Debug\KMS_Tut8_Extra3.exe
   KMS_Tut8_Extra3.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 8\KMS_Tut8_Extra3\Debug\KMS_Tut8_Extra3.pdb (Partial PDB)
