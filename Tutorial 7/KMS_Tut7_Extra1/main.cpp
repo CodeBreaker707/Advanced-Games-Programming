@@ -189,14 +189,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		
 		if (wParam == VK_LEFT)
 		{
-			x_distance -= 0.1f;
+			x_distance += 0.1f;
 			eye->Move(x_distance , z_distance);
 
 			x_distance = 0.0f;
 		}
 		if (wParam == VK_RIGHT)
 		{
-			x_distance += 0.1f;
+			x_distance -= 0.1f;
 			eye->Move(x_distance, z_distance);
 
 			x_distance = 0.0f;
@@ -222,34 +222,34 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		if (mouse_x < prev_mouse_x)
 		{
 			yaw_degrees -= 1.0f;
-			eye->Rotate(pitch_degrees, yaw_degrees);
+			eye->YawRotate(yaw_degrees);
 
 			prev_mouse_x = mouse_x;
 		}
 		else if (mouse_x > prev_mouse_x)
 		{
 			yaw_degrees += 1.0f;
-			eye->Rotate(pitch_degrees, yaw_degrees);
+			eye->YawRotate(yaw_degrees);
 
 			prev_mouse_x = mouse_x;
 		}
 
 		mouse_y = HIWORD(lParam);
 
-		if (mouse_y > prev_mouse_y)
+		/*if (mouse_y > prev_mouse_y)
 		{
-			pitch_degrees += 1.0f;
-			eye->Rotate(pitch_degrees, yaw_degrees);
+			pitch_degrees -= 1.0f;
+			eye->PitchRotate(pitch_degrees);
 
 			prev_mouse_y = mouse_y;
 		}
 		else if (mouse_y < prev_mouse_y)
 		{
-			pitch_degrees -= 1.0f;
-			eye->Rotate(pitch_degrees, yaw_degrees);
+			pitch_degrees += 1.0f;
+			eye->PitchRotate(pitch_degrees);
 
 			prev_mouse_y = mouse_y;
-		}
+		}*/
 	
 		}
 		return 0;
@@ -593,8 +593,8 @@ void RenderFrame(void)
 
 	x_rotation1 += 0.0002f;
 	y_rotation1 += 0.0001f;
-	z_rotation2 += 0.0005f;
-	y_rotation2 += 0.0006f;
+	//z_rotation2 += 0.0005f;
+	//y_rotation2 += 0.0006f;
 
 	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(45.0), 1280.0 / 768.0, 1.0, 100.0);
 	view = eye->GetViewMatrix();

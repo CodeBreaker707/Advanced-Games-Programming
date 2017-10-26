@@ -21,53 +21,54 @@ Camera::Camera(float x, float y, float z, float camera_rotation)
 
 }
 
-//void Camera::YawRotate(float degrees)
-//{
-//	m_camera_rotation = XMConvertToRadians(degrees);
-//
-//	m_dx = sin(m_camera_rotation);
-//	m_dz = cos(m_camera_rotation);
-//
-//}
-//
-//void Camera::PitchRotate(float degrees)
-//{
-//	m_camera_rotation = XMConvertToRadians(degrees);
-//
-//	m_dy = sin(m_camera_rotation);
-//	m_dz = cos(m_camera_rotation);
-//
-//}
-
-void Camera::Rotate(float pitch_degrees, float yaw_degrees)
+void Camera::YawRotate(float degrees)
 {
-	camRotationMatrix = XMMatrixRotationRollPitchYaw(XMConvertToRadians(pitch_degrees), XMConvertToRadians(yaw_degrees), 0.0f);
-	m_dy = XMConvertToRadians(yaw_degrees);
-	m_lookAt = XMVector3TransformCoord(DefaultForward, camRotationMatrix);
-	m_lookAt = XMVector3Normalize(m_lookAt);
+	m_camera_rotation = XMConvertToRadians(degrees);
+
+	m_dx = sin(m_camera_rotation);
+	m_dz = cos(m_camera_rotation);
+
+}
+
+void Camera::PitchRotate(float degrees)
+{
+	m_camera_rotation = XMConvertToRadians(degrees);
+
+	m_dy = sin(m_camera_rotation);
+	m_dz = cos(m_camera_rotation);
+
 }
 
 void Camera::Move(float x_distance, float z_distance)
 {
-	XMMATRIX RotateYTempMatrix;
-	RotateYTempMatrix = XMMatrixRotationY(m_dy);
 
-	m_right = XMVector3TransformCoord(DefaultRight, RotateYTempMatrix);
-	m_up = XMVector3TransformCoord(m_up, RotateYTempMatrix);
-	m_forward = XMVector3TransformCoord(DefaultForward, RotateYTempMatrix);
+	m_forward = XMVector3Normalize(m_lookAt - m_position);
+	m_right = XMVector3Cross(m_forward, m_up);
 
-	m_position += x_distance * m_right;
-	m_position += z_distance * m_forward;
+	m_position += (x_distance * m_right);
+	m_position += (z_distance * m_forward);
+
+	m_x = XMVectorGetX(m_position);
+	m_y = XMVectorGetY(m_position);
+	m_z = XMVectorGetZ(m_position);
+	
 	//m_z = m_dz * distance;
+}
+
+XMVECTOR Camera::GetUp()
+{
+	XMMATRIX rotation = XMMatrixRotationRollPitchYaw(m_dx, -m_dz, 0.0f);
+	XMVECTOR up = XMVector3Transform(m_up, rotation);
+	return up;
 }
 
 
 XMMATRIX Camera::GetViewMatrix()
 {
 
-	//m_lookAt = XMVectorSet(m_x + m_dx, m_y + m_dy, m_z + m_dz, 0.0);
-	m_lookAt = m_position + m_lookAt;
-	//m_up = XMVectorSet(0.0, 1.0, 0.0, 0.0);
+	m_lookAt = XMVectorSet(m_x + m_dx, m_y + m_dy, m_z + m_dz, 0.0);
+	//m_lookAt = m_position + m_lookAt;
+	m_up = XMVectorSet(0.0, 1.0, 0.0, 0.0);
 
 	return XMMatrixLookAtLH(m_position, m_lookAt, m_up);
 }

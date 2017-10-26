@@ -21,11 +21,12 @@ private:
 public:
 	Camera(float x, float y, float z, float camera_rotation);
 
-	//void YawRotate(float degrees);
-	//void PitchRotate(float degrees);
+	void YawRotate(float degrees);
+	void PitchRotate(float degrees);
 	void Rotate(float pitch_degress, float yaw_degrees);
 	//void Strafe(float distance);
 	void Move(float x_distance, float z_distance);
+	XMVECTOR GetUp();
 
 	XMMATRIX GetViewMatrix();
 };
