@@ -590,7 +590,7 @@ void RenderFrame(void)
 
 	XMMATRIX projection, world1, world2, view;
 
-	g_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);
+	g_directional_light_shines_from = XMVectorSet(0.0f, 0.0f, -1.0f, 0.0f);
 	g_directional_light_colour = XMVectorSet(1.0f, 1.0f, 1.0f, 0.0f);
 	g_ambient_light_colour = XMVectorSet(0.3f, 0.3f, 0.3f, 1.0f);
 
@@ -608,10 +608,16 @@ void RenderFrame(void)
 	
 	x_rotation1 += 0.0002f;
 	y_rotation1 += 0.0001f;
+
 	z_rotation2 += 0.0001f;
 	y_rotation2 += 0.0001f;
 
-	lx_rotation += 0.001f;
+	lx_rotation += 0.0001f;
+
+	if (lx_rotation > 360.0f)
+	{
+		lx_rotation = 0.0001f;
+	}
 
 	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(45.0), 1280.0 / 768.0, 1.0, 100.0);
 	view = eye->GetViewMatrix();
@@ -666,8 +672,9 @@ void RenderFrame(void)
 
 	cb0_values.directional_light_colour = g_directional_light_colour;
 	cb0_values.ambient_light_colour = g_ambient_light_colour;
-	cb0_values.directional_light_vector = XMVector3Transform(g_directional_light_shines_from, light_rot_matrix);
+
 	cb0_values.directional_light_vector = XMVector3Transform(g_directional_light_shines_from, transpose);
+	cb0_values.directional_light_vector = XMVector3Transform(g_directional_light_shines_from, light_rot_matrix);
 	cb0_values.directional_light_vector = XMVector3Normalize(cb0_values.directional_light_vector);
 
 	// upload the new values for the constant buffer

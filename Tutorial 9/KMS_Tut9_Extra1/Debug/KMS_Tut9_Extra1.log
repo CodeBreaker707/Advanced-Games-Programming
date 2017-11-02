@@ -85,6 +85,6 @@ d:\directx sdk\include\xnamath.h(2743): warning C4838: conversion from 'unsigned
 d:\directx sdk\include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 9\kms_tut9_extra1\main.cpp(373): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
 d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 9\kms_tut9_extra1\main.cpp(374): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 9\kms_tut9_extra1\main.cpp(616): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 9\kms_tut9_extra1\main.cpp(625): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
   KMS_Tut9_Extra1.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 9\KMS_Tut9_Extra1\Debug\KMS_Tut9_Extra1.exe
   KMS_Tut9_Extra1.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 9\KMS_Tut9_Extra1\Debug\KMS_Tut9_Extra1.pdb (Partial PDB)
