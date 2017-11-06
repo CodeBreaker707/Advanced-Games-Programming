@@ -563,9 +563,9 @@ HRESULT InitialiseGraphics()// 03-01
 	eye = new Camera(0.0, 0.0, -0.5, 0);
 	sphere = new Model(g_pD3DDevice, g_pImmediateContext);
 
-	sphere->LoadObjModel("Assets/sphere.obj");
+	sphere->LoadObjModel("Assets/Sphere.obj");
 
-	D3DX11CreateShaderResourceViewFromFile(g_pD3DDevice, "Assets/tile.bmp", NULL, NULL, &g_pTexture0, NULL);
+	//D3DX11CreateShaderResourceViewFromFile(g_pD3DDevice, "Assets/tile.bmp", NULL, NULL, &g_pTexture0, NULL);
 
 	D3D11_SAMPLER_DESC sampler_desc;
 	ZeroMemory(&sampler_desc, sizeof(sampler_desc));
@@ -610,10 +610,10 @@ void RenderFrame(void)
 	g_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	
-	x_rotation1 += 0.0002f;
+	/*x_rotation1 += 0.0002f;
 	y_rotation1 += 0.0001f;
 	z_rotation2 += 0.0001f;
-	y_rotation2 += 0.0001f;
+	y_rotation2 += 0.0001f;*/
 
 	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(45.0), 1280.0 / 768.0, 1.0, 100.0);
 	view = eye->GetViewMatrix();
@@ -640,7 +640,7 @@ void RenderFrame(void)
 	//*********************************//
 
 	//world2 = XMMatrixRotationRollPitchYaw(0.0f, y_rotation2, z_rotation2);
-	sphere->UpdateRot(0.0f, 0.0001, 0.0001);
+	sphere->UpdateRot(0.0f, 0.0001, 0.0);
 
 	/*if (z_position2 <= 5.0 && isIncreasing == true)
 	{
