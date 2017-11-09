@@ -11,7 +11,6 @@ class SystemManager
 private:
 
 	HINSTANCE m_hInst = NULL;
-	HWND m_hWnd;
 
 	WNDCLASSEX wcex = { 0 };
 
@@ -22,7 +21,7 @@ private:
 	char g_CGP600_Assignment_2[100] = "CGP600 Assignment 2\0";
 
 public:
-
+	
 	SystemManager();
 
 	HRESULT InitialiseWindow(HINSTANCE hInstance, int nCmdShow);

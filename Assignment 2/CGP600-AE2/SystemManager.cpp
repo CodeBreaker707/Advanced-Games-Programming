@@ -1,5 +1,7 @@
 #include "SystemManager.h"
 
+HWND m_hWnd;
+
 SystemManager::SystemManager()
 {
 
@@ -39,7 +41,6 @@ LRESULT CALLBACK SystemManager::WndProc(HWND hWnd, UINT message, WPARAM wParam, 
 {
 	PAINTSTRUCT ps;
 	HDC hdc;
-	SystemManager* sys = new SystemManager();
 
 		switch (message)
 		{
@@ -54,8 +55,9 @@ LRESULT CALLBACK SystemManager::WndProc(HWND hWnd, UINT message, WPARAM wParam, 
 
 		case WM_KEYDOWN:
 			if (wParam == VK_ESCAPE)
-				DestroyWindow(sys->GetWindow());
+				DestroyWindow(m_hWnd);
 			return 0;
+
 
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);

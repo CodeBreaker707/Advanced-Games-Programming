@@ -194,8 +194,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			// Set up the viewport.
 			D3D11_VIEWPORT vp;
-			vp.Width = lParam;
-			vp.Height = lParam;
+			vp.Width = LOWORD(lParam);
+			vp.Height = HIWORD(lParam);
 			vp.MinDepth = 0.0f;
 			vp.MaxDepth = 1.0f;
 			vp.TopLeftX = 0;

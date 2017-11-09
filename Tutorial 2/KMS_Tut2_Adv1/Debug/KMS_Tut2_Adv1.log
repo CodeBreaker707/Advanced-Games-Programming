@@ -55,9 +55,7 @@ d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
 d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
-d:\manikandan\documents\visual studio 2015\projects\advanced games programming\tutorial 2\kms_tut2_adv1\main.cpp(197): warning C4244: '=': conversion from 'LPARAM' to 'FLOAT', possible loss of data
-d:\manikandan\documents\visual studio 2015\projects\advanced games programming\tutorial 2\kms_tut2_adv1\main.cpp(198): warning C4244: '=': conversion from 'LPARAM' to 'FLOAT', possible loss of data
-d:\manikandan\documents\visual studio 2015\projects\advanced games programming\tutorial 2\kms_tut2_adv1\main.cpp(298): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
-d:\manikandan\documents\visual studio 2015\projects\advanced games programming\tutorial 2\kms_tut2_adv1\main.cpp(299): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
-  KMS_Tut2_Adv1.vcxproj -> D:\Manikandan\Documents\Visual Studio 2015\Projects\Advanced Games Programming\Tutorial 2\KMS_Tut2_Adv1\Debug\KMS_Tut2_Adv1.exe
-  KMS_Tut2_Adv1.vcxproj -> D:\Manikandan\Documents\Visual Studio 2015\Projects\Advanced Games Programming\Tutorial 2\KMS_Tut2_Adv1\Debug\KMS_Tut2_Adv1.pdb (Partial PDB)
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 2\kms_tut2_adv1\main.cpp(298): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 2\kms_tut2_adv1\main.cpp(299): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+  KMS_Tut2_Adv1.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 2\KMS_Tut2_Adv1\Debug\KMS_Tut2_Adv1.exe
+  KMS_Tut2_Adv1.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 2\KMS_Tut2_Adv1\Debug\KMS_Tut2_Adv1.pdb (Partial PDB)
