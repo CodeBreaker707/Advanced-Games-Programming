@@ -46,7 +46,7 @@ int Model::LoadObjModel(char* fileName)
 	ZeroMemory(&constant_buffer_desc, sizeof(constant_buffer_desc));
 
 	constant_buffer_desc.Usage = D3D11_USAGE_DEFAULT; // Can use UpdateSubresource() to update
-	constant_buffer_desc.ByteWidth = 112; // MUST be a multiple of 16, calculate from CB struct
+	constant_buffer_desc.ByteWidth = sizeof(MODEL_CONSTANT_BUFFER); // MUST be a multiple of 16, calculate from CB struct
 	constant_buffer_desc.BindFlags = D3D11_BIND_CONSTANT_BUFFER; // Use as a constant buffer
 
 	hr = m_pD3DDevice->CreateBuffer(&constant_buffer_desc, NULL, &m_pConstantBuffer);

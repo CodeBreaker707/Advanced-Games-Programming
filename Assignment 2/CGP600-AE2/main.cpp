@@ -4,8 +4,7 @@
 #include <d3dx11.h>
 #include <dxerr.h>
 
-#include "SystemManager.h"
-#include "Renderer.h"
+#include "Game.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -14,23 +13,10 @@
 //////////////////////////////////////////////////////////////////////////////////////
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	SystemManager* system = new SystemManager();
-	Renderer* r_target = new Renderer();
+	Game* game = new Game(hInstance, nCmdShow);
 
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
-
-	if (FAILED(system->InitialiseWindow(hInstance, nCmdShow)))
-	{
-		DXTRACE_MSG("Failed to create Window");
-		return 0;
-	}
-
-	if (FAILED(r_target->InitialiseD3D(system->GetWindow())))
-	{
-		DXTRACE_MSG("Failed to create Device");
-		return 0;
-	}
 
 	// Main message loop
 	MSG msg = { 0 };
@@ -44,9 +30,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		else
 		{
-			r_target->RenderFrame();
+			game->MainUpdate();
 		}
 	}
+
+
 
 	return (int)msg.wParam;
 }
