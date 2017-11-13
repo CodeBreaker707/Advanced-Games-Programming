@@ -13,6 +13,7 @@
 //////////////////////////////////////////////////////////////////////////////////////
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+
 	Game* game = new Game(hInstance, nCmdShow);
 
 	UNREFERENCED_PARAMETER(hPrevInstance);

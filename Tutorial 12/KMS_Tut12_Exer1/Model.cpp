@@ -177,29 +177,49 @@ void Model::CalculateModelCentrePoint()
 
 void Model::CalculateBoundingSphereRadius()
 {
-	float dist_x = 0;
-	float dist_y = 0;
-	float dist_z = 0;
+	//float dist_x = 0;
+	//float dist_y = 0;
+	//float dist_z = 0;
 
-	for (int i = 0; i < m_pObject->numverts; i++)
+	//for (int i = 0; i < m_pObject->numverts; i++)
+	//{
+	//	if (m_pObject->vertices[i].Pos.x - m_bounding_sphere_centre_x > dist_x)
+	//	{
+	//		dist_x = m_pObject->vertices[i].Pos.x - m_bounding_sphere_centre_x;
+	//	}
+
+	//	if (m_pObject->vertices[i].Pos.y - m_bounding_sphere_centre_y > dist_y)
+	//	{
+	//		dist_y = m_pObject->vertices[i].Pos.y - m_bounding_sphere_centre_y;
+	//	}
+
+	//	if (m_pObject->vertices[i].Pos.z - m_bounding_sphere_centre_z > dist_z)
+	//	{
+	//		dist_z = m_pObject->vertices[i].Pos.z - m_bounding_sphere_centre_z;
+	//	}
+	//}
+
+	//m_bounding_sphere_radius = sqrt( (dist_x * dist_x) + (dist_y * dist_y) + (dist_z * dist_z) );
+
+	float maxDistance = sqrt((pow(m_pObject->vertices[0].Pos.x - m_bounding_sphere_centre_x, 2)) +
+		(pow(m_pObject->vertices[0].Pos.y - m_bounding_sphere_centre_y, 2)) +
+		(pow(m_pObject->vertices[0].Pos.z - m_bounding_sphere_centre_z, 2)));
+
+	float currentDistance;
+
+	for (int i = 1; i < m_pObject->numverts; i++)
 	{
-		if (m_pObject->vertices[i].Pos.x - m_bounding_sphere_centre_x > dist_x)
-		{
-			dist_x = m_pObject->vertices[i].Pos.x - m_bounding_sphere_centre_x;
-		}
+		currentDistance = sqrt((pow(m_pObject->vertices[i].Pos.x - m_bounding_sphere_centre_x, 2)) +
+			(pow(m_pObject->vertices[i].Pos.y - m_bounding_sphere_centre_y, 2)) +
+			(pow(m_pObject->vertices[i].Pos.z - m_bounding_sphere_centre_z, 2)));
 
-		if (m_pObject->vertices[i].Pos.y - m_bounding_sphere_centre_y > dist_y)
+		if (currentDistance > maxDistance)
 		{
-			dist_y = m_pObject->vertices[i].Pos.y - m_bounding_sphere_centre_y;
-		}
-
-		if (m_pObject->vertices[i].Pos.z - m_bounding_sphere_centre_z > dist_z)
-		{
-			dist_z = m_pObject->vertices[i].Pos.z - m_bounding_sphere_centre_z;
+			maxDistance = currentDistance;
 		}
 	}
 
-	m_bounding_sphere_radius = sqrt( (dist_x * dist_x) + (dist_y * dist_y) + (dist_z * dist_z) );
+	m_bounding_sphere_radius = maxDistance;
 }
 
 bool Model::CheckCollision(Model* obj)
@@ -231,7 +251,7 @@ bool Model::CheckCollision(Model* obj)
 
 	float sum_radius = r1 + r2;
 
-	if (sqr_dist <= sum_radius * sum_radius /** 6*/)
+	if (sqr_dist <= sum_radius * sum_radius)
 	{
 		return true;
 	}

@@ -133,9 +133,19 @@ void Asset::UpdateRot(float pitch_degrees, float yaw_degrees, float roll_degrees
 	m_zangle += roll_degrees;
 }
 
+void Asset::MoveForward(float z_dist)
+{
+	m_z += z_dist;
+}
+
+void Asset::MoveSideways(float x_dist)
+{
+	m_x += x_dist;
+}
+
 void Asset::Draw(XMMATRIX* view, XMMATRIX* projection)
 {
-	UpdateRot(0.0f, 0.0001f, 0.0001f);
+	//UpdateRot(0.0f, 0.0001f, 0.0001f);
 
 	XMMATRIX world;
 

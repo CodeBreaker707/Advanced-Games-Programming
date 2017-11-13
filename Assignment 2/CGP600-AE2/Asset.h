@@ -35,6 +35,9 @@ public:
 
 	void UpdateRot(float pitch_degrees, float yaw_degrees, float roll_degrees);
 
+	void MoveForward(float z_dist);
+	void MoveSideways(float x_dist);
+
 	void Draw(XMMATRIX* view, XMMATRIX* projection);
 
 };
