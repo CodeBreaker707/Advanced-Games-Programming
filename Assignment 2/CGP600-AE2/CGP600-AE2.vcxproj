@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Collider3D.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Collider3D.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />

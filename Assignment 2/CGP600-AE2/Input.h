@@ -11,16 +11,20 @@ private:
 
 	DIMOUSESTATE m_mouse_state;
 
-	int prev_mouse_x = 0;
-	int prev_mouse_y = 0;
+	long prev_mouse_x = 0;
+	long prev_mouse_y = 0;
+	
+	long mouse_x = 0;
+	long mouse_y = 0;
 
-	int mouse_x = 0;
-	int mouse_y = 0;
+	bool isMouseMoving = false;
+	bool isMouseMovingRight = false;
+	bool isMouseMovingUp = false;
 
 	unsigned char m_keyboard_keys_state[256];
 
 public:
-	
+
 	unsigned char mve_frwd = DIK_W;
 	unsigned char mve_lft = DIK_A;
 	unsigned char mve_bck = DIK_S;
@@ -34,6 +38,10 @@ public:
 	void ReadInputStates();
 
 	bool IsKeyPressed(unsigned char DI_Keycode);
-	bool IsMouseUsed();
+	void MouseBehaviour();
+
+	bool IsMouseMoving();
+	bool IsMouseMovingRight();
+	bool IsMouseMovingUp();
 
 };

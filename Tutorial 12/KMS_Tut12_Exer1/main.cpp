@@ -250,7 +250,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			prev_mouse_x = mouse_x;
 		}
 
-		/*mouse_y = HIWORD(lParam);
+		mouse_y = HIWORD(lParam);
 
 		if (mouse_y > prev_mouse_y)
 		{
@@ -265,7 +265,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			eye->PitchRotate(pitch_degrees);
 
 			prev_mouse_y = mouse_y;
-		}*/
+		}
 		
 		}
 		return 0;

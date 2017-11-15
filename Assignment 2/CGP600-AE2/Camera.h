@@ -9,7 +9,6 @@
 
 class Camera
 {
-
 private:
 	float m_x, m_y, m_z;
 	float m_dx, m_dy, m_dz;

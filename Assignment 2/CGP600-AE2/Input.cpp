@@ -105,21 +105,74 @@ bool Input::IsKeyPressed(unsigned char DI_Keycode)
 	return m_keyboard_keys_state[DI_Keycode] & 0x80;
 }
 
-bool Input::IsMouseUsed()
+
+void Input::MouseBehaviour()
 {
-	mouse_x += m_mouse_state.lX;
-	mouse_y += m_mouse_state.lY;
+	
+
+	if (mouse_x == prev_mouse_x && mouse_y == prev_mouse_y)
+	{
+		isMouseMoving = false;
+	}
+	else
+	{
+		isMouseMoving = true;
+	}
+
+	// Comparing Mouse's X position
 
 	if (mouse_x > prev_mouse_x)
 	{
+
+		isMouseMovingRight = true;
+
 		prev_mouse_x = mouse_x;
-		return true;
+		
 	}
 	else if (mouse_x < prev_mouse_x)
 	{
+		isMouseMovingRight = false;
+
 		prev_mouse_x = mouse_x;
-		return false;
+		
 	}
 
+	// Comparing Mouse's Y position
 
+	if (mouse_y > prev_mouse_y)
+	{
+		
+		isMouseMovingUp = true;
+
+		prev_mouse_y = mouse_y;
+
+	}
+
+	else if (mouse_y < prev_mouse_y)
+	{
+		isMouseMovingUp = false;
+
+		prev_mouse_y = mouse_y;
+
+	}
+
+	mouse_x += m_mouse_state.lX;
+	mouse_y += m_mouse_state.lY;
+	
+
+}
+
+bool Input::IsMouseMoving()
+{
+	return isMouseMoving;
+}
+
+bool Input::IsMouseMovingRight()
+{
+	return isMouseMovingRight;
+}
+
+bool Input::IsMouseMovingUp()
+{
+	return isMouseMovingUp;
 }
