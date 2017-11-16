@@ -36,24 +36,29 @@ public:
 
 	Collider3D* box;
 
-	Asset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x, float y, float z);
+	Asset();
 	~Asset();
+
+	void InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x, float y, float z);
 
 	int LoadObjModel(char* fileName, char* textureFile);
 
-	void UpdateRot(float pitch_degrees, float yaw_degrees, float roll_degrees);
+	void RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degrees);
 
-	void MoveForward(float z_dist);
-	void Jump(float y_dist);
-	void MoveSideways(float x_dist);
+	void MoveAsset(float x_dist, float y_dist, float z_dist);
+
+	//void Jump(float y_dist);
+	//void MoveSideways(float x_dist);
 
 	float GetX();
 	float GetY();
 	float GetZ();
 
-	void RestrictPos();
+	void UpdatePos();
 
 	bool CheckCollision(Asset* obj);
+
+	void SetCollideState(bool state);
 	bool IsColliding();
 
 	XMVECTOR GetColliderWorldSpacePos();

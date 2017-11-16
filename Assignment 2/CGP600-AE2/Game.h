@@ -4,6 +4,7 @@
 #include "Asset.h"
 #include "Camera.h"
 #include "Input.h"
+#include "Player.h"
 
 
 class Game
@@ -16,7 +17,7 @@ private:
 
 	Camera* perspective;
 
-	Asset* player;
+	Player* player;
 	Asset* tree;
 
 	int prev_mouse_x = 0;

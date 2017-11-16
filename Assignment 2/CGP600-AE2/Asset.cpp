@@ -8,7 +8,12 @@ struct ASSET_CONSTANT_BUFFER
 	XMVECTOR ambient_light_colour; // 16 bytes
 }; // 112 bytes
 
-Asset::Asset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x, float y, float z)
+Asset::Asset()
+{
+	
+}
+
+void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x, float y, float z)
 {
 	m_pD3DDevice = D3DDevice;
 	m_pImmediateContext = ImmediateContext;
@@ -28,7 +33,6 @@ Asset::Asset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, flo
 	m_scale = 1.0f;
 
 	box = new Collider3D();
-
 }
 
 Asset::~Asset()
@@ -138,44 +142,47 @@ int Asset::LoadObjModel(char* fileName, char* textureFile)
 
 }
 
-void Asset::UpdateRot(float pitch_degrees, float yaw_degrees, float roll_degrees)
+void Asset::RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degrees)
 {
 	m_xangle += pitch_degrees;
 	m_yangle += yaw_degrees;
 	m_zangle += roll_degrees;
 }
 
-void Asset::MoveForward(float z_dist)
-{
-	m_z += z_dist;
-
-	if (IsColliding() == false)
-	{
-		m_prev_z = m_z;
-	}
-
-}
-
-void Asset::Jump(float y_dist)
-{
-	m_y += y_dist;
-
-	if (IsColliding() == false)
-	{
-		m_prev_y = m_y;
-	}
-
-}
-
-void Asset::MoveSideways(float x_dist)
+void Asset::MoveAsset(float x_dist, float y_dist, float z_dist)
 {
 	m_x += x_dist;
+	m_y += y_dist;
+	m_z += z_dist;
 
-	if (IsColliding() == false)
+	/*if (IsColliding() == false)
 	{
-		m_prev_x = m_x;
-	}
+		m_prev_z = m_z;
+	}*/
+
 }
+
+//void Asset::Jump(float y_dist)
+//{
+//	m_y += y_dist;
+//
+//	/*if (IsColliding() == false)
+//	{
+//		m_prev_y = m_y;
+//	}*/
+//
+//}
+//
+//void Asset::MoveSideways(float x_dist)
+//{
+//	m_x += x_dist;
+//
+//	/*if (IsColliding() == false)
+//	{
+//		m_prev_x = m_x;
+//	}*/
+//	
+//}
 
 bool Asset::CheckCollision(Asset* obj)
 {
@@ -229,11 +236,21 @@ bool Asset::CheckCollision(Asset* obj)
 	}
 }
 
-void Asset::RestrictPos()
+void Asset::UpdatePos()
 {
-	m_x = m_prev_x;
-	m_y = m_prev_y;
-	m_z = m_prev_z;
+	if (IsColliding() == true)
+	{
+		m_x = m_prev_x;
+		m_y = m_prev_y;
+		m_z = m_prev_z;
+	}
+	else
+	{
+		m_prev_x = m_x;
+		m_prev_y = m_y;
+		m_prev_z = m_z;
+	}
+
 }
 
 XMVECTOR Asset::GetColliderWorldSpacePos()
@@ -300,6 +317,11 @@ float Asset::GetY()
 float Asset::GetZ()
 {
 	return m_z;
+}
+
+void Asset::SetCollideState(bool state)
+{
+	isColliding = state;
 }
 
 bool Asset::IsColliding()

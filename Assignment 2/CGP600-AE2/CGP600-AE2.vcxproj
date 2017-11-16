@@ -136,6 +136,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="objfilemodel.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="objfilemodel.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
   </ItemGroup>
   <ItemGroup>
