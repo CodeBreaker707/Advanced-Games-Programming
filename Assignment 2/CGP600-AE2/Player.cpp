@@ -17,7 +17,61 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, f
 
 }
 
-void Player::OnAirBehaviour()
+bool Player::CheckPlayerFeetonGround(Asset* obj)
+{
+	if (obj == this)
+	{
+		return false;
+	}
+
+	XMVECTOR cur_pos = GetColliderWorldSpacePos();
+	XMVECTOR other_pos = obj->GetColliderWorldSpacePos();
+
+	float x1 = XMVectorGetX(cur_pos) - (box->GetLength(GetXScale()) / 2);
+	float y1 = XMVectorGetY(cur_pos) + (box->GetHeight(GetYScale()) / 2);
+	float z1 = XMVectorGetZ(cur_pos) - (box->GetBreadth(GetZScale()) / 2);
+
+	float l1 = box->GetLength(GetXScale());
+	float h1 = box->GetHeight(GetYScale());
+	float b1 = box->GetBreadth(GetZScale());
+
+	float x2 = XMVectorGetX(other_pos) - (obj->box->GetLength(obj->GetXScale()) / 2);
+	float y2 = XMVectorGetY(other_pos) + (obj->box->GetHeight(obj->GetYScale()) / 2);
+	float z2 = XMVectorGetZ(other_pos) - (obj->box->GetBreadth(obj->GetZScale()) / 2);
+
+	float l2 = obj->box->GetLength(obj->GetXScale());
+	float h2 = obj->box->GetHeight(obj->GetYScale());
+	float b2 = obj->box->GetBreadth(obj->GetZScale());
+
+
+	if (x1 < x2 + l2 && x1 + l1 > x2)
+	{
+		if (y1 - h1 > y2 && y1 - h1 < y2 + 0.005f)
+		{
+			if (z1 < z2 + b2 && z1 + b1 > z2)
+			{
+				return true;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+		
+
+}
+
+void Player::JumpPlayer()
 {
 	if (m_isJumping == true)
 	{
@@ -37,10 +91,10 @@ void Player::OnAirBehaviour()
 
 void Player::PullDown()
 {
-	//if (m_onGround == false)
-	//{
+	if (m_onGround == false && m_isJumping == false)
+	{
 		MoveAsset(0.0f, -m_jump_speed, 0.0f);
-	//}
+	}
 }
 
 void Player::SetOnGroundState(bool state)

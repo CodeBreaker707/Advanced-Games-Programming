@@ -21,8 +21,10 @@ public:
 	Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x, float y, float z);
 	~Player();
 
-	void OnAirBehaviour();
+	void JumpPlayer();
 	void PullDown();
+
+	bool CheckPlayerFeetonGround(Asset* obj);
 
 	void SetOnGroundState(bool state);
 	bool GetOnGroundState();

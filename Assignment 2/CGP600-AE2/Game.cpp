@@ -8,7 +8,7 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 
 	perspective = new Camera(2.0f, 0.0f, 0.5f, 0.0f);
 	
-	player = new Player(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 0.0f, 10.0f);
+	player = new Player(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 1.0f, 10.0f);
 
 	ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f);
 
@@ -25,7 +25,7 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	objs.push_back(tree[0]);
 	objs.push_back(tree[1]);
 
-	ground->ScaleAsset(100.0f, 0.0f, 100.0f);
+	ground->ScaleAsset(100.0f, 1.0f, 100.0f);
 
 }
 
@@ -37,11 +37,13 @@ void Game::MainUpdate()
 	key->MouseBehaviour();
 
 	// Keyboard Controls
+
+	keyPressed = false;
 	
 		if (key->IsKeyPressed(key->mve_frwd))
 		{
 			player->MoveAsset(0.0f, 0.0f, player->GetPlayerMoveSpeed());
-
+			//keyPressed = true;
 			
 			if (perspective->GetCollidingState() == false)
 			{
@@ -51,6 +53,7 @@ void Game::MainUpdate()
 		if (key->IsKeyPressed(key->mve_lft))
 		{
 			player->MoveAsset(-player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+			//keyPressed = true;
 
 			if (perspective->GetCollidingState() == false)
 			{
@@ -60,6 +63,7 @@ void Game::MainUpdate()
 		if (key->IsKeyPressed(key->mve_bck))
 		{
 			player->MoveAsset(0.0f, 0.0f, -player->GetPlayerMoveSpeed());
+			//keyPressed = true;
 
 			if (perspective->GetCollidingState() == false)
 			{
@@ -69,6 +73,7 @@ void Game::MainUpdate()
 		if (key->IsKeyPressed(key->mve_rght))
 		{
 			player->MoveAsset(player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+			//keyPressed = true;
 
 			if (perspective->GetCollidingState() == false)
 			{
@@ -79,13 +84,14 @@ void Game::MainUpdate()
 		{
 			player->SetOnGroundState(false);
 			player->SetJumpState(true);
+			//keyPressed = true;
 			
 			if (perspective->GetCollidingState() == false)
 			{
 				//perspective->Move(0.0f, 0.001f, 0.0f);
 			}
 		}
-		/*if (key->IsKeyPressed(DIK_DOWN))
+		if (key->IsKeyPressed(DIK_DOWN))
 		{
 			player->MoveAsset(0.0f, -0.001, 0.0f);
 			
@@ -94,15 +100,31 @@ void Game::MainUpdate()
 				perspective->Move(0.0f, -0.001f, 0.0f);
 			}
 
-		}*/
-
-		player->OnAirBehaviour();
-
-		for (int i = 0; i < objs.size(); i++)
-		{
-			objs[i]->CheckCollision(player);
 		}
 
+		player->JumpPlayer();
+
+		
+			// Checking collision with all objects against the player
+			for (int i = 0; i < objs.size(); i++)
+			{
+				objs[i]->CheckCollision(player);
+			}
+
+			// Stopping the player at collision
+			for (int i = 0; i < objs.size(); i++)
+			{
+				player->RestrictPos(objs[i]->IsColliding());
+			}
+
+			// Storing previous positions of the player
+			for (int i = 0; i < objs.size(); i++)
+			{
+				player->UpdatePos(objs[i]->IsColliding());
+			}
+		
+
+		// Stopping the camera at collision
 		for (int i = 0; i < objs.size(); i++)
 		{
 			if (objs[i]->IsColliding() == true)
@@ -116,27 +138,9 @@ void Game::MainUpdate()
 			}
 		}
 
-		for (int i = 0; i < objs.size(); i++)
-		{
-			player->RestrictPos(objs[i]->IsColliding());
-		}
-
-		for (int i = 0; i < objs.size(); i++)
-		{
-			player->UpdatePos(objs[i]->IsColliding());
-		}
-
-		for (int i = 0; i < objs.size(); i++)
-		{
-			if (objs[i]->IsColliding() == true)
-			{
-				player->SetOnGroundState(true);
-				break;
-			}
-		}
-
 		count = 0;
 
+		 //Check if the player is not colliding with anything
 		for (int i = 0; i < objs.size(); i++)
 		{
 			if (objs[i]->IsColliding() == false)
@@ -145,10 +149,25 @@ void Game::MainUpdate()
 			}
 		}
 
-		if (count == objs.size() && player->GetJumpState() == false)
+		// If yes, then player is not on ground
+		if (count == objs.size())
 		{
-			player->PullDown();	
+			player->SetOnGroundState(false);
 		}
+		
+
+		for (int i = 0; i < objs.size(); i++)
+		{
+			if (player->CheckPlayerFeetonGround(objs[i]) == true)
+			{
+				player->SetOnGroundState(true);
+				break;
+			}
+
+		}
+
+	
+		player->PullDown();		
 
 		
 

@@ -177,17 +177,17 @@ bool Asset::CheckCollision(Asset* obj)
 	XMVECTOR cur_pos = GetColliderWorldSpacePos();
 	XMVECTOR other_pos = obj->GetColliderWorldSpacePos();
 
-	float x1 = XMVectorGetX(cur_pos) - (box->GetLength(m_scale_x) / 2);
-	float y1 = XMVectorGetY(cur_pos) + (box->GetHeight(m_scale_y) / 2);
-	float z1 = XMVectorGetZ(cur_pos) - (box->GetBreadth(m_scale_z) / 2);
+	float x1 = XMVectorGetX(cur_pos) - (box->GetLength(m_scale_x) / 2  );
+	float y1 = XMVectorGetY(cur_pos) + (box->GetHeight(m_scale_y) / 2  );
+	float z1 = XMVectorGetZ(cur_pos) - (box->GetBreadth(m_scale_z) / 2 );
 
 	float l1 = box->GetLength(m_scale_x);
 	float h1 = box->GetHeight(m_scale_y);
 	float b1 = box->GetBreadth(m_scale_z);
 
 	float x2 = XMVectorGetX(other_pos) - (obj->box->GetLength(obj->GetXScale()) / 2 );
-	float y2 = XMVectorGetY(other_pos) + (obj->box->GetHeight(obj->GetYScale()) / 2);
-	float z2 = XMVectorGetZ(other_pos) - (obj->box->GetBreadth(obj->GetZScale()) / 2);
+	float y2 = XMVectorGetY(other_pos) + (obj->box->GetHeight(obj->GetYScale()) / 2 );
+	float z2 = XMVectorGetZ(other_pos) - (obj->box->GetBreadth(obj->GetZScale()) / 2 );
 
 	float l2 = obj->box->GetLength(obj->GetXScale());
 	float h2 = obj->box->GetHeight(obj->GetYScale());
@@ -205,17 +205,17 @@ bool Asset::CheckCollision(Asset* obj)
 			}
 			else
 			{
-				m_isColliding = false;	
+				m_isColliding = false;
 			}
 		}
 		else
 		{
-			m_isColliding = false;		
+			m_isColliding = false;
 		}
 	}
 	else
 	{
-		m_isColliding = false;	
+		m_isColliding = false;
 	}
 }
 
