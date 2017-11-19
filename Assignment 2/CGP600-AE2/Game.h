@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Renderer.h"
-#include "Asset.h"
+//#include "Asset.h"
 #include "Camera.h"
 #include "Input.h"
 #include "Player.h"
+#include "Statik.h"
 
 
 class Game
@@ -18,7 +19,12 @@ private:
 	Camera* perspective;
 
 	Player* player;
-	Asset* tree;
+	Statik* ground;
+	Statik* tree[2];
+
+	int count = 0;
+
+	vector<Asset*> objs;
 
 	int prev_mouse_x = 0;
 	int prev_mouse_y = 0;

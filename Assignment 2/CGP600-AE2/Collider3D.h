@@ -18,9 +18,9 @@ public:
 	void CalculateColliderCentre(ObjFileModel* model);
 	void CalculateDimensions(ObjFileModel* model);
 
-	float GetLength();
-	float GetHeight();
-	float GetBreadth();	
+	float GetLength(float x_scale);
+	float GetHeight(float y_scale);
+	float GetBreadth(float z_scale);	
 
 	XMVECTOR GetColliderPos();
 

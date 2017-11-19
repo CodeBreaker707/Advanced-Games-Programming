@@ -30,7 +30,9 @@ void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* Immedi
 	m_zangle = 0.0f;
 	m_yangle = 0.0f;
 
-	m_scale = 1.0f;
+	m_scale_x = 1.0f;
+	m_scale_y = 1.0f;
+	m_scale_z = 1.0f;
 
 	box = new Collider3D();
 }
@@ -149,40 +151,21 @@ void Asset::RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degre
 	m_zangle += roll_degrees;
 }
 
+void Asset::ScaleAsset(float x_scale, float y_scale, float z_scale)
+{
+	m_scale_x = x_scale;
+	m_scale_y = y_scale;
+	m_scale_z = z_scale;
+}
+
 void Asset::MoveAsset(float x_dist, float y_dist, float z_dist)
 {
 	m_x += x_dist;
 	m_y += y_dist;
 	m_z += z_dist;
 
-	/*if (IsColliding() == false)
-	{
-		m_prev_z = m_z;
-	}*/
-
 }
 
-//void Asset::Jump(float y_dist)
-//{
-//	m_y += y_dist;
-//
-//	/*if (IsColliding() == false)
-//	{
-//		m_prev_y = m_y;
-//	}*/
-//
-//}
-//
-//void Asset::MoveSideways(float x_dist)
-//{
-//	m_x += x_dist;
-//
-//	/*if (IsColliding() == false)
-//	{
-//		m_prev_x = m_x;
-//	}*/
-//	
-//}
 
 bool Asset::CheckCollision(Asset* obj)
 {
@@ -194,21 +177,21 @@ bool Asset::CheckCollision(Asset* obj)
 	XMVECTOR cur_pos = GetColliderWorldSpacePos();
 	XMVECTOR other_pos = obj->GetColliderWorldSpacePos();
 
-	float x1 = XMVectorGetX(cur_pos) - (box->GetLength() );
-	float y1 = XMVectorGetY(cur_pos) + (box->GetHeight()  );
-	float z1 = XMVectorGetZ(cur_pos) - (box->GetBreadth() );
+	float x1 = XMVectorGetX(cur_pos) - (box->GetLength(m_scale_x) / 2);
+	float y1 = XMVectorGetY(cur_pos) + (box->GetHeight(m_scale_y) / 2);
+	float z1 = XMVectorGetZ(cur_pos) - (box->GetBreadth(m_scale_z) / 2);
 
-	float l1 = box->GetLength();
-	float h1 = box->GetHeight();
-	float b1 = box->GetBreadth();
+	float l1 = box->GetLength(m_scale_x);
+	float h1 = box->GetHeight(m_scale_y);
+	float b1 = box->GetBreadth(m_scale_z);
 
-	float x2 = XMVectorGetX(other_pos) - (obj->box->GetLength() );
-	float y2 = XMVectorGetY(other_pos) + (obj->box->GetHeight() );
-	float z2 = XMVectorGetZ(other_pos) - (obj->box->GetBreadth() );
+	float x2 = XMVectorGetX(other_pos) - (obj->box->GetLength(obj->GetXScale()) / 2 );
+	float y2 = XMVectorGetY(other_pos) + (obj->box->GetHeight(obj->GetYScale()) / 2);
+	float z2 = XMVectorGetZ(other_pos) - (obj->box->GetBreadth(obj->GetZScale()) / 2);
 
-	float l2 = obj->box->GetLength();
-	float h2 = obj->box->GetHeight();
-	float b2 = obj->box->GetBreadth();
+	float l2 = obj->box->GetLength(obj->GetXScale());
+	float h2 = obj->box->GetHeight(obj->GetYScale());
+	float b2 = obj->box->GetBreadth(obj->GetZScale());
 
 
 	if (x1 < x2 + l2 && x1 + l1 > x2)
@@ -217,34 +200,38 @@ bool Asset::CheckCollision(Asset* obj)
 		{
 			if (z1 < z2 + b2 && z1 + b1 > z2)
 			{
-				isColliding = true;
+				m_isColliding = true;
 				
 			}
 			else
 			{
-				isColliding = false;	
+				m_isColliding = false;	
 			}
 		}
 		else
 		{
-			isColliding = false;		
+			m_isColliding = false;		
 		}
 	}
 	else
 	{
-		isColliding = false;	
+		m_isColliding = false;	
 	}
 }
 
-void Asset::UpdatePos()
+void Asset::RestrictPos(bool isColliding)
 {
-	if (IsColliding() == true)
+	if (isColliding == true)
 	{
 		m_x = m_prev_x;
 		m_y = m_prev_y;
 		m_z = m_prev_z;
 	}
-	else
+}
+
+void Asset::UpdatePos(bool isColliding)
+{
+	if (isColliding == false)
 	{
 		m_prev_x = m_x;
 		m_prev_y = m_y;
@@ -258,6 +245,7 @@ XMVECTOR Asset::GetColliderWorldSpacePos()
 	XMMATRIX world;
 
 	world = XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
+	world = XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
 	world *= XMMatrixTranslation(m_x, m_y, m_z);
 
 	XMVECTOR offset;
@@ -276,6 +264,7 @@ void Asset::Draw(XMMATRIX* view, XMMATRIX* projection)
 	XMMATRIX world;
 
 	world = XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
+	world = XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
 	world *= XMMatrixTranslation(m_x, m_y, m_z);
 
 	m_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);
@@ -304,28 +293,43 @@ void Asset::Draw(XMMATRIX* view, XMMATRIX* projection)
 	m_pObject->Draw();
 }
 
-float Asset::GetX()
+float Asset::GetXPos()
 {
 	return m_x;
 }
 
-float Asset::GetY()
+float Asset::GetYPos()
 {
 	return m_y;
 }
 
-float Asset::GetZ()
+float Asset::GetZPos()
 {
 	return m_z;
 }
 
+float Asset::GetXScale()
+{
+	return m_scale_x;
+}
+
+float Asset::GetYScale()
+{
+	return m_scale_y;
+}
+
+float Asset::GetZScale()
+{
+	return m_scale_z;
+}
+
 void Asset::SetCollideState(bool state)
 {
-	isColliding = state;
+	m_isColliding = state;
 }
 
 bool Asset::IsColliding()
 {
-	return isColliding;
+	return m_isColliding;
 }
 

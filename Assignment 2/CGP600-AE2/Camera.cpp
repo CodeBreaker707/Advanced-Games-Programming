@@ -6,6 +6,11 @@ Camera::Camera(float x, float y, float z, float camera_rotation)
 	m_x = x;
 	m_y = y;
 	m_z = z;
+
+	m_prev_x = x;
+	m_prev_y = y;
+	m_prev_z = z;
+
 	m_camera_rotation = XMConvertToRadians(camera_rotation);
 
 	m_dx = sin(XMConvertToRadians(camera_rotation));
@@ -16,6 +21,8 @@ Camera::Camera(float x, float y, float z, float camera_rotation)
 	m_up = XMVectorSet(0.0, 1.0, 0.0, 0.0);
 	m_forward = XMVectorSet(0.0f, 0.0, 1.0f, 0.0f);
 	m_position = XMVectorSet(m_x, m_y, m_z, 0.0f);
+
+	m_isColliding = false;
 
 	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(45.0), 1280.0 / 768.0, 1.0, 100.0);
 
@@ -39,19 +46,25 @@ void Camera::PitchRotate(float degrees)
 
 }
 
-void Camera::Move(float z_distance, float x_distance)
+void Camera::Move(float x_distance, float y_distance, float z_distance)
 {
+	
 	m_forward = XMVector3Normalize(m_lookAt - m_position);
 	m_right = XMVector3Cross(m_forward, m_up);
 
-
+	m_position += (-x_distance * m_right);
+	m_position += (y_distance * m_up);
 	m_position += (z_distance * m_forward);
-	m_position += (x_distance * m_right);
-
 
 	m_x = XMVectorGetX(m_position);
 	m_y = XMVectorGetY(m_position);
 	m_z = XMVectorGetZ(m_position);
+	
+}
+
+void Camera::SetCollidingState(bool state)
+{
+	m_isColliding = state;
 }
 
 XMMATRIX Camera::GetViewMatrix()
@@ -67,9 +80,19 @@ XMMATRIX Camera::GetProjectionMatrix()
 	return projection;
 }
 
+bool Camera::GetCollidingState()
+{
+	return m_isColliding;
+}
+
 float Camera::GetX()
 {
 	return m_x;
+}
+
+float Camera::GetY()
+{
+	return m_y;
 }
 
 float Camera::GetZ()

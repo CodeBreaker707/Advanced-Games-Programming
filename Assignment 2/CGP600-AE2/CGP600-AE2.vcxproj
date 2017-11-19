@@ -138,6 +138,7 @@
     <ClCompile Include="objfilemodel.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Statik.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collider3D.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="objfilemodel.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Statik.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders.hlsl" />

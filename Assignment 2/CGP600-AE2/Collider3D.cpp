@@ -106,17 +106,17 @@ XMVECTOR Collider3D::GetColliderPos()
 
 }
 
-float Collider3D::GetLength()
+float Collider3D::GetLength(float x_scale)
 {
-	return m_length;
+	return m_length * x_scale;
 }
 
-float Collider3D::GetHeight()
+float Collider3D::GetHeight(float y_scale)
 {
-	return m_height;
+	return m_height * y_scale;
 }
 
-float Collider3D::GetBreadth()
+float Collider3D::GetBreadth(float z_scale)
 {
-	return m_breadth;
+	return m_breadth * z_scale;
 }
