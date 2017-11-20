@@ -15,6 +15,9 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, f
 	m_gravity_speed = 0.0015f;
 	m_jump_height = 4.5f;
 
+	m_lookAt = XMVectorSet(0.0, 0.0, 1.0f, 0.0);
+	m_position = XMVectorSet(x, y, z, 0.0f);
+
 }
 
 bool Player::CheckPlayerFeetonGround(Asset* obj)
@@ -83,10 +86,36 @@ void Player::JumpPlayer()
 		}
 
 	}
-	/*else if(m_onGround == false)
-	{
-		MoveAsset(0.0f, -m_jump_speed, 0.0f);
-	}*/
+
+}
+
+void Player::UpdateLookAt()
+{
+	float x = XMVectorGetX(m_lookAt);
+	float y = XMVectorGetY(m_lookAt);
+	float z = XMVectorGetZ(m_lookAt);
+
+	m_lookAt = XMVectorSet(x + GetXAngle(), y + GetYAngle(), z + GetZAngle(), 0.0f);
+
+}
+
+void Player::MovePlayer(float dist)
+{
+	MoveAsset(sin(GetYAngle()) * dist, 0.0f, cos(GetYAngle()) * dist);
+
+	//m_position += (dist * m_lookAt);
+
+	//float x = XMVectorGetX(m_position);
+	//float z = XMVectorGetZ(m_position);
+
+	//SetXPos(x);
+	//SetZPos(z);
+
+}
+
+void Player::StrafePlayer(float dist)
+{
+	MoveAsset(cos(GetYAngle()) * dist, 0.0f, sin(GetYAngle()) * dist);
 }
 
 void Player::PullDown()

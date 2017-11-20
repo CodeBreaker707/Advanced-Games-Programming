@@ -50,6 +50,9 @@ public:
 
 	float GetBoundingSphereRadius();
 
+	void SetTexture(ID3D11ShaderResourceView* texture);
+	void SetSampler(ID3D11SamplerState* sampler);
+
 	bool CheckCollision(Model* obj);
 
 	float GetX();
@@ -57,6 +60,6 @@ public:
 
 	void SetLightColour(float r, float g, float b);
 
-	void Draw(XMMATRIX* view, XMMATRIX* projection);
+	void Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection);
 
 };

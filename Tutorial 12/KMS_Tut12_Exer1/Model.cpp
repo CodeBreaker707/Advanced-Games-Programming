@@ -317,11 +317,13 @@ float Model::GetBoundingSphereRadius()
 
 void Model::Draw(XMMATRIX* view, XMMATRIX* projection)
 {
-	//UpdateRot(0.0, 0.0001, 0.0);
+	UpdateRot(0.0, 0.0001, 0.0);
 
 	XMMATRIX world;
 
+	world = XMMatrixScaling(m_scale, m_scale, m_scale);
 	world = XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
+	
 	world *= XMMatrixTranslation(m_x, m_y, m_z);
 
 	m_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);

@@ -9,11 +9,9 @@ private:
 	IDirectInputDevice8* m_keyboard_device;
 	IDirectInputDevice8* m_mouse_device;
 
-	DIMOUSESTATE m_mouse_state;
-
 	long prev_mouse_x = 0;
 	long prev_mouse_y = 0;
-	
+
 	long mouse_x = 0;
 	long mouse_y = 0;
 
@@ -25,10 +23,13 @@ private:
 
 public:
 
+	DIMOUSESTATE m_mouse_state;
+
 	unsigned char mve_frwd = DIK_W;
 	unsigned char mve_lft = DIK_A;
 	unsigned char mve_bck = DIK_S;
 	unsigned char mve_rght = DIK_D;
+	unsigned char jump = DIK_SPACE;
 
 	Input(HINSTANCE hInst, HWND hWnd);
 	~Input();
@@ -38,6 +39,7 @@ public:
 	void ReadInputStates();
 
 	bool IsKeyPressed(unsigned char DI_Keycode);
+
 	void MouseBehaviour();
 
 	bool IsMouseMoving();

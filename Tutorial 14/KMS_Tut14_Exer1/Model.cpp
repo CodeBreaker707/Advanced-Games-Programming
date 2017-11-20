@@ -21,6 +21,10 @@ Model::Model(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, flo
 	m_yangle = 0.0f;
 
 	m_scale = 1.0f;
+
+	m_pTexture0 = NULL;
+	m_pSampler0 = NULL;
+
 }
 
 Model::~Model()
@@ -222,6 +226,16 @@ void Model::CalculateBoundingSphereRadius()
 	m_bounding_sphere_radius = maxDistance;
 }
 
+void Model::SetTexture(ID3D11ShaderResourceView* texture)
+{
+	m_pTexture0 = texture;
+}
+
+void Model::SetSampler(ID3D11SamplerState* sampler)
+{
+	m_pSampler0 = sampler;
+}
+
 bool Model::CheckCollision(Model* obj)
 {
 	if (obj == this)
@@ -315,14 +329,14 @@ float Model::GetBoundingSphereRadius()
 	return m_bounding_sphere_radius;
 }
 
-void Model::Draw(XMMATRIX* view, XMMATRIX* projection)
+void Model::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 {
-	//UpdateRot(0.0, 0.0001, 0.0);
+	UpdateRot(0.0, 0.0001, 0.0);
 
-	XMMATRIX world;
+	//XMMATRIX world;
 
-	world = XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
-	world *= XMMatrixTranslation(m_x, m_y, m_z);
+	//world = XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
+	//world *= XMMatrixTranslation(m_x, m_y, m_z);
 
 	m_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);
 	m_ambient_light_colour = XMVectorSet(0.3f, 0.3f, 0.3f, 1.0f);
@@ -331,9 +345,9 @@ void Model::Draw(XMMATRIX* view, XMMATRIX* projection)
 
 	XMMATRIX transpose;
 	MODEL_CONSTANT_BUFFER model_cb_values;
-	model_cb_values.WorldViewProjection = world * (*view) * (*projection);
+	model_cb_values.WorldViewProjection = (*world) * (*view) * (*projection);
 
-	transpose = XMMatrixTranspose(world);
+	transpose = XMMatrixTranspose(*world);
 
 	model_cb_values.directional_light_colour = m_directional_light_colour;
 	model_cb_values.ambient_light_colour = m_ambient_light_colour;

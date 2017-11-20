@@ -49,9 +49,17 @@ public:
 
 	void MoveAsset(float x_dist, float y_dist, float z_dist);
 
+	void SetXPos(float x);
+	void SetYPos(float y);
+	void SetZPos(float z);
+
 	float GetXPos();
 	float GetYPos();
 	float GetZPos();
+
+	float GetXAngle();
+	float GetYAngle();
+	float GetZAngle();
 
 	float GetXScale();
 	float GetYScale();

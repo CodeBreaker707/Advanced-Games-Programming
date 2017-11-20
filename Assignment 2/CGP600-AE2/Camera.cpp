@@ -11,7 +11,8 @@ Camera::Camera(float x, float y, float z, float camera_rotation)
 	m_prev_y = y;
 	m_prev_z = z;
 
-	m_camera_rotation = XMConvertToRadians(camera_rotation);
+	m_camera_rotation_x = XMConvertToRadians(camera_rotation);
+	m_camera_rotation_y = XMConvertToRadians(camera_rotation);
 
 	m_dx = sin(XMConvertToRadians(camera_rotation));
 	m_dy = sin(XMConvertToRadians(camera_rotation));
@@ -24,25 +25,29 @@ Camera::Camera(float x, float y, float z, float camera_rotation)
 
 	m_isColliding = false;
 
-	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(45.0), 1280.0 / 768.0, 1.0, 100.0);
+	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(45.0), 1280.0 / 768.0, 0.5, 100.0);
 
 }
 
-void Camera::YawRotate(float degrees)
+void Camera::RotateCameraX(float amount)
 {
-	m_camera_rotation = XMConvertToRadians(degrees);
+	m_camera_rotation_x += XMConvertToRadians(amount);
 
-	m_dx = sin(m_camera_rotation);
-	m_dz = cos(m_camera_rotation);
+	m_dx = sin(m_camera_rotation_x);
+	m_dz = cos(m_camera_rotation_x);
 
+	/*m_camera_rotation_x += amount;
+
+	m_dx = sin(XMConvertToRadians(m_camera_rotation_x));
+	m_dz = cos(XMConvertToRadians(m_camera_rotation_x));*/
 }
 
-void Camera::PitchRotate(float degrees)
+void Camera::RotateCameraY(float amount)
 {
-	m_camera_rotation = XMConvertToRadians(degrees);
+	m_camera_rotation_y += XMConvertToRadians(amount);
 
-	m_dy = sin(m_camera_rotation);
-	m_dz = cos(m_camera_rotation);
+	m_dy = sin(m_camera_rotation_y);
+	m_dz = cos(m_camera_rotation_y);
 
 }
 
@@ -75,6 +80,8 @@ XMMATRIX Camera::GetViewMatrix()
 	return XMMatrixLookAtLH(m_position, m_lookAt, m_up);
 }
 
+
+
 XMMATRIX Camera::GetProjectionMatrix()
 {
 	return projection;
@@ -98,4 +105,9 @@ float Camera::GetY()
 float Camera::GetZ()
 {
 	return m_z;
+}
+
+float Camera::GetYaw()
+{
+	return m_dx;
 }

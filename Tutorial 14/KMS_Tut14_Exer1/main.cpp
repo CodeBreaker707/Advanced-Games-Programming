@@ -9,6 +9,7 @@
 #include "Camera.h"
 #include "Model.h"
 #include "Input.h"
+#include "SceneNode.h"
 
 //////////////////////////////////////////////////////////////////////////////////////
 //	Global Variables
@@ -37,6 +38,8 @@ XMVECTOR g_ambient_light_colour;
 Camera* eye;
 Model* p_sphere;
 Model* sphere;
+
+SceneNode* g_root, g_node1;
 
 FLOAT z_position2 = 5.0f;
 
@@ -83,7 +86,7 @@ struct POS_COL_TEX_NORM_VERTEX
 };
 
 // Rename for each tutorial
-char		g_Tutorial_09_Exercise_01[100] = "Tutorial 09 Exercise 01\0";
+char		g_Tutorial_14_Exercise_01[100] = "Tutorial 14 Exercise 01\0";
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -170,7 +173,7 @@ HRESULT InitialiseWindow(HINSTANCE hInstance, int nCmdShow)
 	g_hInst = hInstance;
 	RECT rc = { 0, 0, 1280, 768};
 	AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
-	g_hWnd = CreateWindow(Manikandan, g_Tutorial_09_Exercise_01, WS_OVERLAPPEDWINDOW,
+	g_hWnd = CreateWindow(Manikandan, g_Tutorial_14_Exercise_01, WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left,
 		rc.bottom - rc.top, NULL, NULL, hInstance, NULL);
 	if (!g_hWnd)
@@ -645,10 +648,10 @@ void RenderFrame(void)
 
 	delay += 0.001;
 
-	sphere->LookAt_XZ(p_sphere->GetX(), p_sphere->GetZ());
-	p_sphere->LookAt_XZ(sphere->GetX(), sphere->GetZ());
+	//sphere->LookAt_XZ(p_sphere->GetX(), p_sphere->GetZ());
+	//p_sphere->LookAt_XZ(sphere->GetX(), sphere->GetZ());
 	
-	p_sphere->MoveForward(0.0001f);
+	/*p_sphere->MoveForward(0.0001f);
 
 	if (sphere->CheckCollision(p_sphere))
 	{
@@ -657,7 +660,7 @@ void RenderFrame(void)
 	else
 	{
 		sphere->MoveForward(0.0001f);
-	}
+	}*/
 
 	sphere->SetLightColour(0.3f, 0.0f, 0.9f);
 
@@ -739,8 +742,8 @@ void RenderFrame(void)
 	//g_pImmediateContext->PSSetSamplers(0, 1, &g_pSampler0);
 	//g_pImmediateContext->PSSetShaderResources(0, 1, &g_pTexture0);
 
-	p_sphere->Draw(&view, &projection);
-	sphere->Draw(&view, &projection);
+	//p_sphere->Draw(&view, &projection);
+	//sphere->Draw(&view, &projection);
 
 	//g_pImmediateContext->Draw(36, 0);
 

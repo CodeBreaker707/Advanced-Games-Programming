@@ -146,9 +146,9 @@ int Asset::LoadObjModel(char* fileName, char* textureFile)
 
 void Asset::RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degrees)
 {
-	m_xangle += pitch_degrees;
-	m_yangle += yaw_degrees;
-	m_zangle += roll_degrees;
+	m_xangle += XMConvertToRadians(pitch_degrees);
+	m_yangle += XMConvertToRadians(yaw_degrees);
+	m_zangle += XMConvertToRadians(roll_degrees);
 }
 
 void Asset::ScaleAsset(float x_scale, float y_scale, float z_scale)
@@ -244,8 +244,8 @@ XMVECTOR Asset::GetColliderWorldSpacePos()
 {
 	XMMATRIX world;
 
-	world = XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
 	world = XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
+	world *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
 	world *= XMMatrixTranslation(m_x, m_y, m_z);
 
 	XMVECTOR offset;
@@ -263,8 +263,8 @@ void Asset::Draw(XMMATRIX* view, XMMATRIX* projection)
 
 	XMMATRIX world;
 
-	world = XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
 	world = XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
+	world *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
 	world *= XMMatrixTranslation(m_x, m_y, m_z);
 
 	m_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);
@@ -293,6 +293,21 @@ void Asset::Draw(XMMATRIX* view, XMMATRIX* projection)
 	m_pObject->Draw();
 }
 
+void Asset::SetXPos(float x)
+{
+	m_x = x;
+}
+
+void Asset::SetYPos(float y)
+{
+	m_y = y;
+}
+
+void Asset::SetZPos(float z)
+{
+	m_z = z;
+}
+
 float Asset::GetXPos()
 {
 	return m_x;
@@ -306,6 +321,21 @@ float Asset::GetYPos()
 float Asset::GetZPos()
 {
 	return m_z;
+}
+
+float Asset::GetXAngle()
+{
+	return m_xangle;
+}
+
+float Asset::GetYAngle()
+{
+	return m_yangle;
+}
+
+float Asset::GetZAngle()
+{
+	return m_zangle;
 }
 
 float Asset::GetXScale()

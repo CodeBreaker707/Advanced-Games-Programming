@@ -6,7 +6,7 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 
 	key = new Input(hInstance, m_render_target->GetWindow());
 
-	perspective = new Camera(2.0f, 0.0f, 0.5f, 0.0f);
+	perspective = new Camera(2.0f, 0.0f, 0.0f, 0.0f);
 	
 	player = new Player(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 1.0f, 10.0f);
 
@@ -36,51 +36,53 @@ void Game::MainUpdate()
 	key->ReadInputStates();
 	key->MouseBehaviour();
 
+	player->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
+	//player->UpdateLookAt();
+
 	// Keyboard Controls
 
-	keyPressed = false;
 	
 		if (key->IsKeyPressed(key->mve_frwd))
 		{
-			player->MoveAsset(0.0f, 0.0f, player->GetPlayerMoveSpeed());
-			//keyPressed = true;
+			//player->MoveAsset(0.0f, 0.0f, player->GetPlayerMoveSpeed());
+			player->MovePlayer(player->GetPlayerMoveSpeed());
 			
 			if (perspective->GetCollidingState() == false)
 			{
-				perspective->Move(0.0f, 0.0f, player->GetPlayerMoveSpeed());
+				//perspective->Move(0.0f, 0.0f, player->GetPlayerMoveSpeed());
 			}
 		}
 		if (key->IsKeyPressed(key->mve_lft))
 		{
-			player->MoveAsset(-player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
-			//keyPressed = true;
+			//player->MoveAsset(-player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+			player->StrafePlayer(-player->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
-				perspective->Move(-player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+				//perspective->Move(-player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
 			}
 		}
 		if (key->IsKeyPressed(key->mve_bck))
 		{
-			player->MoveAsset(0.0f, 0.0f, -player->GetPlayerMoveSpeed());
-			//keyPressed = true;
+			//player->MoveAsset(0.0f, 0.0f, -player->GetPlayerMoveSpeed());
+			player->MovePlayer(-player->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
-				perspective->Move(0.0f, 0.0f, -player->GetPlayerMoveSpeed());
+				//perspective->Move(0.0f, 0.0f, -player->GetPlayerMoveSpeed());
 			}
 		}
 		if (key->IsKeyPressed(key->mve_rght))
 		{
-			player->MoveAsset(player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
-			//keyPressed = true;
+			//player->MoveAsset(player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+			player->StrafePlayer(player->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
-				perspective->Move(player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+				//perspective->Move(player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
 			}
 		}
-		if (key->IsKeyPressed(DIK_SPACE) && player->GetOnGroundState() == true)
+		if (key->IsKeyPressed(key->jump) && player->GetOnGroundState() == true)
 		{
 			player->SetOnGroundState(false);
 			player->SetJumpState(true);
@@ -104,12 +106,15 @@ void Game::MainUpdate()
 
 		player->JumpPlayer();
 
+		player->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
 		
 			// Checking collision with all objects against the player
+		
 			for (int i = 0; i < objs.size(); i++)
 			{
 				objs[i]->CheckCollision(player);
 			}
+		
 
 			// Stopping the player at collision
 			for (int i = 0; i < objs.size(); i++)
@@ -173,48 +178,61 @@ void Game::MainUpdate()
 
 	// Mouse Controls
 
-	if (key->IsMouseMoving() == true)
-	{
+		//if (key->IsMouseMoving() == true)
+		//{
+		//	if (key->IsMouseMovingRight() == true)
+		//	{
+		//		yaw_degrees += 0.5f;
 
-		if (key->IsMouseMovingRight() == true)
-		{
-			yaw_degrees += 0.5f;
+		//		perspective->RotateCameraX(yaw_degrees);
 
-			perspective->YawRotate(yaw_degrees);
+		//		//yaw_degrees = 0.0f;
+		//	}
+		//	else if (key->IsMouseMovingRight() == false)
+		//	{
+		//		yaw_degrees -= 0.5f;
 
-		}
-		else if (key->IsMouseMovingRight() == false)
-		{
-			yaw_degrees -= 0.5f;
+		//		perspective->RotateCameraX(yaw_degrees);
 
-			perspective->YawRotate(yaw_degrees);
+		//		//yaw_degrees = 0.0f;
+		//	}
 
-		}
+			
 
-		/*if (key->IsMouseMovingUp() == true)
-		{
-			pitch_degrees -= 0.5f;
+			//if (key->IsMouseMovingUp() == true)
+			//{
+			//	pitch_degrees -= 0.5f;
 
-			perspective->PitchRotate(pitch_degrees);
+			//	perspective->RotateCameraY(pitch_degrees);
 
-		}
-		else if (key->IsMouseMovingUp() == false)
-		{
-			pitch_degrees += 0.5f;
+			//	//yaw_degrees = 0.0f;
+			//}
+			//else if (key->IsMouseMovingUp() == false)
+			//{
+			//	pitch_degrees += 0.5f;
 
-			perspective->PitchRotate(pitch_degrees);
+			//	perspective->RotateCameraY(pitch_degrees);
 
-		}*/
+			//	//yaw_degrees = 0.0f;
+			//}
+		//}
 
-	}
+	
+	
 
+	//perspective->RotateCameraY(-key->m_mouse_state.lY);
+	//perspective->RotateCameraX(key->m_mouse_state.lX);
+
+	
+
+	// DRAW
 
 	player->Draw(&perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
 
-	ground->Draw(&perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
-
-	tree[0]->Draw(&perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
-	tree[1]->Draw(&perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+	for (int i = 0; i < objs.size(); i++)
+	{
+		objs[i]->Draw(&perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+	}
 
 
 	m_render_target->Display();

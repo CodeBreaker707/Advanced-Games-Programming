@@ -644,10 +644,10 @@ void RenderFrame(void)
 
 	delay += 0.001;
 
-	sphere->LookAt_XZ(p_sphere->GetX(), p_sphere->GetZ());
+	/*sphere->LookAt_XZ(p_sphere->GetX(), p_sphere->GetZ());
 	p_sphere->LookAt_XZ(sphere->GetX(), sphere->GetZ());
 	
-	p_sphere->MoveForward(0.0001f);
+	p_sphere->MoveForward(0.0001f);*/
 
 	if (sphere->CheckCollision(p_sphere))
 	{

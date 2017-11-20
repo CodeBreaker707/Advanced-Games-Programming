@@ -24,8 +24,6 @@ private:
 
 	int count = 0;
 
-	bool keyPressed = false;
-
 	vector<Asset*> objs;
 
 	int prev_mouse_x = 0;
