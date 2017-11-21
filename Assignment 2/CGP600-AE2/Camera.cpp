@@ -80,7 +80,20 @@ XMMATRIX Camera::GetViewMatrix()
 	return XMMatrixLookAtLH(m_position, m_lookAt, m_up);
 }
 
+void Camera::SetX(float x)
+{
+	m_x = x;
+}
 
+void Camera::SetY(float y)
+{
+	m_y = y;
+}
+
+void Camera::SetZ(float z)
+{
+	m_z = z;
+}
 
 XMMATRIX Camera::GetProjectionMatrix()
 {

@@ -9,7 +9,7 @@ private:
 	float m_move_speed;
 	float m_speed_multiplier;
 
-	XMVECTOR m_lookAt, m_position;
+	XMVECTOR m_lookAt, m_right, m_up, m_position;
 
 	bool m_isJumping;
 	bool m_onGround;
@@ -26,6 +26,7 @@ public:
 	void JumpPlayer();
 	void PullDown();
 
+	void UpdatePosVector();
 	void UpdateLookAt();
 
 	void MovePlayer(float dist);

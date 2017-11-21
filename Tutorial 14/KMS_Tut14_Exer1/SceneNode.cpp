@@ -42,11 +42,11 @@ void SceneNode::Execute(XMMATRIX *world, XMMATRIX* view, XMMATRIX* projection)
 {
 	XMMATRIX local_world = XMMatrixIdentity();
 
-	local_world *= XMMatrixRotationX(XMConvertToRadians(m_xangle));
-	local_world *= XMMatrixRotationX(XMConvertToRadians(m_xangle));
-	local_world *= XMMatrixRotationX(XMConvertToRadians(m_xangle));
-
 	local_world *= XMMatrixScaling(m_scale, m_scale, m_scale);
+
+	local_world *= XMMatrixRotationX(XMConvertToRadians(m_xangle));
+	local_world *= XMMatrixRotationY(XMConvertToRadians(m_yangle));
+	local_world *= XMMatrixRotationZ(XMConvertToRadians(m_zangle));
 
 	local_world *= XMMatrixTranslation(m_x, m_y, m_z);
 
@@ -62,25 +62,30 @@ void SceneNode::Execute(XMMATRIX *world, XMMATRIX* view, XMMATRIX* projection)
 
 }
 
-void Model::UpdateRot(float pitch_degrees, float yaw_degrees, float roll_degrees)
+void SceneNode::SetModel(Model* obj)
+{
+	m_p_model = obj;
+}
+
+void SceneNode::UpdateRot(float pitch_degrees, float yaw_degrees, float roll_degrees)
 {
 	m_xangle += pitch_degrees;
 	m_yangle += yaw_degrees;
 	m_zangle += roll_degrees;
 }
 
-void Model::MoveForward(float distance)
+void SceneNode::MoveForward(float distance)
 {
 	m_x += sin(m_yangle) * distance;
 	m_z += cos(m_yangle) * distance;
 }
 
-float Model::GetX()
+float SceneNode::GetX()
 {
 	return m_x;
 }
 
-float Model::GetZ()
+float SceneNode::GetZ()
 {
 	return m_z;
 }

@@ -22,7 +22,6 @@ private:
 	//ID3D11ShaderResourceView* m_pTexture1;
 	ID3D11SamplerState* m_pSampler0;
 
-
 	XMVECTOR m_directional_light_shines_from;
 	XMVECTOR m_directional_light_colour;
 	XMVECTOR m_ambient_light_colour;
@@ -72,6 +71,8 @@ public:
 
 	void SetCollideState(bool state);
 	bool IsColliding();
+
+	XMMATRIX GetWorldMatrix();
 
 	XMVECTOR GetColliderWorldSpacePos();
 

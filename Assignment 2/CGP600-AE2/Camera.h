@@ -32,6 +32,10 @@ public:
 	void RotateCameraY(float amount);
 	//void Increase(float amount);
 
+	void SetX(float x);
+	void SetY(float y);
+	void SetZ(float z);
+
 	float GetX();
 	float GetY();
 	float GetZ();

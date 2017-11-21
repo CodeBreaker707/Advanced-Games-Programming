@@ -15,7 +15,9 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, f
 	m_gravity_speed = 0.0015f;
 	m_jump_height = 4.5f;
 
-	m_lookAt = XMVectorSet(0.0, 0.0, 1.0f, 0.0);
+	m_lookAt = XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f);
+	m_right = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
+	m_up = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
 	m_position = XMVectorSet(x, y, z, 0.0f);
 
 }
@@ -91,11 +93,36 @@ void Player::JumpPlayer()
 
 void Player::UpdateLookAt()
 {
-	float x = XMVectorGetX(m_lookAt);
-	float y = XMVectorGetY(m_lookAt);
-	float z = XMVectorGetZ(m_lookAt);
+	float p = GetXAngle();
+	float y = GetYAngle();
+	float r = GetZAngle();
 
-	m_lookAt = XMVectorSet(x + GetXAngle(), y + GetYAngle(), z + GetZAngle(), 0.0f);
+	//float z = GetZPos();
+
+	//XMMATRIX rot = XMMatrixRotationRollPitchYaw(GetXAngle(), GetYAngle(), GetZAngle());
+
+	//x = (XMVectorGetX(m_position) * cos(GetYAngle())) + (XMVectorGetZ(m_position) * sin(GetYAngle()));
+	//z = (XMVectorGetX(m_position) * -sin(GetYAngle())) + (XMVectorGetZ(m_position) * cos(GetYAngle()));
+
+	//m_lookAt = XMVectorSet(x, GetYPos(), z, 0.0f);
+	//m_lookAt = XMVector3Normalize(m_lookAt);
+
+	//m_lookAt = XMVector3Rotate(m_lookAt, rot);
+
+	/*m_lookAt = XMVector3Transform(m_lookAt, rot);
+	m_lookAt = XMVector3Normalize(m_lookAt);*/
+
+	//m_lookAt = XMVectorSet(GetYAngle() , 0.0f, GetYAngle(), 0.0f);
+
+}
+
+void Player::UpdatePosVector()
+{
+	float x = GetXPos();
+	float y = GetYPos();
+	float z = GetZPos();
+
+	m_position = XMVectorSet(x , y , z , 0.0f);
 
 }
 
@@ -103,19 +130,30 @@ void Player::MovePlayer(float dist)
 {
 	MoveAsset(sin(GetYAngle()) * dist, 0.0f, cos(GetYAngle()) * dist);
 
-	//m_position += (dist * m_lookAt);
+	/*m_position += (dist * m_lookAt);
 
-	//float x = XMVectorGetX(m_position);
-	//float z = XMVectorGetZ(m_position);
+	float x = XMVectorGetX(m_position);
+	float z = XMVectorGetZ(m_position);
 
-	//SetXPos(x);
-	//SetZPos(z);
+	SetXPos(x);
+	SetZPos(z);*/
 
 }
 
 void Player::StrafePlayer(float dist)
 {
-	MoveAsset(cos(GetYAngle()) * dist, 0.0f, sin(GetYAngle()) * dist);
+	//MoveAsset(cos(GetYAngle()) * dist, 0.0f, sin(GetYAngle()) * dist);
+	
+	m_right = XMVector3Cross(m_lookAt, m_up);
+
+	m_position += (-dist * m_right);
+
+	float x = XMVectorGetX(m_position);
+	float z = XMVectorGetZ(m_position);
+
+	SetXPos(x);
+	SetZPos(z);
+
 }
 
 void Player::PullDown()

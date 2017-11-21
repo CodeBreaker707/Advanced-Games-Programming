@@ -6,7 +6,7 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 
 	key = new Input(hInstance, m_render_target->GetWindow());
 
-	perspective = new Camera(2.0f, 0.0f, 0.0f, 0.0f);
+	perspective = new Camera(2.0f, 1.0f, 0.0f, 0.0f);
 	
 	player = new Player(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 1.0f, 10.0f);
 
@@ -17,11 +17,10 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 
 	ground->LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 
-	objs.push_back(ground);
-
 	tree[0]->LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 	tree[1]->LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 
+	objs.push_back(ground);
 	objs.push_back(tree[0]);
 	objs.push_back(tree[1]);
 
@@ -37,7 +36,8 @@ void Game::MainUpdate()
 	key->MouseBehaviour();
 
 	player->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
-	//player->UpdateLookAt();
+	player->UpdatePosVector();
+	player->UpdateLookAt();
 
 	// Keyboard Controls
 
@@ -88,25 +88,25 @@ void Game::MainUpdate()
 			player->SetJumpState(true);
 			//keyPressed = true;
 			
-			if (perspective->GetCollidingState() == false)
+			/*if (perspective->GetCollidingState() == false)
 			{
-				//perspective->Move(0.0f, 0.001f, 0.0f);
-			}
+				perspective->Move(0.0f, 0.001f, 0.0f);
+			}*/
 		}
-		if (key->IsKeyPressed(DIK_DOWN))
+		if (key->IsKeyPressed(DIK_UP))
 		{
-			player->MoveAsset(0.0f, -0.001, 0.0f);
+			//player->MoveAsset(0.0f, -0.001, 0.0f);
 			
 			if (perspective->GetCollidingState() == false)
 			{
-				perspective->Move(0.0f, -0.001f, 0.0f);
+				perspective->Move(0.0f, 0.001f, 0.0f);
 			}
 
 		}
 
 		player->JumpPlayer();
 
-		player->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
+		
 		
 			// Checking collision with all objects against the player
 		
@@ -170,11 +170,20 @@ void Game::MainUpdate()
 			}
 
 		}
-
 	
-		player->PullDown();		
+		player->PullDown();
 
-		
+		if (player->GetJumpState() == true && perspective->GetCollidingState() == false)
+		{
+			perspective->Move(0.0f, 0.0015f, 0.0f);
+		}
+
+		if (player->GetOnGroundState() == false && player->GetJumpState() == false && perspective->GetCollidingState() == false)
+		{
+			perspective->Move(0.0f, -0.0015f, 0.0f);
+		}
+
+		//perspective->SetY(player->GetYPos());
 
 	// Mouse Controls
 

@@ -22,8 +22,8 @@ Model::Model(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, flo
 
 	m_scale = 1.0f;
 
-	m_pTexture0 = NULL;
-	m_pSampler0 = NULL;
+	//m_pTexture0 = NULL;
+	//m_pSampler0 = NULL;
 
 }
 

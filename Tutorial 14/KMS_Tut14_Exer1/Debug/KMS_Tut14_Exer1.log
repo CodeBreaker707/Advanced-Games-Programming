@@ -84,13 +84,11 @@ d:\directx sdk\include\xnamath.h(2742): warning C4838: conversion from 'unsigned
 d:\directx sdk\include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
   d:\directx sdk\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(400): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(401): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(649): warning C4305: '+=': truncation from 'double' to 'float'
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(674): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(682): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
-SceneNode.obj : error LNK2005: "public: float __thiscall Model::GetX(void)" (?GetX@Model@@QAEMXZ) already defined in Model.obj
-SceneNode.obj : error LNK2005: "public: float __thiscall Model::GetZ(void)" (?GetZ@Model@@QAEMXZ) already defined in Model.obj
-SceneNode.obj : error LNK2005: "public: void __thiscall Model::MoveForward(float)" (?MoveForward@Model@@QAEXM@Z) already defined in Model.obj
-SceneNode.obj : error LNK2005: "public: void __thiscall Model::UpdateRot(float,float,float)" (?UpdateRot@Model@@QAEXMMM@Z) already defined in Model.obj
-D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 14\KMS_Tut14_Exer1\Debug\KMS_Tut14_Exer1.exe : fatal error LNK1169: one or more multiply defined symbols found
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(402): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(403): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(661): warning C4305: '+=': truncation from 'double' to 'float'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(686): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(694): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 14\kms_tut14_exer1\main.cpp(757): warning C4305: 'argument': truncation from 'double' to 'float'
+  KMS_Tut14_Exer1.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 14\KMS_Tut14_Exer1\Debug\KMS_Tut14_Exer1.exe
+  KMS_Tut14_Exer1.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 14\KMS_Tut14_Exer1\Debug\KMS_Tut14_Exer1.pdb (Partial PDB)

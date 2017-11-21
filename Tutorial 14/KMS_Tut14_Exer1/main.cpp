@@ -39,7 +39,9 @@ Camera* eye;
 Model* p_sphere;
 Model* sphere;
 
-SceneNode* g_root, g_node1;
+SceneNode* g_root_node;
+SceneNode* g_node1;
+SceneNode* g_node2;
 
 FLOAT z_position2 = 5.0f;
 
@@ -596,6 +598,16 @@ HRESULT InitialiseGraphics()// 03-01
 	sphere->LoadObjModel("Assets/Sphere.obj");
 	p_sphere->LoadObjModel("Assets/Sphere.obj");
 
+	g_root_node = new SceneNode(0.0f, 0.0f, 0.0f);
+	g_node1 = new SceneNode(0.0, 0.0f, 15.0f);
+	g_node2 = new SceneNode(5.0f, 0.0, 15.0f);
+
+	g_node1->SetModel(sphere);
+	g_node2->SetModel(p_sphere);
+
+	g_root_node->AddChildNode(g_node1);
+	g_node1->AddChildNode(g_node2);
+
 	//D3DX11CreateShaderResourceViewFromFile(g_pD3DDevice, "Assets/tile.bmp", NULL, NULL, &g_pTexture0, NULL);
 
 	D3D11_SAMPLER_DESC sampler_desc;
@@ -742,8 +754,12 @@ void RenderFrame(void)
 	//g_pImmediateContext->PSSetSamplers(0, 1, &g_pSampler0);
 	//g_pImmediateContext->PSSetShaderResources(0, 1, &g_pTexture0);
 
+	g_node1->MoveForward(0.0001);
+
 	//p_sphere->Draw(&view, &projection);
 	//sphere->Draw(&view, &projection);
+
+	g_root_node->Execute(&XMMatrixIdentity(), &view, &projection);
 
 	//g_pImmediateContext->Draw(36, 0);
 

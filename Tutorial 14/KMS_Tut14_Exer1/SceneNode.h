@@ -35,6 +35,8 @@ public:
 
 	void MoveForward(float distance);
 
+	void SetModel(Model* obj);
+
 	float GetX();
 	float GetZ();
 

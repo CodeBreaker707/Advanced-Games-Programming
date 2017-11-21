@@ -149,6 +149,15 @@ void Asset::RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degre
 	m_xangle += XMConvertToRadians(pitch_degrees);
 	m_yangle += XMConvertToRadians(yaw_degrees);
 	m_zangle += XMConvertToRadians(roll_degrees);
+
+	/*if (m_yangle > XMConvertToRadians(360.0f))
+	{
+		m_yangle = 0.0f;
+	}
+	else if (m_yangle < 0.0f)
+	{
+		m_yangle = XMConvertToRadians(360.0f);
+	}*/
 }
 
 void Asset::ScaleAsset(float x_scale, float y_scale, float z_scale)
@@ -242,40 +251,26 @@ void Asset::UpdatePos(bool isColliding)
 
 XMVECTOR Asset::GetColliderWorldSpacePos()
 {
-	XMMATRIX world;
-
-	world = XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
-	world *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
-	world *= XMMatrixTranslation(m_x, m_y, m_z);
-
 	XMVECTOR offset;
 
 	offset = box->GetColliderPos();
 
-	XMVECTOR new_pos = XMVector3Transform(offset, world);
+	XMVECTOR new_pos = XMVector3Transform(offset, GetWorldMatrix());
 
 	return new_pos;
 }
 
 void Asset::Draw(XMMATRIX* view, XMMATRIX* projection)
 {
-	//UpdateRot(0.0f, 0.0001f, 0.0001f);
-
-	XMMATRIX world;
-
-	world = XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
-	world *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
-	world *= XMMatrixTranslation(m_x, m_y, m_z);
-
 	m_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);
 	m_directional_light_colour = XMVectorSet(1.8f, 1.5f, 0.0f, 1.0f);
 	m_ambient_light_colour = XMVectorSet(0.3f, 0.3f, 0.3f, 1.0f);
 
 	XMMATRIX transpose;
 	ASSET_CONSTANT_BUFFER model_cb_values;
-	model_cb_values.WorldViewProjection = world * (*view) * (*projection);
+	model_cb_values.WorldViewProjection = GetWorldMatrix() * (*view) * (*projection);
 
-	transpose = XMMatrixTranspose(world);
+	transpose = XMMatrixTranspose(GetWorldMatrix());
 
 	model_cb_values.directional_light_colour = m_directional_light_colour;
 	model_cb_values.ambient_light_colour = m_ambient_light_colour;
@@ -306,6 +301,17 @@ void Asset::SetYPos(float y)
 void Asset::SetZPos(float z)
 {
 	m_z = z;
+}
+
+XMMATRIX Asset::GetWorldMatrix()
+{
+	XMMATRIX world;
+
+	world = XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
+	world *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
+	world *= XMMatrixTranslation(m_x, m_y, m_z);
+
+	return world;
 }
 
 float Asset::GetXPos()
