@@ -4,6 +4,13 @@ Input::Input(HINSTANCE hInst, HWND hWnd)
 {
 	InitialiseInput(hInst, hWnd);
 
+	mve_frwd = DIK_W;
+	mve_lft = DIK_A;
+	mve_bck = DIK_S;
+	mve_rght = DIK_D;
+	jump = DIK_SPACE;
+	interact = DIK_E;
+
 }
 
 Input::~Input()

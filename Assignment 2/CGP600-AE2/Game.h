@@ -1,11 +1,18 @@
 #pragma once
 
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdlib.h>
+
 #include "Renderer.h"
 //#include "Asset.h"
 #include "Camera.h"
 #include "Input.h"
 #include "Player.h"
 #include "Statik.h"
+#include "Weapon.h"
+#include "SceneNode.h"
+
 
 
 class Game
@@ -18,25 +25,39 @@ private:
 
 	Camera* perspective;
 
-	Player* player;
-	Statik* ground;
-	Statik* tree[2];
+	FILE* assetFile;
+	fpos_t scriptPosition;
 
-	int count = 0;
+	Player* player;
+	SceneNode* m_player_node;
+
+	vector <SceneNode*> m_club_nodes;
+
+	Statik* ground;
+
+	vector<Statik*> trees;
 
 	vector<Asset*> objs;
 
-	int prev_mouse_x = 0;
-	int prev_mouse_y = 0;
+	int count = 0;
 
-	int mouse_x = 0;
-	int mouse_y = 0;
+	bool pickedUp;
+	bool Initialised;
 
-	float yaw_degrees;
-	float pitch_degrees;
+	//int prev_mouse_x = 0;
+	//int prev_mouse_y = 0;
+
+	//int mouse_x = 0;
+	//int mouse_y = 0;
+
+	//float yaw_degrees;
+	//float pitch_degrees;
 
 public:
 	Game(HINSTANCE hInstance, int nCmdShow);
 
 	void MainUpdate();
+
+	void InitialiseGameAssets();
+
 };

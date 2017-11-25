@@ -7,10 +7,6 @@ Camera::Camera(float x, float y, float z, float camera_rotation)
 	m_y = y;
 	m_z = z;
 
-	m_prev_x = x;
-	m_prev_y = y;
-	m_prev_z = z;
-
 	m_camera_rotation_x = XMConvertToRadians(camera_rotation);
 	m_camera_rotation_y = XMConvertToRadians(camera_rotation);
 

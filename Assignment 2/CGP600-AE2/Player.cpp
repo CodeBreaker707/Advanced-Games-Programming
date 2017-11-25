@@ -93,21 +93,17 @@ void Player::JumpPlayer()
 
 void Player::UpdateLookAt()
 {
-	float p = GetXAngle();
-	float y = GetYAngle();
-	float r = GetZAngle();
-
+	float x = 0;
+	float z = 0;
 	//float z = GetZPos();
 
 	//XMMATRIX rot = XMMatrixRotationRollPitchYaw(GetXAngle(), GetYAngle(), GetZAngle());
 
-	//x = (XMVectorGetX(m_position) * cos(GetYAngle())) + (XMVectorGetZ(m_position) * sin(GetYAngle()));
-	//z = (XMVectorGetX(m_position) * -sin(GetYAngle())) + (XMVectorGetZ(m_position) * cos(GetYAngle()));
+	x = (XMVectorGetX(m_position) * cos(GetYAngle())) + (XMVectorGetZ(m_position) * sin(GetYAngle()));
+	z = (XMVectorGetX(m_position) * -sin(GetYAngle())) + (XMVectorGetZ(m_position) * cos(GetYAngle()));
 
-	//m_lookAt = XMVectorSet(x, GetYPos(), z, 0.0f);
-	//m_lookAt = XMVector3Normalize(m_lookAt);
-
-	//m_lookAt = XMVector3Rotate(m_lookAt, rot);
+	m_lookAt = XMVectorSet(x, GetYPos(), z, 0.0f);
+	m_lookAt = XMVector3Normalize(m_lookAt);
 
 	/*m_lookAt = XMVector3Transform(m_lookAt, rot);
 	m_lookAt = XMVector3Normalize(m_lookAt);*/
@@ -130,13 +126,13 @@ void Player::MovePlayer(float dist)
 {
 	MoveAsset(sin(GetYAngle()) * dist, 0.0f, cos(GetYAngle()) * dist);
 
-	/*m_position += (dist * m_lookAt);
+	//m_position += (dist * m_lookAt);
 
-	float x = XMVectorGetX(m_position);
-	float z = XMVectorGetZ(m_position);
+	//float x = XMVectorGetX(m_position);
+	//float z = XMVectorGetZ(m_position);
 
-	SetXPos(x);
-	SetZPos(z);*/
+	//SetXPos(x);
+	//SetZPos(z);
 
 }
 

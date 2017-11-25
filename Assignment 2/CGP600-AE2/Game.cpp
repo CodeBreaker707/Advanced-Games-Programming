@@ -6,25 +6,34 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 
 	key = new Input(hInstance, m_render_target->GetWindow());
 
-	perspective = new Camera(2.0f, 1.0f, 0.0f, 0.0f);
+	Initialised = false;
+	pickedUp = false;
+
+	InitialiseGameAssets();
+
+	//fopen_s(&assetFile, "Scripts/Asset_Positions.txt", "r");
+	//fgetpos(assetFile, &scriptPosition);
+
+	//perspective = new Camera(0.0f, 1.0f, 10.0f, 0.0f);
+
+	//ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f);
+
+	//m_player_node = new SceneNode('P', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, 1.0f, 10.0f);
+	//m_node2 = new SceneNode('S', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 5.0f, -0.5f, 0.0f);
+	//m_node3 = new SceneNode('S', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 0.0f, 25.0f);
+
+	////m_player_node->AddChildNode(m_node2);	
+
+	//objs.push_back(ground);
+	//objs.push_back(m_node2->m_w_asset);
+	//objs.push_back(m_node3->m_w_asset);
 	
-	player = new Player(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 1.0f, 10.0f);
 
-	ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f);
+	
 
-	tree[0] = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 5.0f, 0.0f, 20.0f);
-	tree[1] = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 0.0f, 25.0f);
+	//m_node2->m_w_asset->ScaleAsset(0.2, 0.2f, 2.0f);
 
-	ground->LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
-
-	tree[0]->LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
-	tree[1]->LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
-
-	objs.push_back(ground);
-	objs.push_back(tree[0]);
-	objs.push_back(tree[1]);
-
-	ground->ScaleAsset(100.0f, 1.0f, 100.0f);
+	
 
 }
 
@@ -33,11 +42,11 @@ void Game::MainUpdate()
 	m_render_target->ClearBuffers();
 
 	key->ReadInputStates();
-	key->MouseBehaviour();
+	//key->MouseBehaviour();
 
-	player->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
-	player->UpdatePosVector();
-	player->UpdateLookAt();
+	m_player_node->m_p_asset->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
+	//player->UpdatePosVector();
+	//player->UpdateLookAt();
 
 	// Keyboard Controls
 
@@ -45,17 +54,17 @@ void Game::MainUpdate()
 		if (key->IsKeyPressed(key->mve_frwd))
 		{
 			//player->MoveAsset(0.0f, 0.0f, player->GetPlayerMoveSpeed());
-			player->MovePlayer(player->GetPlayerMoveSpeed());
+			m_player_node->m_p_asset->MovePlayer(m_player_node->m_p_asset->GetPlayerMoveSpeed());
 			
 			if (perspective->GetCollidingState() == false)
 			{
-				//perspective->Move(0.0f, 0.0f, player->GetPlayerMoveSpeed());
+				perspective->Move(0.0f, 0.0f, m_player_node->m_p_asset->GetPlayerMoveSpeed());
 			}
 		}
 		if (key->IsKeyPressed(key->mve_lft))
 		{
 			//player->MoveAsset(-player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
-			player->StrafePlayer(-player->GetPlayerMoveSpeed());
+			//player->StrafePlayer(-player->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
@@ -65,67 +74,82 @@ void Game::MainUpdate()
 		if (key->IsKeyPressed(key->mve_bck))
 		{
 			//player->MoveAsset(0.0f, 0.0f, -player->GetPlayerMoveSpeed());
-			player->MovePlayer(-player->GetPlayerMoveSpeed());
+			m_player_node->m_p_asset->MovePlayer(-m_player_node->m_p_asset->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
-				//perspective->Move(0.0f, 0.0f, -player->GetPlayerMoveSpeed());
+				perspective->Move(0.0f, 0.0f, -m_player_node->m_p_asset->GetPlayerMoveSpeed());
 			}
 		}
 		if (key->IsKeyPressed(key->mve_rght))
 		{
 			//player->MoveAsset(player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
-			player->StrafePlayer(player->GetPlayerMoveSpeed());
+			//player->StrafePlayer(player->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
 				//perspective->Move(player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
 			}
 		}
-		if (key->IsKeyPressed(key->jump) && player->GetOnGroundState() == true)
+		if (key->IsKeyPressed(key->jump) && m_player_node->m_p_asset->GetOnGroundState() == true)
 		{
-			player->SetOnGroundState(false);
-			player->SetJumpState(true);
-			//keyPressed = true;
+			m_player_node->m_p_asset->SetOnGroundState(false);
+			m_player_node->m_p_asset->SetJumpState(true);
 			
 			/*if (perspective->GetCollidingState() == false)
 			{
 				perspective->Move(0.0f, 0.001f, 0.0f);
 			}*/
 		}
-		if (key->IsKeyPressed(DIK_UP))
-		{
-			//player->MoveAsset(0.0f, -0.001, 0.0f);
-			
-			if (perspective->GetCollidingState() == false)
-			{
-				perspective->Move(0.0f, 0.001f, 0.0f);
-			}
+	
 
-		}
-
-		player->JumpPlayer();
-
+		m_player_node->m_p_asset->JumpPlayer();
 		
 		
 			// Checking collision with all objects against the player
+
+		for (int i = 0; i < objs.size(); i++)
+		{
+			objs[i]->CheckCollision(m_player_node->m_p_asset);
+		}
 		
-			for (int i = 0; i < objs.size(); i++)
+
+			for (int i = 0; i < m_club_nodes.size(); i++)
 			{
-				objs[i]->CheckCollision(player);
-			}
+				//m_club_nodes[i]->m_w_asset->CheckCollision(m_player_node->m_p_asset);
+
+				if (m_club_nodes[i]->m_w_asset->IsColliding() == true && key->IsKeyPressed(key->interact))
+				{
+					m_club_nodes[i]->m_w_asset->SetXPos(1.0f);
+					m_club_nodes[i]->m_w_asset->SetYPos(-0.5f);
+					m_club_nodes[i]->m_w_asset->SetZPos(1.0f);
+
+					m_player_node->AddChildNode(m_club_nodes[i]);	
+
+					for (int j = 0; j < objs.size(); j++)
+					{
+						if (m_club_nodes[i]->m_w_asset == objs[j])
+						{
+							objs.erase(objs.begin() + j);
+						}
+					}
+
+					m_club_nodes.erase(m_club_nodes.begin() + i);
+				}
+				
+			}			
 		
 
 			// Stopping the player at collision
 			for (int i = 0; i < objs.size(); i++)
 			{
-				player->RestrictPos(objs[i]->IsColliding());
+				m_player_node->m_p_asset->RestrictPos(objs[i]->IsColliding());
 			}
 
 			// Storing previous positions of the player
 			for (int i = 0; i < objs.size(); i++)
 			{
-				player->UpdatePos(objs[i]->IsColliding());
+				m_player_node->m_p_asset->UpdatePos(objs[i]->IsColliding());
 			}
 		
 
@@ -157,92 +181,150 @@ void Game::MainUpdate()
 		// If yes, then player is not on ground
 		if (count == objs.size())
 		{
-			player->SetOnGroundState(false);
+			m_player_node->m_p_asset->SetOnGroundState(false);
 		}
 		
 
 		for (int i = 0; i < objs.size(); i++)
 		{
-			if (player->CheckPlayerFeetonGround(objs[i]) == true)
+			if (m_player_node->m_p_asset->CheckPlayerFeetonGround(objs[i]) == true)
 			{
-				player->SetOnGroundState(true);
+				m_player_node->m_p_asset->SetOnGroundState(true);
 				break;
 			}
 
 		}
 	
-		player->PullDown();
+		m_player_node->m_p_asset->PullDown();
 
-		if (player->GetJumpState() == true && perspective->GetCollidingState() == false)
+
+		if (m_player_node->m_p_asset->GetJumpState() == true && perspective->GetCollidingState() == false)
 		{
 			perspective->Move(0.0f, 0.0015f, 0.0f);
 		}
 
-		if (player->GetOnGroundState() == false && player->GetJumpState() == false && perspective->GetCollidingState() == false)
+		if (m_player_node->m_p_asset->GetOnGroundState() == false && m_player_node->m_p_asset->GetJumpState() == false && perspective->GetCollidingState() == false)
 		{
 			perspective->Move(0.0f, -0.0015f, 0.0f);
 		}
 
-		//perspective->SetY(player->GetYPos());
-
 	// Mouse Controls
-
-		//if (key->IsMouseMoving() == true)
-		//{
-		//	if (key->IsMouseMovingRight() == true)
-		//	{
-		//		yaw_degrees += 0.5f;
-
-		//		perspective->RotateCameraX(yaw_degrees);
-
-		//		//yaw_degrees = 0.0f;
-		//	}
-		//	else if (key->IsMouseMovingRight() == false)
-		//	{
-		//		yaw_degrees -= 0.5f;
-
-		//		perspective->RotateCameraX(yaw_degrees);
-
-		//		//yaw_degrees = 0.0f;
-		//	}
-
-			
-
-			//if (key->IsMouseMovingUp() == true)
-			//{
-			//	pitch_degrees -= 0.5f;
-
-			//	perspective->RotateCameraY(pitch_degrees);
-
-			//	//yaw_degrees = 0.0f;
-			//}
-			//else if (key->IsMouseMovingUp() == false)
-			//{
-			//	pitch_degrees += 0.5f;
-
-			//	perspective->RotateCameraY(pitch_degrees);
-
-			//	//yaw_degrees = 0.0f;
-			//}
-		//}
-
-	
 	
 
 	//perspective->RotateCameraY(-key->m_mouse_state.lY);
-	//perspective->RotateCameraX(key->m_mouse_state.lX);
+		//if (perspective->GetCollidingState() == false)
+		//{
+	perspective->RotateCameraX(key->m_mouse_state.lX);
+		//}
 
 	
 
 	// DRAW
 
-	player->Draw(&perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+
+
+	m_player_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
 
 	for (int i = 0; i < objs.size(); i++)
 	{
-		objs[i]->Draw(&perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+		objs[i]->Draw(NULL, &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
 	}
 
 
 	m_render_target->Display();
+}
+
+void Game::InitialiseGameAssets()
+{
+	fopen_s(&assetFile, "Scripts/Asset_Positions.txt", "r");
+	fgetpos(assetFile, &scriptPosition);
+
+	ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f);
+
+	objs.push_back(ground);
+
+	ground->ScaleAsset(100.0f, 1.0f, 100.0f);
+
+	float x = 0.0f;
+	float y = 0.0f;
+	float z = 0.0f;
+	float w = 0.0f;
+
+	int num_assets;
+
+	//int val;
+
+	char asset_type[256];
+	char node_type;
+
+	while (Initialised == false)
+	{
+		fscanf(assetFile, "%s", asset_type);
+
+		if (strstr("Camera", asset_type) != 0)
+		{
+			fscanf(assetFile, "%f %f %f %f", &x, &y, &z, &w);
+
+			perspective = new Camera(x, y, z, w);
+		}
+
+		if (strstr("Player", asset_type) != 0)
+		{
+			fscanf(assetFile, " %c %f %f %f", &node_type, &x, &y, &z);
+
+			m_player_node = new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z);
+
+		}
+
+		if (strstr("Trees", asset_type) != 0)
+		{
+			fscanf(assetFile, "%d", &num_assets);
+
+			for (int i = 0; i < num_assets; i++)
+			{
+				fscanf(assetFile, "%f %f %f", &x, &y, &z);
+
+				trees.push_back(new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z));
+
+				objs.push_back(trees[i]);
+
+			}
+		}
+
+		if (strstr("Clubs", asset_type) != 0)
+		{
+			fscanf(assetFile, "%d", &num_assets);
+
+			for (int i = 0; i < num_assets; i++)
+			{
+				fscanf(assetFile, " %c %f %f %f", &node_type, &x, &y, &z);
+
+				m_club_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z));
+
+				m_club_nodes[i]->m_w_asset->ScaleAsset(0.2f, 0.2f, 2.0f);
+
+				objs.push_back(m_club_nodes[i]->m_w_asset);
+
+			}
+
+			Initialised = true;
+		}
+
+		//perspective = new Camera(0.0f, 1.0f, 10.0f, 0.0f);
+
+		
+
+		//m_player_node = new SceneNode('P', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, 1.0f, 10.0f);
+		//m_node2 = new SceneNode('S', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 5.0f, -0.5f, 0.0f);
+		//m_node3 = new SceneNode('S', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 0.0f, 25.0f);
+
+		//m_player_node->AddChildNode(m_node2);	
+
+		
+		//objs.push_back(m_node2->m_w_asset);
+		//objs.push_back(m_node3->m_w_asset);
+		
+	}
+
+
 }

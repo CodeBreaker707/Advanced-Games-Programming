@@ -150,14 +150,6 @@ void Asset::RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degre
 	m_yangle += XMConvertToRadians(yaw_degrees);
 	m_zangle += XMConvertToRadians(roll_degrees);
 
-	/*if (m_yangle > XMConvertToRadians(360.0f))
-	{
-		m_yangle = 0.0f;
-	}
-	else if (m_yangle < 0.0f)
-	{
-		m_yangle = XMConvertToRadians(360.0f);
-	}*/
 }
 
 void Asset::ScaleAsset(float x_scale, float y_scale, float z_scale)
@@ -260,24 +252,34 @@ XMVECTOR Asset::GetColliderWorldSpacePos()
 	return new_pos;
 }
 
-void Asset::Draw(XMMATRIX* view, XMMATRIX* projection)
+void Asset::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 {
 	m_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);
 	m_directional_light_colour = XMVectorSet(1.8f, 1.5f, 0.0f, 1.0f);
 	m_ambient_light_colour = XMVectorSet(0.3f, 0.3f, 0.3f, 1.0f);
 
 	XMMATRIX transpose;
-	ASSET_CONSTANT_BUFFER model_cb_values;
-	model_cb_values.WorldViewProjection = GetWorldMatrix() * (*view) * (*projection);
+	ASSET_CONSTANT_BUFFER asset_cb_values;
 
-	transpose = XMMatrixTranspose(GetWorldMatrix());
+	if (world == NULL)
+	{
+		asset_cb_values.WorldViewProjection = GetWorldMatrix() * (*view) * (*projection);
 
-	model_cb_values.directional_light_colour = m_directional_light_colour;
-	model_cb_values.ambient_light_colour = m_ambient_light_colour;
-	model_cb_values.directional_light_vector = XMVector3Transform(m_directional_light_shines_from, transpose);
-	model_cb_values.directional_light_vector = XMVector3Normalize(model_cb_values.directional_light_vector);
+		transpose = XMMatrixTranspose(GetWorldMatrix());
+	}
+	else
+	{
+		asset_cb_values.WorldViewProjection = (*world) * (*view) * (*projection);
 
-	m_pImmediateContext->UpdateSubresource(m_pConstantBuffer, 0, 0, &model_cb_values, 0, 0);
+		transpose = XMMatrixTranspose(*world);
+	}
+
+	asset_cb_values.directional_light_colour = m_directional_light_colour;
+	asset_cb_values.ambient_light_colour = m_ambient_light_colour;
+	asset_cb_values.directional_light_vector = XMVector3Transform(m_directional_light_shines_from, transpose);
+	asset_cb_values.directional_light_vector = XMVector3Normalize(asset_cb_values.directional_light_vector);
+
+	m_pImmediateContext->UpdateSubresource(m_pConstantBuffer, 0, 0, &asset_cb_values, 0, 0);
 
 	m_pImmediateContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 

@@ -76,6 +76,6 @@ public:
 
 	XMVECTOR GetColliderWorldSpacePos();
 
-	void Draw(XMMATRIX* view, XMMATRIX* projection);
+	void Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection);
 
 };

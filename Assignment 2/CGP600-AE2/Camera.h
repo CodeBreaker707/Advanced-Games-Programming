@@ -11,7 +11,6 @@ class Camera
 {
 private:
 	float m_x, m_y, m_z;
-	float m_prev_x, m_prev_y, m_prev_z;
 	float m_dx, m_dy, m_dz;
 	float m_camera_rotation_x;
 	float m_camera_rotation_y;

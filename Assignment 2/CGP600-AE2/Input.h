@@ -25,11 +25,18 @@ public:
 
 	DIMOUSESTATE m_mouse_state;
 
-	unsigned char mve_frwd = DIK_W;
-	unsigned char mve_lft = DIK_A;
-	unsigned char mve_bck = DIK_S;
-	unsigned char mve_rght = DIK_D;
-	unsigned char jump = DIK_SPACE;
+	unsigned char mve_frwd;
+	unsigned char mve_lft;
+	unsigned char mve_bck;
+	unsigned char mve_rght;
+	unsigned char jump;
+	unsigned char interact;
+	
+	
+
+	
+	
+	
 
 	Input(HINSTANCE hInst, HWND hWnd);
 	~Input();
