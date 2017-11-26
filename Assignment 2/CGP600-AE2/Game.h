@@ -14,7 +14,6 @@
 #include "SceneNode.h"
 
 
-
 class Game
 {
 

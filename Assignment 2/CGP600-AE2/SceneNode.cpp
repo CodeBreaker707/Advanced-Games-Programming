@@ -53,14 +53,6 @@ void SceneNode::Execute(XMMATRIX *world, XMMATRIX* view, XMMATRIX* projection)
 	//if (m_s_asset) local_world = m_s_asset->GetWorldMatrix();
 	if (m_w_asset) local_world = m_w_asset->GetWorldMatrix();
 
-	/*local_world *= XMMatrixScaling(m_scale, m_scale, m_scale);
-
-	local_world *= XMMatrixRotationX(XMConvertToRadians(m_xangle));
-	local_world *= XMMatrixRotationY(XMConvertToRadians(m_yangle));
-	local_world *= XMMatrixRotationZ(XMConvertToRadians(m_zangle));
-
-	local_world *= XMMatrixTranslation(m_x, m_y, m_z);*/
-
 	local_world *= *world;
 
 	//if (m_p_asset) m_p_asset->Draw(&local_world, view, projection);
@@ -74,3 +66,20 @@ void SceneNode::Execute(XMMATRIX *world, XMMATRIX* view, XMMATRIX* projection)
 
 
 }
+
+int SceneNode::GetChildrenSize()
+{
+	return m_children.size();
+}
+
+SceneNode SceneNode::GetEquippedWeaponNode()
+{
+	for (int i = 0; i < m_children.size(); i++)
+	{
+		if (m_children[i]->m_w_asset->GetWeaponEquipState() == true)
+		{
+			return *m_children[i];
+		}
+	}
+}
+

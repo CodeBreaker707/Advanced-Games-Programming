@@ -34,4 +34,8 @@ public:
 
 	void Execute(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection);
 
+	int GetChildrenSize();
+
+	SceneNode GetEquippedWeaponNode();
+
 };

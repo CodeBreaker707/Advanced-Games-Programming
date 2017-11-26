@@ -8,7 +8,11 @@ private:
 
 	int m_weapon_durability;
 
-	bool pickedUp;
+	bool m_pickedUp;
+	bool m_weaponEquipped;
+	bool m_Attacked;
+
+	float m_cur_z;
 
 public:
 
@@ -16,6 +20,16 @@ public:
 	~Weapon();
 
 	void SetWeaponDurability(int value);
-	bool GetWeaponDurability();
+	int GetWeaponDurability();
+
+	void SetCurPos();
+	float GetCurPos();
+
+	void SetWeaponEquipState(bool state);
+	bool GetWeaponEquipState();
+
+	void SetWeaponAttackedState(bool state);
+	bool GetWeaponAttackedState();
+	
 
 };

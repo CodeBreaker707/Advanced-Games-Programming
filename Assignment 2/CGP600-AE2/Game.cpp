@@ -10,29 +10,6 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	pickedUp = false;
 
 	InitialiseGameAssets();
-
-	//fopen_s(&assetFile, "Scripts/Asset_Positions.txt", "r");
-	//fgetpos(assetFile, &scriptPosition);
-
-	//perspective = new Camera(0.0f, 1.0f, 10.0f, 0.0f);
-
-	//ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f);
-
-	//m_player_node = new SceneNode('P', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, 1.0f, 10.0f);
-	//m_node2 = new SceneNode('S', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 5.0f, -0.5f, 0.0f);
-	//m_node3 = new SceneNode('S', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 0.0f, 25.0f);
-
-	////m_player_node->AddChildNode(m_node2);	
-
-	//objs.push_back(ground);
-	//objs.push_back(m_node2->m_w_asset);
-	//objs.push_back(m_node3->m_w_asset);
-	
-
-	
-
-	//m_node2->m_w_asset->ScaleAsset(0.2, 0.2f, 2.0f);
-
 	
 
 }
@@ -96,14 +73,40 @@ void Game::MainUpdate()
 			m_player_node->m_p_asset->SetOnGroundState(false);
 			m_player_node->m_p_asset->SetJumpState(true);
 			
-			/*if (perspective->GetCollidingState() == false)
-			{
-				perspective->Move(0.0f, 0.001f, 0.0f);
-			}*/
 		}
-	
-
+		
 		m_player_node->m_p_asset->JumpPlayer();
+
+		if (m_player_node->GetChildrenSize() != 0)
+		{
+			if (key->m_mouse_state.rgbButtons[0] && m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponEquipState() == true
+				&& m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == false)
+			{
+				m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackedState(true);
+				m_player_node->GetEquippedWeaponNode().m_w_asset->SetCurPos();
+
+			}
+
+			if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == true)	
+			{
+				m_player_node->GetEquippedWeaponNode().m_w_asset->MoveAsset(0.0f, 0.0f, cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) * 0.005f);
+
+				if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetZPos() >
+					m_player_node->GetEquippedWeaponNode().m_w_asset->GetCurPos() + (cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) + 0.3))
+				{
+					m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackedState(false);
+				}
+
+			}
+
+			else if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == false &&
+				m_player_node->GetEquippedWeaponNode().m_w_asset->GetZPos()
+				>= m_player_node->GetEquippedWeaponNode().m_w_asset->GetCurPos() + cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()))
+			{
+				m_player_node->GetEquippedWeaponNode().m_w_asset->MoveAsset(0.0f, 0.0f, cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) * -0.005f);
+			}
+
+		}
 		
 		
 			// Checking collision with all objects against the player
@@ -116,7 +119,6 @@ void Game::MainUpdate()
 
 			for (int i = 0; i < m_club_nodes.size(); i++)
 			{
-				//m_club_nodes[i]->m_w_asset->CheckCollision(m_player_node->m_p_asset);
 
 				if (m_club_nodes[i]->m_w_asset->IsColliding() == true && key->IsKeyPressed(key->interact))
 				{
@@ -124,6 +126,7 @@ void Game::MainUpdate()
 					m_club_nodes[i]->m_w_asset->SetYPos(-0.5f);
 					m_club_nodes[i]->m_w_asset->SetZPos(1.0f);
 
+					m_club_nodes[i]->m_w_asset->SetWeaponEquipState(true);
 					m_player_node->AddChildNode(m_club_nodes[i]);	
 
 					for (int j = 0; j < objs.size(); j++)
@@ -135,6 +138,9 @@ void Game::MainUpdate()
 					}
 
 					m_club_nodes.erase(m_club_nodes.begin() + i);
+
+					m_player_node->GetEquippedWeaponNode().m_w_asset->SetCurPos();
+
 				}
 				
 			}			
@@ -309,20 +315,6 @@ void Game::InitialiseGameAssets()
 
 			Initialised = true;
 		}
-
-		//perspective = new Camera(0.0f, 1.0f, 10.0f, 0.0f);
-
-		
-
-		//m_player_node = new SceneNode('P', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, 1.0f, 10.0f);
-		//m_node2 = new SceneNode('S', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 5.0f, -0.5f, 0.0f);
-		//m_node3 = new SceneNode('S', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 2.0f, 0.0f, 25.0f);
-
-		//m_player_node->AddChildNode(m_node2);	
-
-		
-		//objs.push_back(m_node2->m_w_asset);
-		//objs.push_back(m_node3->m_w_asset);
 		
 	}
 

@@ -10,6 +10,7 @@ Input::Input(HINSTANCE hInst, HWND hWnd)
 	mve_rght = DIK_D;
 	jump = DIK_SPACE;
 	interact = DIK_E;
+	attack = m_mouse_state.rgbButtons[0];
 
 }
 

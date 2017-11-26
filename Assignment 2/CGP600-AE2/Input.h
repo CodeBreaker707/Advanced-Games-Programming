@@ -31,12 +31,7 @@ public:
 	unsigned char mve_rght;
 	unsigned char jump;
 	unsigned char interact;
-	
-	
-
-	
-	
-	
+	BYTE attack;
 
 	Input(HINSTANCE hInst, HWND hWnd);
 	~Input();
