@@ -13,14 +13,14 @@ Asset::Asset()
 	
 }
 
-void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x, float y, float z)
+void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale)
 {
 	m_pD3DDevice = D3DDevice;
 	m_pImmediateContext = ImmediateContext;
 
-	m_x = x;
-	m_y = y;
-	m_z = z;
+	m_x = x_pos;
+	m_y = y_pos;
+	m_z = z_pos;
 
 	m_prev_x = m_x;
 	m_prev_y = m_y;
@@ -30,9 +30,9 @@ void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* Immedi
 	m_zangle = 0.0f;
 	m_yangle = 0.0f;
 
-	m_scale_x = 1.0f;
-	m_scale_y = 1.0f;
-	m_scale_z = 1.0f;
+	m_scale_x = x_scale;
+	m_scale_y = y_scale;
+	m_scale_z = z_scale;
 
 	box = new Collider3D();
 }
@@ -254,40 +254,43 @@ XMVECTOR Asset::GetColliderWorldSpacePos()
 
 void Asset::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 {
-	m_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);
-	m_directional_light_colour = XMVectorSet(1.8f, 1.5f, 0.0f, 1.0f);
-	m_ambient_light_colour = XMVectorSet(0.3f, 0.3f, 0.3f, 1.0f);
+	//if (objectDrawn == false)
+	//{
+		m_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);
+		m_directional_light_colour = XMVectorSet(1.8f, 1.5f, 0.0f, 1.0f);
+		m_ambient_light_colour = XMVectorSet(0.3f, 0.3f, 0.3f, 1.0f);
 
-	XMMATRIX transpose;
-	ASSET_CONSTANT_BUFFER asset_cb_values;
+		XMMATRIX transpose;
+		ASSET_CONSTANT_BUFFER asset_cb_values;
 
-	if (world == NULL)
-	{
-		asset_cb_values.WorldViewProjection = GetWorldMatrix() * (*view) * (*projection);
+		if (world == NULL)
+		{
+			asset_cb_values.WorldViewProjection = GetWorldMatrix() * (*view) * (*projection);
 
-		transpose = XMMatrixTranspose(GetWorldMatrix());
-	}
-	else
-	{
-		asset_cb_values.WorldViewProjection = (*world) * (*view) * (*projection);
+			transpose = XMMatrixTranspose(GetWorldMatrix());
+		}
+		else
+		{
+			asset_cb_values.WorldViewProjection = (*world) * (*view) * (*projection);
 
-		transpose = XMMatrixTranspose(*world);
-	}
+			transpose = XMMatrixTranspose(*world);
+		}
 
-	asset_cb_values.directional_light_colour = m_directional_light_colour;
-	asset_cb_values.ambient_light_colour = m_ambient_light_colour;
-	asset_cb_values.directional_light_vector = XMVector3Transform(m_directional_light_shines_from, transpose);
-	asset_cb_values.directional_light_vector = XMVector3Normalize(asset_cb_values.directional_light_vector);
+		asset_cb_values.directional_light_colour = m_directional_light_colour;
+		asset_cb_values.ambient_light_colour = m_ambient_light_colour;
+		asset_cb_values.directional_light_vector = XMVector3Transform(m_directional_light_shines_from, transpose);
+		asset_cb_values.directional_light_vector = XMVector3Normalize(asset_cb_values.directional_light_vector);
 
-	m_pImmediateContext->UpdateSubresource(m_pConstantBuffer, 0, 0, &asset_cb_values, 0, 0);
+		m_pImmediateContext->UpdateSubresource(m_pConstantBuffer, 0, 0, &asset_cb_values, 0, 0);
 
-	m_pImmediateContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+		m_pImmediateContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 
-	m_pImmediateContext->PSSetSamplers(0, 1, &m_pSampler0);
-	m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture0);
-	//m_pImmediateContext->PSSetShaderResources(1, 1, &m_pTexture1);
+		m_pImmediateContext->PSSetSamplers(0, 1, &m_pSampler0);
+		m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture0);
+		//m_pImmediateContext->PSSetShaderResources(1, 1, &m_pTexture1);
 
-	m_pObject->Draw();
+		m_pObject->Draw();
+
 }
 
 void Asset::SetXPos(float x)
@@ -304,6 +307,11 @@ void Asset::SetZPos(float z)
 {
 	m_z = z;
 }
+
+//void Asset::SetObjDrawnState(bool state)
+//{
+//	objectDrawn = state;
+//}
 
 XMMATRIX Asset::GetWorldMatrix()
 {

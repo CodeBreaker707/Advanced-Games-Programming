@@ -11,12 +11,13 @@ private:
 	bool m_pickedUp;
 	bool m_weaponEquipped;
 	bool m_Attacked;
+	bool m_attackComplete;
 
 	float m_cur_z;
 
 public:
 
-	Weapon(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x, float y, float z);
+	Weapon(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale);
 	~Weapon();
 
 	void SetWeaponDurability(int value);
@@ -30,6 +31,9 @@ public:
 
 	void SetWeaponAttackedState(bool state);
 	bool GetWeaponAttackedState();
+
+	void SetWeaponAttackCompleteState(bool state);
+	bool GetWeaponAttackCompleteState();
 	
 
 };

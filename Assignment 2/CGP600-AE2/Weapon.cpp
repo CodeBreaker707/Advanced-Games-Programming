@@ -1,8 +1,8 @@
 #include "Weapon.h"
 
-Weapon::Weapon(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x, float y, float z)
+Weapon::Weapon(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale)
 {
-	InitialiseAsset(D3DDevice, ImmediateContext, x, y, z);
+	InitialiseAsset(D3DDevice, ImmediateContext, x_pos, y_pos, z_pos, x_scale, y_scale, z_scale);
 
 	LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 
@@ -12,6 +12,7 @@ Weapon::Weapon(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, f
 	
 	m_weaponEquipped = false;
 	m_Attacked = false;
+	m_attackComplete = false;
 
 }
 
@@ -45,6 +46,11 @@ void Weapon::SetWeaponAttackedState(bool state)
 	m_Attacked = state;
 }
 
+void Weapon::SetWeaponAttackCompleteState(bool state)
+{
+	m_attackComplete = state;
+}
+
 int Weapon::GetWeaponDurability()
 {
 	return m_weapon_durability;
@@ -58,4 +64,9 @@ bool Weapon::GetWeaponEquipState()
 bool Weapon::GetWeaponAttackedState()
 {
 	return m_Attacked;
+}
+
+bool Weapon::GetWeaponAttackCompleteState()
+{
+	return m_attackComplete;
 }

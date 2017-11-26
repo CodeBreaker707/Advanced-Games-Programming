@@ -27,10 +27,10 @@ private:
 	FILE* assetFile;
 	fpos_t scriptPosition;
 
-	Player* player;
 	SceneNode* m_player_node;
 
 	vector <SceneNode*> m_club_nodes;
+	vector <SceneNode*> m_enemy_nodes;
 
 	Statik* ground;
 

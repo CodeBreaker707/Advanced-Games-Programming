@@ -7,7 +7,7 @@
 #include <xnamath.h>
 
 #include "Player.h"
-#include "Statik.h"
+#include "Enemy.h"
 #include "Weapon.h"
 
 class SceneNode
@@ -24,9 +24,10 @@ private:
 public:
 
 	Player* m_p_asset;
+	Enemy*  m_e_asset;
 	Weapon* m_w_asset;
 
-	SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x, float y, float z);
+	SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale);
 
 	void AddChildNode(SceneNode* n);
 

@@ -80,7 +80,7 @@ void Game::MainUpdate()
 		if (m_player_node->GetChildrenSize() != 0)
 		{
 			if (key->m_mouse_state.rgbButtons[0] && m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponEquipState() == true
-				&& m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == false)
+				&& m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == false && m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackCompleteState() == false)
 			{
 				m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackedState(true);
 				m_player_node->GetEquippedWeaponNode().m_w_asset->SetCurPos();
@@ -89,21 +89,33 @@ void Game::MainUpdate()
 
 			if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == true)	
 			{
-				m_player_node->GetEquippedWeaponNode().m_w_asset->MoveAsset(0.0f, 0.0f, cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) * 0.005f);
-
-				if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetZPos() >
-					m_player_node->GetEquippedWeaponNode().m_w_asset->GetCurPos() + (cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) + 0.3))
+				
+				if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetZPos() >=
+					m_player_node->GetEquippedWeaponNode().m_w_asset->GetCurPos() + 1.5 )
 				{
 					m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackedState(false);
+					m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackCompleteState(true);
+				}
+				else
+				{
+					m_player_node->GetEquippedWeaponNode().m_w_asset->MoveAsset(0.0f, 0.0f, cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) * 0.005f);
 				}
 
 			}
 
-			else if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == false &&
-				m_player_node->GetEquippedWeaponNode().m_w_asset->GetZPos()
-				>= m_player_node->GetEquippedWeaponNode().m_w_asset->GetCurPos() + cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()))
+			else if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackCompleteState() == true)
 			{
-				m_player_node->GetEquippedWeaponNode().m_w_asset->MoveAsset(0.0f, 0.0f, cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) * -0.005f);
+				
+
+				if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetZPos()
+					<= m_player_node->GetEquippedWeaponNode().m_w_asset->GetCurPos()/* + cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) )*/ )
+				{
+					m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackCompleteState(false);
+				}
+				else
+				{
+					m_player_node->GetEquippedWeaponNode().m_w_asset->MoveAsset(0.0f, 0.0f, -cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) * 0.005f);
+				}
 			}
 
 		}
@@ -139,7 +151,7 @@ void Game::MainUpdate()
 
 					m_club_nodes.erase(m_club_nodes.begin() + i);
 
-					m_player_node->GetEquippedWeaponNode().m_w_asset->SetCurPos();
+					//m_player_node->GetEquippedWeaponNode().m_w_asset->SetCurPos();
 
 				}
 				
@@ -231,6 +243,11 @@ void Game::MainUpdate()
 
 	m_player_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
 
+	for (int i = 0; i < m_enemy_nodes.size(); i++)
+	{
+		m_enemy_nodes[i]->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+	}
+
 	for (int i = 0; i < objs.size(); i++)
 	{
 		objs[i]->Draw(NULL, &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
@@ -238,6 +255,7 @@ void Game::MainUpdate()
 
 
 	m_render_target->Display();
+
 }
 
 void Game::InitialiseGameAssets()
@@ -245,16 +263,18 @@ void Game::InitialiseGameAssets()
 	fopen_s(&assetFile, "Scripts/Asset_Positions.txt", "r");
 	fgetpos(assetFile, &scriptPosition);
 
-	ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f);
+	ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f, 100.0, 0.0, 100.0);
 
 	objs.push_back(ground);
-
-	ground->ScaleAsset(100.0f, 1.0f, 100.0f);
 
 	float x = 0.0f;
 	float y = 0.0f;
 	float z = 0.0f;
 	float w = 0.0f;
+
+	float x_scle = 0.0f;
+	float y_scle = 0.0f;
+	float z_scle = 0.0f;
 
 	int num_assets;
 
@@ -276,45 +296,65 @@ void Game::InitialiseGameAssets()
 
 		if (strstr("Player", asset_type) != 0)
 		{
-			fscanf(assetFile, " %c %f %f %f", &node_type, &x, &y, &z);
+			fscanf(assetFile, " %c %f %f %f %f %f %f", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle);
 
-			m_player_node = new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z);
+			m_player_node = new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle);
 
 		}
 
-		if (strstr("Trees", asset_type) != 0)
+		if (strstr("Enemy", asset_type) != 0)
 		{
 			fscanf(assetFile, "%d", &num_assets);
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, "%f %f %f", &x, &y, &z);
+				fscanf(assetFile, " %c %f %f %f %f %f %f", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle);
 
-				trees.push_back(new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z));
+				m_enemy_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
 
-				objs.push_back(trees[i]);
+				//objs.push_back(m_enemy_nodes[i]->m_e_asset);
 
 			}
+
+
 		}
 
-		if (strstr("Clubs", asset_type) != 0)
+
+		if (strstr("Club", asset_type) != 0)
 		{
 			fscanf(assetFile, "%d", &num_assets);
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, " %c %f %f %f", &node_type, &x, &y, &z);
+				fscanf(assetFile, " %c %f %f %f %f %f %f", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle);
 
-				m_club_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z));
-
-				m_club_nodes[i]->m_w_asset->ScaleAsset(0.2f, 0.2f, 2.0f);
+				m_club_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
 
 				objs.push_back(m_club_nodes[i]->m_w_asset);
 
 			}
 
+			
+		}
+
+
+		if (strstr("Tree", asset_type) != 0)
+		{
+			fscanf(assetFile, "%d", &num_assets);
+
+			for (int i = 0; i < num_assets; i++)
+			{
+				fscanf(assetFile, "%f %f %f %f %f %f", &x, &y, &z, &x_scle, &y_scle, &z_scle);
+
+				trees.push_back(new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
+
+				objs.push_back(trees[i]);
+
+			}
+
 			Initialised = true;
 		}
+
 		
 	}
 
