@@ -6,6 +6,21 @@ Enemy::Enemy(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, flo
 
 	LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 
-	m_health = 50;
+	m_health = 1000.0f;
 
+}
+
+Enemy::~Enemy()
+{
+
+}
+
+void Enemy::SetEnemyHealth(float amount)
+{
+	m_health = amount;
+}
+
+float Enemy::GetEnemyHealth()
+{
+	return m_health;
 }

@@ -79,6 +79,8 @@ void Game::MainUpdate()
 
 		if (m_player_node->GetChildrenSize() != 0)
 		{
+			
+
 			if (key->m_mouse_state.rgbButtons[0] && m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponEquipState() == true
 				&& m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == false && m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackCompleteState() == false)
 			{
@@ -118,6 +120,18 @@ void Game::MainUpdate()
 				}
 			}
 
+			//for (int i = 0; i < m_enemy_nodes.size(); i++)
+			//{
+			//	//m_enemy_nodes[i]->m_e_asset->CheckCollision(m_player_node->GetEquippedWeaponNode().m_w_asset);
+			//	m_enemy_nodes[i]->m_e_asset->CheckCollision(m_player_node->m_p_asset);
+
+			//	if (m_enemy_nodes[i]->m_e_asset->IsColliding() == true && m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == true && 
+			//		m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackCompleteState() == false)
+			//	{
+			//		m_enemy_nodes[i]->m_e_asset->SetEnemyHealth(m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() - 0.01);
+			//	}
+			//}
+
 		}
 		
 		
@@ -126,32 +140,30 @@ void Game::MainUpdate()
 		for (int i = 0; i < objs.size(); i++)
 		{
 			objs[i]->CheckCollision(m_player_node->m_p_asset);
-		}
+		}	
 		
 
-			for (int i = 0; i < m_club_nodes.size(); i++)
+			for (int i = 0; i < m_spear_nodes.size(); i++)
 			{
 
-				if (m_club_nodes[i]->m_w_asset->IsColliding() == true && key->IsKeyPressed(key->interact))
+				if (m_spear_nodes[i]->m_w_asset->IsColliding() == true && key->IsKeyPressed(key->interact))
 				{
-					m_club_nodes[i]->m_w_asset->SetXPos(1.0f);
-					m_club_nodes[i]->m_w_asset->SetYPos(-0.5f);
-					m_club_nodes[i]->m_w_asset->SetZPos(1.0f);
+					m_spear_nodes[i]->m_w_asset->SetXPos(1.0f);
+					m_spear_nodes[i]->m_w_asset->SetYPos(-0.5f);
+					m_spear_nodes[i]->m_w_asset->SetZPos(1.0f);
 
-					m_club_nodes[i]->m_w_asset->SetWeaponEquipState(true);
-					m_player_node->AddChildNode(m_club_nodes[i]);	
+					m_spear_nodes[i]->m_w_asset->SetWeaponEquipState(true);
+					m_player_node->AddChildNode(m_spear_nodes[i]);	
 
 					for (int j = 0; j < objs.size(); j++)
 					{
-						if (m_club_nodes[i]->m_w_asset == objs[j])
+						if (m_spear_nodes[i]->m_w_asset == objs[j])
 						{
 							objs.erase(objs.begin() + j);
 						}
 					}
 
-					m_club_nodes.erase(m_club_nodes.begin() + i);
-
-					//m_player_node->GetEquippedWeaponNode().m_w_asset->SetCurPos();
+					m_spear_nodes.erase(m_spear_nodes.begin() + i);
 
 				}
 				
@@ -185,23 +197,7 @@ void Game::MainUpdate()
 			}
 		}
 
-		count = 0;
-
-		 //Check if the player is not colliding with anything
-		for (int i = 0; i < objs.size(); i++)
-		{
-			if (objs[i]->IsColliding() == false)
-			{
-				count += 1;
-			}
-		}
-
-		// If yes, then player is not on ground
-		if (count == objs.size())
-		{
-			m_player_node->m_p_asset->SetOnGroundState(false);
-		}
-		
+		 //Check if the player is colliding with anything below		
 
 		for (int i = 0; i < objs.size(); i++)
 		{
@@ -209,6 +205,10 @@ void Game::MainUpdate()
 			{
 				m_player_node->m_p_asset->SetOnGroundState(true);
 				break;
+			}
+			else
+			{
+				m_player_node->m_p_asset->SetOnGroundState(false);
 			}
 
 		}
@@ -240,12 +240,14 @@ void Game::MainUpdate()
 	// DRAW
 
 
-
 	m_player_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
 
 	for (int i = 0; i < m_enemy_nodes.size(); i++)
 	{
-		m_enemy_nodes[i]->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+		if (m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() > 0)
+		{
+			m_enemy_nodes[i]->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+		}
 	}
 
 	for (int i = 0; i < objs.size(); i++)
@@ -320,7 +322,7 @@ void Game::InitialiseGameAssets()
 		}
 
 
-		if (strstr("Club", asset_type) != 0)
+		if (strstr("Spear", asset_type) != 0)
 		{
 			fscanf(assetFile, "%d", &num_assets);
 
@@ -328,9 +330,9 @@ void Game::InitialiseGameAssets()
 			{
 				fscanf(assetFile, " %c %f %f %f %f %f %f", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle);
 
-				m_club_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
+				m_spear_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
 
-				objs.push_back(m_club_nodes[i]->m_w_asset);
+				objs.push_back(m_spear_nodes[i]->m_w_asset);
 
 			}
 

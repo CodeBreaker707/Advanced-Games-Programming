@@ -29,7 +29,7 @@ private:
 
 	SceneNode* m_player_node;
 
-	vector <SceneNode*> m_club_nodes;
+	vector <SceneNode*> m_spear_nodes;
 	vector <SceneNode*> m_enemy_nodes;
 
 	Statik* ground;
@@ -37,8 +37,6 @@ private:
 	vector<Statik*> trees;
 
 	vector<Asset*> objs;
-
-	int count = 0;
 
 	bool pickedUp;
 	bool Initialised;
