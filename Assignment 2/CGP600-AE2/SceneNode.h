@@ -17,9 +17,15 @@ private:
 	vector<SceneNode*> m_children;
 
 	float m_x, m_y, m_z;
-	float dx, dz;
-	float m_xangle, m_zangle, m_yangle;
-	float m_scale;
+	float m_prev_x, m_prev_y, m_prev_z;
+	float m_xangle, m_yangle, m_zangle;
+	float m_scale_x, m_scale_y, m_scale_z;
+
+	float m_collider_centre_x;
+	float m_collider_centre_y;
+	float m_collider_centre_z;
+
+	bool m_isColliding = false;
 
 public:
 
@@ -35,7 +41,40 @@ public:
 
 	void Execute(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection);
 
+	void UpdateCollisionTree(XMMATRIX* world);
+
+	bool CheckCollision(SceneNode* compare_tree);
+	bool CheckCollision(SceneNode* compare_tree, SceneNode* object_tree_root);
+
+	XMVECTOR GetWorldCentrePos();
+
+	void SetXPos(float x);
+	void SetYPos(float y);
+	void SetZPos(float z);
+
+	float GetXPos();
+	float GetYPos();
+	float GetZPos();
+
+	float GetXAngle();
+	float GetYAngle();
+	float GetZAngle();
+
+	float GetXScale();
+	float GetYScale();
+	float GetZScale();
+
+	void RestrictPos(bool isCollding);
+	void UpdatePos(bool isColliding);
+
+	void MoveAsset(float x_dist, float y_dist, float z_dist);
+	void RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degrees);
+
+	void SetCollideState(bool state);
+	bool IsColliding();
+
 	int GetChildrenSize();
+	vector<SceneNode*> GetChildren();
 
 	SceneNode GetEquippedWeaponNode();
 

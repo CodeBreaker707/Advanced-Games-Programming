@@ -164,7 +164,6 @@ void Asset::MoveAsset(float x_dist, float y_dist, float z_dist)
 	m_x += x_dist;
 	m_y += y_dist;
 	m_z += z_dist;
-
 }
 
 
@@ -178,17 +177,20 @@ bool Asset::CheckCollision(Asset* obj)
 	XMVECTOR cur_pos = GetColliderWorldSpacePos();
 	XMVECTOR other_pos = obj->GetColliderWorldSpacePos();
 
-	float x1 = XMVectorGetX(cur_pos) - (box->GetLength(m_scale_x) / 2  );
-	float y1 = XMVectorGetY(cur_pos) + (box->GetHeight(m_scale_y) / 2  );
-	float z1 = XMVectorGetZ(cur_pos) - (box->GetBreadth(m_scale_z) / 2 );
+	XMVECTOR v1 = XMVector3Transform(cur_pos, GetWorldMatrix());
+	XMVECTOR v2 = XMVector3Transform(other_pos, GetWorldMatrix());
+
+	float x1 = XMVectorGetX(v1) - (box->GetLength(m_scale_x) / 2  );
+	float y1 = XMVectorGetY(v1) + (box->GetHeight(m_scale_y) / 2  );
+	float z1 = XMVectorGetZ(v1) - (box->GetBreadth(m_scale_z) / 2 );
 
 	float l1 = box->GetLength(m_scale_x);
 	float h1 = box->GetHeight(m_scale_y);
 	float b1 = box->GetBreadth(m_scale_z);
 
-	float x2 = XMVectorGetX(other_pos) - (obj->box->GetLength(obj->GetXScale()) / 2 );
-	float y2 = XMVectorGetY(other_pos) + (obj->box->GetHeight(obj->GetYScale()) / 2 );
-	float z2 = XMVectorGetZ(other_pos) - (obj->box->GetBreadth(obj->GetZScale()) / 2 );
+	float x2 = XMVectorGetX(v2) - (obj->box->GetLength(obj->GetXScale()) / 2 );
+	float y2 = XMVectorGetY(v2) + (obj->box->GetHeight(obj->GetYScale()) / 2 );
+	float z2 = XMVectorGetZ(v2) - (obj->box->GetBreadth(obj->GetZScale()) / 2 );
 
 	float l2 = obj->box->GetLength(obj->GetXScale());
 	float h2 = obj->box->GetHeight(obj->GetYScale());
@@ -254,8 +256,7 @@ XMVECTOR Asset::GetColliderWorldSpacePos()
 
 void Asset::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 {
-	//if (objectDrawn == false)
-	//{
+
 		m_directional_light_shines_from = XMVectorSet(-1.0f, 1.0f, -1.0f, 0.0f);
 		m_directional_light_colour = XMVectorSet(1.8f, 1.5f, 0.0f, 1.0f);
 		m_ambient_light_colour = XMVectorSet(0.3f, 0.3f, 0.3f, 1.0f);
@@ -369,13 +370,13 @@ float Asset::GetZScale()
 	return m_scale_z;
 }
 
-void Asset::SetCollideState(bool state)
-{
-	m_isColliding = state;
-}
-
-bool Asset::IsColliding()
-{
-	return m_isColliding;
-}
+//void Asset::SetCollideState(bool state)
+//{
+//	m_isColliding = state;
+//}
+//
+//bool Asset::IsColliding()
+//{
+//	return m_isColliding;
+//}
 

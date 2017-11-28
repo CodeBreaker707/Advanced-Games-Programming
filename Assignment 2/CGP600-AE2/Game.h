@@ -27,6 +27,8 @@ private:
 	FILE* assetFile;
 	fpos_t scriptPosition;
 
+	SceneNode* m_root_node;
+
 	SceneNode* m_player_node;
 
 	vector <SceneNode*> m_spear_nodes;

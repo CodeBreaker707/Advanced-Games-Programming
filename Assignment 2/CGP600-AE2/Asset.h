@@ -69,8 +69,8 @@ public:
 
 	bool CheckCollision(Asset* obj);
 
-	void SetCollideState(bool state);
-	bool IsColliding();
+	//void SetCollideState(bool state);
+	//bool IsColliding();
 
 	XMMATRIX GetWorldMatrix();
 
