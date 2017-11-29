@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Weapon.h"
+#include "Statik.h"
 
 class SceneNode
 {
@@ -22,6 +23,12 @@ private:
 	float m_xangle, m_yangle, m_zangle;
 	float m_scale_x, m_scale_y, m_scale_z;
 
+	float x1, y1, z1;
+	float l1, h1, b1;
+
+	float x2, y2, z2;
+	float l2, h2, b2;
+
 	float m_collider_centre_x;
 	float m_collider_centre_y;
 	float m_collider_centre_z;
@@ -33,6 +40,7 @@ public:
 	Player* m_p_asset;
 	Enemy*  m_e_asset;
 	Weapon* m_w_asset;
+	Statik* m_s_asset;
 
 	SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale);
 
@@ -46,6 +54,9 @@ public:
 
 	bool CheckCollision(SceneNode* compare_tree);
 	bool CheckCollision(SceneNode* compare_tree, SceneNode* object_tree_root);
+
+	void CalculateDimensions1(XMVECTOR v, Asset* obj);
+	void CalculateDimensions2(XMVECTOR v, Asset* obj);
 
 	XMVECTOR GetWorldCentrePos();
 

@@ -14,10 +14,30 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 	{
 		m_w_asset = new Weapon(D3DDevice, ImmediateContext, x_pos, y_pos, z_pos, x_scale, y_scale, z_scale);
 	}
+	else if (c == 'S')
+	{
+		m_s_asset = new Statik(D3DDevice, ImmediateContext, x_pos, y_pos, z_pos, x_scale, y_scale, z_scale);
+	}
 	
 		m_x = x_pos;
 		m_y = y_pos;
 		m_z = z_pos;
+
+		x1 = 0.0f;
+		y1 = 0.0f;
+		z1 = 0.0f;
+
+		l1 = 0.0f;
+		h1 = 0.0f;
+		b1 = 0.0f;
+
+		x2 = 0.0f;
+		y2 = 0.0f;
+		z2 = 0.0f;
+
+		l2 = 0.0f;
+		h2 = 0.0f;
+		z2 = 0.0f;
 
 		m_xangle = 0.0f;
 		m_yangle = 0.0f;
@@ -78,6 +98,7 @@ void SceneNode::Execute(XMMATRIX *world, XMMATRIX* view, XMMATRIX* projection)
 	if (m_p_asset) m_p_asset->Draw(&local_world, view, projection);
 	if (m_e_asset && m_e_asset->GetEnemyHealth() > 0) m_e_asset->Draw(&local_world, view, projection);
 	if (m_w_asset) m_w_asset->Draw(&local_world, view, projection);
+	if (m_s_asset) m_s_asset->Draw(&local_world, view, projection);
 
 	for (int i = 0; i < m_children.size(); i++)
 	{
@@ -118,6 +139,10 @@ void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 		v = XMVectorSet(XMVectorGetX(m_e_asset->box->GetColliderPos()), XMVectorGetY(m_e_asset->box->GetColliderPos()), XMVectorGetZ(m_e_asset->box->GetColliderPos()), 0.0f);
 		//v = XMVectorSet(m_e_asset->GetXPos(), m_e_asset->GetYPos(), m_e_asset->GetZPos(), 0.0f);
 	}
+	else if (m_s_asset)
+	{
+		v = XMVectorSet(XMVectorGetX(m_s_asset->box->GetColliderPos()), XMVectorGetY(m_s_asset->box->GetColliderPos()), XMVectorGetZ(m_s_asset->box->GetColliderPos()), 0.0f);
+	}
 	else
 	{
 		v = XMVectorSet(0.0, 0.0, 0.0, 0.0);
@@ -149,7 +174,7 @@ bool SceneNode::CheckCollision(SceneNode* compare_tree, SceneNode* object_tree_r
 	XMVECTOR v1 = GetWorldCentrePos();
 	XMVECTOR v2 = compare_tree->GetWorldCentrePos();
 
-	float x1 = 0.0f;
+	/*float x1 = 0.0f;
 	float y1 = 0.0f;
 	float z1 = 0.0f;
 
@@ -163,74 +188,93 @@ bool SceneNode::CheckCollision(SceneNode* compare_tree, SceneNode* object_tree_r
 
 	float l2 = 0.0f;
 	float h2 = 0.0f;
-	float b2 = 0.0f;
+	float b2 = 0.0f;*/
 
 	if (m_p_asset)
 	{
-		x1 = XMVectorGetX(v1) - (m_p_asset->box->GetLength(m_scale_x) / 2);
+		/*x1 = XMVectorGetX(v1) - (m_p_asset->box->GetLength(m_scale_x) / 2);
 		y1 = XMVectorGetY(v1) + (m_p_asset->box->GetHeight(m_scale_y) / 2);
 		z1 = XMVectorGetZ(v1) - (m_p_asset->box->GetBreadth(m_scale_z) / 2);
 
 		l1 = m_p_asset->box->GetLength(m_scale_x);
 		h1 = m_p_asset->box->GetHeight(m_scale_y);
-		b1 = m_p_asset->box->GetBreadth(m_scale_z);
+		b1 = m_p_asset->box->GetBreadth(m_scale_z);*/
+		CalculateDimensions1(v1, m_p_asset);
 
 	}
 
 
 	else if (m_e_asset)
 	{
-		x1 = XMVectorGetX(v1) - (m_e_asset->box->GetLength(m_scale_x) / 2);
+		/*x1 = XMVectorGetX(v1) - (m_e_asset->box->GetLength(m_scale_x) / 2);
 		y1 = XMVectorGetY(v1) + (m_e_asset->box->GetHeight(m_scale_y) / 2);
 		z1 = XMVectorGetZ(v1) - (m_e_asset->box->GetBreadth(m_scale_z) / 2);
 
 		l1 = m_e_asset->box->GetLength(m_scale_x);
 		h1 = m_e_asset->box->GetHeight(m_scale_y);
-		b1 = m_e_asset->box->GetBreadth(m_scale_z);
+		b1 = m_e_asset->box->GetBreadth(m_scale_z);*/
+		CalculateDimensions1(v1, m_e_asset);
 	}
 
 
 	else if (m_w_asset)
 	{
-		 x1 = XMVectorGetX(v1) - (m_w_asset->box->GetLength(m_scale_x) / 2);
+		/* x1 = XMVectorGetX(v1) - (m_w_asset->box->GetLength(m_scale_x) / 2);
 		 y1 = XMVectorGetY(v1) + (m_w_asset->box->GetHeight(m_scale_y) / 2);
 		 z1 = XMVectorGetZ(v1) - (m_w_asset->box->GetBreadth(m_scale_z) / 2);
 
 		 l1 = m_w_asset->box->GetLength(m_scale_x);
 		 h1 = m_w_asset->box->GetHeight(m_scale_y);
-		 b1 = m_w_asset->box->GetBreadth(m_scale_z);
+		 b1 = m_w_asset->box->GetBreadth(m_scale_z);*/
+
+		 CalculateDimensions1(v1, m_w_asset);
+	}
+	else if (m_s_asset)
+	{
+		CalculateDimensions1(v1, m_s_asset);
 	}
 
 	if (compare_tree->m_p_asset)
 	{
-		 x2 = XMVectorGetX(v2) - (compare_tree->m_p_asset->box->GetLength(compare_tree->GetXScale()) / 2);
+		/* x2 = XMVectorGetX(v2) - (compare_tree->m_p_asset->box->GetLength(compare_tree->GetXScale()) / 2);
 		 y2 = XMVectorGetY(v2) + (compare_tree->m_p_asset->box->GetHeight(compare_tree->GetYScale()) / 2);
 		 z2 = XMVectorGetZ(v2) - (compare_tree->m_p_asset->box->GetBreadth(compare_tree->GetZScale()) / 2);
 
 		 l2 = compare_tree->m_p_asset->box->GetLength(compare_tree->GetXScale());
 		 h2 = compare_tree->m_p_asset->box->GetHeight(compare_tree->GetYScale());
-		 b2 = compare_tree->m_p_asset->box->GetBreadth(compare_tree->GetZScale());
+		 b2 = compare_tree->m_p_asset->box->GetBreadth(compare_tree->GetZScale());*/
+
+		CalculateDimensions2(v2, compare_tree->m_p_asset);
+
 	}
 
 	else if (compare_tree->m_e_asset)
 	{
-		 x2 = XMVectorGetX(v2) - (compare_tree->m_e_asset->box->GetLength(compare_tree->GetXScale()) / 2);
+		 /*x2 = XMVectorGetX(v2) - (compare_tree->m_e_asset->box->GetLength(compare_tree->GetXScale()) / 2);
 		 y2 = XMVectorGetY(v2) + (compare_tree->m_e_asset->box->GetHeight(compare_tree->GetYScale()) / 2);
 		 z2 = XMVectorGetZ(v2) - (compare_tree->m_e_asset->box->GetBreadth(compare_tree->GetZScale()) / 2);
 
 		 l2 = compare_tree->m_e_asset->box->GetLength(compare_tree->GetXScale());
 		 h2 = compare_tree->m_e_asset->box->GetHeight(compare_tree->GetYScale());
-		 b2 = compare_tree->m_e_asset->box->GetBreadth(compare_tree->GetZScale());
+		 b2 = compare_tree->m_e_asset->box->GetBreadth(compare_tree->GetZScale());*/
+		CalculateDimensions2(v2, compare_tree->m_e_asset);
+
 	}
 	else if (compare_tree->m_w_asset)
 	{
-		 x2 = XMVectorGetX(v2) - (compare_tree->m_w_asset->box->GetLength(compare_tree->GetXScale()) / 2);
+		/* x2 = XMVectorGetX(v2) - (compare_tree->m_w_asset->box->GetLength(compare_tree->GetXScale()) / 2);
 		 y2 = XMVectorGetY(v2) + (compare_tree->m_w_asset->box->GetHeight(compare_tree->GetYScale()) / 2);
 		 z2 = XMVectorGetZ(v2) - (compare_tree->m_w_asset->box->GetBreadth(compare_tree->GetZScale()) / 2);
 
 		 l2 = compare_tree->m_w_asset->box->GetLength(compare_tree->GetXScale());
 		 h2 = compare_tree->m_w_asset->box->GetHeight(compare_tree->GetYScale());
-		 b2 = compare_tree->m_w_asset->box->GetBreadth(compare_tree->GetZScale());
+		 b2 = compare_tree->m_w_asset->box->GetBreadth(compare_tree->GetZScale());*/
+
+		CalculateDimensions2(v2, compare_tree->m_w_asset);
+	}
+	else if (compare_tree->m_s_asset)
+	{
+		CalculateDimensions2(v2, compare_tree->m_s_asset);
 	}
 
 	if (x1 < x2 + l2 && x1 + l1 > x2)
@@ -256,17 +300,43 @@ bool SceneNode::CheckCollision(SceneNode* compare_tree, SceneNode* object_tree_r
 		m_isColliding = false;
 	}
 
-	for (int i = 0; i < compare_tree->m_children.size(); i++)
-	{
-		if (CheckCollision(compare_tree->m_children[i], object_tree_root));
-	}
+	
+		/*for (int i = 0; i < compare_tree->m_children.size(); i++)
+		{
+			if (CheckCollision(compare_tree->m_children[i], object_tree_root));
+		}
 
-	for (int i = 0; i < m_children.size(); i++)
-	{
-		if (m_children[i]->CheckCollision(compare_tree, object_tree_root));
-	}
+		for (int i = 0; i < m_children.size(); i++)
+		{
+			if (m_children[i]->CheckCollision(compare_tree, object_tree_root));
+		}*/
+	
 
 }
+
+void SceneNode::CalculateDimensions1(XMVECTOR v, Asset* obj)
+{
+	x1 = XMVectorGetX(v) - (obj->box->GetLength(m_scale_x) / 2);
+	y1 = XMVectorGetY(v) + (obj->box->GetHeight(m_scale_y) / 2);
+	z1 = XMVectorGetZ(v) - (obj->box->GetBreadth(m_scale_z) / 2);
+
+	l1 = obj->box->GetLength(m_scale_x);
+	h1 = obj->box->GetHeight(m_scale_y);
+	b1 = obj->box->GetBreadth(m_scale_z);
+}
+
+void SceneNode::CalculateDimensions2(XMVECTOR v, Asset* obj)
+{
+	x2 = XMVectorGetX(v) - (obj->box->GetLength(m_scale_x) / 2);
+	y2 = XMVectorGetY(v) + (obj->box->GetHeight(m_scale_y) / 2);
+	z2 = XMVectorGetZ(v) - (obj->box->GetBreadth(m_scale_z) / 2);
+
+	l2 = obj->box->GetLength(m_scale_x);
+	h2 = obj->box->GetHeight(m_scale_y);
+	b2 = obj->box->GetBreadth(m_scale_z);
+
+}
+
 
 void SceneNode::MoveAsset(float x_dist, float y_dist, float z_dist)
 {

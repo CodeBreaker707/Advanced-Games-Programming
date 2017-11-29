@@ -78,15 +78,27 @@ void Game::MainUpdate()
 		{
 			m_player_node->m_p_asset->SetOnGroundState(false);
 			m_player_node->m_p_asset->SetJumpState(true);
+
+			m_player_node->m_p_asset->SetJumpHeight(m_player_node->GetYPos() + 4.5f);
 			
 		}
 		
-		m_player_node->m_p_asset->JumpPlayer();
+		//m_player_node->m_p_asset->JumpPlayer();
+
+		if (m_player_node->m_p_asset->GetJumpState() == true)
+		{
+			m_player_node->MoveAsset(0.0f, m_player_node->m_p_asset->GetJumpSpeed(), 0.0f);
+
+			if (m_player_node->GetYPos() > m_player_node->m_p_asset->GetJumpHeight())
+			{
+				m_player_node->m_p_asset->SetJumpState(false);
+			}
+		}
 
 		if (m_player_node->GetChildrenSize() != 0)
 		{			
 
-			if (key->m_mouse_state.rgbButtons[0]&& m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponEquipState() == true
+			if (key->m_mouse_state.rgbButtons[0] && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponEquipState() == true
 				&& m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == false && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
 			{
 				m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(true);
@@ -115,7 +127,7 @@ void Game::MainUpdate()
 				
 
 				if (m_player_node->GetEquippedWeaponNode()->GetZPos()
-					<= m_player_node->GetEquippedWeaponNode()->GetCurZPos()/* + cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) )*/ )
+					<= m_player_node->GetEquippedWeaponNode()->GetCurZPos() )
 				{
 					m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(false);
 				}
@@ -130,40 +142,29 @@ void Game::MainUpdate()
 				m_enemy_nodes[i]->CheckCollision(m_player_node->GetEquippedWeaponNode());
 				//m_player_node->CheckCollision(m_enemy_nodes[i]);
 
-					if (m_enemy_nodes[i]->IsColliding() == true && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
-						m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
-					{
-						m_enemy_nodes[i]->m_e_asset->SetEnemyHealth(m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() - 1);
-					}
-				
-				
-			//	//m_enemy_nodes[i]->m_e_asset->CheckCollision(m_player_node->m_p_asset);
+				if (m_enemy_nodes[i]->IsColliding() == true && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
+					m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
+				{
+					m_enemy_nodes[i]->m_e_asset->SetEnemyHealth(m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() - 1);
+				}
 
-			//	
-			}
 
-		
-			
+				//	//m_enemy_nodes[i]->m_e_asset->CheckCollision(m_player_node->m_p_asset);
+
+				//	
+			}			
 
 		}
 		
 		
 			// Checking collision with all objects against the player
 
-		/*for (int i = 0; i < objs.size(); i++)
+		for (int i = 0; i < objs.size(); i++)
 		{
-			objs[i]->CheckCollision(m_player_node->m_p_asset);
-		}	*/
+			objs[i]->CheckCollision(m_player_node);
+		}	
 
 		//m_player_node->CheckCollision(m_root_node);
-		
-		//m_enemy_nodes[0]->CheckCollision(m_player_node);
-
-		/*if (m_enemy_nodes[0]->IsColliding() == true)
-		{
-			int count;
-			count = 0;
-		}*/
 
 		
 			for (int i = 0; i < m_spear_nodes.size(); i++)
@@ -184,7 +185,7 @@ void Game::MainUpdate()
 
 					for (int j = 0; j < objs.size(); j++)
 					{
-						if (m_spear_nodes[i]->m_w_asset == objs[j])
+						if (m_spear_nodes[i] == objs[j])
 						{
 							objs.erase(objs.begin() + j);
 						}
@@ -199,25 +200,21 @@ void Game::MainUpdate()
 		
 
 			// Stopping the player at collision
-			//for (int i = 0; i < m_root_node->GetChildrenSize(); i++)
-			//{
-			//	//if (m_root_node->GetChildren()[i]->m_p_asset == NULL)
-			//	{
-					//m_player_node->RestrictPos(m_root_node->GetChildren()[i]->IsColliding());
-			
-			/*	}
-			}*/
-		m_player_node->RestrictPos(m_enemy_nodes[0]->IsColliding());
-		m_player_node->UpdatePos(m_enemy_nodes[0]->IsColliding());
+			for (int i = 0; i < objs.size(); i++)
+			{
+				m_player_node->RestrictPos(objs[i]->IsColliding());				
+			}
+
+		//m_player_node->RestrictPos(m_player_node->IsColliding());
+		//m_player_node->RestrictPos(m_spear_nodes[0]->IsColliding());
+		//m_player_node->UpdatePos(m_player_node->IsColliding());
+		//m_player_node->UpdatePos(m_spear_nodes[0]->IsColliding());
 
 			// Storing previous positions of the player
-			/*for (int i = 0; i < m_root_node->GetChildrenSize(); i++)
+			for (int i = 0; i < objs.size(); i++)
 			{
-				if (m_root_node->GetChildren()[i]->m_p_asset == NULL)
-				{
-					m_player_node->UpdatePos(m_root_node->GetChildren()[i]->IsColliding());
-				}
-			}*/
+				m_player_node->UpdatePos(objs[i]->IsColliding());
+			}
 			
 		
 
@@ -237,9 +234,9 @@ void Game::MainUpdate()
 
 		 //Check if the player is colliding with anything below		
 
-		/*for (int i = 0; i < objs.size(); i++)
+		for (int i = 0; i < objs.size(); i++)
 		{
-			if (m_player_node->m_p_asset->CheckPlayerFeetonGround(objs[i]) == true)
+			if (objs[i]->IsColliding() == true)
 			{
 				m_player_node->m_p_asset->SetOnGroundState(true);
 				break;
@@ -251,7 +248,12 @@ void Game::MainUpdate()
 
 		}
 	
-		m_player_node->m_p_asset->PullDown();*/
+		//m_player_node->m_p_asset->PullDown();
+
+		/*if (m_player_node->m_p_asset->GetJumpState() == false && m_player_node->m_p_asset->GetOnGroundState() == false)
+		{
+			m_player_node->MoveAsset(0.0f, -m_player_node->m_p_asset->GetJumpSpeed(), 0.0f);
+		}*/
 
 
 		if (m_player_node->m_p_asset->GetJumpState() == true && perspective->GetCollidingState() == false)
@@ -290,10 +292,10 @@ void Game::MainUpdate()
 
 	m_root_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
 
-	for (int i = 0; i < objs.size(); i++)
+	/*for (int i = 0; i < objs.size(); i++)
 	{
 		objs[i]->Draw(NULL, &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
-	}
+	}*/
 
 
 	m_render_target->Display();
@@ -307,9 +309,9 @@ void Game::InitialiseGameAssets()
 
 	m_root_node = new SceneNode('\0', m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
 
-	ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f, 100.0, 0.0, 100.0);
+	//ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f, 100.0, 0.0, 100.0);
 
-	objs.push_back(ground);
+	//objs.push_back(ground);
 
 	float x = 0.0f;
 	float y = 0.0f;
@@ -333,7 +335,7 @@ void Game::InitialiseGameAssets()
 
 		if (strstr("Camera", asset_type) != 0)
 		{
-			fscanf(assetFile, "%f %f %f %f", &x, &y, &z, &w);
+			fscanf(assetFile, " %f %f %f %f", &x, &y, &z, &w);
 
 			perspective = new Camera(x, y, z, w);
 		}
@@ -358,7 +360,8 @@ void Game::InitialiseGameAssets()
 
 				m_enemy_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
 
-				//objs.push_back(m_enemy_nodes[i]->m_e_asset);
+				objs.push_back(m_enemy_nodes[i]);
+
 				m_root_node->AddChildNode(m_enemy_nodes[i]);
 
 			}
@@ -377,7 +380,7 @@ void Game::InitialiseGameAssets()
 
 				m_spear_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
 
-				//objs.push_back(m_spear_nodes[i]->m_w_asset);
+				objs.push_back(m_spear_nodes[i]);
 
 				m_root_node->AddChildNode(m_spear_nodes[i]);
 
@@ -387,17 +390,18 @@ void Game::InitialiseGameAssets()
 		}
 
 
-		if (strstr("Tree", asset_type) != 0)
+		if (strstr("Statik", asset_type) != 0)
 		{
 			fscanf(assetFile, "%d", &num_assets);
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, "%f %f %f %f %f %f", &x, &y, &z, &x_scle, &y_scle, &z_scle);
+				fscanf(assetFile, " %c %f %f %f %f %f %f", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle);
 
-				trees.push_back(new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
+				m_statik_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
 
-				objs.push_back(trees[i]);
+				objs.push_back(m_statik_nodes[i]);
+				m_root_node->AddChildNode(m_statik_nodes[i]);
 
 			}
 

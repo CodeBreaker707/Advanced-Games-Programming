@@ -175,6 +175,11 @@ void Player::SetPlayerMoveSpeed(float speed)
 	m_move_speed = speed;
 }
 
+void Player::SetJumpHeight(float value)
+{
+	m_jump_height = value;
+}
+
 void Player::SetSpeedMultiplier(float amount)
 {
 	m_speed_multiplier = amount;
@@ -193,4 +198,14 @@ bool Player::GetJumpState()
 float Player::GetPlayerMoveSpeed()
 {
 	return m_move_speed * m_speed_multiplier;
+}
+
+float Player::GetJumpSpeed()
+{
+	return m_jump_speed;
+}
+
+float Player::GetJumpHeight()
+{
+	return m_jump_height;
 }

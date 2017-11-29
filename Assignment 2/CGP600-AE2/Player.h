@@ -34,6 +34,8 @@ public:
 
 	bool CheckPlayerFeetonGround(Asset* obj);
 
+	void SetJumpHeight(float value);
+
 	void SetOnGroundState(bool state);
 	bool GetOnGroundState();
 
@@ -43,6 +45,8 @@ public:
 	void SetPlayerMoveSpeed(float speed);
 	void SetSpeedMultiplier(float amount);
 
+	float GetJumpSpeed();
+	float GetJumpHeight();
 	float GetPlayerMoveSpeed();
 
 	//float GetSpeedMultiplier();

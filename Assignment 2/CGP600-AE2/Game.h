@@ -33,12 +33,13 @@ private:
 
 	vector <SceneNode*> m_spear_nodes;
 	vector <SceneNode*> m_enemy_nodes;
+	vector <SceneNode*> m_statik_nodes;
 
-	Statik* ground;
+	//Statik* ground;
 
-	vector<Statik*> trees;
+	//vector<Statik*> trees;
 
-	vector<Asset*> objs;
+	vector<SceneNode*> objs;
 
 	bool pickedUp;
 	bool Initialised;

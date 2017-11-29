@@ -87,10 +87,13 @@ d:\directx sdk\include\xnamath.h(2754): warning C4838: conversion from 'unsigned
 d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(24): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
 d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(58): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(108): warning C4305: 'argument': truncation from 'double' to 'float'
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(128): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(169): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(185): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(293): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(120): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(140): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(162): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(170): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(186): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(203): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(214): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(237): warning C4018: '<': signed/unsigned mismatch
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.exe
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.pdb (Partial PDB)
