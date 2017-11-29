@@ -22,7 +22,10 @@ void Game::MainUpdate()
 	//key->MouseBehaviour();
 
 	m_player_node->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
+
 	m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
+
+	//m_enemy_nodes[0]->UpdateCollisionTree(&XMMatrixIdentity());
 	//player->UpdatePosVector();
 	//player->UpdateLookAt();
 
@@ -83,60 +86,64 @@ void Game::MainUpdate()
 		if (m_player_node->GetChildrenSize() != 0)
 		{			
 
-			if (key->m_mouse_state.rgbButtons[0] && m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponEquipState() == true
-				&& m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == false && m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackCompleteState() == false)
+			if (key->m_mouse_state.rgbButtons[0]&& m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponEquipState() == true
+				&& m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == false && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
 			{
-				m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackedState(true);
-				m_player_node->GetEquippedWeaponNode().m_w_asset->SetCurPos();
+				m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(true);
+				m_player_node->GetEquippedWeaponNode()->SetCurZPos();
 
 			}
 
-			if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == true)	
+			if (m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true)	
 			{
 				
-				if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetZPos() >=
-					m_player_node->GetEquippedWeaponNode().m_w_asset->GetCurPos() + 1.5 )
+				if (m_player_node->GetEquippedWeaponNode()->GetZPos() >=
+					m_player_node->GetEquippedWeaponNode()->GetCurZPos() + 1.5 )
 				{
-					m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackedState(false);
-					m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackCompleteState(true);
+					m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(false);
+					m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(true);
 				}
 				else
 				{
-					m_player_node->GetEquippedWeaponNode().MoveAsset(0.0f, 0.0f, cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) * 0.005f);
+					m_player_node->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, 0.005);
 				}
 
 			}
 
-			else if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackCompleteState() == true)
+			else if (m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == true)
 			{
 				
 
-				if (m_player_node->GetEquippedWeaponNode().m_w_asset->GetZPos()
-					<= m_player_node->GetEquippedWeaponNode().m_w_asset->GetCurPos()/* + cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) )*/ )
+				if (m_player_node->GetEquippedWeaponNode()->GetZPos()
+					<= m_player_node->GetEquippedWeaponNode()->GetCurZPos()/* + cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) )*/ )
 				{
-					m_player_node->GetEquippedWeaponNode().m_w_asset->SetWeaponAttackCompleteState(false);
+					m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(false);
 				}
 				else
 				{
-					m_player_node->GetEquippedWeaponNode().MoveAsset(0.0f, 0.0f, -cos(m_player_node->GetEquippedWeaponNode().m_w_asset->GetYAngle()) * 0.005f);
+					m_player_node->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, -0.005f);
 				}
 			}
 
 			for (int i = 0; i < m_enemy_nodes.size(); i++)
 			{
-					m_enemy_nodes[i]->CheckCollision(m_root_node);
+				m_enemy_nodes[i]->CheckCollision(m_player_node->GetEquippedWeaponNode());
+				//m_player_node->CheckCollision(m_enemy_nodes[i]);
 
-					if (m_enemy_nodes[i]->IsColliding() == true && m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackedState() == true &&
-						m_player_node->GetEquippedWeaponNode().m_w_asset->GetWeaponAttackCompleteState() == false)
+					if (m_enemy_nodes[i]->IsColliding() == true && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
+						m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
 					{
 						m_enemy_nodes[i]->m_e_asset->SetEnemyHealth(m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() - 1);
 					}
 				
 				
-				//m_enemy_nodes[i]->m_e_asset->CheckCollision(m_player_node->m_p_asset);
+			//	//m_enemy_nodes[i]->m_e_asset->CheckCollision(m_player_node->m_p_asset);
 
-				
+			//	
 			}
+
+		
+			
 
 		}
 		
@@ -150,28 +157,30 @@ void Game::MainUpdate()
 
 		//m_player_node->CheckCollision(m_root_node);
 		
-		m_enemy_nodes[0]->CheckCollision(m_player_node);
+		//m_enemy_nodes[0]->CheckCollision(m_player_node);
 
-		if (m_enemy_nodes[0]->IsColliding() == true)
+		/*if (m_enemy_nodes[0]->IsColliding() == true)
 		{
 			int count;
 			count = 0;
-		}
+		}*/
 
+		
 			for (int i = 0; i < m_spear_nodes.size(); i++)
 			{
-				m_spear_nodes[i]->CheckCollision(m_root_node);
+				m_spear_nodes[i]->CheckCollision(m_player_node);
 
 				if (m_spear_nodes[i]->IsColliding() == true && key->IsKeyPressed(key->interact))
 				{
-					m_spear_nodes[i]->SetXPos(0.0f);
+					m_spear_nodes[i]->SetXPos(1.0f);
 					m_spear_nodes[i]->SetYPos(-0.5f);
-					m_spear_nodes[i]->SetZPos(0.0f);
+					m_spear_nodes[i]->SetZPos(1.0f);
 
-					m_spear_nodes[i]->m_w_asset->SetWeaponEquipState(true);
+
 					m_root_node->DetachNode(m_spear_nodes[i]);
 
-					m_player_node->AddChildNode(m_spear_nodes[i]);	
+					m_spear_nodes[i]->m_w_asset->SetWeaponEquipState(true);
+					m_player_node->AddChildNode(m_spear_nodes[i]);
 
 					for (int j = 0; j < objs.size(); j++)
 					{
@@ -184,27 +193,32 @@ void Game::MainUpdate()
 					m_spear_nodes.erase(m_spear_nodes.begin() + i);
 
 				}
-				
-			}			
+
+			}
+		
 		
 
 			// Stopping the player at collision
-			for (int i = 0; i < m_root_node->GetChildrenSize(); i++)
-			{
-				if (m_root_node->GetChildren()[i]->m_p_asset == NULL)
-				{
-					m_player_node->RestrictPos(m_root_node->GetChildren()[i]->IsColliding());
-				}
-			}
+			//for (int i = 0; i < m_root_node->GetChildrenSize(); i++)
+			//{
+			//	//if (m_root_node->GetChildren()[i]->m_p_asset == NULL)
+			//	{
+					//m_player_node->RestrictPos(m_root_node->GetChildren()[i]->IsColliding());
+			
+			/*	}
+			}*/
+		m_player_node->RestrictPos(m_enemy_nodes[0]->IsColliding());
+		m_player_node->UpdatePos(m_enemy_nodes[0]->IsColliding());
 
 			// Storing previous positions of the player
-			for (int i = 0; i < m_root_node->GetChildrenSize(); i++)
+			/*for (int i = 0; i < m_root_node->GetChildrenSize(); i++)
 			{
 				if (m_root_node->GetChildren()[i]->m_p_asset == NULL)
 				{
 					m_player_node->UpdatePos(m_root_node->GetChildren()[i]->IsColliding());
 				}
-			}
+			}*/
+			
 		
 
 		// Stopping the camera at collision

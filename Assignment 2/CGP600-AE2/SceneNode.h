@@ -17,6 +17,7 @@ private:
 	vector<SceneNode*> m_children;
 
 	float m_x, m_y, m_z;
+	float m_cur_pos_z;
 	float m_prev_x, m_prev_y, m_prev_z;
 	float m_xangle, m_yangle, m_zangle;
 	float m_scale_x, m_scale_y, m_scale_z;
@@ -52,6 +53,9 @@ public:
 	void SetYPos(float y);
 	void SetZPos(float z);
 
+	void SetCurZPos();
+	float GetCurZPos();
+
 	float GetXPos();
 	float GetYPos();
 	float GetZPos();
@@ -76,6 +80,6 @@ public:
 	int GetChildrenSize();
 	vector<SceneNode*> GetChildren();
 
-	SceneNode GetEquippedWeaponNode();
+	SceneNode* GetEquippedWeaponNode();
 
 };

@@ -26,6 +26,10 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 		m_scale_x = x_scale;
 		m_scale_y = y_scale;
 		m_scale_z = z_scale;
+
+		m_collider_centre_x = x_pos;
+		m_collider_centre_y = y_pos;
+		m_collider_centre_z = z_pos;
 	
 
 }
@@ -67,7 +71,9 @@ void SceneNode::Execute(XMMATRIX *world, XMMATRIX* view, XMMATRIX* projection)
 		local_world *= XMMatrixTranslation(m_x, m_y, m_z);
 	//}
 	
+	
 	local_world *= *world;
+	
 
 	if (m_p_asset) m_p_asset->Draw(&local_world, view, projection);
 	if (m_e_asset && m_e_asset->GetEnemyHealth() > 0) m_e_asset->Draw(&local_world, view, projection);
@@ -100,14 +106,17 @@ void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 	if (m_p_asset)
 	{
 		v = XMVectorSet(XMVectorGetX(m_p_asset->box->GetColliderPos()), XMVectorGetY(m_p_asset->box->GetColliderPos()), XMVectorGetZ(m_p_asset->box->GetColliderPos()), 0.0f);
+		//v = XMVectorSet(m_p_asset->GetXPos(), m_p_asset->GetYPos(), m_p_asset->GetZPos(), 0.0f);
 	}
 	else if (m_w_asset)
 	{
 		v = XMVectorSet(XMVectorGetX(m_w_asset->box->GetColliderPos()), XMVectorGetY(m_w_asset->box->GetColliderPos()), XMVectorGetZ(m_w_asset->box->GetColliderPos()), 0.0f);
+		//v = XMVectorSet(m_w_asset->GetXPos(), m_w_asset->GetYPos(), m_w_asset->GetZPos(), 0.0f);
 	}
 	else if (m_e_asset)
 	{
 		v = XMVectorSet(XMVectorGetX(m_e_asset->box->GetColliderPos()), XMVectorGetY(m_e_asset->box->GetColliderPos()), XMVectorGetZ(m_e_asset->box->GetColliderPos()), 0.0f);
+		//v = XMVectorSet(m_e_asset->GetXPos(), m_e_asset->GetYPos(), m_e_asset->GetZPos(), 0.0f);
 	}
 	else
 	{
@@ -310,6 +319,11 @@ void SceneNode::SetZPos(float z)
 	m_z = z;
 }
 
+void SceneNode::SetCurZPos()
+{
+	m_cur_pos_z = m_z;
+}
+
 void SceneNode::SetCollideState(bool state)
 {
 	m_isColliding = state;
@@ -335,13 +349,13 @@ XMVECTOR SceneNode::GetWorldCentrePos()
 	return XMVectorSet(m_collider_centre_x, m_collider_centre_y, m_collider_centre_z, 0.0f);
 }
 
-SceneNode SceneNode::GetEquippedWeaponNode()
+SceneNode* SceneNode::GetEquippedWeaponNode()
 {
 	for (int i = 0; i < m_children.size(); i++)
 	{
 		if (m_children[i]->m_w_asset->GetWeaponEquipState() == true)
 		{
-			return *m_children[i];
+			return m_children[i];
 		}
 	}
 }
@@ -361,6 +375,11 @@ float SceneNode::GetYPos()
 float SceneNode::GetZPos()
 {
 	return m_z;
+}
+
+float SceneNode::GetCurZPos()
+{
+	return m_cur_pos_z;
 }
 
 float SceneNode::GetXAngle()

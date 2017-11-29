@@ -252,6 +252,7 @@ XMVECTOR Asset::GetColliderWorldSpacePos()
 	XMVECTOR new_pos = XMVector3Transform(offset, GetWorldMatrix());
 
 	return new_pos;
+
 }
 
 void Asset::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
