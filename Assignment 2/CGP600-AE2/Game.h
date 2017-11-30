@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Statik.h"
 #include "Weapon.h"
+#include "Dynamic.h"
 #include "SceneNode.h"
 
 
@@ -34,6 +35,7 @@ private:
 	vector <SceneNode*> m_spear_nodes;
 	vector <SceneNode*> m_enemy_nodes;
 	vector <SceneNode*> m_statik_nodes;
+	vector <SceneNode*> m_dynamic_nodes;
 
 	//Statik* ground;
 

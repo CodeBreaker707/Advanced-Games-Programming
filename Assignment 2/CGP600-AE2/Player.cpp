@@ -1,8 +1,8 @@
 #include "Player.h"
 
-Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale)
+Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext)
 {
-	InitialiseAsset(D3DDevice, ImmediateContext, x_pos, y_pos, z_pos, x_scale, y_scale, z_scale);
+	InitialiseAsset(D3DDevice, ImmediateContext);
 
 	LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 
@@ -15,9 +15,9 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, f
 	m_gravity_speed = 0.0015f;
 	m_jump_height = 4.5f;
 
-	m_lookAt = XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f);
-	m_right = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
-	m_up = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+	//m_lookAt = XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f);
+	//m_right = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
+	//m_up = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
 	//m_position = XMVectorSet(x, y, z, 0.0f);
 
 }
@@ -32,7 +32,7 @@ bool Player::CheckPlayerFeetonGround(Asset* obj)
 	XMVECTOR cur_pos = GetColliderWorldSpacePos();
 	XMVECTOR other_pos = obj->GetColliderWorldSpacePos();
 
-	float x1 = XMVectorGetX(cur_pos) - (box->GetLength(GetXScale()) / 2);
+	/*float x1 = XMVectorGetX(cur_pos) - (box->GetLength(GetXScale()) / 2);
 	float y1 = XMVectorGetY(cur_pos) + (box->GetHeight(GetYScale()) / 2);
 	float z1 = XMVectorGetZ(cur_pos) - (box->GetBreadth(GetZScale()) / 2);
 
@@ -71,7 +71,7 @@ bool Player::CheckPlayerFeetonGround(Asset* obj)
 	else
 	{
 		return false;
-	}
+	}*/
 		
 
 }

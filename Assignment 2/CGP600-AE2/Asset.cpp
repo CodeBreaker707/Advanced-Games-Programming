@@ -13,14 +13,14 @@ Asset::Asset()
 	
 }
 
-void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale)
+void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext)
 {
 	m_pD3DDevice = D3DDevice;
 	m_pImmediateContext = ImmediateContext;
 
-	m_x = x_pos;
+	/*m_x = x_pos;
 	m_y = y_pos;
-	m_z = z_pos;
+	m_z = z_pos;*/
 
 	m_prev_x = m_x;
 	m_prev_y = m_y;
@@ -30,9 +30,9 @@ void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* Immedi
 	m_zangle = 0.0f;
 	m_yangle = 0.0f;
 
-	m_scale_x = x_scale;
+	/*m_scale_x = x_scale;
 	m_scale_y = y_scale;
-	m_scale_z = z_scale;
+	m_scale_z = z_scale;*/
 
 	box = new Collider3D();
 }
@@ -140,7 +140,7 @@ int Asset::LoadObjModel(char* fileName, char* textureFile)
 	m_pD3DDevice->CreateSamplerState(&sampler_desc, &m_pSampler0);
 
 	box->CalculateColliderCentre(m_pObject);
-	box->CalculateDimensions(m_pObject);
+	box->CalculateRadius(m_pObject);
 
 }
 
@@ -180,7 +180,7 @@ bool Asset::CheckCollision(Asset* obj)
 	XMVECTOR v1 = XMVector3Transform(cur_pos, GetWorldMatrix());
 	XMVECTOR v2 = XMVector3Transform(other_pos, GetWorldMatrix());
 
-	float x1 = XMVectorGetX(v1) - (box->GetLength(m_scale_x) / 2  );
+	/*float x1 = XMVectorGetX(v1) - (box->GetLength(m_scale_x) / 2  );
 	float y1 = XMVectorGetY(v1) + (box->GetHeight(m_scale_y) / 2  );
 	float z1 = XMVectorGetZ(v1) - (box->GetBreadth(m_scale_z) / 2 );
 
@@ -194,10 +194,10 @@ bool Asset::CheckCollision(Asset* obj)
 
 	float l2 = obj->box->GetLength(obj->GetXScale());
 	float h2 = obj->box->GetHeight(obj->GetYScale());
-	float b2 = obj->box->GetBreadth(obj->GetZScale());
+	float b2 = obj->box->GetBreadth(obj->GetZScale());*/
 
 
-	if (x1 < x2 + l2 && x1 + l1 > x2)
+	/*if (x1 < x2 + l2 && x1 + l1 > x2)
 	{
 		if (y1 > y2 - h2 && y1 - h1 < y2)
 		{
@@ -219,7 +219,7 @@ bool Asset::CheckCollision(Asset* obj)
 	else
 	{
 		m_isColliding = false;
-	}
+	}*/
 }
 
 void Asset::RestrictPos(bool isColliding)
