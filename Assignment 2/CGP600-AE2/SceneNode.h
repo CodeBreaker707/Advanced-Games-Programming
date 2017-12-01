@@ -30,11 +30,20 @@ private:
 	float x2, y2, z2, r2;
 	//float l2, h2, b2;
 
+	float dist_x;
+	float dist_y;
+	float dist_z;
+
+	float main_dist;
+
+	float sum_radius;
+
 	float m_collider_centre_x;
 	float m_collider_centre_y;
 	float m_collider_centre_z;
 
 	bool m_isColliding;
+	bool m_isInteracting;
 
 public:
 
@@ -55,7 +64,10 @@ public:
 	void UpdateCollisionTree(XMMATRIX* world);
 
 	bool CheckCollision(SceneNode* compare_tree);
-	bool CheckCollision(SceneNode* compare_tree, SceneNode* object_tree_root);
+
+	bool CheckActionCollision(SceneNode* compare_tree);
+
+	void CalculateCollisionDetails(SceneNode* compare_tree);
 
 	void CalculateDimensions1(XMVECTOR v, Asset* obj);
 	void CalculateDimensions2(XMVECTOR v, Asset* obj);
@@ -90,9 +102,13 @@ public:
 	void SetCollideState(bool state);
 	bool IsColliding();
 
+	void SetInteractState(bool state);
+	bool IsInteracting();
+
 	int GetChildrenSize();
 	vector<SceneNode*> GetChildren();
 
 	SceneNode* GetEquippedWeaponNode();
+	SceneNode* GetPushingCrate();
 
 };

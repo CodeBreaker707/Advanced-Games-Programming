@@ -6,7 +6,7 @@ Enemy::Enemy(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext)
 
 	LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 
-	m_health = 1000.0f;
+	m_health = 500.0f;
 
 }
 

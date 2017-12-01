@@ -27,22 +27,6 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 		m_y = y_pos;
 		m_z = z_pos;
 
-		/*x1 = 0.0f;
-		y1 = 0.0f;
-		z1 = 0.0f;
-
-		l1 = 0.0f;
-		h1 = 0.0f;
-		b1 = 0.0f;
-
-		x2 = 0.0f;
-		y2 = 0.0f;
-		z2 = 0.0f;
-
-		l2 = 0.0f;
-		h2 = 0.0f;
-		z2 = 0.0f;*/
-
 		m_xangle = 0.0f;
 		m_yangle = 0.0f;
 		m_zangle = 0.0f;
@@ -56,6 +40,7 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 		m_collider_centre_z = z_pos;
 
 		m_isColliding = false;
+		m_isInteracting = false;
 	
 
 }
@@ -87,20 +72,13 @@ void SceneNode::Execute(XMMATRIX *world, XMMATRIX* view, XMMATRIX* projection)
 {
 	XMMATRIX local_world = XMMatrixIdentity();
 
-	//if (m_p_asset) local_world = m_p_asset->GetWorldMatrix();
-	//else if (m_e_asset) local_world = m_e_asset->GetWorldMatrix();
-	//else if (m_w_asset) local_world = m_w_asset->GetWorldMatrix();
-	//else
-	//{
-		local_world *= XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
-		local_world *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
-		local_world *= XMMatrixTranslation(m_x, m_y, m_z);
-	//}
 	
+	local_world *= XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
+	local_world *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
+	local_world *= XMMatrixTranslation(m_x, m_y, m_z);
 	
 	local_world *= *world;
 	
-
 	if (m_p_asset) m_p_asset->Draw(&local_world, view, projection);
 	if (m_e_asset && m_e_asset->GetEnemyHealth() > 0) m_e_asset->Draw(&local_world, view, projection);
 	if (m_w_asset) m_w_asset->Draw(&local_world, view, projection);
@@ -133,18 +111,15 @@ void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 
 	if (m_p_asset)
 	{
-		v = XMVectorSet(XMVectorGetX(m_p_asset->box->GetColliderPos()), XMVectorGetY(m_p_asset->box->GetColliderPos()), XMVectorGetZ(m_p_asset->box->GetColliderPos()), 0.0f);
-		//v = XMVectorSet(m_p_asset->GetXPos(), m_p_asset->GetYPos(), m_p_asset->GetZPos(), 0.0f);
+		v = XMVectorSet(XMVectorGetX(m_p_asset->box->GetColliderPos()), XMVectorGetY(m_p_asset->box->GetColliderPos()), XMVectorGetZ(m_p_asset->box->GetColliderPos()), 0.0f);	
 	}
 	else if (m_w_asset)
 	{
-		v = XMVectorSet(XMVectorGetX(m_w_asset->box->GetColliderPos()), XMVectorGetY(m_w_asset->box->GetColliderPos()), XMVectorGetZ(m_w_asset->box->GetColliderPos()), 0.0f);
-		//v = XMVectorSet(m_w_asset->GetXPos(), m_w_asset->GetYPos(), m_w_asset->GetZPos(), 0.0f);
+		v = XMVectorSet(XMVectorGetX(m_w_asset->box->GetColliderPos()), XMVectorGetY(m_w_asset->box->GetColliderPos()), XMVectorGetZ(m_w_asset->box->GetColliderPos()), 0.0f);	
 	}
 	else if (m_e_asset)
 	{
 		v = XMVectorSet(XMVectorGetX(m_e_asset->box->GetColliderPos()), XMVectorGetY(m_e_asset->box->GetColliderPos()), XMVectorGetZ(m_e_asset->box->GetColliderPos()), 0.0f);
-		//v = XMVectorSet(m_e_asset->GetXPos(), m_e_asset->GetYPos(), m_e_asset->GetZPos(), 0.0f);
 	}
 	else if (m_s_asset)
 	{
@@ -170,142 +145,21 @@ void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 	}
 }
 
+//bool SceneNode::CheckCollision(SceneNode* compare_tree)
+//{
+//	return CheckCollision(compare_tree, this);
+//}
+
 bool SceneNode::CheckCollision(SceneNode* compare_tree)
 {
-	return CheckCollision(compare_tree, this);
-}
-
-bool SceneNode::CheckCollision(SceneNode* compare_tree, SceneNode* object_tree_root)
-{
-	if (object_tree_root == compare_tree)
+	if (this == compare_tree)
 	{
 		return false;
 	}
 
-	XMVECTOR v1 = GetWorldCentrePos();
-	XMVECTOR v2 = compare_tree->GetWorldCentrePos();
+	CalculateCollisionDetails(compare_tree);
 
-	/*float x1 = 0.0f;
-	float y1 = 0.0f;
-	float z1 = 0.0f;
-
-	float l1 = 0.0f;
-	float h1 = 0.0f;
-	float b1 = 0.0f;
-
-	float x2 = 0.0f;
-	float y2 = 0.0f;
-	float z2 = 0.0f;
-
-	float l2 = 0.0f;
-	float h2 = 0.0f;
-	float b2 = 0.0f;*/
-
-	if (m_p_asset)
-	{
-		/*x1 = XMVectorGetX(v1) - (m_p_asset->box->GetLength(m_scale_x) / 2);
-		y1 = XMVectorGetY(v1) + (m_p_asset->box->GetHeight(m_scale_y) / 2);
-		z1 = XMVectorGetZ(v1) - (m_p_asset->box->GetBreadth(m_scale_z) / 2);
-
-		l1 = m_p_asset->box->GetLength(m_scale_x);
-		h1 = m_p_asset->box->GetHeight(m_scale_y);
-		b1 = m_p_asset->box->GetBreadth(m_scale_z);*/
-		CalculateDimensions1(v1, m_p_asset);
-
-	}
-
-
-	else if (m_e_asset)
-	{
-		/*x1 = XMVectorGetX(v1) - (m_e_asset->box->GetLength(m_scale_x) / 2);
-		y1 = XMVectorGetY(v1) + (m_e_asset->box->GetHeight(m_scale_y) / 2);
-		z1 = XMVectorGetZ(v1) - (m_e_asset->box->GetBreadth(m_scale_z) / 2);
-
-		l1 = m_e_asset->box->GetLength(m_scale_x);
-		h1 = m_e_asset->box->GetHeight(m_scale_y);
-		b1 = m_e_asset->box->GetBreadth(m_scale_z);*/
-		CalculateDimensions1(v1, m_e_asset);
-	}
-
-
-	else if (m_w_asset)
-	{
-		/* x1 = XMVectorGetX(v1) - (m_w_asset->box->GetLength(m_scale_x) / 2);
-		 y1 = XMVectorGetY(v1) + (m_w_asset->box->GetHeight(m_scale_y) / 2);
-		 z1 = XMVectorGetZ(v1) - (m_w_asset->box->GetBreadth(m_scale_z) / 2);
-
-		 l1 = m_w_asset->box->GetLength(m_scale_x);
-		 h1 = m_w_asset->box->GetHeight(m_scale_y);
-		 b1 = m_w_asset->box->GetBreadth(m_scale_z);*/
-
-		 CalculateDimensions1(v1, m_w_asset);
-	}
-	else if (m_s_asset)
-	{
-		CalculateDimensions1(v1, m_s_asset);
-	}
-	else if (m_d_asset)
-	{
-		CalculateDimensions1(v1, m_d_asset);
-	}
-
-	if (compare_tree->m_p_asset)
-	{
-		/* x2 = XMVectorGetX(v2) - (compare_tree->m_p_asset->box->GetLength(compare_tree->GetXScale()) / 2);
-		 y2 = XMVectorGetY(v2) + (compare_tree->m_p_asset->box->GetHeight(compare_tree->GetYScale()) / 2);
-		 z2 = XMVectorGetZ(v2) - (compare_tree->m_p_asset->box->GetBreadth(compare_tree->GetZScale()) / 2);
-
-		 l2 = compare_tree->m_p_asset->box->GetLength(compare_tree->GetXScale());
-		 h2 = compare_tree->m_p_asset->box->GetHeight(compare_tree->GetYScale());
-		 b2 = compare_tree->m_p_asset->box->GetBreadth(compare_tree->GetZScale());*/
-
-		CalculateDimensions2(v2, compare_tree->m_p_asset);
-
-	}
-
-	else if (compare_tree->m_e_asset)
-	{
-		 /*x2 = XMVectorGetX(v2) - (compare_tree->m_e_asset->box->GetLength(compare_tree->GetXScale()) / 2);
-		 y2 = XMVectorGetY(v2) + (compare_tree->m_e_asset->box->GetHeight(compare_tree->GetYScale()) / 2);
-		 z2 = XMVectorGetZ(v2) - (compare_tree->m_e_asset->box->GetBreadth(compare_tree->GetZScale()) / 2);
-
-		 l2 = compare_tree->m_e_asset->box->GetLength(compare_tree->GetXScale());
-		 h2 = compare_tree->m_e_asset->box->GetHeight(compare_tree->GetYScale());
-		 b2 = compare_tree->m_e_asset->box->GetBreadth(compare_tree->GetZScale());*/
-		CalculateDimensions2(v2, compare_tree->m_e_asset);
-
-	}
-	else if (compare_tree->m_w_asset)
-	{
-		/* x2 = XMVectorGetX(v2) - (compare_tree->m_w_asset->box->GetLength(compare_tree->GetXScale()) / 2);
-		 y2 = XMVectorGetY(v2) + (compare_tree->m_w_asset->box->GetHeight(compare_tree->GetYScale()) / 2);
-		 z2 = XMVectorGetZ(v2) - (compare_tree->m_w_asset->box->GetBreadth(compare_tree->GetZScale()) / 2);
-
-		 l2 = compare_tree->m_w_asset->box->GetLength(compare_tree->GetXScale());
-		 h2 = compare_tree->m_w_asset->box->GetHeight(compare_tree->GetYScale());
-		 b2 = compare_tree->m_w_asset->box->GetBreadth(compare_tree->GetZScale());*/
-
-		CalculateDimensions2(v2, compare_tree->m_w_asset);
-	}
-	else if (compare_tree->m_s_asset)
-	{
-		CalculateDimensions2(v2, compare_tree->m_s_asset);
-	}
-	else if (compare_tree->m_d_asset)
-	{
-		CalculateDimensions2(v2, compare_tree->m_d_asset);
-	}
-	
-
-	float dist_x = x2 - x1;
-	float dist_y = y2 - y1;
-	float dist_z = z2 - z1;
-
-	float main_dist = (dist_x * dist_x) + (dist_y * dist_y) + (dist_z * dist_z);
-
-	float sum_radius = r1 + r2;
-
-	if (main_dist < sum_radius * sum_radius)
+	if (main_dist < sum_radius/* * sum_radius*/)
 	{
 		m_isColliding = true;
 	}
@@ -313,29 +167,6 @@ bool SceneNode::CheckCollision(SceneNode* compare_tree, SceneNode* object_tree_r
 	{
 		m_isColliding = false;
 	}
-
-	//if (x1 < x2 + l2 && x1 + l1 > x2)
-	//{
-	//	if (y1 > y2 - h2 && y1 - h1 < y2)
-	//	{
-	//		if (z1 < z2 + b2 && z1 + b1 > z2)
-	//		{
-	//			m_isColliding = true;
-	//		}
-	//		else
-	//		{
-	//			//m_isColliding = false;
-	//		}
-	//	}
-	//	else
-	//	{
-	//		m_isColliding = false;
-	//	}
-	//}
-	//else
-	//{
-	//	m_isColliding = false;
-	//}
 
 	
 		/*for (int i = 0; i < compare_tree->m_children.size(); i++)
@@ -351,30 +182,122 @@ bool SceneNode::CheckCollision(SceneNode* compare_tree, SceneNode* object_tree_r
 
 }
 
+//bool SceneNode::CheckActionCollision(SceneNode* compare_tree)
+//{
+//	return CheckActionCollision(compare_tree, this);
+//}
+
+bool SceneNode::CheckActionCollision(SceneNode* compare_tree)
+{
+	if (this == compare_tree)
+	{
+		return false;
+	}
+
+	CalculateCollisionDetails(compare_tree);
+
+	if (main_dist - 1.0 < sum_radius /** sum_radius*/)
+	{
+		m_isInteracting = true;
+	}
+	else
+	{
+		m_isInteracting = false;
+	}
+
+	/*for (int i = 0; i < compare_tree->m_children.size(); i++)
+	{
+	if (CheckCollision(compare_tree->m_children[i], object_tree_root));
+	}
+
+	for (int i = 0; i < m_children.size(); i++)
+	{
+	if (m_children[i]->CheckCollision(compare_tree, object_tree_root));
+	}*/
+
+
+}
+
+void SceneNode::CalculateCollisionDetails(SceneNode* compare_tree)
+{
+	XMVECTOR v1 = GetWorldCentrePos();
+	XMVECTOR v2 = compare_tree->GetWorldCentrePos();
+
+	if (m_p_asset)
+	{
+		CalculateDimensions1(v1, m_p_asset);
+
+	}
+
+	else if (m_e_asset)
+	{
+		CalculateDimensions1(v1, m_e_asset);
+	}
+	else if (m_w_asset)
+	{
+		CalculateDimensions1(v1, m_w_asset);
+	}
+	else if (m_s_asset)
+	{
+		CalculateDimensions1(v1, m_s_asset);
+	}
+	else if (m_d_asset)
+	{
+		CalculateDimensions1(v1, m_d_asset);
+	}
+
+
+	if (compare_tree->m_p_asset)
+	{
+		CalculateDimensions2(v2, compare_tree->m_p_asset);
+	}
+
+	else if (compare_tree->m_e_asset)
+	{
+		CalculateDimensions2(v2, compare_tree->m_e_asset);
+
+	}
+	else if (compare_tree->m_w_asset)
+	{
+		CalculateDimensions2(v2, compare_tree->m_w_asset);
+	}
+	else if (compare_tree->m_s_asset)
+	{
+		CalculateDimensions2(v2, compare_tree->m_s_asset);
+	}
+	else if (compare_tree->m_d_asset)
+	{
+		CalculateDimensions2(v2, compare_tree->m_d_asset);
+	}
+
+
+	dist_x = x2 - x1;
+	dist_y = y2 - y1;
+	dist_z = z2 - z1;
+
+	main_dist = sqrt((dist_x * dist_x) + (dist_y * dist_y) + (dist_z * dist_z));
+
+	sum_radius = r1 + r2;
+
+	
+}
+
 void SceneNode::CalculateDimensions1(XMVECTOR v, Asset* obj)
 {
-	x1 = XMVectorGetX(v) /*- (obj->box->GetLength(obj->GetXScale())  / 2)*/;
-	y1 = XMVectorGetY(v)/* + (obj->box->GetHeight(obj->GetYScale())  / 2)*/;
-	z1 = XMVectorGetZ(v) /*- (obj->box->GetBreadth(obj->GetZScale()) / 2)*/;
+	x1 = XMVectorGetX(v);
+	y1 = XMVectorGetY(v);
+	z1 = XMVectorGetZ(v);
 
 	r1 = obj->box->GetColliderRadius();
-
-	/*l1 = obj->box->GetLength(obj->GetXScale());
-	h1 = obj->box->GetHeight(obj->GetYScale());
-	b1 = obj->box->GetBreadth(obj->GetZScale());*/
 }
 
 void SceneNode::CalculateDimensions2(XMVECTOR v, Asset* obj)
 {
-	x2 = XMVectorGetX(v)/* - (obj->box->GetLength(obj->GetXScale()) / 2)*/;
-	y2 = XMVectorGetY(v)/* + (obj->box->GetHeight(obj->GetYScale()) / 2)*/;
-	z2 = XMVectorGetZ(v)/* - (obj->box->GetBreadth(obj->GetZScale()) / 2)*/;
+	x2 = XMVectorGetX(v);
+	y2 = XMVectorGetY(v);
+	z2 = XMVectorGetZ(v);
 
 	r2 = obj->box->GetColliderRadius();
-
-	/*l2 = obj->box->GetLength(obj->GetXScale());
-	h2 = obj->box->GetHeight(obj->GetYScale());
-	b2 = obj->box->GetBreadth(obj->GetZScale());*/
 
 }
 
@@ -445,6 +368,16 @@ bool SceneNode::IsColliding()
 	return m_isColliding;
 }
 
+void SceneNode::SetInteractState(bool state)
+{
+	m_isInteracting = state;
+}
+
+bool SceneNode::IsInteracting()
+{
+	return m_isInteracting;
+}
+
 int SceneNode::GetChildrenSize()
 {
 	return m_children.size();
@@ -471,7 +404,16 @@ SceneNode* SceneNode::GetEquippedWeaponNode()
 	}
 }
 
-
+SceneNode* SceneNode::GetPushingCrate()
+{
+	for (int i = 0; i < m_children.size(); i++)
+	{
+		if (m_children[i]->m_d_asset->GetPushState() == true)
+		{
+			return m_children[i];
+		}
+	}
+}
 
 float SceneNode::GetXPos()
 {
@@ -522,4 +464,3 @@ float SceneNode::GetZScale()
 {
 	return m_scale_z;
 }
-
