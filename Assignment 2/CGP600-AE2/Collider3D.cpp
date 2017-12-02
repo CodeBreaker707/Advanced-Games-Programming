@@ -6,9 +6,9 @@ Collider3D::Collider3D()
 	m_y = 0;
 	m_z = 0;
 
-	/*m_length = 0;
+	m_length  = 0;
 	m_breadth = 0;
-	m_height = 0;*/
+	m_height  = 0;
 
 }
 
@@ -61,6 +61,41 @@ void Collider3D::CalculateColliderCentre(ObjFileModel* model)
 	m_y = min_y + ((max_y - min_y) / 2);
 	m_z = min_z + ((max_z - min_z) / 2);
 
+}
+
+void Collider3D::CalculateDimensions(ObjFileModel* model)
+{
+	float dist_x = 0.0f;
+	float dist_y = 0.0f;
+	float dist_z = 0.0f;
+
+
+	for (int i = 0; i < model->numverts; i++)
+	{
+		if (model->vertices[i].Pos.x - m_x > dist_x)
+		{
+			dist_x = model->vertices[i].Pos.x - m_x;
+		}
+
+		if (model->vertices[i].Pos.y - m_y > dist_y)
+		{
+			dist_y = model->vertices[i].Pos.y - m_y;
+		}
+
+		if (model->vertices[i].Pos.z - m_z > dist_z)
+		{
+		dist_z = model->vertices[i].Pos.z - m_z;
+		}
+
+	}		
+
+	// Length  represents the dimension in x-axis
+	// Height  represents the dimension in y-axis
+	// Breadth represents the dimension in z-axis
+
+	m_length = dist_x * 2;
+	m_height = dist_y * 2;
+	m_breadth = dist_z * 2;
 }
 
 void Collider3D::CalculateRadius(ObjFileModel* model)
@@ -119,20 +154,20 @@ XMVECTOR Collider3D::GetColliderPos()
 
 }
 
-//float Collider3D::GetLength(float x_scale)
-//{
-//	return m_length * x_scale;
-//}
-//
-//float Collider3D::GetHeight(float y_scale)
-//{
-//	return m_height * y_scale;
-//}
-//
-//float Collider3D::GetBreadth(float z_scale)
-//{
-//	return m_breadth * z_scale;
-//}
+float Collider3D::GetLength(float x_scale)
+{
+	return m_length * x_scale;
+}
+
+float Collider3D::GetHeight(float y_scale)
+{
+	return m_height * y_scale;
+}
+
+float Collider3D::GetBreadth(float z_scale)
+{
+	return m_breadth * z_scale;
+}
 
 float Collider3D::GetColliderRadius()
 {

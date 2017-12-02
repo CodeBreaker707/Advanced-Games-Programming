@@ -13,6 +13,8 @@ private:
 
 	bool m_isJumping;
 	bool m_onGround;
+	bool m_carryingWeapon;
+	bool m_isPushing;
 
 	float m_gravity_speed;
 	float m_jump_height;
@@ -20,7 +22,7 @@ private:
 
 public:
 
-	Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext);
+	Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_scale, float y_scale, float z_scale);
 	~Player();
 
 	void JumpPlayer();
@@ -41,6 +43,12 @@ public:
 
 	void SetJumpState(bool state);
 	bool GetJumpState();
+
+	void SetWeaponCarryingState(bool state);
+	bool GetWeaponCarryingState();
+
+	void SetPushState(bool state);
+	bool GetPushState();
 
 	void SetPlayerMoveSpeed(float speed);
 	void SetSpeedMultiplier(float amount);

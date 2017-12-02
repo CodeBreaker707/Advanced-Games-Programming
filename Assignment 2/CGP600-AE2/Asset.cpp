@@ -13,7 +13,7 @@ Asset::Asset()
 	
 }
 
-void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext)
+void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_scale, float y_scale, float z_scale)
 {
 	m_pD3DDevice = D3DDevice;
 	m_pImmediateContext = ImmediateContext;
@@ -30,9 +30,9 @@ void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* Immedi
 	m_zangle = 0.0f;
 	m_yangle = 0.0f;
 
-	/*m_scale_x = x_scale;
+	m_scale_x = x_scale;
 	m_scale_y = y_scale;
-	m_scale_z = z_scale;*/
+	m_scale_z = z_scale;
 
 	box = new Collider3D();
 }
@@ -140,6 +140,7 @@ int Asset::LoadObjModel(char* fileName, char* textureFile)
 	m_pD3DDevice->CreateSamplerState(&sampler_desc, &m_pSampler0);
 
 	box->CalculateColliderCentre(m_pObject);
+	box->CalculateDimensions(m_pObject);
 	box->CalculateRadius(m_pObject);
 
 }

@@ -38,7 +38,7 @@ public:
 	Asset();
 	~Asset();
 
-	void InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext);
+	void InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_scale, float y_scale, float z_scale);
 
 	int LoadObjModel(char* fileName, char* textureFile);
 

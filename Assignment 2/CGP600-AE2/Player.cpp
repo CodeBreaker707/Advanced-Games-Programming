@@ -1,17 +1,19 @@
 #include "Player.h"
 
-Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext)
+Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_scale, float y_scale, float z_scale)
 {
-	InitialiseAsset(D3DDevice, ImmediateContext);
+	InitialiseAsset(D3DDevice, ImmediateContext, x_scale, y_scale, z_scale);
 
 	LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 
 	m_isJumping = false;
 	m_onGround = false;
+	m_carryingWeapon = false;
+	m_isPushing = false;
 
 	m_move_speed = 0.001f;
 	m_speed_multiplier = 1.0f;
-	m_jump_speed = 0.0015f;
+	m_jump_speed = 0.0010f;
 	m_gravity_speed = 0.0015f;
 	m_jump_height = 4.5f;
 
@@ -170,6 +172,11 @@ void Player::SetJumpState(bool state)
 	m_isJumping = state;
 }
 
+void Player::SetWeaponCarryingState(bool state)
+{
+	m_carryingWeapon = state;
+}
+
 void Player::SetPlayerMoveSpeed(float speed)
 {
 	m_move_speed = speed;
@@ -185,6 +192,16 @@ void Player::SetSpeedMultiplier(float amount)
 	m_speed_multiplier = amount;
 }
 
+void Player::SetPushState(bool state)
+{
+	m_isPushing = state;
+}
+
+bool Player::GetPushState()
+{
+	return m_isPushing;
+}
+
 bool Player::GetOnGroundState()
 {
 	return m_onGround;
@@ -193,6 +210,11 @@ bool Player::GetOnGroundState()
 bool Player::GetJumpState()
 {
 	return m_isJumping;
+}
+
+bool Player::GetWeaponCarryingState()
+{
+	return m_carryingWeapon;
 }
 
 float Player::GetPlayerMoveSpeed()

@@ -47,12 +47,12 @@ void Game::MainUpdate()
 		}
 		if (key->IsKeyPressed(key->mve_lft))
 		{
-			//player->MoveAsset(-player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+			//m_player_node->MoveAsset(-0.001, 0.0f, 0.0f);
 			//player->StrafePlayer(-player->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
-				//perspective->Move(-player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+				//perspective->Move(-m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f, 0.0f);
 			}
 		}
 		if (key->IsKeyPressed(key->mve_bck))
@@ -68,12 +68,12 @@ void Game::MainUpdate()
 		}
 		if (key->IsKeyPressed(key->mve_rght))
 		{
-			//player->MoveAsset(player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+			//m_player_node->MoveAsset(0.001, 0.0f, 0.0f);
 			//player->StrafePlayer(player->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
-				//perspective->Move(player->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+				//perspective->Move(m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f, 0.0f);
 			}
 		}
 		if (key->IsKeyPressed(key->jump) && m_player_node->m_p_asset->GetOnGroundState() == true)
@@ -97,12 +97,12 @@ void Game::MainUpdate()
 			}
 		}
 
-		/*for (int i = 0; i < objs.size(); i++)
+		for (int i = 0; i < objs.size(); i++)
 		{
 			objs[i]->CheckCollision(m_player_node);
-		}*/
+		}
 
-		if (m_player_node->GetChildrenSize() != 0)
+		if (m_player_node->GetChildrenSize() != 0 && m_player_node->m_p_asset->GetWeaponCarryingState() == true)
 		{
 
 			if (key->IsKeyPressed(DIK_G))
@@ -110,9 +110,15 @@ void Game::MainUpdate()
 				m_spear_nodes.push_back(m_player_node->GetEquippedWeaponNode());
 				m_root_node->AddChildNode(m_player_node->GetEquippedWeaponNode());
 
-				m_player_node->GetEquippedWeaponNode()->SetXPos(m_player_node->GetXPos());
+				m_player_node->GetEquippedWeaponNode()->SetXPos(m_player_node->GetXPos() + sin(m_player_node->GetYAngle()) * 3.0);
 				m_player_node->GetEquippedWeaponNode()->SetYPos(m_player_node->GetYPos() - 0.5);
-				m_player_node->GetEquippedWeaponNode()->SetZPos(m_player_node->GetZPos());
+				m_player_node->GetEquippedWeaponNode()->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) * 3.0);
+
+				m_player_node->m_p_asset->SetWeaponCarryingState(false);
+
+				objs.push_back(m_player_node->GetEquippedWeaponNode());
+
+				m_player_node->GetEquippedWeaponNode()->UpdateCollisionTree(&XMMatrixIdentity());
 
 				m_player_node->DetachNode(m_player_node->GetEquippedWeaponNode());
 			}
@@ -160,7 +166,7 @@ void Game::MainUpdate()
 
 				for (int i = 0; i < m_enemy_nodes.size(); i++)
 				{
-					//m_enemy_nodes[i]->CheckCollision(m_player_node->GetEquippedWeaponNode());
+					m_enemy_nodes[i]->CheckCollision(m_player_node);
 					m_enemy_nodes[i]->CheckActionCollision(m_player_node->GetEquippedWeaponNode());
 
 
@@ -199,6 +205,22 @@ void Game::MainUpdate()
 
 		//m_player_node->CheckCollision(m_root_node);
 
+		if (m_player_node->m_p_asset->GetJumpState() == false && m_player_node->m_p_asset->GetOnGroundState() == false)
+		{
+			m_player_node->MoveAsset(0.0f, -m_player_node->m_p_asset->GetJumpSpeed(), 0.0f);
+		}
+
+
+		if (m_player_node->m_p_asset->GetJumpState() == true && perspective->GetCollidingState() == false)
+		{
+			perspective->Move(0.0f, 0.0010f, 0.0f);
+		}
+
+		if (m_player_node->m_p_asset->GetOnGroundState() == false && m_player_node->m_p_asset->GetJumpState() == false && perspective->GetCollidingState() == false)
+		{
+			perspective->Move(0.0f, -0.0010f, 0.0f);
+		}
+
 		
 			for (int i = 0; i < m_spear_nodes.size(); i++)
 			{
@@ -215,6 +237,7 @@ void Game::MainUpdate()
 					m_root_node->DetachNode(m_spear_nodes[i]);
 
 					m_spear_nodes[i]->m_w_asset->SetWeaponEquipState(true);
+					m_player_node->m_p_asset->SetWeaponCarryingState(true);
 					m_player_node->AddChildNode(m_spear_nodes[i]);
 
 					for (int j = 0; j < objs.size(); j++)
@@ -231,54 +254,69 @@ void Game::MainUpdate()
 
 			}
 
-			//for (int i = 0; i < m_dynamic_nodes.size(); i++)
-			//{
-			//	m_dynamic_nodes[i]->CheckCollision(m_player_node);
-
-			//	if (m_dynamic_nodes[i]->CheckActionCollision(m_player_node) && key->IsKeyPressed(DIK_F))
-			//	{
-			//		m_dynamic_nodes[i]->SetXPos(m_player_node->GetXPos());
-			//		m_dynamic_nodes[i]->SetYPos(m_player_node->GetYPos() - 0.5f);
-			//		m_dynamic_nodes[i]->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) + 2.0f);
-			//		/*m_dynamic_nodes[i]->SetXPos(0.0f);
-			//		m_dynamic_nodes[i]->SetYPos(-0.5f);
-			//		m_dynamic_nodes[i]->SetZPos(2.0f);
-
-
-			//		m_root_node->DetachNode(m_dynamic_nodes[i]);
-
-			//		m_dynamic_nodes[i]->m_d_asset->SetPushState(true);
-			//		m_player_node->AddChildNode(m_dynamic_nodes[i]);
-
-			//		for (int j = 0; j < objs.size(); j++)
-			//		{
-			//			if (m_dynamic_nodes[i] == objs[j])
-			//			{
-			//				objs.erase(objs.begin() + j);
-			//			}
-			//		}
-
-			//		m_dynamic_nodes.erase(m_dynamic_nodes.begin() + i);*/
-
-			//	}
-			//	
-
-			//}
-		
-			/*if (m_player_node->GetChildrenSize() != 0 && !key->IsKeyPressed(DIK_F))
+			for (int i = 0; i < m_dynamic_nodes.size(); i++)
 			{
+				if (m_player_node->m_p_asset->GetPushState() == false)
+				{
+					m_dynamic_nodes[i]->CheckCollision(m_player_node);
+				}
 
-				m_dynamic_nodes.push_back(m_player_node->GetPushingCrate());
-				m_root_node->AddChildNode(m_player_node->GetPushingCrate());
+				m_dynamic_nodes[i]->CheckActionCollision(m_player_node);
 
-				m_player_node->GetPushingCrate()->SetXPos(m_player_node->GetXPos());
-				m_player_node->GetPushingCrate()->SetYPos(m_player_node->GetYPos() - 0.5);
-				m_player_node->GetPushingCrate()->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) * 3.0);
+				if (m_dynamic_nodes[i]->IsInteracting() && key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == false)
+				{
+					/*m_dynamic_nodes[i]->SetXPos(m_player_node->GetXPos());
+					m_dynamic_nodes[i]->SetYPos(m_player_node->GetYPos() - 0.5f);
+					m_dynamic_nodes[i]->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) + 2.0f);
 
-				m_player_node->GetPushingCrate()->m_d_asset->SetPushState(true);
+					m_dynamic_nodes[i]->UpdateCollisionTree(&XMMatrixIdentity());*/
 
-				m_player_node->DetachNode(m_player_node->GetPushingCrate());
-			}*/
+					m_dynamic_nodes[i]->SetXPos(0.0f);
+					m_dynamic_nodes[i]->SetYPos(-0.5f);
+					m_dynamic_nodes[i]->SetZPos(2.0f);
+
+					//m_dynamic_nodes[i]->SetYAngle(m_player_node->GetYAngle());
+
+					m_root_node->DetachNode(m_dynamic_nodes[i]);
+
+					m_player_node->m_p_asset->SetPushState(true);
+
+					m_player_node->AddChildNode(m_dynamic_nodes[i]);
+
+					for (int j = 0; j < objs.size(); j++)
+					{
+						if (m_dynamic_nodes[i] == objs[j])
+						{
+							objs.erase(objs.begin() + j);
+						}
+					}
+
+					m_dynamic_nodes.erase(m_dynamic_nodes.begin() + i);
+
+				}
+				
+
+			}
+		
+			if (m_player_node->GetChildrenSize() != 0 && !key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == true)
+			{
+				
+					m_dynamic_nodes.push_back(m_player_node->GetPushingCrate());
+					m_root_node->AddChildNode(m_player_node->GetPushingCrate());
+
+					m_player_node->GetPushingCrate()->SetXPos(m_player_node->GetXPos() + sin(m_player_node->GetYAngle()) * 3.0);
+					m_player_node->GetPushingCrate()->SetYPos(m_player_node->GetYPos() - 0.5);
+					m_player_node->GetPushingCrate()->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) * 3.0);
+
+					m_player_node->GetPushingCrate()->SetYAngle(m_player_node->GetYAngle());
+
+					m_player_node->m_p_asset->SetPushState(false);
+
+					objs.push_back(m_player_node->GetPushingCrate());
+
+					m_player_node->DetachNode(m_player_node->GetPushingCrate());
+				
+			}
 
 			// Stopping the player at collision
 			for (int i = 0; i < objs.size(); i++)
@@ -310,9 +348,9 @@ void Game::MainUpdate()
 
 		 //Check if the player is colliding with anything below		
 
-		/*for (int i = 0; i < objs.size(); i++)
+		for (int i = 0; i < objs.size(); i++)
 		{
-			if (m_player_node->CheckActionCollision(objs[i]) == true)
+			if (m_player_node->CheckNodeBottomCollision(objs[i]) == true)
 			{
 				m_player_node->m_p_asset->SetOnGroundState(true);
 				break;
@@ -322,25 +360,11 @@ void Game::MainUpdate()
 				m_player_node->m_p_asset->SetOnGroundState(false);
 			}
 
-		}*/
+		}
 	
 		//m_player_node->m_p_asset->PullDown();
 
-		if (m_player_node->m_p_asset->GetJumpState() == false && m_player_node->m_p_asset->GetOnGroundState() == false)
-		{
-			//m_player_node->MoveAsset(0.0f, -m_player_node->m_p_asset->GetJumpSpeed(), 0.0f);
-		}
-
-
-		if (m_player_node->m_p_asset->GetJumpState() == true && perspective->GetCollidingState() == false)
-		{
-			//perspective->Move(0.0f, 0.0015f, 0.0f);
-		}
-
-		if (m_player_node->m_p_asset->GetOnGroundState() == false && m_player_node->m_p_asset->GetJumpState() == false && perspective->GetCollidingState() == false)
-		{
-			//perspective->Move(0.0f, -0.0015f, 0.0f);
-		}
+		
 
 	// Mouse Controls
 	

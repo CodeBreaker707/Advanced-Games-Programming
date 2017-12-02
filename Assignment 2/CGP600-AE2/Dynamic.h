@@ -10,10 +10,10 @@ private:
 
 public:
 
-	Dynamic(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext);
+	Dynamic(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_scale, float y_scale, float z_scale);
 	~Dynamic();
 
-	void SetPushState(bool state);
-	bool GetPushState();
+	//void SetPushState(bool state);
+	//bool GetPushState();
 
 };

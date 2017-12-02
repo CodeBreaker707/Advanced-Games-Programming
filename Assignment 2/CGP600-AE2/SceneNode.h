@@ -25,10 +25,10 @@ private:
 	float m_scale_x, m_scale_y, m_scale_z;
 
 	float x1, y1, z1, r1;
-	//float l1, h1, b1;
+	float l1, h1, b1;
 
 	float x2, y2, z2, r2;
-	//float l2, h2, b2;
+	float l2, h2, b2;
 
 	float dist_x;
 	float dist_y;
@@ -67,16 +67,23 @@ public:
 
 	bool CheckActionCollision(SceneNode* compare_tree);
 
-	void CalculateCollisionDetails(SceneNode* compare_tree);
+	void CalculateSphereCollisionDetails(SceneNode* compare_tree);
+	void CalculateBoxCollisionDetails(SceneNode* compare_tree);
 
-	void CalculateDimensions1(XMVECTOR v, Asset* obj);
-	void CalculateDimensions2(XMVECTOR v, Asset* obj);
+	bool CheckNodeBottomCollision(SceneNode* compare_tree);
+
+	void CalculateBoxDimensions1(XMVECTOR v, Asset* obj);
+	void CalculateSphereDimensions1(XMVECTOR v, Asset* obj);
+	void CalculateBoxDimensions2(XMVECTOR v, Asset* obj);
+	void CalculateSphereDimensions2(XMVECTOR v, Asset* obj);
 
 	XMVECTOR GetWorldCentrePos();
 
 	void SetXPos(float x);
 	void SetYPos(float y);
 	void SetZPos(float z);
+
+	void SetYAngle(float angle);
 
 	void SetCurZPos();
 	float GetCurZPos();
