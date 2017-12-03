@@ -9,7 +9,8 @@ Input::Input(HINSTANCE hInst, HWND hWnd)
 	mve_bck = DIK_S;
 	mve_rght = DIK_D;
 	jump = DIK_SPACE;
-	interact = DIK_E;
+	pick_up = DIK_E;
+	interact = DIK_F;
 	attack = m_mouse_state.rgbButtons[0];
 
 }

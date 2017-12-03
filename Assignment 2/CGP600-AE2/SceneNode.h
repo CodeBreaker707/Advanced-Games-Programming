@@ -5,6 +5,7 @@
 
 #include <d3d11.h>
 #include <xnamath.h>
+#include <time.h>
 
 #include "Player.h"
 #include "Enemy.h"
@@ -34,6 +35,13 @@ private:
 	float dist_y;
 	float dist_z;
 
+	float lookAt_dist_x;
+	float lookAt_dist_z;
+
+	int spotNum;
+
+	XMVECTOR moveSpots[4];
+
 	float main_dist;
 
 	float sum_radius;
@@ -44,6 +52,9 @@ private:
 
 	bool m_isColliding;
 	bool m_isInteracting;
+
+	bool m_inRange;
+	bool m_haltMovement;
 
 public:
 
@@ -77,13 +88,17 @@ public:
 	void CalculateBoxDimensions2(XMVECTOR v, Asset* obj);
 	void CalculateSphereDimensions2(XMVECTOR v, Asset* obj);
 
-	XMVECTOR GetWorldCentrePos();
+	XMVECTOR GetWorldColliderCentrePos();
+	XMVECTOR GetWorldPos();
 
 	void SetXPos(float x);
 	void SetYPos(float y);
 	void SetZPos(float z);
 
 	void SetYAngle(float angle);
+
+	void LookAt();
+	void CheckInRange(XMVECTOR other_pos);
 
 	void SetCurZPos();
 	float GetCurZPos();
@@ -111,6 +126,9 @@ public:
 
 	void SetInteractState(bool state);
 	bool IsInteracting();
+
+	void SetHaltState(bool state);
+	bool isHalted();
 
 	int GetChildrenSize();
 	vector<SceneNode*> GetChildren();

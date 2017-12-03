@@ -1,5 +1,7 @@
 #include "SceneNode.h"
 
+
+
 SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale)
 {
 	if (c == 'P')
@@ -22,6 +24,8 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 	{
 		m_d_asset = new Dynamic(D3DDevice, ImmediateContext, x_scale,  y_scale, z_scale);
 	}
+
+	srand(time(NULL));
 	
 		m_x = x_pos;
 		m_y = y_pos;
@@ -39,8 +43,28 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 		m_collider_centre_y = y_pos;
 		m_collider_centre_z = z_pos;
 
+		lookAt_dist_x = 0.0f;
+		lookAt_dist_z = 0.0f;
+
+		moveSpots[0] = XMVectorSet(m_x        , m_y, m_z + 20.0, 0.0f);
+		moveSpots[1] = XMVectorSet(m_x + 20.0f, m_y, m_z, 0.0f);
+		moveSpots[2] = XMVectorSet(m_x        , m_y, m_z - 20.0, 0.0f);
+		moveSpots[3] = XMVectorSet(m_x - 20.0f, m_y, m_z, 0.0f);
+
+		/*moveSpots[0].x =  m_x + 10.0;
+		moveSpots[0].y = m_y;
+		moveSpots[0].z = m_z;*/
+
+		//moveSpots[1] = { m_x + 10.0 , m_y , m_z };
+		//moveSpots[2] = { m_x , m_y , m_z - 10.0 };
+		//moveSpots[3] = { m_x - 10.0 , m_y , m_z };
+
+		spotNum = rand() % 4;
+
 		m_isColliding = false;
 		m_isInteracting = false;
+		m_inRange = false;
+		m_haltMovement = false;
 	
 
 }
@@ -80,7 +104,7 @@ void SceneNode::Execute(XMMATRIX *world, XMMATRIX* view, XMMATRIX* projection)
 	local_world *= *world;
 	
 	if (m_p_asset) m_p_asset->Draw(&local_world, view, projection);
-	if (m_e_asset && m_e_asset->GetEnemyHealth() > 0) m_e_asset->Draw(&local_world, view, projection);
+	if (m_e_asset) m_e_asset->Draw(&local_world, view, projection);
 	if (m_w_asset) m_w_asset->Draw(&local_world, view, projection);
 	if (m_s_asset) m_s_asset->Draw(&local_world, view, projection);
 	if (m_d_asset) m_d_asset->Draw(&local_world, view, projection);
@@ -279,8 +303,8 @@ bool SceneNode::CheckNodeBottomCollision(SceneNode* compare_tree)
 
 void SceneNode::CalculateBoxCollisionDetails(SceneNode* compare_tree)
 {
-	XMVECTOR v1 = GetWorldCentrePos();
-	XMVECTOR v2 = compare_tree->GetWorldCentrePos();
+	XMVECTOR v1 = GetWorldColliderCentrePos();
+	XMVECTOR v2 = compare_tree->GetWorldColliderCentrePos();
 
 	if (m_p_asset)
 	{
@@ -342,8 +366,8 @@ void SceneNode::CalculateBoxCollisionDetails(SceneNode* compare_tree)
 
 void SceneNode::CalculateSphereCollisionDetails(SceneNode* compare_tree)
 {
-	XMVECTOR v1 = GetWorldCentrePos();
-	XMVECTOR v2 = compare_tree->GetWorldCentrePos();
+	XMVECTOR v1 = GetWorldColliderCentrePos();
+	XMVECTOR v2 = compare_tree->GetWorldColliderCentrePos();
 
 	if (m_p_asset)
 	{
@@ -446,9 +470,75 @@ void SceneNode::CalculateSphereDimensions2(XMVECTOR v, Asset* obj)
 
 void SceneNode::MoveAsset(float x_dist, float y_dist, float z_dist)
 {
-	m_x += x_dist;
-	m_y += y_dist;
-	m_z += z_dist;
+	if (m_haltMovement == false)
+	{
+		m_x += x_dist;
+		m_y += y_dist;
+		m_z += z_dist;
+	}
+	
+}
+
+void SceneNode::LookAt()
+{
+	if (m_inRange == false)
+	{
+		lookAt_dist_x = m_x - XMVectorGetX(moveSpots[spotNum]);
+		lookAt_dist_z = m_z - XMVectorGetZ(moveSpots[spotNum]);
+
+		if (fabs(lookAt_dist_x) <= 0.2f && fabs(lookAt_dist_z) <= 0.2f)
+		{
+			float prevSpotNum = spotNum;
+			spotNum = rand() % 4;
+
+			if (spotNum == prevSpotNum)
+			{
+				spotNum += 1;
+
+				if (spotNum > 3)
+				{
+					spotNum = 0;
+				}
+			}
+
+
+			lookAt_dist_x = m_x - XMVectorGetX(moveSpots[spotNum]);
+			lookAt_dist_z = m_z - XMVectorGetZ(moveSpots[spotNum]);
+		}
+	}
+
+	m_yangle = -atan2(lookAt_dist_x, -lookAt_dist_z);
+
+}
+
+void SceneNode::CheckInRange(XMVECTOR other_pos)
+{
+	float dist_x = m_x - XMVectorGetX(other_pos);
+	float dist_z = m_z - XMVectorGetZ(other_pos);
+
+	if (fabs(dist_x) <= 10.0f && fabs(dist_z) <= 10.0f)
+	{
+		m_inRange = true;
+
+		if (fabs(dist_x) <= 3.0f && fabs(dist_z) <= 3.0f)
+		{
+			m_haltMovement = true;
+		}
+		else
+		{
+			m_haltMovement = false;
+		}
+		
+
+		lookAt_dist_x = dist_x;
+		lookAt_dist_z = dist_z;
+	}
+	else
+	{
+		m_inRange = false;
+	}
+
+
 }
 
 void SceneNode::RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degrees)
@@ -525,6 +615,16 @@ bool SceneNode::IsInteracting()
 	return m_isInteracting;
 }
 
+void SceneNode::SetHaltState(bool state)
+{
+	m_haltMovement = state;
+}
+
+bool SceneNode::isHalted()
+{
+	return m_haltMovement;
+}
+
 int SceneNode::GetChildrenSize()
 {
 	return m_children.size();
@@ -535,9 +635,14 @@ vector<SceneNode*> SceneNode::GetChildren()
 	return m_children;
 }
 
-XMVECTOR SceneNode::GetWorldCentrePos()
+XMVECTOR SceneNode::GetWorldColliderCentrePos()
 {
 	return XMVectorSet(m_collider_centre_x, m_collider_centre_y, m_collider_centre_z, 0.0f);
+}
+
+XMVECTOR SceneNode::GetWorldPos()
+{
+	return XMVectorSet(m_x, m_y, m_z, 0.0f);
 }
 
 SceneNode* SceneNode::GetEquippedWeaponNode()
