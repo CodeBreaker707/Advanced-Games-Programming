@@ -1,6 +1,7 @@
 #include "Renderer.h"
 
 HWND hWnd;
+float rgba_clear_colour[4] = { 0.0f, 0.74f, 1.0f, 1.0f };
 
 Renderer::Renderer(HINSTANCE hInstance, int nCmdShow)
 {
@@ -14,10 +15,11 @@ Renderer::Renderer(HINSTANCE hInstance, int nCmdShow)
 		DXTRACE_MSG("Failed to create Device");
 	}
 
-	rgba_clear_colour[0] = 0.0f;
-	rgba_clear_colour[1] = 0.74f;
-	rgba_clear_colour[2] = 1.0f;
-	rgba_clear_colour[3] = 1.0f;
+	//rgba_clear_colour[0] = 0.0f;
+	//rgba_clear_colour[1] = 0.74f;
+	//rgba_clear_colour[2] = 1.0f;
+	//rgba_clear_colour[3] = 1.0f;
+
 }
 
 Renderer::~Renderer()
@@ -25,6 +27,8 @@ Renderer::~Renderer()
 	if (m_pBackBufferRTView) m_pBackBufferRTView->Release();
 	if (m_pZBuffer) m_pZBuffer->Release();
 	if (m_pSwapChain) m_pSwapChain->Release();
+	if (m_pAlphaBlendEnable) m_pAlphaBlendEnable->Release();
+	if (m_pAlphaBlendDisable) m_pAlphaBlendDisable->Release();
 	if (m_pImmediateContext) m_pImmediateContext->Release();
 	if (m_pD3DDevice) m_pD3DDevice->Release();
 }
@@ -207,8 +211,22 @@ HRESULT Renderer::InitialiseD3D()
 
 	m_pImmediateContext->RSSetViewports(1, &viewport);
 
+	D3D11_BLEND_DESC b;
+	b.RenderTarget[0].BlendEnable = TRUE;
+	b.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+	b.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+	b.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+	b.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	b.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+	b.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+	b.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	b.IndependentBlendEnable = FALSE;
+	b.AlphaToCoverageEnable = FALSE;
+
+	m_pD3DDevice->CreateBlendState(&b, &m_pAlphaBlendEnable);
 
 	return S_OK;
+
 }
 
 HWND Renderer::GetWindow()
@@ -228,6 +246,18 @@ void Renderer::ClearBuffers()
 
 	// Select which primitive type to use // 03-01
 	m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+}
+
+void Renderer::SetBlendState(bool state)
+{
+	if (state == false)
+	{
+		m_pImmediateContext->OMSetBlendState(m_pAlphaBlendDisable, 0, 0xffffffff);
+	}
+	else if (state == true)
+	{
+		m_pImmediateContext->OMSetBlendState(m_pAlphaBlendEnable, 0, 0xffffffff);
+	}
 }
 
 void Renderer::Display()

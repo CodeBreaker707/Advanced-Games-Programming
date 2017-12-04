@@ -13,6 +13,7 @@
 #include "Weapon.h"
 #include "Dynamic.h"
 #include "SceneNode.h"
+#include "UI.h"
 
 
 class Game
@@ -38,9 +39,7 @@ private:
 	vector <SceneNode*> m_statik_nodes;
 	vector <SceneNode*> m_dynamic_nodes;
 
-	//Statik* ground;
-
-	//vector<Statik*> trees;
+	UI* hud;
 
 	vector<SceneNode*> objs;
 

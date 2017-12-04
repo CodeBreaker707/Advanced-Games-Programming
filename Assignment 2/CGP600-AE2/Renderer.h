@@ -20,6 +20,8 @@ private:
 	IDXGISwapChain*         m_pSwapChain = NULL;
 	ID3D11RenderTargetView* m_pBackBufferRTView = NULL;
 	ID3D11DepthStencilView* m_pZBuffer;
+	ID3D11BlendState* m_pAlphaBlendEnable; // 14
+	ID3D11BlendState* m_pAlphaBlendDisable; // 14
 
 	float m_win_width = 1280.0f;
 	float m_win_height = 768.0f;
@@ -28,7 +30,7 @@ private:
 	char g_CGP600_Assignment_2[100] = "CGP600 Assignment 2\0";
 
 	//float rgba_clear_colour[4] = { 1.0f, 0.74f, 1.0f, 1.0f };
-	float rgba_clear_colour[4];
+	//float rgba_clear_colour[4];
 
 public:
 
@@ -43,6 +45,8 @@ public:
 
 	void ClearBuffers();
 	void Display();
+
+	void SetBlendState(bool state);
 
 	void ShutdownD3D();
 

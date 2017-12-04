@@ -377,8 +377,7 @@ HRESULT InitialiseD3D()
 
 	g_pImmediateContext->RSSetViewports(1, &viewport);
 
-	g_2DText0 = new Text2D("Assets/font1.bmp", g_pD3DDevice, g_pImmediateContext);
-	g_2DText1 = new Text2D("Assets/font3.png", g_pD3DDevice, g_pImmediateContext);
+
 
 	D3D11_BLEND_DESC b;
 	b.RenderTarget[0].BlendEnable = TRUE;
@@ -393,6 +392,9 @@ HRESULT InitialiseD3D()
 	b.AlphaToCoverageEnable = FALSE;
 
 	g_pD3DDevice->CreateBlendState(&b, &g_pAlphaBlendEnable);
+
+	g_2DText0 = new Text2D("Assets/font1.bmp", g_pD3DDevice, g_pImmediateContext);
+	g_2DText1 = new Text2D("Assets/font3.png", g_pD3DDevice, g_pImmediateContext);
 
 	return S_OK;
 }
@@ -690,10 +692,12 @@ void RenderFrame(void)
 
 	g_pImmediateContext->IASetInputLayout(g_pInputLayout);
 	
-	
+
 	g_pImmediateContext->Draw(36, 0);
+
 	g_2DText0->RenderText();
 	g_2DText1->RenderText();
+
 	g_pImmediateContext->OMSetBlendState(g_pAlphaBlendDisable, 0, 0xffffffff);
 	
 	// Display what has just been rendered

@@ -265,19 +265,11 @@ void Asset::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 
 		XMMATRIX transpose;
 		ASSET_CONSTANT_BUFFER asset_cb_values;
+		
+		asset_cb_values.WorldViewProjection = (*world) * (*view) * (*projection);
 
-		if (world == NULL)
-		{
-			asset_cb_values.WorldViewProjection = GetWorldMatrix() * (*view) * (*projection);
+		transpose = XMMatrixTranspose(*world);
 
-			transpose = XMMatrixTranspose(GetWorldMatrix());
-		}
-		else
-		{
-			asset_cb_values.WorldViewProjection = (*world) * (*view) * (*projection);
-
-			transpose = XMMatrixTranspose(*world);
-		}
 
 		asset_cb_values.directional_light_colour = m_directional_light_colour;
 		asset_cb_values.ambient_light_colour = m_ambient_light_colour;

@@ -6,20 +6,24 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 
 	key = new Input(hInstance, m_render_target->GetWindow());
 
+	hud = new UI("Assets/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
+
 	Initialised = false;
 	pickedUp = false;
 
 	InitialiseGameAssets();
+
 	
 
 }
 
 void Game::MainUpdate()
 {
+	m_render_target->SetBlendState(true);
+
 	m_render_target->ClearBuffers();
 
 	key->ReadInputStates();
-	//key->MouseBehaviour();
 
 	m_player_node->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
 
@@ -105,7 +109,7 @@ void Game::MainUpdate()
 		if (m_player_node->GetChildrenSize() != 0 && m_player_node->m_p_asset->GetWeaponCarryingState() == true)
 		{
 
-			if (key->IsKeyPressed(DIK_G))
+			if (key->IsKeyPressed(key->drop))
 			{
 				m_spear_nodes.push_back(m_player_node->GetEquippedWeaponNode());
 				m_root_node->AddChildNode(m_player_node->GetEquippedWeaponNode());
@@ -113,6 +117,8 @@ void Game::MainUpdate()
 				m_player_node->GetEquippedWeaponNode()->SetXPos(m_player_node->GetXPos() + sin(m_player_node->GetYAngle()) * 3.0);
 				m_player_node->GetEquippedWeaponNode()->SetYPos(m_player_node->GetYPos() - 0.5);
 				m_player_node->GetEquippedWeaponNode()->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) * 3.0);
+
+				//m_player_node->GetEquippedWeaponNode()->SetYAngle(m_player_node->GetYAngle());
 
 				m_player_node->m_p_asset->SetWeaponCarryingState(false);
 
@@ -285,6 +291,7 @@ void Game::MainUpdate()
 					m_spear_nodes[i]->SetYPos(-0.5f);
 					m_spear_nodes[i]->SetZPos(1.0f);
 
+					//m_spear_nodes[i]->SetYAngle(m_player_node->GetYAngle());
 
 					m_root_node->DetachNode(m_spear_nodes[i]);
 
@@ -429,21 +436,16 @@ void Game::MainUpdate()
 	perspective->RotateCameraX(key->m_mouse_state.lX);//}
 
 	
+	hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
 
 	// DRAW
 
 
-	/*m_player_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
-
-	for (int i = 0; i < m_enemy_nodes.size(); i++)
-	{
-		if (m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() > 0)
-		{
-			m_enemy_nodes[i]->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
-		}
-	}*/
-
 	m_root_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+
+	hud->RenderText();
+	m_render_target->SetBlendState(false);
+	
 
 	/*for (int i = 0; i < objs.size(); i++)
 	{
