@@ -12,22 +12,22 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	pickedUp = false;
 
 	InitialiseGameAssets();
-
 	
 
 }
 
 void Game::MainUpdate()
 {
-	m_render_target->SetBlendState(true);
+	//m_render_target->SetBlendState(true);
 
 	m_render_target->ClearBuffers();
 
 	key->ReadInputStates();
+	//key->MouseBehaviour();
 
 	m_player_node->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
 
-	m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
+	
 
 	
 
@@ -40,8 +40,9 @@ void Game::MainUpdate()
 	
 		if (key->IsKeyPressed(key->mve_frwd))
 		{
-			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * 0.001, 0.0f, cos(m_player_node->GetYAngle()) * 0.001);
-			m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
+			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
+				cos(m_player_node->GetYAngle()) * m_player_node->m_p_asset->GetPlayerMoveSpeed());
+			//m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
 			//m_player_node->m_p_asset->MovePlayer(m_player_node->m_p_asset->GetPlayerMoveSpeed());
 			
 			if (perspective->GetCollidingState() == false)
@@ -51,19 +52,21 @@ void Game::MainUpdate()
 		}
 		if (key->IsKeyPressed(key->mve_lft))
 		{
-			//m_player_node->MoveAsset(-0.001, 0.0f, 0.0f);
+			m_player_node->MoveAsset(sin(m_player_node->GetYAngle() + XMConvertToRadians(90)) * -m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
+				cos(m_player_node->GetYAngle() + XMConvertToRadians(90)) * -m_player_node->m_p_asset->GetPlayerMoveSpeed());
 			//player->StrafePlayer(-player->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
-				//perspective->Move(-m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+				perspective->Move(-m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f, 0.0f);
 			}
 		}
 		if (key->IsKeyPressed(key->mve_bck))
 		{
-			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * -0.001, 0.0f, cos(m_player_node->GetYAngle()) * -0.001);
-			m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
-			//m_player_node->m_p_asset->MovePlayer(-m_player_node->m_p_asset->GetPlayerMoveSpeed());
+			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * -m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
+				cos(m_player_node->GetYAngle()) * -m_player_node->m_p_asset->GetPlayerMoveSpeed());
+			//m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
+
 
 			if (perspective->GetCollidingState() == false)
 			{
@@ -72,12 +75,13 @@ void Game::MainUpdate()
 		}
 		if (key->IsKeyPressed(key->mve_rght))
 		{
-			//m_player_node->MoveAsset(0.001, 0.0f, 0.0f);
+			m_player_node->MoveAsset(sin(m_player_node->GetYAngle() + XMConvertToRadians(90)) * m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
+				cos(m_player_node->GetYAngle() + XMConvertToRadians(90)) * m_player_node->m_p_asset->GetPlayerMoveSpeed());
 			//player->StrafePlayer(player->GetPlayerMoveSpeed());
 
 			if (perspective->GetCollidingState() == false)
 			{
-				//perspective->Move(m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f, 0.0f);
+				perspective->Move(m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f, 0.0f);
 			}
 		}
 		if (key->IsKeyPressed(key->jump) && m_player_node->m_p_asset->GetOnGroundState() == true)
@@ -100,6 +104,8 @@ void Game::MainUpdate()
 				m_player_node->m_p_asset->SetJumpState(false);
 			}
 		}
+
+		m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
 
 		for (int i = 0; i < objs.size(); i++)
 		{
@@ -215,6 +221,22 @@ void Game::MainUpdate()
 		//m_player_node->CheckCollision(m_root_node);
 		for (int i = 0; i < m_enemy_nodes.size(); i++)
 		{
+
+			for (int j = 0; j < objs.size(); j++)
+			{
+				m_enemy_nodes[i]->CheckCollision(objs[j]);
+
+				if (m_enemy_nodes[i]->IsColliding())
+				{
+					m_enemy_nodes[i]->SetHaltState(false);
+					m_enemy_nodes[i]->SetInRangeState(false);
+					
+					m_enemy_nodes[i]->SetToPreviousSpot();
+					break;
+
+				}
+			}
+
 			m_enemy_nodes[i]->CheckInRange(m_player_node->GetWorldPos());
 			m_enemy_nodes[i]->LookAt();
 
@@ -260,6 +282,15 @@ void Game::MainUpdate()
 			}
 
 			m_enemy_nodes[i]->UpdateCollisionTree(&XMMatrixIdentity());
+
+			m_player_node->CheckActionCollision(m_enemy_nodes[i]->GetEquippedWeaponNode());
+
+			if (m_player_node->IsInteracting() && m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
+				m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
+			{
+				float x = 0.0f;
+				x += 1;
+			}
 		}
 		
 
@@ -363,9 +394,9 @@ void Game::MainUpdate()
 					m_dynamic_nodes.push_back(m_player_node->GetPushingCrate());
 					m_root_node->AddChildNode(m_player_node->GetPushingCrate());
 
-					m_player_node->GetPushingCrate()->SetXPos(m_player_node->GetXPos() + sin(m_player_node->GetYAngle()) * 3.0);
+					m_player_node->GetPushingCrate()->SetXPos(m_player_node->GetXPos() + sin(m_player_node->GetYAngle()) * 2.5);
 					m_player_node->GetPushingCrate()->SetYPos(m_player_node->GetYPos() - 0.5);
-					m_player_node->GetPushingCrate()->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) * 3.0);
+					m_player_node->GetPushingCrate()->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) * 2.5);
 
 					m_player_node->GetPushingCrate()->SetYAngle(m_player_node->GetYAngle());
 
@@ -382,13 +413,31 @@ void Game::MainUpdate()
 			// Stopping the player at collision
 			for (int i = 0; i < objs.size(); i++)
 			{
-				m_player_node->RestrictPos(objs[i]->IsColliding());				
+				m_player_node->RestrictPos(objs[i]->IsColliding());
+
+				/*if (m_player_node->GetChildrenSize() != 0)
+				{
+					if (m_player_node->m_p_asset->GetPushState() == true)
+					{
+						m_player_node->GetPushingCrate()->CheckActionCollision(objs[2]);
+						m_player_node->RestrictPos(m_player_node->GetPushingCrate()->IsInteracting());
+					}
+				}*/
 			}
 
 			// Storing previous positions of the player
 			for (int i = 0; i < objs.size(); i++)
 			{
 				m_player_node->UpdatePos(objs[i]->IsColliding());
+
+				/*if (m_player_node->GetChildrenSize() != 0)
+				{
+					if (m_player_node->m_p_asset->GetPushState() == true)
+					{
+						m_player_node->GetPushingCrate()->CheckActionCollision(objs[i]);
+						m_player_node->UpdatePos(m_player_node->GetPushingCrate()->IsInteracting());
+					}
+				}*/
 			}
 			
 		
@@ -437,15 +486,23 @@ void Game::MainUpdate()
 
 	
 	hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
-
 	// DRAW
 
 
-	m_root_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+	/*m_player_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
 
-	hud->RenderText();
-	m_render_target->SetBlendState(false);
+	for (int i = 0; i < m_enemy_nodes.size(); i++)
+	{
+		if (m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() > 0)
+		{
+			m_enemy_nodes[i]->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+		}
+	}*/
+
 	
+	m_root_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+	//hud->RenderText();
+	//m_render_target->SetBlendState(false);
 
 	/*for (int i = 0; i < objs.size(); i++)
 	{

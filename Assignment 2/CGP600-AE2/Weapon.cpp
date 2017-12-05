@@ -23,7 +23,7 @@ Weapon::~Weapon()
 
 void Weapon::SetCurPos()
 {
-	m_cur_z = GetZPos();
+	//m_cur_z = GetZPos();
 }
 
 float Weapon::GetCurPos()

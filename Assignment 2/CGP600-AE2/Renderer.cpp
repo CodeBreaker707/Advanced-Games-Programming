@@ -225,8 +225,10 @@ HRESULT Renderer::InitialiseD3D()
 
 	m_pD3DDevice->CreateBlendState(&b, &m_pAlphaBlendEnable);
 
-	return S_OK;
+	
 
+
+	return S_OK;
 }
 
 HWND Renderer::GetWindow()

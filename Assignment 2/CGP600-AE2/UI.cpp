@@ -21,7 +21,7 @@ UI::UI(string filename, ID3D11Device* device, ID3D11DeviceContext* context)
 
 	// Load and compile pixel and vertex shaders - use vs_5_0 to target DX11 hardware only
 	ID3DBlob *VS, *PS, *error;
-	hr = D3DX11CompileFromFile("UI_shaders.hlsl", 0, 0, "TextVS", "vs_4_0", 0, 0, 0, &VS, &error, 0);
+	hr = D3DX11CompileFromFile("UI_shaders.hlsl", 0, 0, "UIVS", "vs_4_0", 0, 0, 0, &VS, &error, 0);
 
 	if (error != 0)
 	{
@@ -30,7 +30,7 @@ UI::UI(string filename, ID3D11Device* device, ID3D11DeviceContext* context)
 		if (FAILED(hr))exit(0);
 	}
 
-	hr = D3DX11CompileFromFile("UI_shaders.hlsl", 0, 0, "TextPS", "ps_4_0", 0, 0, 0, &PS, &error, 0);
+	hr = D3DX11CompileFromFile("UI_shaders.hlsl", 0, 0, "UIPS", "ps_4_0", 0, 0, 0, &PS, &error, 0);
 
 	if (error != 0)
 	{
@@ -168,12 +168,12 @@ void UI::RenderText(void)
 			else if (c >= 'A' && c <= 'Z') // uppercase
 			{
 				texy = 1.0 / NUMLINES; //second line
-				texx = (c - 'A') *1.0 / 26.0;
+				texx = (c - 'A') * 1.0 / 26.0;
 			}
 			else if (c >= '0' && c <= '9') // numbers
 			{
 				texy = 2.0 / NUMLINES; // third line
-				texx = (c - '0') *1.0 / 26.0;
+				texx = (c - '0') * 1.0 / 26.0;
 			}
 			else if (c >= '/' && c <= ':') // add any symbol code here
 			{
@@ -207,15 +207,15 @@ void UI::RenderText(void)
 	// Copy the vertices into the buffer
 	D3D11_MAPPED_SUBRESOURCE ms;
 	pImmediateContext->Map(pVertexBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);	// Lock the buffer to allow writing
-	memcpy(ms.pData, vertices, sizeof(vertices[0])*current_char * 6);					// Copy the data -  only upload those that are used
+	memcpy(ms.pData, vertices, sizeof(vertices[0])*current_char * 6);						// Copy the data -  only upload those that are used
 	pImmediateContext->Unmap(pVertexBuffer, NULL);
 
 	// set all rendering states
-	pImmediateContext->PSSetSamplers(0, 1, &pSampler);
+	//pImmediateContext->PSSetSamplers(0, 1, &pSampler);
 	pImmediateContext->PSSetShaderResources(0, 1, &pTexture);
 	pImmediateContext->VSSetShader(pVShader, 0, 0);
 	pImmediateContext->PSSetShader(pPShader, 0, 0);
-	pImmediateContext->IASetInputLayout(pInputLayout);
+	//pImmediateContext->IASetInputLayout(pInputLayout);
 
 	UINT stride = sizeof(POS_TEX_VERTEX);
 	UINT offset = 0;

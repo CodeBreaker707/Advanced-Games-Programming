@@ -7,7 +7,7 @@ struct VOut
 	float2 texcoord :TEXCOORD;
 };
 
-VOut TextVS(float4 position : POSITION, float2 texcoord : TEXCOORD)
+VOut UIVS(float4 position : POSITION, float2 texcoord : TEXCOORD)
 {
 	VOut output;
 
@@ -19,7 +19,7 @@ VOut TextVS(float4 position : POSITION, float2 texcoord : TEXCOORD)
 }
 
 
-float4 TextPS(float4 position : SV_POSITION, float2 texcoord : TEXCOORD) : SV_TARGET
+float4 UIPS(float4 position : SV_POSITION, float2 texcoord : TEXCOORD) : SV_TARGET
 {
 	return texture0.Sample(sampler0, texcoord);
 }

@@ -39,6 +39,7 @@ private:
 	float lookAt_dist_z;
 
 	int spotNum;
+	int prevSpotNum;
 
 	XMVECTOR moveSpots[4];
 
@@ -121,11 +122,17 @@ public:
 	void MoveAsset(float x_dist, float y_dist, float z_dist);
 	void RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degrees);
 
+	void SetRandomSpot();
+	void SetToPreviousSpot();
+
 	void SetCollideState(bool state);
 	bool IsColliding();
 
 	void SetInteractState(bool state);
 	bool IsInteracting();
+
+	void SetInRangeState(bool state);
+	bool GetInRangeState();
 
 	void SetHaltState(bool state);
 	bool isHalted();

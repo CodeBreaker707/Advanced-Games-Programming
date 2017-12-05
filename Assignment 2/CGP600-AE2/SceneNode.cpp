@@ -51,15 +51,20 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 		moveSpots[2] = XMVectorSet(m_x        , m_y, m_z - 20.0, 0.0f);
 		moveSpots[3] = XMVectorSet(m_x - 20.0f, m_y, m_z, 0.0f);
 
-		/*moveSpots[0].x =  m_x + 10.0;
-		moveSpots[0].y = m_y;
-		moveSpots[0].z = m_z;*/
-
-		//moveSpots[1] = { m_x + 10.0 , m_y , m_z };
-		//moveSpots[2] = { m_x , m_y , m_z - 10.0 };
-		//moveSpots[3] = { m_x - 10.0 , m_y , m_z };
-
 		spotNum = rand() % 4;
+		prevSpotNum = rand() % 4;
+
+
+		if (prevSpotNum == spotNum)
+		{
+			prevSpotNum += 1;
+
+			if (prevSpotNum > 3)
+			{
+				prevSpotNum = 0;
+			}
+		}
+		
 
 		m_isColliding = false;
 		m_isInteracting = false;
@@ -135,23 +140,23 @@ void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 
 	if (m_p_asset)
 	{
-		v = XMVectorSet(XMVectorGetX(m_p_asset->box->GetColliderPos()), XMVectorGetY(m_p_asset->box->GetColliderPos()), XMVectorGetZ(m_p_asset->box->GetColliderPos()), 0.0f);	
+		v = XMVectorSet(XMVectorGetX(m_p_asset->collider->GetColliderPos()), XMVectorGetY(m_p_asset->collider->GetColliderPos()), XMVectorGetZ(m_p_asset->collider->GetColliderPos()), 0.0f);
 	}
 	else if (m_w_asset)
 	{
-		v = XMVectorSet(XMVectorGetX(m_w_asset->box->GetColliderPos()), XMVectorGetY(m_w_asset->box->GetColliderPos()), XMVectorGetZ(m_w_asset->box->GetColliderPos()), 0.0f);	
+		v = XMVectorSet(XMVectorGetX(m_w_asset->collider->GetColliderPos()), XMVectorGetY(m_w_asset->collider->GetColliderPos()), XMVectorGetZ(m_w_asset->collider->GetColliderPos()), 0.0f);
 	}
 	else if (m_e_asset)
 	{
-		v = XMVectorSet(XMVectorGetX(m_e_asset->box->GetColliderPos()), XMVectorGetY(m_e_asset->box->GetColliderPos()), XMVectorGetZ(m_e_asset->box->GetColliderPos()), 0.0f);
+		v = XMVectorSet(XMVectorGetX(m_e_asset->collider->GetColliderPos()), XMVectorGetY(m_e_asset->collider->GetColliderPos()), XMVectorGetZ(m_e_asset->collider->GetColliderPos()), 0.0f);
 	}
 	else if (m_s_asset)
 	{
-		v = XMVectorSet(XMVectorGetX(m_s_asset->box->GetColliderPos()), XMVectorGetY(m_s_asset->box->GetColliderPos()), XMVectorGetZ(m_s_asset->box->GetColliderPos()), 0.0f);
+		v = XMVectorSet(XMVectorGetX(m_s_asset->collider->GetColliderPos()), XMVectorGetY(m_s_asset->collider->GetColliderPos()), XMVectorGetZ(m_s_asset->collider->GetColliderPos()), 0.0f);
 	}
 	else if (m_d_asset)
 	{
-		v = XMVectorSet(XMVectorGetX(m_d_asset->box->GetColliderPos()), XMVectorGetY(m_d_asset->box->GetColliderPos()), XMVectorGetZ(m_d_asset->box->GetColliderPos()), 0.0f);
+		v = XMVectorSet(XMVectorGetX(m_d_asset->collider->GetColliderPos()), XMVectorGetY(m_d_asset->collider->GetColliderPos()), XMVectorGetZ(m_d_asset->collider->GetColliderPos()), 0.0f);
 	}
 	else
 	{
@@ -209,12 +214,12 @@ bool SceneNode::CheckCollision(SceneNode* compare_tree)
 	
 		/*for (int i = 0; i < compare_tree->m_children.size(); i++)
 		{
-			if (CheckCollision(compare_tree->m_children[i], object_tree_root));
+			if (CheckCollision(compare_tree->m_children[i]));
 		}
 
 		for (int i = 0; i < m_children.size(); i++)
 		{
-			if (m_children[i]->CheckCollision(compare_tree, object_tree_root));
+			if (m_children[i]->CheckCollision(compare_tree));
 		}*/
 	
 
@@ -429,13 +434,13 @@ void SceneNode::CalculateSphereCollisionDetails(SceneNode* compare_tree)
 
 void SceneNode::CalculateBoxDimensions1(XMVECTOR v, Asset* obj)
 {
-	x1 = XMVectorGetX(v) - (obj->box->GetLength(obj->GetXScale()) / 2);
-	y1 = XMVectorGetY(v) + (obj->box->GetHeight(obj->GetYScale()) / 2);
-	z1 = XMVectorGetZ(v) - (obj->box->GetBreadth(obj->GetZScale()) / 2);
+	x1 = XMVectorGetX(v) - (obj->collider->GetLength(obj->GetXScale()) / 2);
+	y1 = XMVectorGetY(v) + (obj->collider->GetHeight(obj->GetYScale()) / 2);
+	z1 = XMVectorGetZ(v) - (obj->collider->GetBreadth(obj->GetZScale()) / 2);
 
-	l1 = obj->box->GetLength(obj->GetXScale());
-	h1 = obj->box->GetHeight(obj->GetYScale());
-	b1 = obj->box->GetBreadth(obj->GetZScale());
+	l1 = obj->collider->GetLength(obj->GetXScale());
+	h1 = obj->collider->GetHeight(obj->GetYScale());
+	b1 = obj->collider->GetBreadth(obj->GetZScale());
 }
 
 void SceneNode::CalculateSphereDimensions1(XMVECTOR v, Asset* obj)
@@ -444,18 +449,18 @@ void SceneNode::CalculateSphereDimensions1(XMVECTOR v, Asset* obj)
 	y1 = XMVectorGetY(v);
 	z1 = XMVectorGetZ(v);
 
-	r1 = obj->box->GetColliderRadius();
+	r1 = obj->collider->GetColliderRadius();
 }
 
 void SceneNode::CalculateBoxDimensions2(XMVECTOR v, Asset* obj)
 {
-	x2 = XMVectorGetX(v) - (obj->box->GetLength(obj->GetXScale()) / 2);
-	y2 = XMVectorGetY(v) + (obj->box->GetHeight(obj->GetYScale()) / 2);
-	z2 = XMVectorGetZ(v) - (obj->box->GetBreadth(obj->GetZScale()) / 2);
+	x2 = XMVectorGetX(v) - (obj->collider->GetLength(obj->GetXScale()) / 2);
+	y2 = XMVectorGetY(v) + (obj->collider->GetHeight(obj->GetYScale()) / 2);
+	z2 = XMVectorGetZ(v) - (obj->collider->GetBreadth(obj->GetZScale()) / 2);
 
-	l2 = obj->box->GetLength(obj->GetXScale());
-	h2 = obj->box->GetHeight(obj->GetYScale());
-	b2 = obj->box->GetBreadth(obj->GetZScale());
+	l2 = obj->collider->GetLength(obj->GetXScale());
+	h2 = obj->collider->GetHeight(obj->GetYScale());
+	b2 = obj->collider->GetBreadth(obj->GetZScale());
 }
 
 void SceneNode::CalculateSphereDimensions2(XMVECTOR v, Asset* obj)
@@ -464,7 +469,7 @@ void SceneNode::CalculateSphereDimensions2(XMVECTOR v, Asset* obj)
 	y2 = XMVectorGetY(v);
 	z2 = XMVectorGetZ(v);
 
-	r2 = obj->box->GetColliderRadius();
+	r2 = obj->collider->GetColliderRadius();
 }
 
 
@@ -479,6 +484,16 @@ void SceneNode::MoveAsset(float x_dist, float y_dist, float z_dist)
 	
 }
 
+void SceneNode::SetRandomSpot()
+{
+	spotNum = rand() % 4;
+}
+
+void SceneNode::SetToPreviousSpot()
+{
+	spotNum = prevSpotNum;
+}
+
 void SceneNode::LookAt()
 {
 	if (m_inRange == false)
@@ -488,8 +503,9 @@ void SceneNode::LookAt()
 
 		if (fabs(lookAt_dist_x) <= 0.2f && fabs(lookAt_dist_z) <= 0.2f)
 		{
-			float prevSpotNum = spotNum;
-			spotNum = rand() % 4;
+			prevSpotNum = spotNum;
+			//SetRandomSpot();
+			spotNum = 0;
 
 			if (spotNum == prevSpotNum)
 			{
@@ -520,7 +536,7 @@ void SceneNode::CheckInRange(XMVECTOR other_pos)
 	{
 		m_inRange = true;
 
-		if (fabs(dist_x) <= 3.0f && fabs(dist_z) <= 3.0f)
+		if (fabs(dist_x) <= 2.0f && fabs(dist_z) <= 2.0f)
 		{
 			m_haltMovement = true;
 		}
@@ -613,6 +629,16 @@ void SceneNode::SetInteractState(bool state)
 bool SceneNode::IsInteracting()
 {
 	return m_isInteracting;
+}
+
+void SceneNode::SetInRangeState(bool state)
+{
+	m_inRange = state;
+}
+
+bool SceneNode::GetInRangeState()
+{
+	return m_inRange;
 }
 
 void SceneNode::SetHaltState(bool state)
