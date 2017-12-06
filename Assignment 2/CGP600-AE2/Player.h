@@ -11,6 +11,8 @@ private:
 
 	XMVECTOR m_lookAt, m_right, m_up, m_position;
 
+	float m_health;
+
 	bool m_isJumping;
 	bool m_onGround;
 	bool m_carryingWeapon;
@@ -51,11 +53,19 @@ public:
 	bool GetPushState();
 
 	void SetPlayerMoveSpeed(float speed);
+	float GetPlayerMoveSpeed();
+
 	void SetSpeedMultiplier(float amount);
+	float GetSpeedMultiplier();
+
+	void SetPlayerHealth(float amount);
+	float GetPlayerHealth();
 
 	float GetJumpSpeed();
 	float GetJumpHeight();
-	float GetPlayerMoveSpeed();
+
+
+	
 
 	//float GetSpeedMultiplier();
 

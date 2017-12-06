@@ -31,6 +31,10 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 		m_y = y_pos;
 		m_z = z_pos;
 
+		m_init_x = m_x;
+		m_init_y = m_y;
+		m_init_z = m_z;
+
 		m_xangle = 0.0f;
 		m_yangle = 0.0f;
 		m_zangle = 0.0f;
@@ -482,6 +486,13 @@ void SceneNode::MoveAsset(float x_dist, float y_dist, float z_dist)
 		m_z += z_dist;
 	}
 	
+}
+
+void SceneNode::ResetToInitalPos()
+{
+	m_x = m_init_x;
+	m_y = m_init_y;
+	m_z = m_init_z;
 }
 
 void SceneNode::SetRandomSpot()

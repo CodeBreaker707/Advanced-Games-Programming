@@ -25,7 +25,10 @@ void Game::MainUpdate()
 	key->ReadInputStates();
 	//key->MouseBehaviour();
 
-	m_player_node->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
+	//if (m_player_node->m_p_asset->GetPlayerHealth() > 0)
+	//{
+		m_player_node->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
+	//}
 
 	
 
@@ -91,6 +94,15 @@ void Game::MainUpdate()
 
 			m_player_node->m_p_asset->SetJumpHeight(m_player_node->GetYPos() + 3.0f);
 			
+		}
+
+		if (key->IsKeyPressed(key->sprint))
+		{
+			m_player_node->m_p_asset->SetSpeedMultiplier(2.0f);
+		}
+		else if(m_player_node->m_p_asset->GetSpeedMultiplier() != 1.0f)
+		{
+			m_player_node->m_p_asset->SetSpeedMultiplier(1.0f);
 		}
 		
 		//m_player_node->m_p_asset->JumpPlayer();
@@ -201,6 +213,8 @@ void Game::MainUpdate()
 
 							m_root_node->DetachNode(m_enemy_nodes[i]);
 
+							m_eweapon_nodes.erase(m_eweapon_nodes.begin() + i);
+
 							m_enemy_nodes.erase(m_enemy_nodes.begin() + i);
 						}
 					}
@@ -288,8 +302,12 @@ void Game::MainUpdate()
 			if (m_player_node->IsInteracting() && m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
 				m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
 			{
-				float x = 0.0f;
-				x += 1;
+				m_player_node->m_p_asset->SetPlayerHealth(m_player_node->m_p_asset->GetPlayerHealth() - 1);
+
+				if (m_player_node->m_p_asset->GetPlayerHealth() <= 0)
+				{
+					RestartGame();
+				}
 			}
 		}
 		
@@ -601,7 +619,7 @@ void Game::InitialiseGameAssets()
 			
 		}
 
-		if (strstr("EWeapon", asset_type) != 0)
+		if (strstr("Club", asset_type) != 0)
 		{
 			fscanf(assetFile, "%d", &num_assets);
 
@@ -662,5 +680,92 @@ void Game::InitialiseGameAssets()
 		
 	}
 
+
+}
+
+void Game::RestartGame()
+{
+	Initialised = false;
+
+	fopen_s(&assetFile, "Scripts/Asset_Details.txt", "r");
+	fsetpos(assetFile, &scriptPosition);
+
+	m_player_node->ResetToInitalPos();
+	perspective->ResetToInitalPos();
+
+	for (int i = 0; i < m_enemy_nodes.size(); i++)
+	{
+		for (int j = 0; j < objs.size(); j++)
+		{
+			if (objs[j] == m_enemy_nodes[i])
+			{
+				objs.erase(objs.begin() + j);
+				break;
+			}
+		}
+
+		m_root_node->DetachNode(m_enemy_nodes[i]);
+
+	}
+
+	m_enemy_nodes.clear();
+	m_eweapon_nodes.clear();
+
+	float x = 0.0f;
+	float y = 0.0f;
+	float z = 0.0f;
+	float w = 0.0f;
+
+	float x_scle = 0.0f;
+	float y_scle = 0.0f;
+	float z_scle = 0.0f;
+
+	int num_assets;
+
+	char asset_type[256];
+	char node_type;
+
+	while (Initialised == false)
+	{
+		fscanf(assetFile, "%s", asset_type);
+
+		if (strstr("Enemy", asset_type) != 0)
+		{
+			fscanf(assetFile, "%d", &num_assets);
+
+			for (int i = 0; i < num_assets; i++)
+			{
+				fscanf(assetFile, " %c %f %f %f %f %f %f", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle);
+
+				m_enemy_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
+
+				objs.push_back(m_enemy_nodes[i]);
+
+				m_root_node->AddChildNode(m_enemy_nodes[i]);
+
+			}
+
+
+		}
+
+		if (strstr("Club", asset_type) != 0)
+		{
+			fscanf(assetFile, "%d", &num_assets);
+
+			for (int i = 0; i < num_assets; i++)
+			{
+				fscanf(assetFile, " %c %f %f %f %f %f %f", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle);
+
+				m_eweapon_nodes.push_back(new SceneNode(node_type, m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), x, y, z, x_scle, y_scle, z_scle));
+
+				m_enemy_nodes[i]->AddChildNode(m_eweapon_nodes[i]);
+
+			}
+
+			Initialised = true;
+			fclose(assetFile);
+
+		}
+	}
 
 }

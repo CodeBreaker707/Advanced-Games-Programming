@@ -7,6 +7,10 @@ Camera::Camera(float x, float y, float z, float camera_rotation)
 	m_y = y;
 	m_z = z;
 
+	m_init_x = m_x;
+	m_init_y = m_y;
+	m_init_z = m_z;
+
 	m_camera_rotation_x = XMConvertToRadians(camera_rotation);
 	m_camera_rotation_y = XMConvertToRadians(camera_rotation);
 
@@ -89,6 +93,14 @@ void Camera::SetY(float y)
 void Camera::SetZ(float z)
 {
 	m_z = z;
+}
+
+void Camera::ResetToInitalPos()
+{
+	m_x = m_init_x;
+	m_y = m_init_y;
+	m_z = m_init_z;
+
 }
 
 XMMATRIX Camera::GetProjectionMatrix()

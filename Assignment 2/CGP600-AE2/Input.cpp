@@ -9,6 +9,7 @@ Input::Input(HINSTANCE hInst, HWND hWnd)
 	mve_bck = DIK_S;
 	mve_rght = DIK_D;
 	jump = DIK_SPACE;
+	sprint = DIK_LSHIFT;
 	pick_up = DIK_E;
 	drop = DIK_G;
 	interact = DIK_F;

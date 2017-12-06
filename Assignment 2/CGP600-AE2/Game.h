@@ -61,5 +61,6 @@ public:
 	void MainUpdate();
 
 	void InitialiseGameAssets();
+	void RestartGame();
 
 };

@@ -20,8 +20,12 @@ private:
 	vector<SceneNode*> m_children;
 
 	float m_x, m_y, m_z;
+	float m_init_x, m_init_y, m_init_z;
+
 	float m_cur_pos_z;
+
 	float m_prev_x, m_prev_y, m_prev_z;
+
 	float m_xangle, m_yangle, m_zangle;
 	float m_scale_x, m_scale_y, m_scale_z;
 
@@ -86,6 +90,7 @@ public:
 
 	void CalculateBoxDimensions1(XMVECTOR v, Asset* obj);
 	void CalculateSphereDimensions1(XMVECTOR v, Asset* obj);
+
 	void CalculateBoxDimensions2(XMVECTOR v, Asset* obj);
 	void CalculateSphereDimensions2(XMVECTOR v, Asset* obj);
 
@@ -122,6 +127,8 @@ public:
 	void MoveAsset(float x_dist, float y_dist, float z_dist);
 	void RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degrees);
 
+	void ResetToInitalPos();
+
 	void SetRandomSpot();
 	void SetToPreviousSpot();
 
@@ -138,6 +145,7 @@ public:
 	bool isHalted();
 
 	int GetChildrenSize();
+
 	vector<SceneNode*> GetChildren();
 
 	SceneNode* GetEquippedWeaponNode();

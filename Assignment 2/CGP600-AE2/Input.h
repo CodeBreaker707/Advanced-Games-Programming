@@ -30,6 +30,7 @@ public:
 	unsigned char mve_bck;
 	unsigned char mve_rght;
 	unsigned char jump;
+	unsigned char sprint;
 	unsigned char pick_up;
 	unsigned char drop;
 	unsigned char interact;

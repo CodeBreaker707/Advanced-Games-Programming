@@ -6,6 +6,8 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, f
 
 	LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 
+	m_health = 500.0f;
+
 	m_isJumping = false;
 	m_onGround = false;
 	m_carryingWeapon = false;
@@ -177,6 +179,11 @@ void Player::SetWeaponCarryingState(bool state)
 	m_carryingWeapon = state;
 }
 
+void Player::SetPlayerHealth(float amount)
+{
+	m_health = amount;
+}
+
 void Player::SetPlayerMoveSpeed(float speed)
 {
 	m_move_speed = speed;
@@ -217,9 +224,19 @@ bool Player::GetWeaponCarryingState()
 	return m_carryingWeapon;
 }
 
+float Player::GetPlayerHealth()
+{
+	return m_health;
+}
+
 float Player::GetPlayerMoveSpeed()
 {
 	return m_move_speed * m_speed_multiplier;
+}
+
+float Player::GetSpeedMultiplier()
+{
+	return m_speed_multiplier;
 }
 
 float Player::GetJumpSpeed()
