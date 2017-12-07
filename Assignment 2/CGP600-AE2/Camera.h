@@ -28,6 +28,8 @@ public:
 
 	void Move(float x_distance, float y_distance, float z_distance);
 
+	void MoveWithPlayer(float x, float y, float z);
+
 	void RotateCameraX(float amount);
 	void RotateCameraY(float amount);
 	//void Increase(float amount);

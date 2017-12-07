@@ -49,7 +49,7 @@ UI::UI(string filename, ID3D11Device* device, ID3D11DeviceContext* context)
 	// Create and set the input layout object
 	D3D11_INPUT_ELEMENT_DESC iedesc[] =
 	{
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 
 	};
@@ -212,9 +212,9 @@ void UI::RenderText(void)
 
 	// set all rendering states
 	//pImmediateContext->PSSetSamplers(0, 1, &pSampler);
-	pImmediateContext->PSSetShaderResources(0, 1, &pTexture);
 	pImmediateContext->VSSetShader(pVShader, 0, 0);
 	pImmediateContext->PSSetShader(pPShader, 0, 0);
+	pImmediateContext->PSSetShaderResources(0, 1, &pTexture);	
 	//pImmediateContext->IASetInputLayout(pInputLayout);
 
 	UINT stride = sizeof(POS_TEX_VERTEX);

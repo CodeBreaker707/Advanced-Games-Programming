@@ -9,14 +9,13 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, f
 	m_health = 500.0f;
 
 	m_isJumping = false;
-	m_onGround = false;
+	
 	m_carryingWeapon = false;
 	m_isPushing = false;
 
 	m_move_speed = 0.001f;
 	m_speed_multiplier = 1.0f;
 	m_jump_speed = 0.0010f;
-	m_gravity_speed = 0.0015f;
 	m_jump_height = 4.5f;
 
 	//m_lookAt = XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f);
@@ -164,10 +163,7 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, f
 //	}
 //}
 
-void Player::SetOnGroundState(bool state)
-{
-	m_onGround = state;
-}
+
 
 void Player::SetJumpState(bool state)
 {
@@ -209,10 +205,10 @@ bool Player::GetPushState()
 	return m_isPushing;
 }
 
-bool Player::GetOnGroundState()
-{
-	return m_onGround;
-}
+//bool Player::GetOnGroundState()
+//{
+//	return m_onGround;
+//}
 
 bool Player::GetJumpState()
 {

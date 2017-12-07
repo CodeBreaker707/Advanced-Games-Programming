@@ -2,7 +2,7 @@
 
 
 
-SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale)
+SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState)
 {
 	if (c == 'P')
 	{
@@ -50,6 +50,8 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 		lookAt_dist_x = 0.0f;
 		lookAt_dist_z = 0.0f;
 
+		m_gravitySpeed = 0.0010f;
+
 		moveSpots[0] = XMVectorSet(m_x        , m_y, m_z + 20.0, 0.0f);
 		moveSpots[1] = XMVectorSet(m_x + 20.0f, m_y, m_z, 0.0f);
 		moveSpots[2] = XMVectorSet(m_x        , m_y, m_z - 20.0, 0.0f);
@@ -74,6 +76,9 @@ SceneNode::SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* Immed
 		m_isInteracting = false;
 		m_inRange = false;
 		m_haltMovement = false;
+		m_onGround = false;
+
+		m_gravityApplied = gravityState;
 	
 
 }
@@ -276,7 +281,7 @@ bool SceneNode::CheckNodeBottomCollision(SceneNode* compare_tree)
 
 	if (x1 < x2 + l2 && x1 + l1 > x2)
 	{
-		if (y1 - h1 > y2 && y1 - h1 < y2 + 0.005f)
+		if (y1 - h1 > y2 && y1 - h1 < y2 + 0.002)
 		{
 			if (z1 < z2 + b2 && z1 + b1 > z2)
 			{
@@ -488,6 +493,15 @@ void SceneNode::MoveAsset(float x_dist, float y_dist, float z_dist)
 	
 }
 
+void SceneNode::ApplyGravity()
+{
+	if (m_onGround == false && m_gravityApplied == true)
+	{
+		MoveAsset(0.0f, -m_gravitySpeed, 0.0f);
+	}
+
+}
+
 void SceneNode::ResetToInitalPos()
 {
 	m_x = m_init_x;
@@ -642,6 +656,16 @@ bool SceneNode::IsInteracting()
 	return m_isInteracting;
 }
 
+void SceneNode::SetOnGroundState(bool state)
+{
+	m_onGround = state;
+}
+
+bool SceneNode::GetOnGroundState()
+{
+	return m_onGround;
+}
+
 void SceneNode::SetInRangeState(bool state)
 {
 	m_inRange = state;
@@ -752,4 +776,9 @@ float SceneNode::GetYScale()
 float SceneNode::GetZScale()
 {
 	return m_scale_z;
+}
+
+float SceneNode::GetGravitySpeed()
+{
+	return m_gravitySpeed;
 }

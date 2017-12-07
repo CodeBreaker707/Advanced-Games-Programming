@@ -42,6 +42,8 @@ private:
 	float lookAt_dist_x;
 	float lookAt_dist_z;
 
+	float m_gravitySpeed;
+
 	int spotNum;
 	int prevSpotNum;
 
@@ -57,6 +59,9 @@ private:
 
 	bool m_isColliding;
 	bool m_isInteracting;
+	bool m_onGround;
+
+	int m_gravityApplied;
 
 	bool m_inRange;
 	bool m_haltMovement;
@@ -69,7 +74,7 @@ public:
 	Statik* m_s_asset;
 	Dynamic* m_d_asset;
 
-	SceneNode(char c, ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale);
+	SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState);
 
 	void AddChildNode(SceneNode* n);
 
@@ -93,6 +98,8 @@ public:
 
 	void CalculateBoxDimensions2(XMVECTOR v, Asset* obj);
 	void CalculateSphereDimensions2(XMVECTOR v, Asset* obj);
+
+	void ApplyGravity();
 
 	XMVECTOR GetWorldColliderCentrePos();
 	XMVECTOR GetWorldPos();
@@ -121,6 +128,8 @@ public:
 	float GetYScale();
 	float GetZScale();
 
+	float GetGravitySpeed();
+
 	void RestrictPos(bool isCollding);
 	void UpdatePos(bool isColliding);
 
@@ -137,6 +146,9 @@ public:
 
 	void SetInteractState(bool state);
 	bool IsInteracting();
+
+	void SetOnGroundState(bool state);
+	bool GetOnGroundState();
 
 	void SetInRangeState(bool state);
 	bool GetInRangeState();

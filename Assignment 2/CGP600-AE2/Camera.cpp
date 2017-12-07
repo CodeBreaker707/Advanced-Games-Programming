@@ -67,6 +67,16 @@ void Camera::Move(float x_distance, float y_distance, float z_distance)
 	
 }
 
+void Camera::MoveWithPlayer(float x, float y, float z)
+{
+	m_position = XMVectorSet(x, y, z, 0.0f);
+
+	m_x = XMVectorGetX(m_position);
+	m_y = XMVectorGetY(m_position);
+	m_z = XMVectorGetZ(m_position);
+
+}
+
 void Camera::SetCollidingState(bool state)
 {
 	m_isColliding = state;
@@ -97,9 +107,11 @@ void Camera::SetZ(float z)
 
 void Camera::ResetToInitalPos()
 {
-	m_x = m_init_x;
-	m_y = m_init_y;
-	m_z = m_init_z;
+	m_position = XMVectorSet(m_init_x, m_init_y, m_init_z, 0.0f);
+
+	m_x = XMVectorGetX(m_position);
+	m_y = XMVectorGetY(m_position);
+	m_z = XMVectorGetZ(m_position);
 
 }
 

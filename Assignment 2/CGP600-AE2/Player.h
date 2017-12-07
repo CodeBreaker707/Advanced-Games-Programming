@@ -14,11 +14,10 @@ private:
 	float m_health;
 
 	bool m_isJumping;
-	bool m_onGround;
+	
 	bool m_carryingWeapon;
 	bool m_isPushing;
 
-	float m_gravity_speed;
 	float m_jump_height;
 	float m_jump_speed;
 
@@ -40,8 +39,7 @@ public:
 
 	void SetJumpHeight(float value);
 
-	void SetOnGroundState(bool state);
-	bool GetOnGroundState();
+	
 
 	void SetJumpState(bool state);
 	bool GetJumpState();
