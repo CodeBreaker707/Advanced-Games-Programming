@@ -13,7 +13,10 @@ Input::Input(HINSTANCE hInst, HWND hWnd)
 	pick_up = DIK_E;
 	drop = DIK_G;
 	interact = DIK_F;
+	swapCamera = DIK_Q;
 	attack = m_mouse_state.rgbButtons[0];
+
+	ButtonPushedOnce = false;
 
 }
 
@@ -116,67 +119,95 @@ bool Input::IsKeyPressed(unsigned char DI_Keycode)
 	return m_keyboard_keys_state[DI_Keycode] & 0x80;
 }
 
-void Input::MouseBehaviour()
+bool Input::IsKeyPressedOnce(unsigned char DI_Keycode)
 {
-	if (mouse_y == prev_mouse_y)
+	if (ButtonPushedOnce == false && m_keyboard_keys_state[DI_Keycode] & 0x80)
 	{
-		isMouseMoving = false;
+		ButtonPushedOnce = true;
+		return m_keyboard_keys_state[DI_Keycode] & 0x80;
 	}
 	else
 	{
-		isMouseMoving = true;
+		return !m_keyboard_keys_state[DI_Keycode] & 0x80;
 	}
-
-	// Comparing Mouse's X position
-
-	if (mouse_x > prev_mouse_x)
-	{
-
-		isMouseMovingRight = true;
-
-		prev_mouse_x = mouse_x;
-
-	}
-	else if (mouse_x < prev_mouse_x)
-	{
-		isMouseMovingRight = false;
-
-		prev_mouse_x = mouse_x;
-
-	}
-
-	if (mouse_y > prev_mouse_y)
-	{
-
-		isMouseMovingUp = true;
-
-		prev_mouse_y = mouse_y;
-
-	}
-	else if (mouse_y < prev_mouse_y)
-	{
-		isMouseMovingUp = false;
-
-		prev_mouse_y = mouse_y;
-
-	}
-
-	mouse_x += m_mouse_state.lX;
-	//mouse_y += m_mouse_state.lY;
 
 }
 
-bool Input::IsMouseMoving()
+bool Input::IsKeyReleased(unsigned char DI_Keycode)
 {
-	return isMouseMoving;
+	if (!(m_keyboard_keys_state[DI_Keycode] & 0x80))
+	{
+		ButtonPushedOnce = false;
+		return !(m_keyboard_keys_state[DI_Keycode] & 0x80);
+	}
+	else
+	{
+		return m_keyboard_keys_state[DI_Keycode] & 0x80;
+	}
+
 }
 
-bool Input::IsMouseMovingRight()
-{
-	return isMouseMovingRight;
-}
-
-bool Input::IsMouseMovingUp()
-{
-	return isMouseMovingUp;
-}
+//void Input::MouseBehaviour()
+//{
+//	if (mouse_y == prev_mouse_y)
+//	{
+//		isMouseMoving = false;
+//	}
+//	else
+//	{
+//		isMouseMoving = true;
+//	}
+//
+//	// Comparing Mouse's X position
+//
+//	if (mouse_x > prev_mouse_x)
+//	{
+//
+//		isMouseMovingRight = true;
+//
+//		prev_mouse_x = mouse_x;
+//
+//	}
+//	else if (mouse_x < prev_mouse_x)
+//	{
+//		isMouseMovingRight = false;
+//
+//		prev_mouse_x = mouse_x;
+//
+//	}
+//
+//	if (mouse_y > prev_mouse_y)
+//	{
+//
+//		isMouseMovingUp = true;
+//
+//		prev_mouse_y = mouse_y;
+//
+//	}
+//	else if (mouse_y < prev_mouse_y)
+//	{
+//		isMouseMovingUp = false;
+//
+//		prev_mouse_y = mouse_y;
+//
+//	}
+//
+//	mouse_x += m_mouse_state.lX;
+//	//mouse_y += m_mouse_state.lY;
+//
+//}
+//
+//bool Input::IsMouseMoving()
+//{
+//	return isMouseMoving;
+//}
+//
+//bool Input::IsMouseMovingRight()
+//{
+//	return isMouseMovingRight;
+//}
+//
+//bool Input::IsMouseMovingUp()
+//{
+//	return isMouseMovingUp;
+//}

@@ -15,9 +15,7 @@ private:
 	long mouse_x = 0;
 	long mouse_y = 0;
 
-	bool isMouseMoving = false;
-	bool isMouseMovingRight = false;
-	bool isMouseMovingUp = false;
+	bool ButtonPushedOnce;
 
 	unsigned char m_keyboard_keys_state[256];
 
@@ -34,6 +32,8 @@ public:
 	unsigned char pick_up;
 	unsigned char drop;
 	unsigned char interact;
+	unsigned char swapCamera;
+
 	BYTE attack;
 
 	Input(HINSTANCE hInst, HWND hWnd);
@@ -44,6 +44,8 @@ public:
 	void ReadInputStates();
 
 	bool IsKeyPressed(unsigned char DI_Keycode);
+	bool IsKeyPressedOnce(unsigned char DI_Keycode);
+	bool IsKeyReleased(unsigned char DI_Keycode);
 
 	void MouseBehaviour();
 

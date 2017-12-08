@@ -23,8 +23,8 @@ private:
 	ID3D11BlendState* m_pAlphaBlendEnable; // 14
 	ID3D11BlendState* m_pAlphaBlendDisable; // 14
 
-	float m_win_width = 1280.0f;
-	float m_win_height = 768.0f;
+	float m_win_width;
+	float m_win_height;
 
 	// Window Name
 	char g_CGP600_Assignment_2[100] = "CGP600 Assignment 2\0";
@@ -47,6 +47,9 @@ public:
 	void Display();
 
 	void SetBlendState(bool state);
+
+	float GetWindowWidth();
+	float GetWindowHeight();
 
 	void ShutdownD3D();
 

@@ -24,7 +24,7 @@ private:
 
 	Input* key;
 
-	Camera* perspective;
+	vector<Camera*> view;
 
 	FILE* assetFile;
 	fpos_t scriptPosition;
@@ -45,6 +45,9 @@ private:
 
 	bool pickedUp;
 	bool Initialised;
+	bool cineCamera;
+
+	int camNum;
 
 	//int prev_mouse_x = 0;
 	//int prev_mouse_y = 0;

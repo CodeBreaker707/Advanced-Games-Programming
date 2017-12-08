@@ -24,7 +24,7 @@ private:
 
 public:
 
-	Camera(float x, float y, float z, float camera_rotation);
+	Camera(float x, float y, float z, float camera_rotation, float FOV, float winWidth, float winHeight, float nearClip, float farClip);
 
 	void Move(float x_distance, float y_distance, float z_distance);
 

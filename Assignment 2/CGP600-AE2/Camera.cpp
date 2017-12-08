@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-Camera::Camera(float x, float y, float z, float camera_rotation)
+Camera::Camera(float x, float y, float z, float camera_rotation, float FOV, float winWidth, float winHeight, float nearClip, float farClip)
 {
 
 	m_x = x;
@@ -25,7 +25,7 @@ Camera::Camera(float x, float y, float z, float camera_rotation)
 
 	m_isColliding = false;
 
-	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(45.0), 1280.0 / 768.0, 0.5, 100.0);
+	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(FOV), winWidth / winHeight, nearClip, farClip);
 
 }
 

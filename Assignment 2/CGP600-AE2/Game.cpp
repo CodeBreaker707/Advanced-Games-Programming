@@ -10,9 +10,11 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 
 	Initialised = false;
 	pickedUp = false;
+	cineCamera = false;
 
 	InitialiseGameAssets();
 	
+	//cinematic = new Camera(0.0f, 0.0f, 0.0f, 0.0f);
 
 }
 
@@ -23,69 +25,42 @@ void Game::MainUpdate()
 	m_render_target->ClearBuffers();
 
 	key->ReadInputStates();
+
+	key->IsKeyReleased(key->swapCamera);
 	//key->MouseBehaviour();
+	
+	if (cineCamera == false)
+	{
 
-	//if (m_player_node->m_p_asset->GetPlayerHealth() > 0)
-	//{
+
 		m_player_node->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
-	//}
 
-	
 
-	
+		// Keyboard Controls
 
-	//m_enemy_nodes[0]->UpdateCollisionTree(&XMMatrixIdentity());
-	//player->UpdatePosVector();
-	//player->UpdateLookAt();
 
-	// Keyboard Controls
-
-	
 		if (key->IsKeyPressed(key->mve_frwd))
 		{
 			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
-				cos(m_player_node->GetYAngle()) * m_player_node->m_p_asset->GetPlayerMoveSpeed());
-			//m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
-			//m_player_node->m_p_asset->MovePlayer(m_player_node->m_p_asset->GetPlayerMoveSpeed());
-			
-			if (perspective->GetCollidingState() == false)
-			{
-				perspective->Move(0.0f, 0.0f, m_player_node->m_p_asset->GetPlayerMoveSpeed());
-			}
+			cos(m_player_node->GetYAngle()) * m_player_node->m_p_asset->GetPlayerMoveSpeed());
 		}
 		if (key->IsKeyPressed(key->mve_lft))
 		{
 			m_player_node->MoveAsset(sin(m_player_node->GetYAngle() + XMConvertToRadians(90)) * -m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
 				cos(m_player_node->GetYAngle() + XMConvertToRadians(90)) * -m_player_node->m_p_asset->GetPlayerMoveSpeed());
-			//player->StrafePlayer(-player->GetPlayerMoveSpeed());
 
-			if (perspective->GetCollidingState() == false)
-			{
-				perspective->Move(-m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f, 0.0f);
-			}
 		}
 		if (key->IsKeyPressed(key->mve_bck))
 		{
 			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * -m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
 				cos(m_player_node->GetYAngle()) * -m_player_node->m_p_asset->GetPlayerMoveSpeed());
-			//m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
 
-
-			if (perspective->GetCollidingState() == false)
-			{
-				perspective->Move(0.0f, 0.0f, -m_player_node->m_p_asset->GetPlayerMoveSpeed());
-			}
 		}
 		if (key->IsKeyPressed(key->mve_rght))
 		{
 			m_player_node->MoveAsset(sin(m_player_node->GetYAngle() + XMConvertToRadians(90)) * m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
 				cos(m_player_node->GetYAngle() + XMConvertToRadians(90)) * m_player_node->m_p_asset->GetPlayerMoveSpeed());
-			//player->StrafePlayer(player->GetPlayerMoveSpeed());
 
-			if (perspective->GetCollidingState() == false)
-			{
-				perspective->Move(m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f, 0.0f);
-			}
 		}
 		if (key->IsKeyPressed(key->jump) && m_player_node->GetOnGroundState() == true)
 		{
@@ -93,18 +68,27 @@ void Game::MainUpdate()
 			m_player_node->m_p_asset->SetJumpState(true);
 
 			m_player_node->m_p_asset->SetJumpHeight(m_player_node->GetYPos() + 3.0f);
-			
+
 		}
+
+		//if (key->IsKeyReleased(DIK_Q))
+		//{
+			if (key->IsKeyPressedOnce(key->swapCamera))
+			{
+				cineCamera = true;
+			}
+		//}
+		
 
 		if (key->IsKeyPressed(key->sprint))
 		{
 			m_player_node->m_p_asset->SetSpeedMultiplier(2.0f);
 		}
-		else if(m_player_node->m_p_asset->GetSpeedMultiplier() != 1.0f)
+		else if (m_player_node->m_p_asset->GetSpeedMultiplier() != 1.0f)
 		{
 			m_player_node->m_p_asset->SetSpeedMultiplier(1.0f);
 		}
-		
+
 		//PLAYER JUMP
 
 		if (m_player_node->m_p_asset->GetJumpState() == true)
@@ -117,8 +101,10 @@ void Game::MainUpdate()
 			}
 		}
 
+
+
 		m_player_node->UpdateCollisionTree(&XMMatrixIdentity());
-		
+
 		for (int i = 0; i < objs.size(); i++)
 		{
 			objs[i]->CheckCollision(m_player_node);
@@ -159,11 +145,11 @@ void Game::MainUpdate()
 
 				}
 
-				if (m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true)	
+				if (m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true)
 				{
-					
+
 					if (m_player_node->GetEquippedWeaponNode()->GetZPos() >=
-						m_player_node->GetEquippedWeaponNode()->GetCurZPos() + 1.5 )
+						m_player_node->GetEquippedWeaponNode()->GetCurZPos() + 1.5)
 					{
 						m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(false);
 						m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(true);
@@ -177,10 +163,10 @@ void Game::MainUpdate()
 
 				else if (m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == true)
 				{
-					
+
 
 					if (m_player_node->GetEquippedWeaponNode()->GetZPos()
-						<= m_player_node->GetEquippedWeaponNode()->GetCurZPos() )
+						<= m_player_node->GetEquippedWeaponNode()->GetCurZPos())
 					{
 						m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(false);
 					}
@@ -203,7 +189,7 @@ void Game::MainUpdate()
 
 						if (m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() <= 0)
 						{
-							
+
 							for (int j = 0; j < objs.size(); j++)
 							{
 								if (objs[j] == m_enemy_nodes[i])
@@ -224,16 +210,16 @@ void Game::MainUpdate()
 					//	//m_enemy_nodes[i]->m_e_asset->CheckCollision(m_player_node->m_p_asset);
 
 					//	
-				}		
+				}
 			}
 
 		}
-		
-		
-			// Checking collision with all objects against the player
-	
 
-		//m_player_node->CheckCollision(m_root_node);
+
+		// Checking collision with all objects against the player
+
+
+	//m_player_node->CheckCollision(m_root_node);
 		for (int i = 0; i < m_enemy_nodes.size(); i++)
 		{
 
@@ -245,7 +231,7 @@ void Game::MainUpdate()
 				{
 					m_enemy_nodes[i]->SetHaltState(false);
 					m_enemy_nodes[i]->SetInRangeState(false);
-					
+
 					m_enemy_nodes[i]->SetToPreviousSpot();
 					break;
 
@@ -311,159 +297,145 @@ void Game::MainUpdate()
 				}
 			}
 		}
-		
-		
-			for (int i = 0; i < m_spear_nodes.size(); i++)
-			{
-				//m_spear_nodes[i]->CheckCollision(m_player_node);
-				m_spear_nodes[i]->CheckActionCollision(m_player_node);
 
-				if (m_spear_nodes[i]->IsInteracting() == true && key->IsKeyPressed(key->pick_up))
-				{
-					m_spear_nodes[i]->SetXPos(1.0f);
-					m_spear_nodes[i]->SetYPos(-0.5f);
-					m_spear_nodes[i]->SetZPos(1.0f);
 
-					//m_spear_nodes[i]->SetYAngle(m_player_node->GetYAngle());
-
-					m_root_node->DetachNode(m_spear_nodes[i]);
-
-					//m_spear_nodes[i]->m_w_asset->SetWeaponEquipState(true);
-					m_player_node->m_p_asset->SetWeaponCarryingState(true);
-					m_player_node->AddChildNode(m_spear_nodes[i]);
-
-					for (int j = 0; j < objs.size(); j++)
-					{
-						if (m_spear_nodes[i] == objs[j])
-						{
-							objs.erase(objs.begin() + j);
-							break;
-						}
-					}
-
-					m_spear_nodes.erase(m_spear_nodes.begin() + i);
-
-				}
-
-			}
-
-			for (int i = 0; i < m_dynamic_nodes.size(); i++)
-			{
-				if (m_player_node->m_p_asset->GetPushState() == false)
-				{
-					m_dynamic_nodes[i]->CheckCollision(m_player_node);
-				}
-
-				m_dynamic_nodes[i]->CheckActionCollision(m_player_node);
-
-				if (m_dynamic_nodes[i]->IsInteracting() && key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == false)
-				{
-					/*m_dynamic_nodes[i]->SetXPos(m_player_node->GetXPos());
-					m_dynamic_nodes[i]->SetYPos(m_player_node->GetYPos() - 0.5f);
-					m_dynamic_nodes[i]->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) + 2.0f);
-
-					m_dynamic_nodes[i]->UpdateCollisionTree(&XMMatrixIdentity());*/
-
-					m_dynamic_nodes[i]->SetXPos(0.0f);
-					m_dynamic_nodes[i]->SetYPos(-0.5f);
-					m_dynamic_nodes[i]->SetZPos(2.0f);
-
-					//m_dynamic_nodes[i]->SetYAngle(m_player_node->GetYAngle());
-
-					m_root_node->DetachNode(m_dynamic_nodes[i]);
-
-					m_player_node->m_p_asset->SetPushState(true);
-
-					m_player_node->AddChildNode(m_dynamic_nodes[i]);
-
-					for (int j = 0; j < objs.size(); j++)
-					{
-						if (m_dynamic_nodes[i] == objs[j])
-						{
-							objs.erase(objs.begin() + j);
-							break;
-						}
-					}
-
-					m_dynamic_nodes.erase(m_dynamic_nodes.begin() + i);
-
-				}
-				
-
-			}
-		
-			if (m_player_node->GetChildrenSize() != 0 && !key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == true)
-			{
-				
-					m_dynamic_nodes.push_back(m_player_node->GetPushingCrate());
-					m_root_node->AddChildNode(m_player_node->GetPushingCrate());
-
-					m_player_node->GetPushingCrate()->SetXPos(m_player_node->GetXPos() + sin(m_player_node->GetYAngle()) * 2.5);
-					m_player_node->GetPushingCrate()->SetYPos(m_player_node->GetYPos() - 0.5);
-					m_player_node->GetPushingCrate()->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) * 2.5);
-
-					m_player_node->GetPushingCrate()->SetYAngle(m_player_node->GetYAngle());
-
-					//m_player_node->GetPushingCrate()->UpdateCollisionTree(&XMMatrixIdentity());
-
-					m_player_node->m_p_asset->SetPushState(false);
-
-					objs.push_back(m_player_node->GetPushingCrate());
-
-					m_player_node->DetachNode(m_player_node->GetPushingCrate());
-				
-			}
-
-			// Stopping the player at collision
-			for (int i = 0; i < objs.size(); i++)
-			{
-				m_player_node->RestrictPos(objs[i]->IsColliding());
-				
-
-				/*if (m_player_node->GetChildrenSize() != 0)
-				{
-					if (m_player_node->m_p_asset->GetPushState() == true)
-					{
-						m_player_node->GetPushingCrate()->CheckActionCollision(objs[2]);
-						m_player_node->RestrictPos(m_player_node->GetPushingCrate()->IsInteracting());
-					}
-				}*/
-			}
-
-			// Storing previous positions of the player
-			for (int i = 0; i < objs.size(); i++)
-			{
-
-				m_player_node->UpdatePos(objs[i]->IsColliding());
-				
-
-				/*if (m_player_node->GetChildrenSize() != 0)
-				{
-					if (m_player_node->m_p_asset->GetPushState() == true)
-					{
-						m_player_node->GetPushingCrate()->CheckActionCollision(objs[i]);
-						m_player_node->UpdatePos(m_player_node->GetPushingCrate()->IsInteracting());
-					}
-				}*/
-			}
-			
-		
-
-		// Stopping the camera at collision
-		for (int i = 0; i < objs.size(); i++)
+		for (int i = 0; i < m_spear_nodes.size(); i++)
 		{
-			if (objs[i]->IsColliding() == true)
+			//m_spear_nodes[i]->CheckCollision(m_player_node);
+			m_spear_nodes[i]->CheckActionCollision(m_player_node);
+
+			if (m_spear_nodes[i]->IsInteracting() == true && key->IsKeyPressed(key->pick_up))
 			{
-				perspective->SetCollidingState(true);
-				break;
+				m_spear_nodes[i]->SetXPos(1.0f);
+				m_spear_nodes[i]->SetYPos(-0.5f);
+				m_spear_nodes[i]->SetZPos(1.0f);
+
+				//m_spear_nodes[i]->SetYAngle(m_player_node->GetYAngle());
+
+				m_root_node->DetachNode(m_spear_nodes[i]);
+
+				//m_spear_nodes[i]->m_w_asset->SetWeaponEquipState(true);
+				m_player_node->m_p_asset->SetWeaponCarryingState(true);
+				m_player_node->AddChildNode(m_spear_nodes[i]);
+
+				for (int j = 0; j < objs.size(); j++)
+				{
+					if (m_spear_nodes[i] == objs[j])
+					{
+						objs.erase(objs.begin() + j);
+						break;
+					}
+				}
+
+				m_spear_nodes.erase(m_spear_nodes.begin() + i);
+
 			}
-			else
-			{
-				perspective->SetCollidingState(false);
-			}
+
 		}
 
-		 //Check if the player is colliding with anything below		
+		for (int i = 0; i < m_dynamic_nodes.size(); i++)
+		{
+			if (m_player_node->m_p_asset->GetPushState() == false)
+			{
+				m_dynamic_nodes[i]->CheckCollision(m_player_node);
+			}
+
+			m_dynamic_nodes[i]->CheckActionCollision(m_player_node);
+
+			if (m_dynamic_nodes[i]->IsInteracting() && key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == false)
+			{
+				/*m_dynamic_nodes[i]->SetXPos(m_player_node->GetXPos());
+				m_dynamic_nodes[i]->SetYPos(m_player_node->GetYPos() - 0.5f);
+				m_dynamic_nodes[i]->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) + 2.0f);
+
+				m_dynamic_nodes[i]->UpdateCollisionTree(&XMMatrixIdentity());*/
+
+				m_dynamic_nodes[i]->SetXPos(0.0f);
+				m_dynamic_nodes[i]->SetYPos(-0.5f);
+				m_dynamic_nodes[i]->SetZPos(2.0f);
+
+				//m_dynamic_nodes[i]->SetYAngle(m_player_node->GetYAngle());
+
+				m_root_node->DetachNode(m_dynamic_nodes[i]);
+
+				m_player_node->m_p_asset->SetPushState(true);
+
+				m_player_node->AddChildNode(m_dynamic_nodes[i]);
+
+				for (int j = 0; j < objs.size(); j++)
+				{
+					if (m_dynamic_nodes[i] == objs[j])
+					{
+						objs.erase(objs.begin() + j);
+						break;
+					}
+				}
+
+				m_dynamic_nodes.erase(m_dynamic_nodes.begin() + i);
+
+			}
+
+
+		}
+
+		if (m_player_node->GetChildrenSize() != 0 && !key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == true)
+		{
+
+			m_dynamic_nodes.push_back(m_player_node->GetPushingCrate());
+			m_root_node->AddChildNode(m_player_node->GetPushingCrate());
+
+			m_player_node->GetPushingCrate()->SetXPos(m_player_node->GetXPos() + sin(m_player_node->GetYAngle()) * 2.5);
+			m_player_node->GetPushingCrate()->SetYPos(m_player_node->GetYPos() - 0.5);
+			m_player_node->GetPushingCrate()->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) * 2.5);
+
+			m_player_node->GetPushingCrate()->SetYAngle(m_player_node->GetYAngle());
+
+			//m_player_node->GetPushingCrate()->UpdateCollisionTree(&XMMatrixIdentity());
+
+			m_player_node->m_p_asset->SetPushState(false);
+
+			objs.push_back(m_player_node->GetPushingCrate());
+
+			m_player_node->DetachNode(m_player_node->GetPushingCrate());
+
+		}
+
+		// Stopping the player at collision
+		for (int i = 0; i < objs.size(); i++)
+		{
+			m_player_node->RestrictPos(objs[i]->IsColliding());
+
+
+			/*if (m_player_node->GetChildrenSize() != 0)
+			{
+				if (m_player_node->m_p_asset->GetPushState() == true)
+				{
+					m_player_node->GetPushingCrate()->CheckActionCollision(objs[2]);
+					m_player_node->RestrictPos(m_player_node->GetPushingCrate()->IsInteracting());
+				}
+			}*/
+		}
+
+		// Storing previous positions of the player
+		for (int i = 0; i < objs.size(); i++)
+		{
+
+			m_player_node->UpdatePos(objs[i]->IsColliding());
+
+
+			/*if (m_player_node->GetChildrenSize() != 0)
+			{
+				if (m_player_node->m_p_asset->GetPushState() == true)
+				{
+					m_player_node->GetPushingCrate()->CheckActionCollision(objs[i]);
+					m_player_node->UpdatePos(m_player_node->GetPushingCrate()->IsInteracting());
+				}
+			}*/
+		}
+
+
+
+		//Check if the player is colliding with anything below		
 
 		for (int i = 0; i < objs.size(); i++)
 		{
@@ -501,7 +473,7 @@ void Game::MainUpdate()
 			m_player_node->ApplyGravity();
 		}
 
-		
+
 
 		for (int i = 0; i < objs.size(); i++)
 		{
@@ -509,38 +481,68 @@ void Game::MainUpdate()
 			objs[i]->UpdateCollisionTree(&XMMatrixIdentity());
 		}
 
-		//perspective->MoveWithPlayer(m_player_node->GetXPos(), m_player_node->GetYPos(), m_player_node->GetZPos());
 
-		if (m_player_node->m_p_asset->GetJumpState() == true && perspective->GetCollidingState() == false)
+		view[0]->MoveWithPlayer(m_player_node->GetXPos(), m_player_node->GetYPos(), m_player_node->GetZPos());
+
+
+		// Mouse Controls
+
+
+		//perspective->RotateCameraY(-key->m_mouse_state.lY);
+			//if (perspective->GetCollidingState() == false)
+			//{
+		view[0]->RotateCameraX(key->m_mouse_state.lX);//}
+
+
+		hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
+
+	}
+	else
+	{
+		if (key->IsKeyPressedOnce(key->swapCamera))
 		{
-			perspective->Move(0.0f, m_player_node->GetGravitySpeed(), 0.0f);
+			cineCamera = false;
 		}
-
-		if (m_player_node->GetOnGroundState() == false && m_player_node->m_p_asset->GetJumpState() == false && perspective->GetCollidingState() == false)
-		{
-			perspective->Move(0.0f, -m_player_node->GetGravitySpeed(), 0.0f);
-		}
-
-	
-		//m_player_node->m_p_asset->PullDown();
-
 		
+		view[1]->RotateCameraY(-key->m_mouse_state.lY);
+		view[1]->RotateCameraX(key->m_mouse_state.lX);
 
-	// Mouse Controls
+		if (key->IsKeyPressed(key->mve_frwd))
+		{
+			view[1]->Move(0.0f, 0.0f, 0.01f);
+		}
+		if (key->IsKeyPressed(key->mve_lft))
+		{
+			view[1]->Move(-0.01f, 0.0f, 0.0f);
+		}
+		if (key->IsKeyPressed(key->mve_bck))
+		{
+			view[1]->Move(0.0f, 0.0f, -0.01f);
+
+		}
+		if (key->IsKeyPressed(key->mve_rght))
+		{
+			view[1]->Move(0.01f, 0.0f, 0.0f);
+
+		}
+		
+	}
+
 	
-
-	//perspective->RotateCameraY(-key->m_mouse_state.lY);
-		//if (perspective->GetCollidingState() == false)
-		//{
-	perspective->RotateCameraX(key->m_mouse_state.lX);//}
-
-	
-	hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
 
 
 	// DRAW
-	
-	m_root_node->Execute(&XMMatrixIdentity(), &perspective->GetViewMatrix(), &perspective->GetProjectionMatrix());
+
+	if (cineCamera == false)
+	{
+		m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());
+
+	}
+	else
+	{
+		m_root_node->Execute(&XMMatrixIdentity(), &view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix());
+
+	}
 
 	//hud->RenderText();
 	//m_render_target->SetBlendState(false);
@@ -564,7 +566,10 @@ void Game::InitialiseGameAssets()
 	float x = 0.0f;
 	float y = 0.0f;
 	float z = 0.0f;
-	float w = 0.0f;
+	float cam_rot = 0.0f;
+	float fov = 0.0f;
+	float n_clip = 0.0f;
+	float f_clip = 0.0f;
 
 	float x_scle = 0.0f;
 	float y_scle = 0.0f;
@@ -585,9 +590,15 @@ void Game::InitialiseGameAssets()
 
 		if (strstr("Camera", asset_type) != 0)
 		{
-			fscanf(assetFile, " %f %f %f %f", &x, &y, &z, &w);
+			fscanf(assetFile, "%d", &num_assets);
 
-			perspective = new Camera(x, y, z, w);
+			for (int i = 0; i < num_assets; i++)
+			{
+				fscanf(assetFile, " %f %f %f %f %f %f %f", &x, &y, &z, &cam_rot, &fov, &n_clip, &f_clip);
+
+				view.push_back(new Camera(x, y, z, cam_rot, fov, m_render_target->GetWindowWidth(), m_render_target->GetWindowHeight(), n_clip, f_clip));
+
+			}
 		}
 
 		if (strstr("Player", asset_type) != 0)
@@ -709,7 +720,6 @@ void Game::RestartGame()
 	fsetpos(assetFile, &scriptPosition);
 
 	m_player_node->ResetToInitalPos();
-	perspective->ResetToInitalPos();
 
 	for (int i = 0; i < m_enemy_nodes.size(); i++)
 	{

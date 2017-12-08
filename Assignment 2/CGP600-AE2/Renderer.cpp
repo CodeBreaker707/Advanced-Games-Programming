@@ -5,6 +5,9 @@ float rgba_clear_colour[4] = { 0.0f, 0.74f, 1.0f, 1.0f };
 
 Renderer::Renderer(HINSTANCE hInstance, int nCmdShow)
 {
+	m_win_width = 1920.0f;
+	m_win_height = 1080.0f;
+
 	if (FAILED(InitialiseWindow(hInstance, nCmdShow)))
 	{
 		DXTRACE_MSG("Failed to create Window");		
@@ -275,4 +278,14 @@ ID3D11Device* Renderer::GetD3DDevice()
 ID3D11DeviceContext* Renderer::GetDeviceContext()
 {
 	return m_pImmediateContext;
+}
+
+float Renderer::GetWindowWidth()
+{
+	return m_win_width;
+}
+
+float Renderer::GetWindowHeight()
+{
+	return m_win_height;
 }
