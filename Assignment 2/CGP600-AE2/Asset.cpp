@@ -13,7 +13,7 @@ Asset::Asset()
 	
 }
 
-void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, float x_scale, float y_scale, float z_scale)
+void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char* assetFile, char* textureFile, float x_scale, float y_scale, float z_scale)
 {
 	m_pD3DDevice = D3DDevice;
 	m_pImmediateContext = ImmediateContext;
@@ -41,6 +41,8 @@ void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* Immedi
 	m_light->SetDirectionalLightColour(1.8f, 1.5f, 0.0f, 1.0f);
 	m_light->SetAmbientLightColour(0.3f, 0.3f, 0.3f, 1.0f);
 
+	LoadObjModel(assetFile, textureFile);
+
 }
 
 Asset::~Asset()
@@ -55,9 +57,9 @@ Asset::~Asset()
 	m_pConstantBuffer->Release();
 }
 
-int Asset::LoadObjModel(char* fileName, char* textureFile)
+int Asset::LoadObjModel(char* assetFile, char* textureFile)
 {
-	m_pObject = new ObjFileModel(fileName, m_pD3DDevice, m_pImmediateContext);
+	m_pObject = new ObjFileModel(assetFile, m_pD3DDevice, m_pImmediateContext);
 
 	if (m_pObject->filename == "FILE NOT LOADED") return S_FALSE;
 

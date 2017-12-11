@@ -32,8 +32,8 @@ void Game::MainUpdate()
 	if (cineCamera == false)
 	{
 
-
-		m_player_node->RotateAsset(0.0f, key->m_mouse_state.lX, 0.0f);
+		m_player_node->RestrictPitch();
+		m_player_node->RotateAsset(key->m_mouse_state.lY, key->m_mouse_state.lX, 0.0f);
 
 
 		// Keyboard Controls
@@ -137,6 +137,8 @@ void Game::MainUpdate()
 
 			if (m_player_node->GetChildrenSize() != 0)
 			{
+				//m_player_node->GetEquippedWeaponNode()->RotateAsset(key->m_mouse_state.lY, 0.0f, 0.0f);
+
 				if (key->m_mouse_state.rgbButtons[0] && m_player_node->m_p_asset->GetWeaponCarryingState() == true
 					&& m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == false && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
 				{
@@ -487,11 +489,9 @@ void Game::MainUpdate()
 
 		// Mouse Controls
 
-
-		//perspective->RotateCameraY(-key->m_mouse_state.lY);
-			//if (perspective->GetCollidingState() == false)
-			//{
-		view[0]->RotateCameraX(key->m_mouse_state.lX);//}
+		
+		view[0]->RotateCameraY(-key->m_mouse_state.lY);
+		view[0]->RotateCameraX(key->m_mouse_state.lX);
 
 
 		hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
@@ -504,8 +504,10 @@ void Game::MainUpdate()
 			cineCamera = false;
 		}
 		
+
 		view[1]->RotateCameraY(-key->m_mouse_state.lY);
 		view[1]->RotateCameraX(key->m_mouse_state.lX);
+		
 
 		if (key->IsKeyPressed(key->mve_frwd))
 		{
@@ -557,7 +559,7 @@ void Game::InitialiseGameAssets()
 	fopen_s(&assetFile, "Scripts/Asset_Details.txt", "r");
 	fgetpos(assetFile, &scriptPosition);
 
-	m_root_node = new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), '\0', 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0);
+	m_root_node = new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), '\0', NULL, NULL, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0);
 
 	//ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f, 100.0, 0.0, 100.0);
 
@@ -574,6 +576,12 @@ void Game::InitialiseGameAssets()
 	float x_scle = 0.0f;
 	float y_scle = 0.0f;
 	float z_scle = 0.0f;
+
+	char assetObj[256];
+	char textureFile[256];
+
+	//string assetObj;
+	//string textureFile;
 
 	int num_assets;
 
@@ -594,7 +602,7 @@ void Game::InitialiseGameAssets()
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, " %f %f %f %f %f %f %f", &x, &y, &z, &cam_rot, &fov, &n_clip, &f_clip);
+				fscanf(assetFile, "%f %f %f %f %f %f %f", &x, &y, &z, &cam_rot, &fov, &n_clip, &f_clip);
 
 				view.push_back(new Camera(x, y, z, cam_rot, fov, m_render_target->GetWindowWidth(), m_render_target->GetWindowHeight(), n_clip, f_clip));
 
@@ -603,9 +611,9 @@ void Game::InitialiseGameAssets()
 
 		if (strstr("Player", asset_type) != 0)
 		{
-			fscanf(assetFile, " %c %f %f %f %f %f %f %d", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
+			fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
-			m_player_node = new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, x, y, z, x_scle, y_scle, z_scle, gravityState);
+			m_player_node = new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState);
 
 			m_root_node->AddChildNode(m_player_node);
 
@@ -617,9 +625,9 @@ void Game::InitialiseGameAssets()
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, " %c %f %f %f %f %f %f %d", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
+				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
-				m_enemy_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_enemy_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
 
 				objs.push_back(m_enemy_nodes[i]);
 
@@ -637,9 +645,9 @@ void Game::InitialiseGameAssets()
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, " %c %f %f %f %f %f %f %d", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
+				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
-				m_spear_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_spear_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
 
 				objs.push_back(m_spear_nodes[i]);
 
@@ -656,9 +664,9 @@ void Game::InitialiseGameAssets()
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, " %c %f %f %f %f %f %f %d", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
+				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
-				m_eweapon_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_eweapon_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
 
 				m_enemy_nodes[i]->AddChildNode(m_eweapon_nodes[i]);
 
@@ -673,9 +681,9 @@ void Game::InitialiseGameAssets()
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, " %c %f %f %f %f %f %f %d", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
+				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
-				m_dynamic_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_dynamic_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
 
 				objs.push_back(m_dynamic_nodes[i]);
 
@@ -693,9 +701,9 @@ void Game::InitialiseGameAssets()
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, " %c %f %f %f %f %f %f %d", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
+				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
-				m_statik_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_statik_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
 
 				objs.push_back(m_statik_nodes[i]);
 				m_root_node->AddChildNode(m_statik_nodes[i]);
@@ -752,6 +760,9 @@ void Game::RestartGame()
 
 	int gravityState = 0;
 
+	char assetObj[256];
+	char textureFile[256];
+
 	char asset_type[256];
 	char node_type;
 
@@ -765,9 +776,9 @@ void Game::RestartGame()
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, " %c %f %f %f %f %f %f %d", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
+				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
-				m_enemy_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_enemy_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
 
 				objs.push_back(m_enemy_nodes[i]);
 
@@ -784,9 +795,9 @@ void Game::RestartGame()
 
 			for (int i = 0; i < num_assets; i++)
 			{
-				fscanf(assetFile, " %c %f %f %f %f %f %f %d", &node_type, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
+				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
-				m_eweapon_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_eweapon_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
 
 				m_enemy_nodes[i]->AddChildNode(m_eweapon_nodes[i]);
 

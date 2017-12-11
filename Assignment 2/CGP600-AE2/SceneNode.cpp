@@ -2,27 +2,27 @@
 
 
 
-SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState)
+SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, char* assetFile, char* textureFile, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState)
 {
 	if (c == 'P')
 	{
-		m_p_asset = new Player(D3DDevice, ImmediateContext, x_scale,  y_scale, z_scale);
+		m_p_asset = new Player(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
 	}
 	else if (c == 'E')
 	{
-		m_e_asset = new Enemy(D3DDevice, ImmediateContext,  x_scale, y_scale,  z_scale);
+		m_e_asset = new Enemy(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale, y_scale,  z_scale);
 	}
 	else if (c == 'W')
 	{
-		m_w_asset = new Weapon(D3DDevice, ImmediateContext, x_scale,  y_scale, z_scale);
+		m_w_asset = new Weapon(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
 	}
 	else if (c == 'S')
 	{
-		m_s_asset = new Statik(D3DDevice, ImmediateContext, x_scale,  y_scale, z_scale);
+		m_s_asset = new Statik(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
 	}
 	else if (c == 'D')
 	{
-		m_d_asset = new Dynamic(D3DDevice, ImmediateContext, x_scale,  y_scale, z_scale);
+		m_d_asset = new Dynamic(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
 	}
 
 	srand(time(NULL));
@@ -38,6 +38,8 @@ SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateCont
 		m_xangle = 0.0f;
 		m_yangle = 0.0f;
 		m_zangle = 0.0f;
+
+		m_prev_xangle = m_xangle;
 
 		m_scale_x = x_scale;
 		m_scale_y = y_scale;
@@ -629,6 +631,18 @@ void SceneNode::SetZPos(float z)
 void SceneNode::SetYAngle(float angle)
 {
 	m_yangle = angle;
+}
+
+void SceneNode::RestrictPitch()
+{
+	if (m_xangle > (3.14f / 2) || m_xangle < -(3.14f / 2))
+	{
+		m_xangle = m_prev_xangle;
+	}
+	else
+	{
+		m_prev_xangle = m_xangle;
+	}
 }
 
 void SceneNode::SetCurZPos()

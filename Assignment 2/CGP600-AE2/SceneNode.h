@@ -27,6 +27,9 @@ private:
 	float m_prev_x, m_prev_y, m_prev_z;
 
 	float m_xangle, m_yangle, m_zangle;
+
+	float m_prev_xangle;
+
 	float m_scale_x, m_scale_y, m_scale_z;
 
 	float x1, y1, z1, r1;
@@ -74,7 +77,7 @@ public:
 	Statik* m_s_asset;
 	Dynamic* m_d_asset;
 
-	SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState);
+	SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, char* assetFile, char* textureFile, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState);
 
 	void AddChildNode(SceneNode* n);
 
@@ -107,6 +110,8 @@ public:
 	void SetXPos(float x);
 	void SetYPos(float y);
 	void SetZPos(float z);
+
+	void RestrictPitch();
 
 	void SetYAngle(float angle);
 

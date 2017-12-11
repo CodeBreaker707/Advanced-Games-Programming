@@ -11,10 +11,13 @@ class Camera
 {
 private:
 	float m_x, m_y, m_z;
-	float m_init_x, m_init_y, m_init_z;
+	
 	float m_dx, m_dy, m_dz;
+
 	float m_camera_rotation_x;
 	float m_camera_rotation_y;
+
+	float m_prev_rot_y;
 
 	bool m_isColliding = false;
 
@@ -37,8 +40,6 @@ public:
 	void SetX(float x);
 	void SetY(float y);
 	void SetZ(float z);
-
-	void ResetToInitalPos();
 
 	float GetX();
 	float GetY();

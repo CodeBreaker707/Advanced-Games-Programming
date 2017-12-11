@@ -7,16 +7,16 @@ Camera::Camera(float x, float y, float z, float camera_rotation, float FOV, floa
 	m_y = y;
 	m_z = z;
 
-	m_init_x = m_x;
-	m_init_y = m_y;
-	m_init_z = m_z;
-
 	m_camera_rotation_x = XMConvertToRadians(camera_rotation);
 	m_camera_rotation_y = XMConvertToRadians(camera_rotation);
 
 	m_dx = sin(XMConvertToRadians(camera_rotation));
 	m_dy = sin(XMConvertToRadians(camera_rotation));
 	m_dz = cos(XMConvertToRadians(camera_rotation));
+
+	m_prev_rot_y = camera_rotation;
+	//m_prev_dy = m_dy;
+	//m_prev_dz = m_dz;
 
 	m_right = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
 	m_up = XMVectorSet(0.0, 1.0, 0.0, 0.0);
@@ -36,18 +36,24 @@ void Camera::RotateCameraX(float amount)
 	m_dx = sin(m_camera_rotation_x);
 	m_dz = cos(m_camera_rotation_x);
 
-	/*m_camera_rotation_x += amount;
-
-	m_dx = sin(XMConvertToRadians(m_camera_rotation_x));
-	m_dz = cos(XMConvertToRadians(m_camera_rotation_x));*/
 }
 
 void Camera::RotateCameraY(float amount)
 {
 	m_camera_rotation_y += XMConvertToRadians(amount);
 
+	if (m_camera_rotation_y > (3.14f/2) || m_camera_rotation_y < -(3.14/2))
+	{
+		m_camera_rotation_y = m_prev_rot_y;
+	}
+	else
+	{
+		m_prev_rot_y = m_camera_rotation_y;
+	}
+
 	m_dy = sin(m_camera_rotation_y);
 	m_dz = cos(m_camera_rotation_y);
+
 
 }
 
@@ -103,16 +109,6 @@ void Camera::SetY(float y)
 void Camera::SetZ(float z)
 {
 	m_z = z;
-}
-
-void Camera::ResetToInitalPos()
-{
-	m_position = XMVectorSet(m_init_x, m_init_y, m_init_z, 0.0f);
-
-	m_x = XMVectorGetX(m_position);
-	m_y = XMVectorGetY(m_position);
-	m_z = XMVectorGetZ(m_position);
-
 }
 
 XMMATRIX Camera::GetProjectionMatrix()
