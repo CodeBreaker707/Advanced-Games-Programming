@@ -18,18 +18,6 @@ void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* Immedi
 	m_pD3DDevice = D3DDevice;
 	m_pImmediateContext = ImmediateContext;
 
-	/*m_x = x_pos;
-	m_y = y_pos;
-	m_z = z_pos;*/
-
-	m_prev_x = m_x;
-	m_prev_y = m_y;
-	m_prev_z = m_z;
-
-	m_xangle = 0.0f;
-	m_zangle = 0.0f;
-	m_yangle = 0.0f;
-
 	m_scale_x = x_scale;
 	m_scale_y = y_scale;
 	m_scale_z = z_scale;
@@ -38,7 +26,7 @@ void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* Immedi
 	m_light = new Light();
 
 	m_light->SetDirectionalLightPos(-1.0f, 1.0f, -1.0f, 0.0f);
-	m_light->SetDirectionalLightColour(1.8f, 1.5f, 0.0f, 1.0f);
+	m_light->SetDirectionalLightColour(1.0f, 1.0f, 1.0f, 1.0f);
 	m_light->SetAmbientLightColour(0.3f, 0.3f, 0.3f, 1.0f);
 
 	LoadObjModel(assetFile, textureFile);
@@ -153,117 +141,6 @@ int Asset::LoadObjModel(char* assetFile, char* textureFile)
 
 }
 
-//void Asset::RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degrees)
-//{
-//	m_xangle += XMConvertToRadians(pitch_degrees);
-//	m_yangle += XMConvertToRadians(yaw_degrees);
-//	m_zangle += XMConvertToRadians(roll_degrees);
-//
-//}
-//
-//void Asset::ScaleAsset(float x_scale, float y_scale, float z_scale)
-//{
-//	m_scale_x = x_scale;
-//	m_scale_y = y_scale;
-//	m_scale_z = z_scale;
-//}
-//
-//void Asset::MoveAsset(float x_dist, float y_dist, float z_dist)
-//{
-//	m_x += x_dist;
-//	m_y += y_dist;
-//	m_z += z_dist;
-//}
-//
-//
-//bool Asset::CheckCollision(Asset* obj)
-//{
-//	if (obj == this)
-//	{
-//		return false;
-//	}
-//
-//	XMVECTOR cur_pos = GetColliderWorldSpacePos();
-//	XMVECTOR other_pos = obj->GetColliderWorldSpacePos();
-//
-//	XMVECTOR v1 = XMVector3Transform(cur_pos, GetWorldMatrix());
-//	XMVECTOR v2 = XMVector3Transform(other_pos, GetWorldMatrix());
-//
-//	/*float x1 = XMVectorGetX(v1) - (box->GetLength(m_scale_x) / 2  );
-//	float y1 = XMVectorGetY(v1) + (box->GetHeight(m_scale_y) / 2  );
-//	float z1 = XMVectorGetZ(v1) - (box->GetBreadth(m_scale_z) / 2 );
-//
-//	float l1 = box->GetLength(m_scale_x);
-//	float h1 = box->GetHeight(m_scale_y);
-//	float b1 = box->GetBreadth(m_scale_z);
-//
-//	float x2 = XMVectorGetX(v2) - (obj->box->GetLength(obj->GetXScale()) / 2 );
-//	float y2 = XMVectorGetY(v2) + (obj->box->GetHeight(obj->GetYScale()) / 2 );
-//	float z2 = XMVectorGetZ(v2) - (obj->box->GetBreadth(obj->GetZScale()) / 2 );
-//
-//	float l2 = obj->box->GetLength(obj->GetXScale());
-//	float h2 = obj->box->GetHeight(obj->GetYScale());
-//	float b2 = obj->box->GetBreadth(obj->GetZScale());*/
-//
-//
-//	/*if (x1 < x2 + l2 && x1 + l1 > x2)
-//	{
-//		if (y1 > y2 - h2 && y1 - h1 < y2)
-//		{
-//			if (z1 < z2 + b2 && z1 + b1 > z2)
-//			{
-//				m_isColliding = true;
-//				
-//			}
-//			else
-//			{
-//				m_isColliding = false;
-//			}
-//		}
-//		else
-//		{
-//			m_isColliding = false;
-//		}
-//	}
-//	else
-//	{
-//		m_isColliding = false;
-//	}*/
-//}
-//
-//void Asset::RestrictPos(bool isColliding)
-//{
-//	if (isColliding == true)
-//	{
-//		m_x = m_prev_x;
-//		m_y = m_prev_y;
-//		m_z = m_prev_z;
-//	}
-//}
-//
-//void Asset::UpdatePos(bool isColliding)
-//{
-//	if (isColliding == false)
-//	{
-//		m_prev_x = m_x;
-//		m_prev_y = m_y;
-//		m_prev_z = m_z;
-//	}
-//
-//}
-//
-//XMVECTOR Asset::GetColliderWorldSpacePos()
-//{
-//	XMVECTOR offset;
-//
-//	offset = collider->GetColliderPos();
-//
-//	XMVECTOR new_pos = XMVector3Transform(offset, GetWorldMatrix());
-//
-//	return new_pos;
-//
-//}
-
 void Asset::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 {
 
@@ -285,73 +162,11 @@ void Asset::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 
 		m_pImmediateContext->PSSetSamplers(0, 1, &m_pSampler0);
 		m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture0);
-		//m_pImmediateContext->PSSetShaderResources(1, 1, &m_pTexture1);
 
 		m_pObject->Draw();
 
 }
 
-//void Asset::SetXPos(float x)
-//{
-//	m_x = x;
-//}
-//
-//void Asset::SetYPos(float y)
-//{
-//	m_y = y;
-//}
-//
-//void Asset::SetZPos(float z)
-//{
-//	m_z = z;
-//}
-//
-////void Asset::SetObjDrawnState(bool state)
-////{
-////	objectDrawn = state;
-////}
-//
-//XMMATRIX Asset::GetWorldMatrix()
-//{
-//	XMMATRIX world;
-//
-//	world = XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
-//	world *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
-//	world *= XMMatrixTranslation(m_x, m_y, m_z);
-//
-//	return world;
-//}
-//
-//float Asset::GetXPos()
-//{
-//	return m_x;
-//}
-//
-//float Asset::GetYPos()
-//{
-//	return m_y;
-//}
-//
-//float Asset::GetZPos()
-//{
-//	return m_z;
-//}
-//
-//float Asset::GetXAngle()
-//{
-//	return m_xangle;
-//}
-//
-//float Asset::GetYAngle()
-//{
-//	return m_yangle;
-//}
-//
-//float Asset::GetZAngle()
-//{
-//	return m_zangle;
-//}
-//
 float Asset::GetXScale()
 {
 	return m_scale_x;
@@ -366,14 +181,4 @@ float Asset::GetZScale()
 {
 	return m_scale_z;
 }
-
-//void Asset::SetCollideState(bool state)
-//{
-//	m_isColliding = state;
-//}
-//
-//bool Asset::IsColliding()
-//{
-//	return m_isColliding;
-//}
 

@@ -5,27 +5,27 @@ Camera 2
 
 Player 
 
-P Assets/cube2.obj Assets/tile.bmp 0.0 0.0 0.0 1.0 1.0 1.0 1
+P Assets/cubeObj.obj Assets/tile.bmp 0.0 0.0 0.0 1.0 1.0 1.0 1
 
 Enemy 2
 
-E Assets/cube2.obj Assets/tile.bmp 5.0 0.0 20.0 1.0 1.0 1.0 1
-E Assets/cube2.obj Assets/tile.bmp -10.0 0.0 -10.0 1.0 1.0 1.0 1
+E Assets/cubeObj.obj Assets/tile.bmp 5.0 0.0 20.0 1.0 1.0 1.0 1
+E Assets/cubeObj.obj Assets/tile.bmp -10.0 0.0 -10.0 1.0 1.0 1.0 1
 
 Spear 1
 
-W Assets/cube2.obj Assets/tile.bmp 5.0 -1.5 3.0 0.2 0.2 1.5 1
+W Assets/cubeObj.obj Assets/spear_tex.png 5.0 -1.5 3.0 0.2 0.2 1.5 1
 
 Club 2
 
-W Assets/cube2.obj Assets/tile.bmp 1.0 -0.5 1.0 0.2 0.2 1.5 0
-W Assets/cube2.obj Assets/tile.bmp 1.0 -0.5 1.0 0.2 0.2 1.5 0
+W Assets/cubeObj.obj Assets/spear_tex.png 1.0 -0.5 1.0 0.2 0.2 1.5 0
+W Assets/cubeObj.obj Assets/spear_tex.png 1.0 -0.5 1.0 0.2 0.2 1.5 0
 
 Dynamic 1
 
-D Assets/cube2.obj Assets/tile.bmp 15.0 1.0 0.0 0.5 0.5 0.5 1
+D Assets/cubeObj.obj Assets/rock_tex.jpg 15.0 1.0 0.0 0.5 0.5 0.5 1
 
 Statik 2
 
-S Assets/cube2.obj Assets/tile.bmp 0.0 -3.0 0.0 100.0 1.0 100.0 0
-S Assets/cube2.obj Assets/tile.bmp 10.0 -1.0 10.0 0.5 2.0 0.5 0
+S Assets/cubeObj.obj Assets/grass_tex.jpg 0.0 -3.0 0.0 100.0 1.0 100.0 0
+S Assets/cubeObj.obj Assets/grass_tex.jpg 5.0 -1.0 10.0 0.5 2.0 0.5 0
