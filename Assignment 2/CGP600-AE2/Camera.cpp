@@ -2,11 +2,12 @@
 
 Camera::Camera(float x, float y, float z, float camera_rotation, float FOV, float winWidth, float winHeight, float nearClip, float farClip)
 {
-
+	// Initialising the position values
 	m_x = x;
 	m_y = y;
 	m_z = z;
 
+	// Initialising the camera's rotation degrees
 	m_camera_rotation_x = XMConvertToRadians(camera_rotation);
 	m_camera_rotation_y = XMConvertToRadians(camera_rotation);
 
@@ -15,8 +16,6 @@ Camera::Camera(float x, float y, float z, float camera_rotation, float FOV, floa
 	m_dz = cos(XMConvertToRadians(camera_rotation));
 
 	m_prev_rot_y = camera_rotation;
-	//m_prev_dy = m_dy;
-	//m_prev_dz = m_dz;
 
 	m_right = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
 	m_up = XMVectorSet(0.0, 1.0, 0.0, 0.0);
