@@ -14,7 +14,7 @@ private:
 	float m_length, m_height, m_breadth;
 
 	// Collider's radius
-	float m_sqr_radius;
+	float m_sqrt_radius;
 
 public:
 
