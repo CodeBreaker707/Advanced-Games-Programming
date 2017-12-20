@@ -30,7 +30,7 @@ private:
 	float m_prev_rot_y;
 
 	// Vectors used to get the view matrix
-	XMVECTOR m_position, m_lookAt, m_up;
+	XMVECTOR m_position, m_lookAt, m_right, m_up, m_forward;
 
 	// Matrix to store the camera's projection values
 	XMMATRIX projection;
@@ -39,6 +39,9 @@ public:
 
 	// Camera class constructor
 	Camera(float x, float y, float z, float camera_rotation, float FOV, float winWidth, float winHeight, float nearClip, float farClip);
+
+	// Function to move the camera independently
+	void Move(float x_distance, float y_distance, float z_distance);
 
 	// Function to move the camera along with the player
 	void MoveWithPlayer(float x, float y, float z);

@@ -7,40 +7,49 @@ Camera::Camera(float x, float y, float z, float camera_rotation, float FOV, floa
 	m_y = y;
 	m_z = z;
 
-	// Initialising the camera's rotation degrees
+	// Initialising the camera's rotational radians
 	m_camera_rotation_x = XMConvertToRadians(camera_rotation);
 	m_camera_rotation_y = XMConvertToRadians(camera_rotation);
 
+	// Initialising the rotational values
 	m_dx = sin(XMConvertToRadians(camera_rotation));
 	m_dy = sin(XMConvertToRadians(camera_rotation));
 	m_dz = cos(XMConvertToRadians(camera_rotation));
 
+	// Initialising the previous pitch radian
 	m_prev_rot_y = camera_rotation;
 
-	m_right = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
+	// Initialising the up and position vectors
+	m_right = XMVectorSet(1.0, 0.0, 0.0, 0.0);
 	m_up = XMVectorSet(0.0, 1.0, 0.0, 0.0);
-	m_forward = XMVectorSet(0.0f, 0.0, 1.0f, 0.0f);
+	m_forward = XMVectorSet(0.0, 0.0, 1.0, 0.0);
 	m_position = XMVectorSet(m_x, m_y, m_z, 0.0f);
 
-	m_isColliding = false;
-
+	// Initialising the projection matrix from the Asset_Details script
 	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(FOV), winWidth / winHeight, nearClip, farClip);
 
 }
 
+// Rotate the camera in yaw axis
 void Camera::RotateCameraX(float amount)
 {
+	// Increasing the yaw radians
 	m_camera_rotation_x += XMConvertToRadians(amount);
 
+	// Updating rotational values by
+	// calculating the sin and cos of the radians
 	m_dx = sin(m_camera_rotation_x);
 	m_dz = cos(m_camera_rotation_x);
 
 }
 
+// Rotate the camera in pitch axis
 void Camera::RotateCameraY(float amount)
 {
+	// Increasing the pitch radians
 	m_camera_rotation_y += XMConvertToRadians(amount);
 
+	// This is to restrict the camera's pitch radians within limits
 	if (m_camera_rotation_y > (3.14f/2) || m_camera_rotation_y < -(3.14/2))
 	{
 		m_camera_rotation_y = m_prev_rot_y;
@@ -50,6 +59,7 @@ void Camera::RotateCameraY(float amount)
 		m_prev_rot_y = m_camera_rotation_y;
 	}
 
+	// Updating the rotational values
 	m_dy = sin(m_camera_rotation_y);
 	m_dz = cos(m_camera_rotation_y);
 
@@ -82,11 +92,6 @@ void Camera::MoveWithPlayer(float x, float y, float z)
 
 }
 
-void Camera::SetCollidingState(bool state)
-{
-	m_isColliding = state;
-}
-
 XMMATRIX Camera::GetViewMatrix()
 {
 	m_lookAt = XMVectorSet(m_x + m_dx, m_y + m_dy, m_z + m_dz, 0.0);
@@ -95,47 +100,7 @@ XMMATRIX Camera::GetViewMatrix()
 	return XMMatrixLookAtLH(m_position, m_lookAt, m_up);
 }
 
-void Camera::SetX(float x)
-{
-	m_x = x;
-}
-
-void Camera::SetY(float y)
-{
-	m_y = y;
-}
-
-void Camera::SetZ(float z)
-{
-	m_z = z;
-}
-
 XMMATRIX Camera::GetProjectionMatrix()
 {
 	return projection;
-}
-
-bool Camera::GetCollidingState()
-{
-	return m_isColliding;
-}
-
-float Camera::GetX()
-{
-	return m_x;
-}
-
-float Camera::GetY()
-{
-	return m_y;
-}
-
-float Camera::GetZ()
-{
-	return m_z;
-}
-
-float Camera::GetYaw()
-{
-	return m_dx;
 }

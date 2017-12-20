@@ -525,7 +525,6 @@ void Game::MainUpdate()
 		if (key->IsKeyPressed(key->mve_rght))
 		{
 			view[1]->Move(0.01f, 0.0f, 0.0f);
-
 		}
 		
 	}
