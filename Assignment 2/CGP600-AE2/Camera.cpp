@@ -26,6 +26,11 @@ Camera::Camera(float x, float y, float z, float camera_rotation, float FOV, floa
 	m_position = XMVectorSet(m_x, m_y, m_z, 0.0f);
 
 	// Initialising the projection matrix from the Asset_Details script
+	// FOV = Field of View
+	// winWidth = Window Width
+	// winHeight = Window Height
+	// nearClip = Near Clipping Plane
+	// farClip = Far Clipping Plane
 	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(FOV), winWidth / winHeight, nearClip, farClip);
 
 }

@@ -409,58 +409,75 @@ void Game::MainUpdate()
 				m_spear_nodes[i]->SetYPos(-0.5f);
 				m_spear_nodes[i]->SetZPos(1.0f);
 
-				//m_spear_nodes[i]->SetYAngle(m_player_node->GetYAngle());
-
+				// Detach the node from the root node
 				m_root_node->DetachNode(m_spear_nodes[i]);
 
-				//m_spear_nodes[i]->m_w_asset->SetWeaponEquipState(true);
+				// Set the weapon carrying state to true
 				m_player_node->m_p_asset->SetWeaponCarryingState(true);
+
+				// Set the weapon as a child of the player
 				m_player_node->AddChildNode(m_spear_nodes[i]);
 
+				// Loop through every object in the scene
 				for (int j = 0; j < objs.size(); j++)
 				{
+					// If the weapon matches the object
+					// in the all objects vector, this
+					// will return true
 					if (m_spear_nodes[i] == objs[j])
 					{
+						// Erase the object from the
+						// all objects vector
 						objs.erase(objs.begin() + j);
 						break;
 					}
 				}
 
+				// Finally, erase the weapon from the weapon
+				// nodes vector
 				m_spear_nodes.erase(m_spear_nodes.begin() + i);
 
 			}
 
 		}
 
+		// Loop through each dynamic object in the game
 		for (int i = 0; i < m_dynamic_nodes.size(); i++)
 		{
+			// If the player isn't pushing, check for collision
 			if (m_player_node->m_p_asset->GetPushState() == false)
 			{
 				m_dynamic_nodes[i]->CheckCollision(m_player_node);
 			}
 
+			// Check interact collision of the dynamic object
+			// against the player
 			m_dynamic_nodes[i]->CheckActionCollision(m_player_node);
 
+			// If the dynamic object is colliding with
+			// the player, not being pushed and if the
+			// interact key is pressed, this will return true
 			if (m_dynamic_nodes[i]->IsInteracting() && key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == false)
 			{
-				/*m_dynamic_nodes[i]->SetXPos(m_player_node->GetXPos());
-				m_dynamic_nodes[i]->SetYPos(m_player_node->GetYPos() - 0.5f);
-				m_dynamic_nodes[i]->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) + 2.0f);
-
-				m_dynamic_nodes[i]->UpdateCollisionTree(&XMMatrixIdentity());*/
-
+				// Setting the position of the object
+				// respective to the player
 				m_dynamic_nodes[i]->SetXPos(0.0f);
 				m_dynamic_nodes[i]->SetYPos(-0.5f);
 				m_dynamic_nodes[i]->SetZPos(2.0f);
 
-				//m_dynamic_nodes[i]->SetYAngle(m_player_node->GetYAngle());
-
+				// Detach the dynamic object 
+				// node from the root node
 				m_root_node->DetachNode(m_dynamic_nodes[i]);
 
+				// Set the push state to true
 				m_player_node->m_p_asset->SetPushState(true);
 
+				// Set the dynamic object as a child of
+				// the player
 				m_player_node->AddChildNode(m_dynamic_nodes[i]);
 
+				// Same process for removing the object
+				// from the all objects vector
 				for (int j = 0; j < objs.size(); j++)
 				{
 					if (m_dynamic_nodes[i] == objs[j])
@@ -470,6 +487,8 @@ void Game::MainUpdate()
 					}
 				}
 
+				// Finally, erase the object from 
+				// the dynamic object node vector
 				m_dynamic_nodes.erase(m_dynamic_nodes.begin() + i);
 
 			}
@@ -477,9 +496,13 @@ void Game::MainUpdate()
 
 		}
 
+		// If the player has released the interact 
+		// key and is pushing an object, this will
+		// return true
 		if (m_player_node->GetChildrenSize() != 0 && !key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == true)
 		{
-
+			// Similar process of dropping a weapon
+			// Refer Line 157
 			m_dynamic_nodes.push_back(m_player_node->GetPushingCrate());
 			m_root_node->AddChildNode(m_player_node->GetPushingCrate());
 
@@ -488,8 +511,6 @@ void Game::MainUpdate()
 			m_player_node->GetPushingCrate()->SetZPos(m_player_node->GetZPos() + cos(m_player_node->GetYAngle()) * 2.5);
 
 			m_player_node->GetPushingCrate()->SetYAngle(m_player_node->GetYAngle());
-
-			//m_player_node->GetPushingCrate()->UpdateCollisionTree(&XMMatrixIdentity());
 
 			m_player_node->m_p_asset->SetPushState(false);
 
@@ -503,54 +524,38 @@ void Game::MainUpdate()
 		for (int i = 0; i < objs.size(); i++)
 		{
 			m_player_node->RestrictPos(objs[i]->IsColliding());
-
-
-			/*if (m_player_node->GetChildrenSize() != 0)
-			{
-				if (m_player_node->m_p_asset->GetPushState() == true)
-				{
-					m_player_node->GetPushingCrate()->CheckActionCollision(objs[2]);
-					m_player_node->RestrictPos(m_player_node->GetPushingCrate()->IsInteracting());
-				}
-			}*/
 		}
 
 		// Storing previous positions of the player
 		for (int i = 0; i < objs.size(); i++)
 		{
-
 			m_player_node->UpdatePos(objs[i]->IsColliding());
-
-
-			/*if (m_player_node->GetChildrenSize() != 0)
-			{
-				if (m_player_node->m_p_asset->GetPushState() == true)
-				{
-					m_player_node->GetPushingCrate()->CheckActionCollision(objs[i]);
-					m_player_node->UpdatePos(m_player_node->GetPushingCrate()->IsInteracting());
-				}
-			}*/
 		}
 
 
 
 		//Check if the player is colliding with anything below		
-
 		for (int i = 0; i < objs.size(); i++)
 		{
+			// Checking collision of the player's bottom
+			// against every other object
 			if (m_player_node->CheckNodeBottomCollision(objs[i]) == true)
 			{
+				// Set the player on ground state to true
 				m_player_node->SetOnGroundState(true);
 				break;
 			}
 			else
 			{
+				// Else set it to false
 				m_player_node->SetOnGroundState(false);
 			}
 
 		}
 
-
+		// We apply the same logic as above
+		// to every object against
+		// every other object
 		for (int i = 0; i < objs.size(); i++)
 		{
 			for (int j = 0; j < objs.size(); j++)
@@ -567,45 +572,53 @@ void Game::MainUpdate()
 			}
 		}
 
+		// If the player is in the air
+		// and not jumping, pull the player
+		// down
 		if (m_player_node->m_p_asset->GetJumpState() == false)
 		{
 			m_player_node->ApplyGravity();
 		}
 
-
-
+		// Apply gravity to objects that can
+		// fall down
 		for (int i = 0; i < objs.size(); i++)
 		{
 			objs[i]->ApplyGravity();
 			objs[i]->UpdateCollisionTree(&XMMatrixIdentity());
 		}
 
-
+		// Calling the function to move the 
+		// camera along the player
 		view[0]->MoveWithPlayer(m_player_node->GetXPos(), m_player_node->GetYPos(), m_player_node->GetZPos());
 
 
 		// Mouse Controls
-
 		
+		// Rotate the camera based on mouse input
 		view[0]->RotateCameraY(-key->m_mouse_state.lY);
 		view[0]->RotateCameraX(key->m_mouse_state.lX);
 
-
+		// Add text to the UI object
 		hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
 
 	}
 	else
 	{
+		// Revert back to the First-Person camera
+		// if the key is pressed again
 		if (key->IsKeyPressedOnce(key->swapCamera))
 		{
 			cineCamera = false;
 		}
 		
-
+		// Rotate the cinematic camera
+		// based on mouse input
 		view[1]->RotateCameraY(-key->m_mouse_state.lY);
 		view[1]->RotateCameraX(key->m_mouse_state.lX);
 		
-
+		// Move the camera freely based on
+		// input movement keys
 		if (key->IsKeyPressed(key->mve_frwd))
 		{
 			view[1]->Move(0.0f, 0.0f, 0.01f);
@@ -627,39 +640,45 @@ void Game::MainUpdate()
 	}
 
 	
-
-
 	// DRAW
 
+	// If the cinematic camera is disabled,
+	// use the first-person camera
 	if (cineCamera == false)
 	{
 		m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());
 
 	}
+	// Else use the cinematic camera
 	else
 	{
 		m_root_node->Execute(&XMMatrixIdentity(), &view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix());
 
 	}
 
+	// Render the text on screen
 	//hud->RenderText();
+
+	// Set the blend state to false
+	// after rendering
 	//m_render_target->SetBlendState(false);
 
-
+	// Finally, display everything that is
+	// drawn and rendered
 	m_render_target->Display();
 
 }
 
 void Game::InitialiseGameAssets()
 {
+	// Open the script file to initialise assets
 	fopen_s(&assetFile, "Scripts/Asset_Details.txt", "r");
 
+	// Initialising the root node
 	m_root_node = new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), '\0', NULL, NULL, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0);
 
-	//ground = new Statik(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 0.0f, -2.0f, 0.0f, 100.0, 0.0, 100.0);
-
-	//objs.push_back(ground);
-
+	// Declaring and initialising variables
+	// to reference and use from the script
 	float x = 0.0f;
 	float y = 0.0f;
 	float z = 0.0f;
@@ -672,37 +691,61 @@ void Game::InitialiseGameAssets()
 	float y_scle = 0.0f;
 	float z_scle = 0.0f;
 
+	// A char object to read location
+	// of the asset object file
 	char assetObj[256];
+
+	// A char object to read location
+	// of the asset texture file
 	char textureFile[256];
 
-	//string assetObj;
-	//string textureFile;
+	// To store the num of asset objects
+	int num_assets = 0;
 
-	int num_assets;
-
+	// To store the gravity state 
+	// of the object
 	int gravityState = 0;
 
-	//int val;
-
+	// This is to store the type of
+	// asset read from the script
 	char asset_type[256];
+
+	// This is to store the type of
+	// node read from the script
 	char node_type;
 
+	// Run the loop until everything
+	// is initialised
 	while (Initialised == false)
 	{
+		// This scans the script to
+		// store the type of asset
 		fscanf(assetFile, "%s", asset_type);
 
+		// We now compare this string with
+		// what was scanned to check if 
+		// they're same
 		if (strstr("Camera", asset_type) != 0)
 		{
+			// Now we scan the number of assets
 			fscanf(assetFile, "%d", &num_assets);
 
+			// We now loop through each asset
 			for (int i = 0; i < num_assets; i++)
 			{
+				// We scan the complete line from the file 
+				// to store of all this asset's values
 				fscanf(assetFile, "%f %f %f %f %f %f %f", &x, &y, &z, &cam_rot, &fov, &n_clip, &f_clip);
 
+				// We now initialise the camera object based
+				// on the values from the script
 				view.push_back(new Camera(x, y, z, cam_rot, fov, m_render_target->GetWindowWidth(), m_render_target->GetWindowHeight(), n_clip, f_clip));
 
 			}
 		}
+
+		// Similar process is followed 
+		// for the following asset types
 
 		if (strstr("Player", asset_type) != 0)
 		{
@@ -710,6 +753,7 @@ void Game::InitialiseGameAssets()
 
 			m_player_node = new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState);
 
+			// We add the player node as a child of the root node
 			m_root_node->AddChildNode(m_player_node);
 
 		}
@@ -722,6 +766,7 @@ void Game::InitialiseGameAssets()
 			{
 				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
+				// Initialising the enemy nodes
 				m_enemy_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
 
 				objs.push_back(m_enemy_nodes[i]);
@@ -805,7 +850,11 @@ void Game::InitialiseGameAssets()
 
 			}
 
+			// Initialised is set to true
+			// when completed
 			Initialised = true;
+
+			// The file is closed
 			fclose(assetFile);
 		}
 
@@ -817,16 +866,22 @@ void Game::InitialiseGameAssets()
 
 void Game::RestartGame()
 {
+	// Initialised is reset to false
 	Initialised = false;
 
+	// We open the file again
 	fopen_s(&assetFile, "Scripts/Asset_Details.txt", "r");
 
+	// Reset the player back to the original position
 	m_player_node->ResetToInitalPos();
 
+	// Looping through enemies who are alive
 	for (int i = 0; i < m_enemy_nodes.size(); i++)
 	{
 		for (int j = 0; j < objs.size(); j++)
 		{
+			// Erase the enemy from the all
+			// objects vector
 			if (objs[j] == m_enemy_nodes[i])
 			{
 				objs.erase(objs.begin() + j);
@@ -834,12 +889,17 @@ void Game::RestartGame()
 			}
 		}
 
+		// Detach the enemy from the root node
 		m_root_node->DetachNode(m_enemy_nodes[i]);
 
 	}
 
+	// Clear both the vectors of nodes
 	m_enemy_nodes.clear();
 	m_eweapon_nodes.clear();
+
+	// The enemy and enemy weapon
+	// nodes are being re-initialised
 
 	float x = 0.0f;
 	float y = 0.0f;
