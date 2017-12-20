@@ -243,5 +243,7 @@ UI::~UI(void)
 	if (pVShader) pVShader->Release();
 	if (pPShader) pPShader->Release();
 	if (pInputLayout) pInputLayout->Release();
+	if (pImmediateContext) pImmediateContext->Release();
+	if (pD3DDevice) pD3DDevice->Release();
 
 }
