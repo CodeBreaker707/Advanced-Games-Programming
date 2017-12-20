@@ -6,6 +6,7 @@ Dynamic::Dynamic(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext,
 	InitialiseAsset(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale, y_scale, z_scale);
 }
 
+// Destructor
 Dynamic::~Dynamic()
 {
 
