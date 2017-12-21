@@ -495,7 +495,7 @@ void SceneNode::MoveAsset(float x_dist, float y_dist, float z_dist)
 	
 }
 
-void SceneNode::ApplyGravity()
+void SceneNode::ApplyGravity(double deltaTime)
 {
 	if (m_onGround == false && m_gravityApplied == true)
 	{

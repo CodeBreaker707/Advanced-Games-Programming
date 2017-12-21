@@ -4,18 +4,19 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, c
 {
 	InitialiseAsset(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale, y_scale, z_scale);
 
-	//LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
-
-	m_health = 500.0f;
+	m_health = 100.0f;
+	m_init_health = m_health;
 
 	m_isJumping = false;
 	
 	m_carryingWeapon = false;
 	m_isPushing = false;
 
-	m_move_speed = 0.001f;
+	//m_move_speed = 0.001f;
+	m_move_speed = 4.0f;
 	m_speed_multiplier = 1.0f;
-	m_jump_speed = 0.0010f;
+	//m_jump_speed = 0.0010f;
+	m_jump_speed = 10.0f;
 	m_jump_height = 4.5f;
 
 	//m_lookAt = XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f);
@@ -178,6 +179,11 @@ void Player::SetWeaponCarryingState(bool state)
 void Player::SetPlayerHealth(float amount)
 {
 	m_health = amount;
+}
+
+void Player::ResetPlayerHealth()
+{
+	m_health = m_init_health;
 }
 
 void Player::SetPlayerMoveSpeed(float speed)

@@ -6,7 +6,7 @@ Enemy::Enemy(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, cha
 	InitialiseAsset(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
 
 	// Initialising the enemy's health
-	m_health = 500.0f;
+	m_health = 100.0f;
 
 }
 

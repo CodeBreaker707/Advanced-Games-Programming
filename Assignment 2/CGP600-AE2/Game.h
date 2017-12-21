@@ -17,6 +17,7 @@
 #include "Dynamic.h"
 #include "SceneNode.h"
 #include "UI.h"
+#include "Time.h"
 
 
 class Game
@@ -32,6 +33,10 @@ private:
 	// This is the input object used by
 	// user
 	Input* key;
+
+	// This is a time object to keep
+	// in track of FPS and get deltaTime
+	Time* timing;
 
 	// This is a vector of camera objects
 	vector<Camera*> view;

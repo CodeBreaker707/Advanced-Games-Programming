@@ -102,7 +102,7 @@ public:
 	void CalculateBoxDimensions2(XMVECTOR v, Asset* obj);
 	void CalculateSphereDimensions2(XMVECTOR v, Asset* obj);
 
-	void ApplyGravity();
+	void ApplyGravity(double deltaTime);
 
 	XMVECTOR GetWorldColliderCentrePos();
 	XMVECTOR GetWorldPos();

@@ -11,6 +11,9 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	// Initialising the UI object
 	hud = new UI("Assets/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
 
+	// Initialising the Time object
+	timing = new Time();
+
 	// Boolean variables are initialised
 	Initialised = false;
 	cineCamera = false;
@@ -28,6 +31,8 @@ void Game::MainUpdate()
 	// This is called to clear the screen before
 	// drawing again
 	m_render_target->ClearBuffers();
+
+	timing->Execute();
 
 	// Reads if any key is pressed
 	key->ReadInputStates();
@@ -56,16 +61,16 @@ void Game::MainUpdate()
 			// is determined by the yaw angle and movement
 			// speed is retrieved from the player class
 
-			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
-			cos(m_player_node->GetYAngle()) * m_player_node->m_p_asset->GetPlayerMoveSpeed());
+			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * m_player_node->m_p_asset->GetPlayerMoveSpeed() * timing->GetDeltaTime(), 0.0f,
+			cos(m_player_node->GetYAngle()) * m_player_node->m_p_asset->GetPlayerMoveSpeed() * timing->GetDeltaTime());
 		}
 		if (key->IsKeyPressed(key->mve_lft))
 		{
 			// We strafe the player left in the
 			// direction the player is facing.
 
-			m_player_node->MoveAsset(sin(m_player_node->GetYAngle() + XMConvertToRadians(90)) * -m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
-				cos(m_player_node->GetYAngle() + XMConvertToRadians(90)) * -m_player_node->m_p_asset->GetPlayerMoveSpeed());
+			m_player_node->MoveAsset(sin(m_player_node->GetYAngle() + XMConvertToRadians(90)) * -m_player_node->m_p_asset->GetPlayerMoveSpeed() * timing->GetDeltaTime(), 0.0f,
+				cos(m_player_node->GetYAngle() + XMConvertToRadians(90)) * -m_player_node->m_p_asset->GetPlayerMoveSpeed() * timing->GetDeltaTime());
 
 		}
 		if (key->IsKeyPressed(key->mve_bck))
@@ -73,8 +78,8 @@ void Game::MainUpdate()
 			// We move the player back in the
 			// direction the player is facing.
 
-			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * -m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
-				cos(m_player_node->GetYAngle()) * -m_player_node->m_p_asset->GetPlayerMoveSpeed());
+			m_player_node->MoveAsset(sin(m_player_node->GetYAngle()) * -m_player_node->m_p_asset->GetPlayerMoveSpeed() * timing->GetDeltaTime(), 0.0f,
+				cos(m_player_node->GetYAngle()) * -m_player_node->m_p_asset->GetPlayerMoveSpeed() * timing->GetDeltaTime());
 
 		}
 		if (key->IsKeyPressed(key->mve_rght))
@@ -82,8 +87,8 @@ void Game::MainUpdate()
 			// We strafe the player right in the
 			// direction the player is facing.
 
-			m_player_node->MoveAsset(sin(m_player_node->GetYAngle() + XMConvertToRadians(90)) * m_player_node->m_p_asset->GetPlayerMoveSpeed(), 0.0f,
-				cos(m_player_node->GetYAngle() + XMConvertToRadians(90)) * m_player_node->m_p_asset->GetPlayerMoveSpeed());
+			m_player_node->MoveAsset(sin(m_player_node->GetYAngle() + XMConvertToRadians(90)) * m_player_node->m_p_asset->GetPlayerMoveSpeed() * timing->GetDeltaTime(), 0.0f,
+				cos(m_player_node->GetYAngle() + XMConvertToRadians(90)) * m_player_node->m_p_asset->GetPlayerMoveSpeed() * timing->GetDeltaTime());
 
 		}
 		// If the player pressed the jump key and
@@ -128,7 +133,7 @@ void Game::MainUpdate()
 		if (m_player_node->m_p_asset->GetJumpState() == true)
 		{
 			// We gradually increase the player's Y position
-			m_player_node->MoveAsset(0.0f, m_player_node->m_p_asset->GetJumpSpeed(), 0.0f);
+			m_player_node->MoveAsset(0.0f, m_player_node->m_p_asset->GetJumpSpeed() * timing->GetDeltaTime(), 0.0f);
 
 			// If we had reached the jump height, stop jumping 
 			if (m_player_node->GetYPos() > m_player_node->m_p_asset->GetJumpHeight())
@@ -149,7 +154,7 @@ void Game::MainUpdate()
 		}
 
 		// If the player has children and is carrying a weapon, this returns true
-		if (m_player_node->GetChildrenSize() != 0 && m_player_node->m_p_asset->GetWeaponCarryingState() == true)
+		if (m_player_node->GetChildrenSize() != 0 && m_player_node->m_p_asset->GetWeaponCarryingState() == true && m_player_node->m_p_asset->GetPushState() == false)
 		{
 			// If the drop key is pressed, this returns true
 			if (key->IsKeyPressed(key->drop))
@@ -214,7 +219,7 @@ void Game::MainUpdate()
 					// Else move the weapon forward
 					else
 					{
-						m_player_node->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, 0.005);
+						m_player_node->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, 15.0 * timing->GetDeltaTime());
 					}
 
 				}
@@ -235,7 +240,7 @@ void Game::MainUpdate()
 					// Else move the weapon back
 					else
 					{
-						m_player_node->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, -0.005f);
+						m_player_node->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, -15.0f * timing->GetDeltaTime());
 					}
 				}
 
@@ -253,7 +258,7 @@ void Game::MainUpdate()
 						m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
 					{
 						// This will reduce the enemy's health by 1
-						m_enemy_nodes[i]->m_e_asset->SetEnemyHealth(m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() - 1);
+						m_enemy_nodes[i]->m_e_asset->SetEnemyHealth(m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() - (70 * timing->GetDeltaTime()));
 
 						// If the enemy's health is or below 0,
 						// this returns true
@@ -348,14 +353,13 @@ void Game::MainUpdate()
 				}
 				else
 				{
-					m_enemy_nodes[i]->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, 0.005);
+					m_enemy_nodes[i]->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, 15.0 * timing->GetDeltaTime());
 				}
 
 			}
 
 			else if (m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == true)
 			{
-
 
 				if (m_enemy_nodes[i]->GetEquippedWeaponNode()->GetZPos()
 					<= m_enemy_nodes[i]->GetEquippedWeaponNode()->GetCurZPos())
@@ -364,8 +368,9 @@ void Game::MainUpdate()
 				}
 				else
 				{
-					m_enemy_nodes[i]->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, -0.005f);
+					m_enemy_nodes[i]->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, -15.0f * timing->GetDeltaTime());
 				}
+
 			}
 
 			// Check the collision of the player 
@@ -378,7 +383,7 @@ void Game::MainUpdate()
 				m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
 			{
 				// This reduces the player's health by 1
-				m_player_node->m_p_asset->SetPlayerHealth(m_player_node->m_p_asset->GetPlayerHealth() - 1);
+				m_player_node->m_p_asset->SetPlayerHealth(m_player_node->m_p_asset->GetPlayerHealth() - (70 * timing->GetDeltaTime()) );
 
 				// If the player has lost all its
 				// health, this will return true
@@ -577,14 +582,14 @@ void Game::MainUpdate()
 		// down
 		if (m_player_node->m_p_asset->GetJumpState() == false)
 		{
-			m_player_node->ApplyGravity();
+			m_player_node->ApplyGravity(timing->GetDeltaTime());
 		}
 
 		// Apply gravity to objects that can
 		// fall down
 		for (int i = 0; i < objs.size(); i++)
 		{
-			objs[i]->ApplyGravity();
+			objs[i]->ApplyGravity(timing->GetDeltaTime());
 			objs[i]->UpdateCollisionTree(&XMMatrixIdentity());
 		}
 
@@ -600,7 +605,8 @@ void Game::MainUpdate()
 		view[0]->RotateCameraX(key->m_mouse_state.lX);
 
 		// Add text to the UI object
-		hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
+		//hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
+		//hud->AddText(to_string(timing->GetFPS()), -0.98, 0.95, 0.04);
 
 	}
 	else
@@ -874,6 +880,7 @@ void Game::RestartGame()
 
 	// Reset the player back to the original position
 	m_player_node->ResetToInitalPos();
+	m_player_node->m_p_asset->ResetPlayerHealth();
 
 	// Looping through enemies who are alive
 	for (int i = 0; i < m_enemy_nodes.size(); i++)

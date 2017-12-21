@@ -143,6 +143,7 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="Statik.cpp" />
+    <ClCompile Include="Time.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneNode.h" />
     <ClInclude Include="Statik.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>

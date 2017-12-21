@@ -12,6 +12,7 @@ private:
 	XMVECTOR m_lookAt, m_right, m_up, m_position;
 
 	float m_health;
+	float m_init_health;
 
 	bool m_isJumping;
 	
@@ -39,7 +40,6 @@ public:
 
 	void SetJumpHeight(float value);
 
-	
 
 	void SetJumpState(bool state);
 	bool GetJumpState();
@@ -57,17 +57,11 @@ public:
 	float GetSpeedMultiplier();
 
 	void SetPlayerHealth(float amount);
+	void ResetPlayerHealth();
 	float GetPlayerHealth();
 
 	float GetJumpSpeed();
 	float GetJumpHeight();
-
-
-	
-
-	//float GetSpeedMultiplier();
-
-
 
 
 };
