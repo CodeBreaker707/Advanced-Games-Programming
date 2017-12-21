@@ -14,6 +14,9 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	// Initialising the Time object
 	timing = new Time();
 
+	skybox = new SkyBox();
+	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox01.dds");
+
 	// Boolean variables are initialised
 	Initialised = false;
 	cineCamera = false;
@@ -653,14 +656,16 @@ void Game::MainUpdate()
 	if (cineCamera == false)
 	{
 		m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());
+		skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition());
 
 	}
 	// Else use the cinematic camera
 	else
 	{
 		m_root_node->Execute(&XMMatrixIdentity(), &view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix());
-
 	}
+
+	
 
 	// Render the text on screen
 	//hud->RenderText();

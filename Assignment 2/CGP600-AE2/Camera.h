@@ -50,7 +50,11 @@ public:
 	void RotateCameraX(float amount);
 	void RotateCameraY(float amount);
 
+	// Returns the position of the camera
+	XMVECTOR GetPosition();
 
+	// Returns view and projection matrix
+	// of the camera
 	XMMATRIX GetViewMatrix();
 	XMMATRIX GetProjectionMatrix();
 };

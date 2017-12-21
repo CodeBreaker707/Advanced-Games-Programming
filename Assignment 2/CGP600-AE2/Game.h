@@ -18,6 +18,7 @@
 #include "SceneNode.h"
 #include "UI.h"
 #include "Time.h"
+#include "SkyBox.h"
 
 
 class Game
@@ -47,6 +48,9 @@ private:
 	// The prime node to parent all other
 	// nodes in the game
 	SceneNode* m_root_node;
+
+	//SkyBox Cube
+	SkyBox* skybox;
 
 	// A single node to represent the player
 	SceneNode* m_player_node;

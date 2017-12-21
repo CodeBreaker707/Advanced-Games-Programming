@@ -1,5 +1,4 @@
 Texture2D texture0;
-Texture2D texture1;
 SamplerState sampler0;
 
 cbuffer CB0

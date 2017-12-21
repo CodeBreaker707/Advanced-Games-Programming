@@ -84,45 +84,45 @@ d:\directx sdk\include\xnamath.h(2742): warning C4838: conversion from 'unsigned
 d:\directx sdk\include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
   d:\directx sdk\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(82): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(91): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(136): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(151): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(170): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(171): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(172): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(222): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(243): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(249): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(261): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(268): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(298): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(304): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(333): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(356): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(371): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(386): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(400): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(427): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(450): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(486): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(514): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(515): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(516): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(529): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(535): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(543): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(564): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(566): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(590): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(604): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(605): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(623): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(624): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(885): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(887): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(54): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(68): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(76): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(85): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(94): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(139): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(154): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(173): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(174): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(175): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(225): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(246): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(252): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(264): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(271): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(301): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(307): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(336): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(359): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(374): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(389): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(403): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(430): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(453): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(489): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(517): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(518): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(519): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(532): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(538): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(546): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(567): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(569): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(593): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(607): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(608): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(626): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(627): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(891): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(893): warning C4018: '<': signed/unsigned mismatch
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.exe
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.pdb (Partial PDB)

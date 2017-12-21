@@ -109,3 +109,8 @@ XMMATRIX Camera::GetProjectionMatrix()
 {
 	return projection;
 }
+
+XMVECTOR Camera::GetPosition()
+{
+	return m_position;
+}

@@ -14,12 +14,12 @@ E Assets/cubeObj.obj Assets/tile.bmp -10.0 0.0 -10.0 1.0 1.0 1.0 1
 
 Spear 1
 
-W Assets/cubeObj.obj Assets/spear_tex.png 5.0 -1.5 3.0 0.2 0.2 1.5 1
+W Assets/cubeObj.obj Assets/wood_tex.png 5.0 -1.5 3.0 0.2 0.2 1.5 1
 
 Club 2
 
-W Assets/cubeObj.obj Assets/spear_tex.png 1.0 -0.5 1.0 0.2 0.2 1.5 0
-W Assets/cubeObj.obj Assets/spear_tex.png 1.0 -0.5 1.0 0.2 0.2 1.5 0
+W Assets/cubeObj.obj Assets/wood_tex.png 1.0 -0.5 1.0 0.2 0.2 1.5 0
+W Assets/cubeObj.obj Assets/wood_tex.png 1.0 -0.5 1.0 0.2 0.2 1.5 0
 
 Dynamic 1
 
