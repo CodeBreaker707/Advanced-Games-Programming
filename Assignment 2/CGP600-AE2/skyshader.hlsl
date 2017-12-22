@@ -5,7 +5,7 @@ cbuffer CB0
 {
 	matrix WVPMatrix; // 64 bytes
 
-}; // 112 bytes
+}; // 64 bytes
 
 struct VOut
 {

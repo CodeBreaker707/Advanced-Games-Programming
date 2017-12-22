@@ -15,7 +15,7 @@ class SkyBox
 	ID3D11VertexShader* m_pVShader;
 	ID3D11PixelShader*  m_pPShader;
 	ID3D11InputLayout* m_pInputLayout;
-	ID3D11Buffer* m_pConstantBuffer;
+	ID3D11Buffer* m_pSkyConstantBuffer;
 	ID3D11ShaderResourceView* m_pTexture0;
 	ID3D11SamplerState* m_pSampler0;
 

@@ -655,8 +655,9 @@ void Game::MainUpdate()
 	// use the first-person camera
 	if (cineCamera == false)
 	{
-		m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());
 		skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition());
+		m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());
+		
 
 	}
 	// Else use the cinematic camera

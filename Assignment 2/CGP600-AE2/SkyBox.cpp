@@ -3,6 +3,7 @@
 struct SKY_CONSTANT_BUFFER
 {
 	XMMATRIX WorldViewProjection; // 64 bytes
+								
 };
 
 
@@ -41,7 +42,7 @@ SkyBox::~SkyBox()
 	if (m_pRasterSkyBox) m_pRasterSkyBox->Release();
 	if (m_pDepthWriteSolid) m_pDepthWriteSolid->Release();
 	if (m_pDepthWriteSkyBox) m_pDepthWriteSkyBox->Release();
-	if (m_pConstantBuffer) m_pConstantBuffer->Release();
+	if (m_pSkyConstantBuffer) m_pSkyConstantBuffer->Release();
 	if (m_pImmediateContext) m_pImmediateContext->Release();
 	if (m_pD3DDevice) m_pD3DDevice->Release();
 
@@ -61,11 +62,11 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 	D3D11_BUFFER_DESC constant_buffer_desc;
 	ZeroMemory(&constant_buffer_desc, sizeof(constant_buffer_desc));
 
-	constant_buffer_desc.Usage = D3D11_USAGE_DEFAULT; // Can use UpdateSubresource() to updat
+	constant_buffer_desc.Usage = D3D11_USAGE_DEFAULT; // Can use UpdateSubresource() to update
 	constant_buffer_desc.ByteWidth = sizeof(SKY_CONSTANT_BUFFER); // MUST be a multiple of 16, calculate from CB struct
 	constant_buffer_desc.BindFlags = D3D11_BIND_CONSTANT_BUFFER; // Use as a constant buffer
 
-	hr = m_pD3DDevice->CreateBuffer(&constant_buffer_desc, NULL, &m_pConstantBuffer);
+	hr = m_pD3DDevice->CreateBuffer(&constant_buffer_desc, NULL, &m_pSkyConstantBuffer);
 
 	ID3DBlob *VS, *PS, *error;
 
@@ -197,9 +198,9 @@ void SkyBox::DrawSkyBox(XMMATRIX* view, XMMATRIX* projection, XMVECTOR position)
 
 
 	// DirectX 11 rendering functions
-	m_pImmediateContext->UpdateSubresource(m_pConstantBuffer, 0, 0, &sky_cb_values, 0, 0);
+	m_pImmediateContext->UpdateSubresource(m_pSkyConstantBuffer, 0, 0, &sky_cb_values, 0, 0);
 
-	m_pImmediateContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	m_pImmediateContext->VSSetConstantBuffers(0, 1, &m_pSkyConstantBuffer);
 
 	m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture0);
 	m_pImmediateContext->PSSetSamplers(0, 1, &m_pSampler0);

@@ -5,6 +5,7 @@
 class Input
 {
 private:
+	// Declaring the direct input handle
 	IDirectInput8* m_direct_input;
 
 	// Declaring the keyboard device
