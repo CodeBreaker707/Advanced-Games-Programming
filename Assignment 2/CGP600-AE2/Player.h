@@ -26,15 +26,15 @@ private:
 
 	// This is to determine if the
 	// player is jumping
-	bool m_isJumping;
+	bool m_is_jumping;
 	
 	// This is to determine if the
 	// player is carrying a weapon
-	bool m_carryingWeapon;
+	bool m_carrying_weapon;
 
 	// This is to determine if the
 	// player is pushing a block
-	bool m_isPushing;
+	bool m_is_pushing;
 
 	// This is to set the jump height
 	// from the player's current position
