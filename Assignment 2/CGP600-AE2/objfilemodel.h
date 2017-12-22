@@ -20,7 +20,6 @@ private:
 	ID3D11DeviceContext*    pImmediateContext;
 
 
-
 //////////////////////////////////////////////////
 
 	int loadfile(char* fname);
