@@ -16,6 +16,7 @@ using namespace std;
 class ObjFileModel
 {
 private:
+	// DirectX 11 Rendering objects
 	ID3D11Device*           pD3DDevice;
 	ID3D11DeviceContext*    pImmediateContext;
 
@@ -58,9 +59,11 @@ public:
 
 	string filename;
 
+	// Constructor and Destructor
 	ObjFileModel(char* filename, ID3D11Device* device, ID3D11DeviceContext* context);
 	~ObjFileModel();
 
+	// Draws the model
 	void Draw(void);
 
 	vector <xyz> position_list;		// list of parsed positions
