@@ -1,7 +1,7 @@
 #include "Renderer.h"
 
 HWND hWnd;
-float rgba_clear_colour[4] = { 0.0f, 0.74f, 1.0f, 1.0f };
+const float rgba_clear_colour[4] = { 0.0f, 0.74f, 1.0f, 1.0f };
 
 Renderer::Renderer(HINSTANCE hInstance, int nCmdShow)
 {
@@ -228,7 +228,8 @@ HRESULT Renderer::InitialiseD3D()
 
 	m_pD3DDevice->CreateBlendState(&b, &m_pAlphaBlendEnable);
 
-	
+	// Select which primitive type to use // 03-01
+	m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 
 	return S_OK;
@@ -239,18 +240,13 @@ HWND Renderer::GetWindow()
 	return hWnd;
 }
 
-void Renderer::ShutdownD3D()
-{
-
-}
 
 void Renderer::ClearBuffers()
 {
 	m_pImmediateContext->ClearRenderTargetView(m_pBackBufferRTView, rgba_clear_colour);
 	m_pImmediateContext->ClearDepthStencilView(m_pZBuffer, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 
-	// Select which primitive type to use // 03-01
-	m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
 }
 
 void Renderer::SetBlendState(bool state)
