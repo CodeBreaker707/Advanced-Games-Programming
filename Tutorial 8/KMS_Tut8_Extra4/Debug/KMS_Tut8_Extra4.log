@@ -1,4 +1,5 @@
-﻿  main.cpp
+﻿  compilation succeeded; see D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 8\KMS_Tut8_Extra4\Debug\shaders.cso
+  main.cpp
 d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
 d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition

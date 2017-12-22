@@ -1,0 +1,4 @@
+﻿D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\shaders.hlsl(28,25-61): warning X3206: 'dot': implicit truncation of vector type
+FXC : error X3501: 'main': entrypoint not found
+  
+  compilation failed; no code produced

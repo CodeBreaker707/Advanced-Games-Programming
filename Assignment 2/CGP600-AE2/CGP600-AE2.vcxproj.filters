@@ -121,10 +121,10 @@
     <FxCompile Include="shaders.hlsl">
       <Filter>Source Files</Filter>
     </FxCompile>
-    <FxCompile Include="UI_shaders.hlsl">
+    <FxCompile Include="UIshaders.hlsl">
       <Filter>Source Files</Filter>
     </FxCompile>
-    <FxCompile Include="sky_shader.hlsl">
+    <FxCompile Include="skyshader.hlsl">
       <Filter>Source Files</Filter>
     </FxCompile>
   </ItemGroup>

@@ -21,7 +21,7 @@ UI::UI(string filename, ID3D11Device* device, ID3D11DeviceContext* context)
 
 	// Load and compile pixel and vertex shaders - use vs_5_0 to target DX11 hardware only
 	ID3DBlob *VS, *PS, *error;
-	hr = D3DX11CompileFromFile("UI_shaders.hlsl", 0, 0, "UIVS", "vs_4_0", 0, 0, 0, &VS, &error, 0);
+	hr = D3DX11CompileFromFile("UIshaders.hlsl", 0, 0, "UIVS", "vs_4_0", 0, 0, 0, &VS, &error, 0);
 
 	if (error != 0)
 	{
@@ -30,7 +30,7 @@ UI::UI(string filename, ID3D11Device* device, ID3D11DeviceContext* context)
 		if (FAILED(hr))exit(0);
 	}
 
-	hr = D3DX11CompileFromFile("UI_shaders.hlsl", 0, 0, "UIPS", "ps_4_0", 0, 0, 0, &PS, &error, 0);
+	hr = D3DX11CompileFromFile("UIshaders.hlsl", 0, 0, "UIPS", "ps_4_0", 0, 0, 0, &PS, &error, 0);
 
 	if (error != 0)
 	{

@@ -14,7 +14,7 @@ Input::Input(HINSTANCE hInst, HWND hWnd)
 	drop = DIK_G;
 	interact = DIK_F;
 	swapCamera = DIK_Q;
-	attack = m_mouse_state.rgbButtons[0];
+	//attack = m_mouse_state.rgbButtons[0];
 
 	ButtonPushedOnce = false;
 
@@ -26,7 +26,7 @@ Input::~Input()
 	m_keyboard_device->Release();
 
 	m_mouse_device->Unacquire();
-	m_mouse_device->Acquire();
+	m_mouse_device->Release();
 
 	m_direct_input->Release();
 }

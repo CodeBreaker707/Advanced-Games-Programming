@@ -21,7 +21,7 @@ VOut VShader(float4 position : POSITION, float4 color : COLOR, float2 texcoord :
 {
 	VOut output;
 
-	//color.rb *= red_fraction;
+	color.r *= red_fraction;
 	//position.xy *= scale;
 	
 	output.position = mul(WVPMatrix, position);

@@ -206,48 +206,6 @@ void Asset::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 
 }
 
-void Asset::SkyBoxDraw(XMMATRIX* view, XMMATRIX* projection, XMVECTOR position)
-{
-
-	XMMATRIX world = XMMatrixIdentity();
-
-	world *= XMMatrixScaling(60.0f, 60.0f, 60.0f);
-	world *= XMMatrixTranslation(XMVectorGetX(position), XMVectorGetY(position), XMVectorGetZ(position));
-
-	// Matrix to transpose the light vector
-	// towards the asset position
-	XMMATRIX transpose;
-
-	// Creating a constant buffer reference object
-	ASSET_CONSTANT_BUFFER asset_cb_values;
-
-	// By multiplying these matrices, we get to place the
-	// asset in the scene correctly
-	asset_cb_values.WorldViewProjection = (world) * (*view) * (*projection);
-
-	// Transposing the world matrix
-	transpose = XMMatrixTranspose(world);
-
-	// Setting the light vector values in
-	// the constant buffer from the light component
-	asset_cb_values.directional_light_colour = m_light->GetDirectionalLightColour();
-	asset_cb_values.ambient_light_colour = m_light->GetAmbientLightColour();
-	asset_cb_values.directional_light_vector = XMVector3Transform(m_light->GetDirectionalLightPos(), transpose);
-	asset_cb_values.directional_light_vector = XMVector3Normalize(asset_cb_values.directional_light_vector);
-
-	// DirectX 11 rendering functions
-	m_pImmediateContext->UpdateSubresource(m_pConstantBuffer, 0, 0, &asset_cb_values, 0, 0);
-
-
-	m_pImmediateContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
-
-	m_pImmediateContext->PSSetSamplers(0, 1, &m_pSampler0);
-	m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture0);
-
-	// Draw the object into the scene
-	m_pObject->Draw();
-
-}
 
 float Asset::GetXScale()
 {

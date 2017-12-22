@@ -67,9 +67,9 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 
 	hr = m_pD3DDevice->CreateBuffer(&constant_buffer_desc, NULL, &m_pConstantBuffer);
 
-	ID3DBlob *VS_Sky, *PS_Sky, *error;
+	ID3DBlob *VS, *PS, *error;
 
-	hr = D3DX11CompileFromFile("sky_shader.hlsl", 0, 0, "VS_Sky", "vs_4_0", 0, 0, 0, &VS_Sky, &error, 0);
+	hr = D3DX11CompileFromFile("skyshader.hlsl", 0, 0, "VS", "vs_4_0", 0, 0, 0, &VS, &error, 0);
 
 	if (error != 0) // Check for shader compilation error
 	{
@@ -81,7 +81,7 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 		};
 	}
 
-	hr = D3DX11CompileFromFile("sky_shader.hlsl", 0, 0, "PS_Sky", "ps_4_0", 0, 0, 0, &PS_Sky, &error, 0);
+	hr = D3DX11CompileFromFile("skyshader.hlsl", 0, 0, "PS", "ps_4_0", 0, 0, 0, &PS, &error, 0);
 
 	if (error != 0)
 	{
@@ -95,14 +95,14 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 
 	// Creating vertex and pixel shaders
 
-	hr = m_pD3DDevice->CreateVertexShader(VS_Sky->GetBufferPointer(), VS_Sky->GetBufferSize(), NULL, &m_pVShader);
+	hr = m_pD3DDevice->CreateVertexShader(VS->GetBufferPointer(), VS->GetBufferSize(), NULL, &m_pVShader);
 
 	if (FAILED(hr))
 	{
 		return hr;
 	}
 
-	hr = m_pD3DDevice->CreatePixelShader(PS_Sky->GetBufferPointer(), PS_Sky->GetBufferSize(), NULL, &m_pPShader);
+	hr = m_pD3DDevice->CreatePixelShader(PS->GetBufferPointer(), PS->GetBufferSize(), NULL, &m_pPShader);
 
 	if (FAILED(hr))
 	{
@@ -116,10 +116,11 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 	D3D11_INPUT_ELEMENT_DESC iedesc[] =
 	{
 		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 	};
 
-	hr = m_pD3DDevice->CreateInputLayout(iedesc, ARRAYSIZE(iedesc), VS_Sky->GetBufferPointer(), VS_Sky->GetBufferSize(), &m_pInputLayout);
+	hr = m_pD3DDevice->CreateInputLayout(iedesc, ARRAYSIZE(iedesc), VS->GetBufferPointer(), VS->GetBufferSize(), &m_pInputLayout);
 
 	if (FAILED(hr))
 	{
@@ -198,13 +199,14 @@ void SkyBox::DrawSkyBox(XMMATRIX* view, XMMATRIX* projection, XMVECTOR position)
 	// DirectX 11 rendering functions
 	m_pImmediateContext->UpdateSubresource(m_pConstantBuffer, 0, 0, &sky_cb_values, 0, 0);
 
-	m_pImmediateContext->RSSetState(m_pRasterSkyBox);
-	m_pImmediateContext->OMSetDepthStencilState(m_pDepthWriteSkyBox, 1);
-
 	m_pImmediateContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 
-	m_pImmediateContext->PSSetSamplers(0, 1, &m_pSampler0);
 	m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture0);
+	m_pImmediateContext->PSSetSamplers(0, 1, &m_pSampler0);
+
+	m_pImmediateContext->RSSetState(m_pRasterSkyBox);
+	m_pImmediateContext->OMSetDepthStencilState(m_pDepthWriteSkyBox, 1);
+	
 
 	// Draw the object into the scene
 	m_pSkyBox->Draw();

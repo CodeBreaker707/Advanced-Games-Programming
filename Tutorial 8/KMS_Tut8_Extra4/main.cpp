@@ -616,7 +616,7 @@ void RenderFrame(void)
 	g_pImmediateContext->IASetVertexBuffers(0, 1, &g_pVertexBuffer, &stride, &offset);
 
 	CONSTANT_BUFFER0 cb0_values;
-	//cb0_values.RedAmount = 0.47f; // 47% of vertex red value
+	cb0_values.RedAmount = 0.47f; // 47% of vertex red value
 	//cb0_values.ScaleAmount = 0.47f; // reduced to 47%
 
 	// Select which primitive type to use // 03-01

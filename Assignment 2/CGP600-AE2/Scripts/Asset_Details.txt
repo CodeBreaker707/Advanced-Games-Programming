@@ -5,12 +5,12 @@ Camera 2
 
 Player 
 
-P Assets/cubeObj.obj Assets/tile.bmp 0.0 0.0 0.0 1.0 1.0 1.0 1
+P Assets/cubeObj.obj Assets/rock_tex.jpg 0.0 0.0 0.0 1.0 1.0 1.0 1
 
 Enemy 2
 
-E Assets/cubeObj.obj Assets/tile.bmp 5.0 0.0 20.0 1.0 1.0 1.0 1
-E Assets/cubeObj.obj Assets/tile.bmp -10.0 0.0 -10.0 1.0 1.0 1.0 1
+E Assets/cubeObj.obj Assets/rock_tex.jpg 5.0 0.0 20.0 1.0 1.0 1.0 1
+E Assets/cubeObj.obj Assets/rock_tex.jpg -10.0 0.0 -10.0 1.0 1.0 1.0 1
 
 Spear 1
 
