@@ -21,6 +21,10 @@ Asset::Asset()
 	
 }
 
+Asset::~Asset()
+{
+
+}
 
 void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char* assetFile, char* textureFile, float x_scale, float y_scale, float z_scale)
 {
@@ -50,25 +54,6 @@ void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* Immedi
 
 }
 
-Asset::~Asset()
-{
-	// Clearing up on exit
-
-	// Deleting the asset object
-	delete m_pObject;
-
-	// Releasing all the DirectX 11 shaders, texture, sampler
-	// renderers and other components
-	if (m_pTexture0) m_pTexture0->Release();
-	if (m_pSampler0) m_pSampler0->Release();
-	if (m_pInputLayout) m_pInputLayout->Release();
-	if (m_pVShader) m_pVShader->Release();
-	if (m_pPShader) m_pPShader->Release();
-	if (m_pConstantBuffer) m_pConstantBuffer->Release();
-	if (m_pImmediateContext) m_pImmediateContext->Release();
-	if (m_pD3DDevice) m_pD3DDevice->Release();
-
-}
 
 int Asset::LoadObjModel(char* assetFile, char* textureFile)
 {
@@ -203,6 +188,26 @@ void Asset::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 
 	// Draw the object into the scene
 	m_pObject->Draw();
+
+}
+
+void Asset::ReleaseAll()
+{
+	// Clearing up on exit
+
+	// Deleting the asset object
+	delete m_pObject;
+
+	// Releasing all the DirectX 11 shaders, texture, sampler
+	// renderers and other components
+	if (m_pTexture0) m_pTexture0->Release();
+	if (m_pSampler0) m_pSampler0->Release();
+	if (m_pInputLayout) m_pInputLayout->Release();
+	if (m_pVShader) m_pVShader->Release();
+	if (m_pPShader) m_pPShader->Release();
+	if (m_pConstantBuffer) m_pConstantBuffer->Release();
+	if (m_pImmediateContext) m_pImmediateContext->Release();
+	if (m_pD3DDevice) m_pD3DDevice->Release();
 
 }
 

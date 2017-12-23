@@ -55,5 +55,7 @@ public:
 	// Function to draw the asset into the scene
 	void Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection);
 
+	void ReleaseAll();
+
 
 };

@@ -19,6 +19,7 @@
 #include "UI.h"
 #include "Time.h"
 #include "SkyBox.h"
+#include "ParticleEngine.h"
 
 
 class Game
@@ -39,6 +40,12 @@ private:
 	// in track of FPS and get deltaTime
 	Time* timing;
 
+	//SkyBox Cube
+	SkyBox* skybox;
+
+	// This is a particle object
+	ParticleEngine* rain;
+
 	// This is a vector of camera objects
 	vector<Camera*> view;
 
@@ -48,9 +55,6 @@ private:
 	// The prime node to parent all other
 	// nodes in the game
 	SceneNode* m_root_node;
-
-	//SkyBox Cube
-	SkyBox* skybox;
 
 	// A single node to represent the player
 	SceneNode* m_player_node;

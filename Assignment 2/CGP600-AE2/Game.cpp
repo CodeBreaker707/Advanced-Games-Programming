@@ -15,7 +15,10 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	timing = new Time();
 
 	skybox = new SkyBox();
-	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox01.dds");
+	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox02.dds");
+
+	/*rain = new ParticleEngine(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
+	rain->InitialiseParticle();*/
 
 	// Boolean variables are initialised
 	Initialised = false;
@@ -656,8 +659,9 @@ void Game::MainUpdate()
 	if (cineCamera == false)
 	{
 		skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition());
+		//rain->Draw(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), &view[0]->GetPos());
 		m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());
-		
+	
 
 	}
 	// Else use the cinematic camera

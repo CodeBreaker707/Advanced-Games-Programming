@@ -6,3 +6,8 @@ Statik::Statik(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, c
 
 	//LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 }
+
+Statik::~Statik()
+{
+	ReleaseAll();
+}

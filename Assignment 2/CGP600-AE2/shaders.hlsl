@@ -17,6 +17,7 @@ struct VOut
 	float3 normal : NORMAL;
 };
 
+
 VOut VS(float4 position : POSITION, float2 texcoord : TEXCOORD, float3 normal : NORMAL)
 {
 	VOut output;

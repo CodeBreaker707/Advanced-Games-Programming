@@ -27,7 +27,7 @@ class SkyBox
 
 public:
 
-	// Asset class constructor and destructor
+	// Class constructor and destructor
 	SkyBox();
 	~SkyBox();
 
@@ -37,7 +37,6 @@ public:
 
 	// Function to create the model
 	int LoadObjModel(char* assetFile, char* textureFile);
-
 
 	// Function to draw the asset into the scene
 	void DrawSkyBox(XMMATRIX* view, XMMATRIX* projection, XMVECTOR position);

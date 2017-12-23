@@ -114,3 +114,15 @@ XMVECTOR Camera::GetPosition()
 {
 	return m_position;
 }
+
+XMFLOAT3 Camera::GetPos()
+{
+	XMFLOAT3 pos;
+
+	pos.x = XMVectorGetX(m_position);
+	pos.y = XMVectorGetY(m_position);
+	pos.z = XMVectorGetZ(m_position);
+
+	return pos;
+
+}

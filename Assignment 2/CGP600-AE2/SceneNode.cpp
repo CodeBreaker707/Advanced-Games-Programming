@@ -1,9 +1,9 @@
 #include "SceneNode.h"
 
 
-
 SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, char* assetFile, char* textureFile, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState)
 {
+
 	if (c == 'P')
 	{
 		m_p_asset = new Player(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
@@ -83,6 +83,15 @@ SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateCont
 		m_gravityApplied = gravityState;
 	
 
+}
+
+SceneNode::~SceneNode()
+{
+	if (m_p_asset) m_p_asset->ReleaseAll();
+	if (m_e_asset) m_e_asset->ReleaseAll();
+	if (m_w_asset) m_w_asset->ReleaseAll();
+	if (m_s_asset) m_s_asset->ReleaseAll();
+	if (m_d_asset) m_d_asset->ReleaseAll();
 }
 
 void SceneNode::AddChildNode(SceneNode* n)

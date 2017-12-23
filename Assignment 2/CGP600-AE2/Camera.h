@@ -53,6 +53,8 @@ public:
 	// Returns the position of the camera
 	XMVECTOR GetPosition();
 
+	XMFLOAT3 GetPos();
+
 	// Returns view and projection matrix
 	// of the camera
 	XMMATRIX GetViewMatrix();
