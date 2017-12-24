@@ -44,7 +44,7 @@ private:
 	SkyBox* skybox;
 
 	// This is a particle object
-	ParticleEngine* rain;
+	//ParticleEngine* rain;
 
 	// This is a vector of camera objects
 	vector<Camera*> view;
@@ -92,6 +92,9 @@ private:
 	// camera is enabled or not
 	bool cineCamera;
 
+	// A boolean to close the game loop
+	bool gameRunning;
+
 
 public:
 	// Constructor
@@ -107,5 +110,11 @@ public:
 	// This is to erase all the objects
 	// and re-initialise them
 	void RestartGame();
+
+	// This is to release every child of
+	// root node
+	void ReleaseEverything();
+
+	bool isGameRunning();
 
 };

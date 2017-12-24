@@ -67,6 +67,8 @@ public:
 	// Returns the window for other classes
 	// to use
 	HWND GetWindow();
+
+	void ReleaseAll();
 	
 	// These return the rendering objects
 	// for other classes to use

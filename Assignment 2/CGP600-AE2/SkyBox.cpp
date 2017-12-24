@@ -12,19 +12,7 @@ SkyBox::SkyBox()
 
 }
 
-
-void SkyBox::InitialiseSkyBox(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char* assetFile, char* textureFile)
-{
-	// DirectX 11 renderer components are initialised
-	m_pD3DDevice = D3DDevice;
-	m_pImmediateContext = ImmediateContext;
-
-	// The creation of the asset function is called
-	LoadObjModel(assetFile, textureFile);
-
-}
-
-SkyBox::~SkyBox()
+void SkyBox::ReleaseAll()
 {
 	// Clearing up on exit
 
@@ -43,8 +31,24 @@ SkyBox::~SkyBox()
 	if (m_pDepthWriteSolid) m_pDepthWriteSolid->Release();
 	if (m_pDepthWriteSkyBox) m_pDepthWriteSkyBox->Release();
 	if (m_pSkyConstantBuffer) m_pSkyConstantBuffer->Release();
-	if (m_pImmediateContext) m_pImmediateContext->Release();
-	if (m_pD3DDevice) m_pD3DDevice->Release();
+
+}
+
+
+void SkyBox::InitialiseSkyBox(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char* assetFile, char* textureFile)
+{
+	// DirectX 11 renderer components are initialised
+	m_pD3DDevice = D3DDevice;
+	m_pImmediateContext = ImmediateContext;
+
+	// The creation of the asset function is called
+	LoadObjModel(assetFile, textureFile);
+
+}
+
+SkyBox::~SkyBox()
+{
+	
 
 }
 

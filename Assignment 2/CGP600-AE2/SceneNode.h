@@ -80,6 +80,8 @@ public:
 	SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, char* assetFile, char* textureFile, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState);
 	~SceneNode();
 
+	void ReleaseAll();
+
 	void AddChildNode(SceneNode* n);
 
 	bool DetachNode(SceneNode* n);

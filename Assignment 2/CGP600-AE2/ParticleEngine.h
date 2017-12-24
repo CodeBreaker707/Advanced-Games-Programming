@@ -9,7 +9,7 @@
 #include <dxerr.h>
 #include <xnamath.h>
 #include <time.h>
-#include <list>
+#include <vector>
 using namespace std;
 
 struct Particle
@@ -37,12 +37,12 @@ class ParticleEngine
 		ID3D11ShaderResourceView* m_pTexture0;
 		ID3D11SamplerState* m_pSampler0;
 
-		list<Particle*> m_free;
-		list<Particle*> m_active;
+		vector<Particle*> m_free;
+		vector<Particle*> m_active;
 
-		float m_timePrevious;
-		float m_timeNow;
-		float m_deltaTime;
+		//float m_timePrevious;
+		//float m_timeNow;
+		//float m_deltaTime;
 		float m_untilParticle;
 
 	public:
@@ -55,7 +55,7 @@ class ParticleEngine
 		int InitialiseParticle();
 
 		// Function to draw the asset into the scene
-		void Draw(XMMATRIX* view, XMMATRIX* projection, XMFLOAT3* position);
+		void Draw(XMMATRIX* view, XMMATRIX* projection, XMFLOAT3* position, float deltaTime);
 		void DrawOne(Particle* one, XMMATRIX* view, XMMATRIX* projection, XMFLOAT3* position);
 
 		float RandomBetweenFloats(float min, float max);

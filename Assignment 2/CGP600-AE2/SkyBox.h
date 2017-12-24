@@ -38,6 +38,8 @@ public:
 	// Function to create the model
 	int LoadObjModel(char* assetFile, char* textureFile);
 
+	void ReleaseAll();
+
 	// Function to draw the asset into the scene
 	void DrawSkyBox(XMMATRIX* view, XMMATRIX* projection, XMVECTOR position);
 

@@ -87,11 +87,22 @@ SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateCont
 
 SceneNode::~SceneNode()
 {
+	
+}
+
+void SceneNode::ReleaseAll()
+{
 	if (m_p_asset) m_p_asset->ReleaseAll();
 	if (m_e_asset) m_e_asset->ReleaseAll();
 	if (m_w_asset) m_w_asset->ReleaseAll();
 	if (m_s_asset) m_s_asset->ReleaseAll();
 	if (m_d_asset) m_d_asset->ReleaseAll();
+
+	for (int i = 0; i < m_children.size(); i++)
+	{
+		m_children[i]->ReleaseAll();
+	}
+
 }
 
 void SceneNode::AddChildNode(SceneNode* n)

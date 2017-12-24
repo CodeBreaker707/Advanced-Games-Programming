@@ -59,6 +59,8 @@ public:
 	// size is fraction of screen size
 	void AddText(string s, float x, float y, float size);
 
+	void ReleaseAll();
+
 	// render all strings at once
 	void RenderText();
 

@@ -1,4 +1,4 @@
-﻿  ParticleEngine.cpp
+﻿  Renderer.cpp
 d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
 d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
@@ -55,36 +55,9 @@ d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
 d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
-d:\directx sdk\include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\directx sdk\include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\particleengine.cpp(19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\particleengine.cpp(225): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\particleengine.cpp(166): warning C4715: 'ParticleEngine::InitialiseParticle': not all control paths return a value
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\renderer.cpp(62): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\renderer.cpp(62): warning C4244: 'initializing': conversion from 'float' to 'LONG', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\renderer.cpp(216): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\renderer.cpp(217): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.exe
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.pdb (Partial PDB)

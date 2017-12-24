@@ -28,7 +28,7 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, c
 
 Player::~Player()
 {
-	ReleaseAll();
+	//ReleaseAll();
 }
 
 // DEFINITION OF THE SET AND GET FUNCTIONS

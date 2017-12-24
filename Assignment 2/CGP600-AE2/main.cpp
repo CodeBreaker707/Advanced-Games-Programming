@@ -31,11 +31,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		else
 		{
-			game->MainUpdate();
+			if (game->isGameRunning() == true)
+			{
+				game->MainUpdate();
+			}
+			else
+			{
+				break;
+			}
 		}
 	}
 
-
+	game->ReleaseEverything();
 
 	return (int)msg.wParam;
 }

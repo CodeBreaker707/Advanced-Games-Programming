@@ -206,8 +206,6 @@ void Asset::ReleaseAll()
 	if (m_pVShader) m_pVShader->Release();
 	if (m_pPShader) m_pPShader->Release();
 	if (m_pConstantBuffer) m_pConstantBuffer->Release();
-	if (m_pImmediateContext) m_pImmediateContext->Release();
-	if (m_pD3DDevice) m_pD3DDevice->Release();
 
 }
 

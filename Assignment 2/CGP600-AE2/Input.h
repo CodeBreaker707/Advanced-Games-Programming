@@ -49,6 +49,7 @@ public:
 	unsigned char drop;
 	unsigned char interact;
 	unsigned char swapCamera;
+	unsigned char closeGame;
 
 	//BYTE attack;
 

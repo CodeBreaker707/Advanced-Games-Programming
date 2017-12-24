@@ -9,5 +9,5 @@ Dynamic::Dynamic(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext,
 // Destructor
 Dynamic::~Dynamic()
 {
-	ReleaseAll();
+	//ReleaseAll();
 }

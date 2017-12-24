@@ -27,6 +27,11 @@ Renderer::Renderer(HINSTANCE hInstance, int nCmdShow)
 
 Renderer::~Renderer()
 {
+
+}
+
+void Renderer::ReleaseAll()
+{
 	if (m_pBackBufferRTView) m_pBackBufferRTView->Release();
 	if (m_pZBuffer) m_pZBuffer->Release();
 	if (m_pSwapChain) m_pSwapChain->Release();
@@ -34,6 +39,7 @@ Renderer::~Renderer()
 	if (m_pAlphaBlendDisable) m_pAlphaBlendDisable->Release();
 	if (m_pImmediateContext) m_pImmediateContext->Release();
 	if (m_pD3DDevice) m_pD3DDevice->Release();
+
 }
 
 HRESULT Renderer::InitialiseWindow(HINSTANCE hInstance, int nCmdShow)
@@ -83,8 +89,8 @@ LRESULT CALLBACK Renderer::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
 		break;
 
 	case WM_KEYDOWN:
-		if (wParam == VK_ESCAPE)
-			DestroyWindow(hWnd);
+		/*if (wParam == VK_ESCAPE)
+			DestroyWindow(hWnd);*/
 		return 0;
 
 

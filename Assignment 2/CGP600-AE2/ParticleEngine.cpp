@@ -26,9 +26,9 @@ ParticleEngine::ParticleEngine(ID3D11Device* D3DDevice, ID3D11DeviceContext* Imm
 		m_free.push_back(new Particle());
 	}
 
-	m_timePrevious = float(timeGetTime());
-	m_timeNow = 0.0f;
-	m_deltaTime = 0.0f;
+	//m_timePrevious = float(timeGetTime());
+	//m_timeNow = float(timeGetTime());
+	//m_deltaTime = 0.0f;
 	m_untilParticle = 3.0f;
 
 }
@@ -165,51 +165,63 @@ int ParticleEngine::InitialiseParticle()
 
 }
 
-void ParticleEngine::Draw(XMMATRIX* view, XMMATRIX* projection, XMFLOAT3* position)
+void ParticleEngine::Draw(XMMATRIX* view, XMMATRIX* projection, XMFLOAT3* position, float deltaTime)
 {
 	
-	m_timePrevious = m_timeNow;
-	m_timeNow = float(timeGetTime());
-	m_deltaTime = m_timeNow - m_timePrevious;
+	//m_timePrevious = m_timeNow;
+	//m_timeNow = float(timeGetTime());
+	//m_deltaTime = m_timeNow - m_timePrevious;
 
-	m_untilParticle -= m_deltaTime;
+	m_untilParticle -= deltaTime;
 
 	if (m_untilParticle <= 0)
 	{
-		list<Particle*>::iterator f_it = m_free.end();
 
 		if (m_free.size() != 0)
 		{
+
+			m_active.push_back(new Particle());
 			m_free.pop_back();
-			m_active.push_back(*f_it);
+			
+			m_active[m_active.size() - 1]->color = XMFLOAT4(1.0f, 0.0f, 0.3f, 1.f);
+			m_active[m_active.size() - 1]->gravity = 0.1f;
+			m_active[m_active.size() - 1]->position = XMFLOAT3(0.0f, 5.0f, 1.0);
+			m_active[m_active.size() - 1]->velocity = XMFLOAT3(0.f, 0.f, 0.f);
 
-			list<Particle*>::iterator a_it = m_active.end();
-
-			(*a_it)->color = XMFLOAT4(1.0f, 0.0f, 0.3f, 1.f);
-			(*a_it)->gravity = 1;
-			(*a_it)->position = XMFLOAT3(0.0f, 5.0f, 14);
-			(*a_it)->velocity = XMFLOAT3(0.f, 0.f, 0.f);
 
 		}
 
 		m_untilParticle = 3.0f;
 	}
 
-	list<Particle*>::iterator it = m_active.begin();
 
-	while (it != m_active.end())
+	for(int i = 0; i < m_active.size(); i++)
 	{
-		(*it)->velocity.y -= (*it)->gravity;
-		it++;
+		//(*it)->velocity.y -= (*it)->gravity;
+		//(*it)->position.y += (*it)->velocity.y;
+
+		m_active[i]->velocity.y -= m_active[i]->gravity;
+		m_active[i]->position.y += m_active[i]->velocity.y;
+
+
+		DrawOne(m_active[i], view, projection, position);
+
+		if (m_active[i]->position.y < 0)
+		{
+			m_free.push_back(new Particle());
+			m_active.erase(m_active.begin() + i);
+
+		}
+
 	}
 
-	Particle test;
+	/*Particle test;
 	test.color = XMFLOAT4(1.0f, 0.0f, 0.3f, 1.f);
 	test.gravity = 1;
 	test.position = XMFLOAT3(0.0f, 5.0f, 14);
-	test.velocity = XMFLOAT3(0.f, 0.f, 0.f);
+	test.velocity = XMFLOAT3(0.f, 0.f, 0.f);*/
 
-	DrawOne(&test, view, projection, position);
+	
 
 }
 

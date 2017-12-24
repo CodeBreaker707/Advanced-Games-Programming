@@ -100,6 +100,19 @@ UI::UI(string filename, ID3D11Device* device, ID3D11DeviceContext* context)
 
 }
 
+void UI::ReleaseAll()
+{
+	if (pDepthDisabledStencilState) pDepthDisabledStencilState->Release();
+	if (pDepthEnabledStencilState) pDepthEnabledStencilState->Release();
+	if (pTexture) pTexture->Release();
+	if (pSampler) pSampler->Release();
+	if (pVertexBuffer) pVertexBuffer->Release();
+	if (pVShader) pVShader->Release();
+	if (pPShader) pPShader->Release();
+	if (pInputLayout) pInputLayout->Release();
+
+}
+
 // add a string with position and size to the list
 // positions are from -1.0 to +1.0 for x and y, represents top left of string on screen
 // size is fraction of screen size
@@ -235,15 +248,6 @@ void UI::RenderText(void)
 
 UI::~UI(void)
 {
-	if (pDepthDisabledStencilState) pDepthDisabledStencilState->Release();
-	if (pDepthEnabledStencilState) pDepthEnabledStencilState->Release();
-	if (pTexture) pTexture->Release();
-	if (pSampler) pSampler->Release();
-	if (pVertexBuffer) pVertexBuffer->Release();
-	if (pVShader) pVShader->Release();
-	if (pPShader) pPShader->Release();
-	if (pInputLayout) pInputLayout->Release();
-	if (pImmediateContext) pImmediateContext->Release();
-	if (pD3DDevice) pD3DDevice->Release();
+	
 
 }
