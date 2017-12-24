@@ -94,8 +94,8 @@ d:\manikandan\documents\advanced games programming\advanced-games-programming\as
 d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(523): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(746): warning C4018: '<': signed/unsigned mismatch
 d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(757): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(258): warning C4715: 'SceneNode::CheckCollision': not all control paths return a value
 d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(294): warning C4715: 'SceneNode::CheckActionCollision': not all control paths return a value
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(258): warning C4715: 'SceneNode::CheckCollision': not all control paths return a value
 d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(753): warning C4715: 'SceneNode::GetEquippedWeaponNode': not all control paths return a value
 d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(764): warning C4715: 'SceneNode::GetPushingCrate': not all control paths return a value
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.exe

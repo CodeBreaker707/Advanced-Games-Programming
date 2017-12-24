@@ -304,7 +304,7 @@ bool SceneNode::CheckNodeBottomCollision(SceneNode* compare_tree)
 
 	if (x1 < x2 + l2 && x1 + l1 > x2)
 	{
-		if ((y1 - h1 > y2 && y1 - h1 < y2 + 0.005))
+		if ((y1 - h1 > y2 && y1 - h1 < y2 + 0.01))
 		{
 			if (z1 < z2 + b2 && z1 + b1 > z2)
 			{
