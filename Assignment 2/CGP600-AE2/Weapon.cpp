@@ -6,13 +6,12 @@ Weapon::Weapon(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, c
 
 	//LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 
-	m_weapon_durability = 3;
-
 	m_cur_z = 0.0f;
 	
 	m_weaponEquipped = false;
 	m_Attacked = false;
 	m_attackComplete = false;
+	m_weaponHit = false;
 
 }
 
@@ -31,11 +30,6 @@ float Weapon::GetCurPos()
 	return m_cur_z;
 }
 
-void Weapon::SetWeaponDurability(int value)
-{
-	m_weapon_durability = value;
-}
-
 void Weapon::SetWeaponEquipState(bool state)
 {
 	m_weaponEquipped = state;
@@ -51,9 +45,9 @@ void Weapon::SetWeaponAttackCompleteState(bool state)
 	m_attackComplete = state;
 }
 
-int Weapon::GetWeaponDurability()
+void Weapon::SetWeaponHitState(bool state)
 {
-	return m_weapon_durability;
+	m_weaponHit = state;
 }
 
 bool Weapon::GetWeaponEquipState()
@@ -69,4 +63,9 @@ bool Weapon::GetWeaponAttackedState()
 bool Weapon::GetWeaponAttackCompleteState()
 {
 	return m_attackComplete;
+}
+
+bool Weapon::GetWeaponHitState()
+{
+	return m_weaponHit;
 }

@@ -221,6 +221,7 @@ void Game::MainUpdate()
 					{
 						// Set the attack state to true
 						m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(true);
+						m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(false);
 
 						// Set the current Z position of the weapon
 						m_player_node->GetEquippedWeaponNode()->SetCurZPos();
@@ -280,10 +281,13 @@ void Game::MainUpdate()
 						// If the weapon is colliding and in attack state,
 						// this returns true
 						if (m_enemy_nodes[i]->IsInteracting() == true && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
-							m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
+							m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false &&
+							m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponHitState() == false)
 						{
 							// This will reduce the enemy's health by 1
-							m_enemy_nodes[i]->m_e_asset->SetEnemyHealth(m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() - (70 * timing->GetDeltaTime()));
+							m_enemy_nodes[i]->m_e_asset->SetEnemyHealth(m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() - 10);
+
+							m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(true);
 
 							// If the enemy's health is or below 0,
 							// this returns true
@@ -363,6 +367,7 @@ void Game::MainUpdate()
 					&& m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == false && m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
 				{
 					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(true);
+					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(false);
 					m_enemy_nodes[i]->GetEquippedWeaponNode()->SetCurZPos();
 
 				}
@@ -405,10 +410,13 @@ void Game::MainUpdate()
 				// If the enemy weapon is colliding with the
 				// player, this returns true
 				if (m_player_node->IsInteracting() && m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
-					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
+					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false &&
+					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponHitState() == false)
 				{
 					// This reduces the player's health by 1
-					m_player_node->m_p_asset->SetPlayerHealth(m_player_node->m_p_asset->GetPlayerHealth() - (70 * timing->GetDeltaTime()));
+					m_player_node->m_p_asset->SetPlayerHealth(m_player_node->m_p_asset->GetPlayerHealth() - 10);
+
+					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(true);
 
 					// If the player has lost all its
 					// health, this will return true

@@ -6,12 +6,12 @@ class Weapon : public Asset
 {
 private:
 
-	int m_weapon_durability;
 
 	bool m_pickedUp;
 	bool m_weaponEquipped;
 	bool m_Attacked;
 	bool m_attackComplete;
+	bool m_weaponHit;
 
 	float m_cur_z;
 
@@ -28,6 +28,9 @@ public:
 
 	void SetWeaponEquipState(bool state);
 	bool GetWeaponEquipState();
+
+	void SetWeaponHitState(bool state);
+	bool GetWeaponHitState();
 
 	void SetWeaponAttackedState(bool state);
 	bool GetWeaponAttackedState();
