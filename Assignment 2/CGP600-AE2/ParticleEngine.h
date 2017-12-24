@@ -3,10 +3,13 @@
 #define _XM_NO_INTRINSICS_
 #define XM_NO_ALIGNMENT
 
+#include <windows.h>
 #include <d3d11.h>
 #include <d3dx11.h>
 #include <dxerr.h>
 #include <xnamath.h>
+#include <time.h>
+#include <list>
 using namespace std;
 
 struct Particle
@@ -34,10 +37,19 @@ class ParticleEngine
 		ID3D11ShaderResourceView* m_pTexture0;
 		ID3D11SamplerState* m_pSampler0;
 
+		list<Particle*> m_free;
+		list<Particle*> m_active;
+
+		float m_timePrevious;
+		float m_timeNow;
+		float m_deltaTime;
+		float m_untilParticle;
+
 	public:
 
 		// Particle Engine class constructor and destructor
-		ParticleEngine(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext);
+
+		ParticleEngine(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, int count);
 		~ParticleEngine();
 
 		int InitialiseParticle();
@@ -45,6 +57,11 @@ class ParticleEngine
 		// Function to draw the asset into the scene
 		void Draw(XMMATRIX* view, XMMATRIX* projection, XMFLOAT3* position);
 		void DrawOne(Particle* one, XMMATRIX* view, XMMATRIX* projection, XMFLOAT3* position);
+
+		float RandomBetweenFloats(float min, float max);
+
+		float RandomZeroToOne();
+		float RandomNegOneToPosOne();
 
 
 };

@@ -1,5 +1,7 @@
 #include "ParticleEngine.h"
 
+const int VERTCOUNT = 6;
+
 // Structure of the constant buffer used the asset
 struct PARTICLE_CONSTANT_BUFFER
 {
@@ -11,12 +13,24 @@ struct PARTICLE_CONSTANT_BUFFER
 
 }; // 80 bytes
 
-const int VERTCOUNT = 6;
 
-ParticleEngine::ParticleEngine(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext)
+ParticleEngine::ParticleEngine(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, int count)
 {
+	srand(time(NULL));
+
 	m_pD3DDevice = D3DDevice;
 	m_pImmediateContext = ImmediateContext;
+
+	for (int i = 0; i < count; i++)
+	{
+		m_free.push_back(new Particle());
+	}
+
+	m_timePrevious = float(timeGetTime());
+	m_timeNow = 0.0f;
+	m_deltaTime = 0.0f;
+	m_untilParticle = 3.0f;
+
 }
 
 ParticleEngine::~ParticleEngine()
@@ -35,6 +49,7 @@ ParticleEngine::~ParticleEngine()
 	if (m_pD3DDevice) m_pD3DDevice->Release();
 
 }
+
 
 int ParticleEngine::InitialiseParticle()
 {
@@ -152,6 +167,42 @@ int ParticleEngine::InitialiseParticle()
 
 void ParticleEngine::Draw(XMMATRIX* view, XMMATRIX* projection, XMFLOAT3* position)
 {
+	
+	m_timePrevious = m_timeNow;
+	m_timeNow = float(timeGetTime());
+	m_deltaTime = m_timeNow - m_timePrevious;
+
+	m_untilParticle -= m_deltaTime;
+
+	if (m_untilParticle <= 0)
+	{
+		list<Particle*>::iterator f_it = m_free.end();
+
+		if (m_free.size() != 0)
+		{
+			m_free.pop_back();
+			m_active.push_back(*f_it);
+
+			list<Particle*>::iterator a_it = m_active.end();
+
+			(*a_it)->color = XMFLOAT4(1.0f, 0.0f, 0.3f, 1.f);
+			(*a_it)->gravity = 1;
+			(*a_it)->position = XMFLOAT3(0.0f, 5.0f, 14);
+			(*a_it)->velocity = XMFLOAT3(0.f, 0.f, 0.f);
+
+		}
+
+		m_untilParticle = 3.0f;
+	}
+
+	list<Particle*>::iterator it = m_active.begin();
+
+	while (it != m_active.end())
+	{
+		(*it)->velocity.y -= (*it)->gravity;
+		it++;
+	}
+
 	Particle test;
 	test.color = XMFLOAT4(1.0f, 0.0f, 0.3f, 1.f);
 	test.gravity = 1;
@@ -189,5 +240,24 @@ void ParticleEngine::DrawOne(Particle* one, XMMATRIX* view, XMMATRIX* projection
 	//Draw the vertex buffer to the back buffer //  03-01
 	m_pImmediateContext->Draw(VERTCOUNT, 0);
 
+}
+
+float ParticleEngine::RandomBetweenFloats(float min, float max)
+{
+	float random = float(rand()) / float(RAND_MAX);
+	float diff = max - min;
+	float randValue = random * diff;
+
+	return min + randValue;
+}
+
+float ParticleEngine::RandomZeroToOne()
+{
+	return RandomBetweenFloats(0, 1);
+}
+
+float ParticleEngine::RandomNegOneToPosOne()
+{
+	return RandomBetweenFloats(-1, 1);
 }
 
