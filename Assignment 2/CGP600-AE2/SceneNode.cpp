@@ -52,7 +52,8 @@ SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateCont
 		lookAt_dist_x = 0.0f;
 		lookAt_dist_z = 0.0f;
 
-		m_gravitySpeed = 0.0010f;
+		//m_gravitySpeed = 0.0010f;
+		m_gravitySpeed = 4.0f;
 
 		moveSpots[0] = XMVectorSet(m_x        , m_y, m_z + 20.0, 0.0f);
 		moveSpots[1] = XMVectorSet(m_x + 20.0f, m_y, m_z, 0.0f);
@@ -303,7 +304,7 @@ bool SceneNode::CheckNodeBottomCollision(SceneNode* compare_tree)
 
 	if (x1 < x2 + l2 && x1 + l1 > x2)
 	{
-		if (y1 - h1 > y2 && y1 - h1 < y2 + 0.002)
+		if ((y1 - h1 > y2 && y1 - h1 < y2 + 0.005))
 		{
 			if (z1 < z2 + b2 && z1 + b1 > z2)
 			{
@@ -517,9 +518,9 @@ void SceneNode::MoveAsset(float x_dist, float y_dist, float z_dist)
 
 void SceneNode::ApplyGravity(double deltaTime)
 {
-	if (m_onGround == false && m_gravityApplied == true)
+	if (m_onGround == false && m_gravityApplied == true && deltaTime < 1)
 	{
-		MoveAsset(0.0f, -m_gravitySpeed, 0.0f);
+		MoveAsset(0.0f, -m_gravitySpeed * deltaTime, 0.0f);
 	}
 
 }

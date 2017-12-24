@@ -21,7 +21,7 @@ Player::Player(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, c
 	m_move_speed = 4.0f;
 	m_speed_multiplier = 1.0f;
 	//m_jump_speed = 0.0010f;
-	m_jump_speed = 10.0f;
+	m_jump_speed = 7.0f;
 	m_jump_height = 4.5f;
 
 }
