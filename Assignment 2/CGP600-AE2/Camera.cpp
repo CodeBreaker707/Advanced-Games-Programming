@@ -36,37 +36,37 @@ Camera::Camera(float x, float y, float z, float camera_rotation, float FOV, floa
 }
 
 // Rotate the camera in yaw axis
-void Camera::RotateCameraX(float amount)
+void Camera::YawCamera(float amount)
 {
 	// Increasing the yaw radians
-	m_camera_rotation_x += XMConvertToRadians(amount);
+	m_camera_rotation_y += XMConvertToRadians(amount);
 
 	// Updating rotational values by
 	// calculating the sin and cos of the radians
-	m_dx = sin(m_camera_rotation_x);
-	m_dz = cos(m_camera_rotation_x);
+	m_dx = sin(m_camera_rotation_y);
+	m_dz = cos(m_camera_rotation_y);
 
 }
 
 // Rotate the camera in pitch axis
-void Camera::RotateCameraY(float amount)
+void Camera::PitchCamera(float amount)
 {
 	// Increasing the pitch radians
-	m_camera_rotation_y += XMConvertToRadians(amount);
+	m_camera_rotation_x += XMConvertToRadians(amount);
 
 	// This is to restrict the camera's pitch radians within limits
-	if (m_camera_rotation_y > (3.14f/2) || m_camera_rotation_y < -(3.14/2))
+	if (m_camera_rotation_x > (3.14f/2) || m_camera_rotation_x < -(3.14/2))
 	{
-		m_camera_rotation_y = m_prev_rot_y;
+		m_camera_rotation_x = m_prev_rot_y;
 	}
 	else
 	{
-		m_prev_rot_y = m_camera_rotation_y;
+		m_prev_rot_y = m_camera_rotation_x;
 	}
 
 	// Updating the rotational values
-	m_dy = sin(m_camera_rotation_y);
-	m_dz = cos(m_camera_rotation_y);
+	m_dy = sin(m_camera_rotation_x);
+	m_dz = cos(m_camera_rotation_x);
 
 
 }

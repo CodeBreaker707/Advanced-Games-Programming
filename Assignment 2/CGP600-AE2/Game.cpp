@@ -575,19 +575,20 @@ void Game::MainUpdate()
 			//Check if the player is colliding with anything below		
 			for (int i = 0; i < objs.size(); i++)
 			{
+				m_player_node->CheckNodeBottomCollision(objs[i]);
 				// Checking collision of the player's bottom
 				// against every other object
-				if (m_player_node->CheckNodeBottomCollision(objs[i]) == true)
+				if (m_player_node->GetOnGroundState() == true)
 				{
 					// Set the player on ground state to true
-					m_player_node->SetOnGroundState(true);
+					//m_player_node->SetOnGroundState(true);
 					break;
 				}
-				else
-				{
-					// Else set it to false
-					m_player_node->SetOnGroundState(false);
-				}
+				//else
+				//{
+				//	// Else set it to false
+				//	m_player_node->SetOnGroundState(false);
+				//}
 
 			}
 
@@ -634,8 +635,8 @@ void Game::MainUpdate()
 			// Mouse Controls
 
 			// Rotate the camera based on mouse input
-			view[0]->RotateCameraY(-key->m_mouse_state.lY);
-			view[0]->RotateCameraX(key->m_mouse_state.lX);
+			view[0]->PitchCamera(-key->m_mouse_state.lY);
+			view[0]->YawCamera(key->m_mouse_state.lX);
 
 			// Add text to the UI object
 			//hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
@@ -653,8 +654,8 @@ void Game::MainUpdate()
 
 			// Rotate the cinematic camera
 			// based on mouse input
-			view[1]->RotateCameraY(-key->m_mouse_state.lY);
-			view[1]->RotateCameraX(key->m_mouse_state.lX);
+			view[1]->PitchCamera(-key->m_mouse_state.lY);
+			view[1]->YawCamera(key->m_mouse_state.lX);
 
 			// Move the camera freely based on
 			// input movement keys

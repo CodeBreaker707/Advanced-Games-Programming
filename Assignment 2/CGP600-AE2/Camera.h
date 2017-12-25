@@ -47,8 +47,8 @@ public:
 	void MoveWithPlayer(float x, float y, float z);
 
 	// Rotate the camera on both the axes
-	void RotateCameraX(float amount);
-	void RotateCameraY(float amount);
+	void YawCamera(float amount);
+	void PitchCamera(float amount);
 
 	// Returns the position of the camera
 	XMVECTOR GetPosition();
