@@ -575,20 +575,15 @@ void Game::MainUpdate()
 			//Check if the player is colliding with anything below		
 			for (int i = 0; i < objs.size(); i++)
 			{
-				m_player_node->CheckNodeBottomCollision(objs[i]);
 				// Checking collision of the player's bottom
 				// against every other object
+				m_player_node->CheckNodeBottomCollision(objs[i]);
+				
 				if (m_player_node->GetOnGroundState() == true)
 				{
-					// Set the player on ground state to true
-					//m_player_node->SetOnGroundState(true);
 					break;
 				}
-				//else
-				//{
-				//	// Else set it to false
-				//	m_player_node->SetOnGroundState(false);
-				//}
+			
 
 			}
 
@@ -599,15 +594,13 @@ void Game::MainUpdate()
 			{
 				for (int j = 0; j < objs.size(); j++)
 				{
-					if (objs[i]->CheckNodeBottomCollision(objs[j]) == true)
+					objs[i]->CheckNodeBottomCollision(objs[j]);
+
+					if (objs[i]->GetOnGroundState() == true)
 					{
-						objs[i]->SetOnGroundState(true);
 						break;
 					}
-					else
-					{
-						objs[i]->SetOnGroundState(false);
-					}
+					
 				}
 			}
 

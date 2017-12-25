@@ -67,6 +67,11 @@ private:
 	float m_lookAt_dist_x;
 	float m_lookAt_dist_z;
 
+	// This is the distance between the
+	// player and an entity
+	float m_range_dist_x;
+	float m_range_dist_z;
+
 	// This is the power of the gravitional
 	// pull applied to objects
 	float m_gravity_speed;
@@ -146,6 +151,9 @@ public:
 	// This function executes the draw function of the nodes
 	// and its children
 	void Execute(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection);
+
+	// This calculates and returns the world matrix
+	XMMATRIX GetWorldMatrix(XMMATRIX* world);
 
 	// This updates the position of the node using
 	// the asset's collider's values

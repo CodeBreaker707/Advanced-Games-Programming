@@ -1,8 +1,16 @@
 #include "SceneNode.h"
 
-
+// Constructor
 SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, char* assetFile, char* textureFile, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState)
 {
+	// Depending on the type of node, the
+	// asset object is initialised
+
+	// P = Player
+	// E = Enemy
+	// W = Weapon
+	// S = Statik
+	// D = Dynamic
 
 	if (c == 'P')
 	{
@@ -25,72 +33,91 @@ SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateCont
 		m_d_asset = new Dynamic(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
 	}
 
+	// Initialising the random number generator
 	srand(time(NULL));
 	
-		m_pos_x = x_pos;
-		m_pos_y = y_pos;
-		m_pos_z = z_pos;
+	// Initialising the positions
+	m_pos_x = x_pos;
+	m_pos_y = y_pos;
+	m_pos_z = z_pos;
 
-		m_init_x = m_pos_x;
-		m_init_y = m_pos_y;
-		m_init_z = m_pos_z;
+	// Initialising the initial positions
+	m_init_x = m_pos_x;
+	m_init_y = m_pos_y;
+	m_init_z = m_pos_z;
 
-		m_xangle = 0.0f;
-		m_yangle = 0.0f;
-		m_zangle = 0.0f;
+	// Initialising the angles
+	m_xangle = 0.0f;
+	m_yangle = 0.0f;
+	m_zangle = 0.0f;
 
-		m_prev_xangle = m_xangle;
+	m_prev_xangle = m_xangle;
 
-		m_scale_x = x_scale;
-		m_scale_y = y_scale;
-		m_scale_z = z_scale;
+	// Initialising the scale
+	m_scale_x = x_scale;
+	m_scale_y = y_scale;
+	m_scale_z = z_scale;
 
-		m_collider_centre_x = x_pos;
-		m_collider_centre_y = y_pos;
-		m_collider_centre_z = z_pos;
+	// Initialising the collider positions
+	m_collider_centre_x = x_pos;
+	m_collider_centre_y = y_pos;
+	m_collider_centre_z = z_pos;
 
-		lookAt_dist_x = 0.0f;
-		lookAt_dist_z = 0.0f;
+	// Initialising the look At distances
+	m_lookAt_dist_x = 0.0f;
+	m_lookAt_dist_z = 0.0f;
 
-		//m_gravitySpeed = 0.0010f;
-		m_gravitySpeed = 4.0f;
+	// Initialising the range distances
+	m_range_dist_x = 0.0f;
+	m_range_dist_z = 0.0f;
 
-		moveSpots[0] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z + 20.0, 0.0f);
-		moveSpots[1] = XMVectorSet(m_pos_x + 20.0f, m_pos_y, m_pos_z, 0.0f);
-		moveSpots[2] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z - 20.0, 0.0f);
-		moveSpots[3] = XMVectorSet(m_pos_x - 20.0f, m_pos_y, m_pos_z, 0.0f);
+	// Initialising the gravity speed
+	m_gravity_speed = 4.0f;
 
-		spotNum = GetRandomSpot();
-		prevSpotNum = GetRandomSpot();
+	// Initialising the move spots for the entity to move towards
+	m_move_spots[0] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z + 20.0, 0.0f);
+	m_move_spots[1] = XMVectorSet(m_pos_x + 20.0f, m_pos_y, m_pos_z, 0.0f);
+	m_move_spots[2] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z - 20.0, 0.0f);
+	m_move_spots[3] = XMVectorSet(m_pos_x - 20.0f, m_pos_y, m_pos_z, 0.0f);
 
+	// Initialising the random spots
+	spot_num = GetRandomSpot();
+	prev_spot_num = GetRandomSpot();
 
-		if (prevSpotNum == spotNum)
-		{
-			prevSpotNum += 1;
-
-			if (prevSpotNum > 3)
-			{
-				prevSpotNum = 0;
-			}
-		}
+	// This is to ensure the previous and
+	// current spot numbers are not equal
+	if (prev_spot_num == spot_num)
+	{
+		prev_spot_num += 1;
 		
+		if (prev_spot_num > 3)
+		{
+			prev_spot_num = 0;
+		}
+	}
+		
+	// Intialising the booleans
+	m_is_colliding = false;
+	m_is_interacting = false;
+	m_in_range = false;
+	m_halt_movement = false;
+	m_on_ground = false;
 
-		m_isColliding = false;
-		m_isInteracting = false;
-		m_inRange = false;
-		m_haltMovement = false;
-		m_onGround = false;
-
-		m_gravityApplied = gravityState;
+	// Initialising the gravity state from
+	// the parameter
+	m_gravity_applied = gravityState;
 	
 
 }
 
+// Destructor
 SceneNode::~SceneNode()
 {
 	
 }
 
+// This calls the release all function for each
+// asset object
 void SceneNode::ReleaseAll()
 {
 	if (m_p_asset) m_p_asset->ReleaseAll();
@@ -106,8 +133,11 @@ void SceneNode::ReleaseAll()
 
 }
 
+
 void SceneNode::AddChildNode(SceneNode* n)
 {
+	// A child is added by pushing it
+	// to the children vector
 	m_children.push_back(n);
 }
 
@@ -115,6 +145,8 @@ bool SceneNode::DetachNode(SceneNode* n)
 {
 	// Traverse tree to find node to detach
 
+	// This loops through each child and erases
+	// the child if it matches the node in the parameter
 	for (int i = 0; i < m_children.size(); i++)
 	{
 		if (n == m_children[i])
@@ -129,34 +161,47 @@ bool SceneNode::DetachNode(SceneNode* n)
 	return false;
 }
 
-void SceneNode::Execute(XMMATRIX *world, XMMATRIX* view, XMMATRIX* projection)
+void SceneNode::Execute(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 {
-	XMMATRIX local_world = XMMatrixIdentity();
+	
+	// We call the draw function if the object is active
+	if (m_p_asset) m_p_asset->Draw(&GetWorldMatrix(world), view, projection);
+	else if (m_e_asset) m_e_asset->Draw(&GetWorldMatrix(world), view, projection);
+	else if (m_w_asset) m_w_asset->Draw(&GetWorldMatrix(world), view, projection);
+	else if (m_s_asset) m_s_asset->Draw(&GetWorldMatrix(world), view, projection);
+	else if (m_d_asset) m_d_asset->Draw(&GetWorldMatrix(world), view, projection);
 
-	
-	local_world *= XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
-	local_world *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
-	local_world *= XMMatrixTranslation(m_pos_x, m_pos_y, m_pos_z);
-	
-	local_world *= *world;
-	
-	if (m_p_asset) m_p_asset->Draw(&local_world, view, projection);
-	if (m_e_asset) m_e_asset->Draw(&local_world, view, projection);
-	if (m_w_asset) m_w_asset->Draw(&local_world, view, projection);
-	if (m_s_asset) m_s_asset->Draw(&local_world, view, projection);
-	if (m_d_asset) m_d_asset->Draw(&local_world, view, projection);
-
+	// We execute this function for the node's children
 	for (int i = 0; i < m_children.size(); i++)
 	{
-		m_children[i]->Execute(&local_world, view, projection);
+		m_children[i]->Execute(&GetWorldMatrix(world), view, projection);
 	}
 
 
 }
 
+XMMATRIX SceneNode::GetWorldMatrix(XMMATRIX* world)
+{
+	// Initialing a world matrix
+	XMMATRIX world_matrix = XMMatrixIdentity();
+
+	// Multiplying the world matrix with scaling, rotation and translation
+	// matrices
+	world_matrix *= XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
+	world_matrix *= XMMatrixRotationRollPitchYaw(m_xangle, m_yangle, m_zangle);
+	world_matrix *= XMMatrixTranslation(m_pos_x, m_pos_y, m_pos_z);
+
+	// Finally, we multiply the world matrix with the parent's
+	// world matrix
+	world_matrix *= *world;
+
+	return world_matrix;
+
+}
+
 void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 {
-	XMMATRIX local_world = XMMatrixIdentity();
+	/*XMMATRIX local_world = XMMatrixIdentity();
 
 	local_world *= XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
 
@@ -166,10 +211,12 @@ void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 
 	local_world *= XMMatrixTranslation(m_pos_x, m_pos_y, m_pos_z);
 
-	local_world *= *world;
+	local_world *= *world;*/
 
 	XMVECTOR v;
 
+	// If the asset is active, we get its collider
+	// positions
 	if (m_p_asset)
 	{
 		v = XMVectorSet(XMVectorGetX(m_p_asset->collider->GetColliderPos()), XMVectorGetY(m_p_asset->collider->GetColliderPos()), XMVectorGetZ(m_p_asset->collider->GetColliderPos()), 0.0f);
@@ -195,133 +242,82 @@ void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 		v = XMVectorSet(0.0, 0.0, 0.0, 0.0);
 	}
 
-	v = XMVector3Transform(v, local_world);
+	// Transforming the vector to the world matrix
+	v = XMVector3Transform(v, GetWorldMatrix(world));
+
+	// The updated collider positions are set
+	// from the vector
 	m_collider_centre_x = XMVectorGetX(v);
 	m_collider_centre_y = XMVectorGetY(v);
 	m_collider_centre_z = XMVectorGetZ(v);
 
+	// This function is executed for the node's children
 	for (int i = 0; i < m_children.size(); i++)
 	{
-		m_children[i]->UpdateCollisionTree(&local_world);
+		m_children[i]->UpdateCollisionTree(&GetWorldMatrix(world));
 	}
 }
 
-bool SceneNode::CheckCollision(SceneNode* compare_tree)
+void SceneNode::CalculateBoxDimensions1(XMVECTOR v, Asset* obj)
 {
-	if (this == compare_tree)
-	{
-		return false;
-	}
 
-	CalculateBoxCollisionDetails(compare_tree);
+	// We're trying to get the front top-left position of the asset
+	x1 = XMVectorGetX(v) - (obj->collider->GetLength(obj->GetXScale()) / 2);
+	y1 = XMVectorGetY(v) + (obj->collider->GetHeight(obj->GetYScale()) / 2);
+	z1 = XMVectorGetZ(v) - (obj->collider->GetBreadth(obj->GetZScale()) / 2);
 
-	if (x1 < x2 + l2 && x1 + l1 > x2)
-	{
-		if (y1 > y2 - h2 && y1 - h1 < y2)
-		{
-			if (z1 < z2 + b2 && z1 + b1 > z2)
-			{
-				m_isColliding = true;
-			}
-			else
-			{
-				m_isColliding = false;
-			}
-		}
-		else
-		{
-			m_isColliding = false;
-		}
-	}
-	else
-	{
-		m_isColliding = false;
-	}
-
-	
-		/*for (int i = 0; i < compare_tree->m_children.size(); i++)
-		{
-			if (CheckCollision(compare_tree->m_children[i]));
-		}
-
-		for (int i = 0; i < m_children.size(); i++)
-		{
-			if (m_children[i]->CheckCollision(compare_tree));
-		}*/
-	
+	// Retrieving length, height and breadth values
+	// from the asset's collider
+	l1 = obj->collider->GetLength(obj->GetXScale());
+	h1 = obj->collider->GetHeight(obj->GetYScale());
+	b1 = obj->collider->GetBreadth(obj->GetZScale());
 
 }
 
-bool SceneNode::CheckActionCollision(SceneNode* compare_tree)
+void SceneNode::CalculateSphereDimensions1(XMVECTOR v, Asset* obj)
 {
-	if (this == compare_tree)
-	{
-		return false;
-	}
+	// We simply get the centre position of
+	// the asset and the radius from the collider
+	x1 = XMVectorGetX(v);
+	y1 = XMVectorGetY(v);
+	z1 = XMVectorGetZ(v);
 
-	CalculateSphereCollisionDetails(compare_tree);
+	r1 = obj->collider->GetColliderRadius();
+}
 
-	if (main_dist - 1.0 < sum_radius /** sum_radius*/)
-	{
-		m_isInteracting = true;
-	}
-	else
-	{
-		m_isInteracting = false;
-	}
+void SceneNode::CalculateBoxDimensions2(XMVECTOR v, Asset* obj)
+{
+	x2 = XMVectorGetX(v) - (obj->collider->GetLength(obj->GetXScale()) / 2);
+	y2 = XMVectorGetY(v) + (obj->collider->GetHeight(obj->GetYScale()) / 2);
+	z2 = XMVectorGetZ(v) - (obj->collider->GetBreadth(obj->GetZScale()) / 2);
 
+	l2 = obj->collider->GetLength(obj->GetXScale());
+	h2 = obj->collider->GetHeight(obj->GetYScale());
+	b2 = obj->collider->GetBreadth(obj->GetZScale());
 
 }
 
-bool SceneNode::CheckNodeBottomCollision(SceneNode* compare_tree)
+void SceneNode::CalculateSphereDimensions2(XMVECTOR v, Asset* obj)
 {
-	if (this == compare_tree)
-	{
-		return false;
-	}
+	x2 = XMVectorGetX(v);
+	y2 = XMVectorGetY(v);
+	z2 = XMVectorGetZ(v);
 
-	CalculateBoxCollisionDetails(compare_tree);
-
-	if (x1 < x2 + l2 && x1 + l1 > x2)
-	{
-		if ((y1 - h1 > y2 && y1 - h1 < y2 + 0.01))
-		{
-			if (z1 < z2 + b2 && z1 + b1 > z2)
-			{
-				m_onGround = true;
-				//return true;
-			}
-			else
-			{
-				m_onGround = false;
-				//return false;
-			}
-		}
-		else
-		{
-			m_onGround = false;
-			//return false;
-		}
-	}
-	else
-	{
-		m_onGround = false;
-		//return false;
-	}
-
-
+	r2 = obj->collider->GetColliderRadius();
 }
 
 void SceneNode::CalculateBoxCollisionDetails(SceneNode* compare_tree)
 {
+	// Retrieving the collider's center positions
 	XMVECTOR v1 = GetWorldColliderCentrePos();
 	XMVECTOR v2 = compare_tree->GetWorldColliderCentrePos();
 
+	// We calculate the box dimensions for which
+	// asset is active
 	if (m_p_asset)
 	{
 		CalculateBoxDimensions1(v1, m_p_asset);
 	}
-
 	else if (m_e_asset)
 	{
 		CalculateBoxDimensions1(v1, m_e_asset);
@@ -339,16 +335,14 @@ void SceneNode::CalculateBoxCollisionDetails(SceneNode* compare_tree)
 		CalculateBoxDimensions1(v1, m_d_asset);
 	}
 
-
+	// This is for the other asset
 	if (compare_tree->m_p_asset)
 	{
 		CalculateBoxDimensions2(v2, compare_tree->m_p_asset);
 	}
-
 	else if (compare_tree->m_e_asset)
 	{
 		CalculateBoxDimensions2(v2, compare_tree->m_e_asset);
-
 	}
 	else if (compare_tree->m_w_asset)
 	{
@@ -363,12 +357,13 @@ void SceneNode::CalculateBoxCollisionDetails(SceneNode* compare_tree)
 		CalculateBoxDimensions2(v2, compare_tree->m_d_asset);
 	}
 
-
-
 }
 
 void SceneNode::CalculateSphereCollisionDetails(SceneNode* compare_tree)
 {
+
+	// We do the same as CalculateBoxCollisionDetails
+
 	XMVECTOR v1 = GetWorldColliderCentrePos();
 	XMVECTOR v2 = compare_tree->GetWorldColliderCentrePos();
 
@@ -418,64 +413,131 @@ void SceneNode::CalculateSphereCollisionDetails(SceneNode* compare_tree)
 		CalculateSphereDimensions2(v2, compare_tree->m_d_asset);
 	}
 
+	// Calculating distance between objects
+	m_dist_x = x2 - x1;
+	m_dist_y = y2 - y1;
+	m_dist_z = z2 - z1;
 
-	dist_x = x2 - x1;
-	dist_y = y2 - y1;
-	dist_z = z2 - z1;
+	// Using Pythagaros to calculate the actual distance
+	main_dist = sqrt((m_dist_x * m_dist_x) + (m_dist_y * m_dist_y) + (m_dist_z * m_dist_z));
 
-	main_dist = sqrt((dist_x * dist_x) + (dist_y * dist_y) + (dist_z * dist_z));
-
+	// Calculating the sum of radii
 	sum_radius = r1 + r2;
 
+
+}
+
+bool SceneNode::CheckCollision(SceneNode* compare_tree)
+{
+	// This is to avoid collision checks
+	// against itself
+	if (this == compare_tree)
+	{
+		return false;
+	}
+
+	// We need details for Box collision so we call this
+	CalculateBoxCollisionDetails(compare_tree);
+
+	// If atleast one end of the object is
+	// colliding with the end of the other
+	// object, it returns true
+	if (x1 < x2 + l2 && x1 + l1 > x2)
+	{
+		if (y1 > y2 - h2 && y1 - h1 < y2)
+		{
+			if (z1 < z2 + b2 && z1 + b1 > z2)
+			{
+				m_is_colliding = true;
+			}
+			else
+			{
+				m_is_colliding = false;
+			}
+		}
+		else
+		{
+			m_is_colliding = false;
+		}
+	}
+	else
+	{
+		m_is_colliding = false;
+	}
 	
-}
-
-void SceneNode::CalculateBoxDimensions1(XMVECTOR v, Asset* obj)
-{
-	x1 = XMVectorGetX(v) - (obj->collider->GetLength(obj->GetXScale()) / 2);
-	y1 = XMVectorGetY(v) + (obj->collider->GetHeight(obj->GetYScale()) / 2);
-	z1 = XMVectorGetZ(v) - (obj->collider->GetBreadth(obj->GetZScale()) / 2);
-
-	l1 = obj->collider->GetLength(obj->GetXScale());
-	h1 = obj->collider->GetHeight(obj->GetYScale());
-	b1 = obj->collider->GetBreadth(obj->GetZScale());
 
 }
 
-void SceneNode::CalculateSphereDimensions1(XMVECTOR v, Asset* obj)
+bool SceneNode::CheckActionCollision(SceneNode* compare_tree)
 {
-	x1 = XMVectorGetX(v);
-	y1 = XMVectorGetY(v);
-	z1 = XMVectorGetZ(v);
+	if (this == compare_tree)
+	{
+		return false;
+	}
 
-	r1 = obj->collider->GetColliderRadius();
+	// Retrieving the details for sphere collision checks
+	CalculateSphereCollisionDetails(compare_tree);
+
+	// If the distance between the objects is
+	// less than the sum of radii, it returns 
+	// true
+	// We subtract by 1, to avoid very close
+	// checks
+	if (main_dist - 1.0 < sum_radius )
+	{
+		m_is_interacting = true;
+	}
+	else
+	{
+		m_is_interacting = false;
+	}
+
+
 }
 
-void SceneNode::CalculateBoxDimensions2(XMVECTOR v, Asset* obj)
+bool SceneNode::CheckNodeBottomCollision(SceneNode* compare_tree)
 {
-	x2 = XMVectorGetX(v) - (obj->collider->GetLength(obj->GetXScale()) / 2);
-	y2 = XMVectorGetY(v) + (obj->collider->GetHeight(obj->GetYScale()) / 2);
-	z2 = XMVectorGetZ(v) - (obj->collider->GetBreadth(obj->GetZScale()) / 2);
+	if (this == compare_tree)
+	{
+		return false;
+	}
 
-	l2 = obj->collider->GetLength(obj->GetXScale());
-	h2 = obj->collider->GetHeight(obj->GetYScale());
-	b2 = obj->collider->GetBreadth(obj->GetZScale());
+	// We again need box collision details for this
+	CalculateBoxCollisionDetails(compare_tree);
 
-}
+	if (x1 < x2 + l2 && x1 + l1 > x2)
+	{
+		// we just check if the bottom is above the ground
+		// but below a few units from the ground
+		if ((y1 - h1 > y2 && y1 - h1 < y2 + 0.01))
+		{
+			if (z1 < z2 + b2 && z1 + b1 > z2)
+			{
+				m_on_ground = true;
+			}
+			else
+			{
+				m_on_ground = false;
+			}
+		}
+		else
+		{
+			m_on_ground = false;
+		}
+	}
+	else
+	{
+		m_on_ground = false;
+	}
 
-void SceneNode::CalculateSphereDimensions2(XMVECTOR v, Asset* obj)
-{
-	x2 = XMVectorGetX(v);
-	y2 = XMVectorGetY(v);
-	z2 = XMVectorGetZ(v);
 
-	r2 = obj->collider->GetColliderRadius();
 }
 
 
 void SceneNode::MoveAsset(float x_dist, float y_dist, float z_dist)
 {
-	if (m_haltMovement == false)
+	// If the asset isn't halted, move the asset
+	if (m_halt_movement == false)
 	{
 		m_pos_x += x_dist;
 		m_pos_y += y_dist;
@@ -486,15 +548,21 @@ void SceneNode::MoveAsset(float x_dist, float y_dist, float z_dist)
 
 void SceneNode::ApplyGravity(double deltaTime)
 {
-	if (m_onGround == false && m_gravityApplied == true && deltaTime < 1)
+	// If the asset isn't on ground, gravity is enabled
+	// and deltaTime is less than 1 so that it doesn't
+	// alter the values by a large amount
+	if (m_on_ground == false && m_gravity_applied == true && deltaTime < 1)
 	{
-		MoveAsset(0.0f, -m_gravitySpeed * deltaTime, 0.0f);
+		// We move the asset downward by gravity
+		MoveAsset(0.0f, -m_gravity_speed * deltaTime, 0.0f);
 	}
 
 }
 
 void SceneNode::ResetToInitalPos()
 {
+	// Positions are reset to initial
+	// pos
 	m_pos_x = m_init_x;
 	m_pos_y = m_init_y;
 	m_pos_z = m_init_z;
@@ -502,78 +570,99 @@ void SceneNode::ResetToInitalPos()
 
 float SceneNode::GetRandomSpot()
 {
+	// Returns a random between 0 and 3
+	// included
 	return rand() % 4;
 }
 
 void SceneNode::SetToPreviousSpot()
 {
-	spotNum = prevSpotNum;
+	// The current spot is set
+	// to the previous spot
+	spot_num = prev_spot_num;
 }
 
 void SceneNode::LookAt()
 {
-	if (m_inRange == false)
+	// If the player is not in range
+	// of the entity, this returns true
+	if (m_in_range == false)
 	{
-		lookAt_dist_x = m_pos_x - XMVectorGetX(moveSpots[spotNum]);
-		lookAt_dist_z = m_pos_z - XMVectorGetZ(moveSpots[spotNum]);
+		// We get the distance between the entity
+		// and the spot's location
+		m_lookAt_dist_x = m_pos_x - XMVectorGetX(m_move_spots[spot_num]);
+		m_lookAt_dist_z = m_pos_z - XMVectorGetZ(m_move_spots[spot_num]);
 
-		if (fabs(lookAt_dist_x) <= 0.2f && fabs(lookAt_dist_z) <= 0.2f)
+		// If the entity reached the spot, this returns true
+		if (fabs(m_lookAt_dist_x) <= 0.2f && fabs(m_lookAt_dist_z) <= 0.2f)
 		{
-			prevSpotNum = spotNum;
-			spotNum = GetRandomSpot();
+			// We assign a random spot
+			prev_spot_num = spot_num;
+			spot_num = GetRandomSpot();
 
-			if (spotNum == prevSpotNum)
+			// Just like the initiation stage,
+			// we avoid both to be same
+			if (spot_num == prev_spot_num)
 			{
-				spotNum += 1;
+				spot_num += 1;
 
-				if (spotNum > 3)
+				if (spot_num > 3)
 				{
-					spotNum = 0;
+					spot_num = 0;
 				}
 			}
 
 
-			lookAt_dist_x = m_pos_x - XMVectorGetX(moveSpots[spotNum]);
-			lookAt_dist_z = m_pos_z - XMVectorGetZ(moveSpots[spotNum]);
+			m_lookAt_dist_x = m_pos_x - XMVectorGetX(m_move_spots[spot_num]);
+			m_lookAt_dist_z = m_pos_z - XMVectorGetZ(m_move_spots[spot_num]);
+
 		}
 	}
 
-	m_yangle = -atan2(lookAt_dist_x, -lookAt_dist_z);
+	m_yangle = -atan2(m_lookAt_dist_x, -m_lookAt_dist_z);
 
 }
 
 void SceneNode::CheckInRange(XMVECTOR other_pos)
 {
-	float range_dist_x = m_pos_x - XMVectorGetX(other_pos);
-	float range_dist_z = m_pos_z - XMVectorGetZ(other_pos);
+	// We get the distance between the entity
+	// and the player
+	m_range_dist_x = m_pos_x - XMVectorGetX(other_pos);
+	m_range_dist_z = m_pos_z - XMVectorGetZ(other_pos);
 
-	if (fabs(range_dist_x) <= 10.0f && fabs(range_dist_z) <= 10.0f)
+	// If we are in range, this returns true
+	if (fabs(m_range_dist_x) <= 10.0f && fabs(m_range_dist_z) <= 10.0f)
 	{
-		m_inRange = true;
+		m_in_range = true;
 
-		if (fabs(range_dist_x) <= 2.0f && fabs(range_dist_z) <= 2.0f)
+		// If the entity has reached close enough, this will return true
+		if (fabs(m_range_dist_x) <= 2.0f && fabs(m_range_dist_z) <= 2.0f)
 		{
-			m_haltMovement = true;
+			m_halt_movement = true;
 		}
 		else
 		{
-			m_haltMovement = false;
+			m_halt_movement = false;
 		}
 		
+		// Now the look at direction is made
+		// towards the player
+		m_lookAt_dist_x = m_range_dist_x;
+		m_lookAt_dist_z = m_range_dist_z;
 
-		lookAt_dist_x = range_dist_x;
-		lookAt_dist_z = range_dist_z;
 	}
 	else
 	{
-		m_inRange = false;
+		m_in_range = false;
 	}
 
 
 }
 
+
 void SceneNode::RotateAsset(float pitch_degrees, float yaw_degrees, float roll_degrees)
 {
+	// Rotating the asset with with parameter values
 	m_xangle += XMConvertToRadians(pitch_degrees);
 	m_yangle += XMConvertToRadians(yaw_degrees);
 	m_zangle += XMConvertToRadians(roll_degrees);
@@ -582,6 +671,8 @@ void SceneNode::RotateAsset(float pitch_degrees, float yaw_degrees, float roll_d
 
 void SceneNode::RestrictPos(bool isColliding)
 {
+	// If colliding, set current pos
+	// to previous pos
 	if (isColliding == true)
 	{
 		m_pos_x = m_prev_x;
@@ -592,6 +683,8 @@ void SceneNode::RestrictPos(bool isColliding)
 
 void SceneNode::UpdatePos(bool isColliding)
 {
+	// If not colliding, update
+	// previous positions
 	if (isColliding == false)
 	{
 		m_prev_x = m_pos_x;
@@ -623,6 +716,9 @@ void SceneNode::SetYAngle(float angle)
 
 void SceneNode::RestrictPitch()
 {
+	// 0 is at the center
+	// So, we restrict it between -90 and +90 degrees by
+	// setting it to the previous angle
 	if (m_xangle > (3.14f / 2) || m_xangle < -(3.14f / 2))
 	{
 		m_xangle = m_prev_xangle;
@@ -640,52 +736,52 @@ void SceneNode::SetCurZPos()
 
 void SceneNode::SetCollideState(bool state)
 {
-	m_isColliding = state;
+	m_is_colliding = state;
 }
 
 bool SceneNode::IsColliding()
 {
-	return m_isColliding;
+	return m_is_colliding;
 }
 
 void SceneNode::SetInteractState(bool state)
 {
-	m_isInteracting = state;
+	m_is_interacting = state;
 }
 
 bool SceneNode::IsInteracting()
 {
-	return m_isInteracting;
+	return m_is_interacting;
 }
 
 void SceneNode::SetOnGroundState(bool state)
 {
-	m_onGround = state;
+	m_on_ground = state;
 }
 
 bool SceneNode::GetOnGroundState()
 {
-	return m_onGround;
+	return m_on_ground;
 }
 
 void SceneNode::SetInRangeState(bool state)
 {
-	m_inRange = state;
+	m_in_range = state;
 }
 
 bool SceneNode::GetInRangeState()
 {
-	return m_inRange;
+	return m_in_range;
 }
 
 void SceneNode::SetHaltState(bool state)
 {
-	m_haltMovement = state;
+	m_halt_movement = state;
 }
 
 bool SceneNode::isHalted()
 {
-	return m_haltMovement;
+	return m_halt_movement;
 }
 
 int SceneNode::GetChildrenSize()
@@ -712,6 +808,8 @@ SceneNode* SceneNode::GetEquippedWeaponNode()
 {
 	for (int i = 0; i < m_children.size(); i++)
 	{
+		// If the node has a valid weapon asset,
+		// we return that child node
 		if (m_children[i]->m_w_asset)
 		{
 			return m_children[i];
@@ -723,12 +821,16 @@ SceneNode* SceneNode::GetPushingCrate()
 {
 	for (int i = 0; i < m_children.size(); i++)
 	{
+		// If the node has a valid weapon asset,
+		// we return that child node
 		if (m_children[i]->m_d_asset)
 		{
 			return m_children[i];
 		}
 	}
 }
+
+// GET FUNCTIONS
 
 float SceneNode::GetXPos()
 {
@@ -782,5 +884,5 @@ float SceneNode::GetZScale()
 
 float SceneNode::GetGravitySpeed()
 {
-	return m_gravitySpeed;
+	return m_gravity_speed;
 }
