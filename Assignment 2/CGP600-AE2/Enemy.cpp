@@ -12,7 +12,7 @@ Enemy::Enemy(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, cha
 
 Enemy::~Enemy()
 {
-	//ReleaseAll();
+
 }
 
 // The enemy's health is set from the parameter

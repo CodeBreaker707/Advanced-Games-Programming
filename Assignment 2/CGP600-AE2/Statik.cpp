@@ -4,10 +4,9 @@ Statik::Statik(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, c
 {
 	InitialiseAsset(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale, y_scale, z_scale);
 
-	//LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
 }
 
 Statik::~Statik()
 {
-	//ReleaseAll();
+
 }

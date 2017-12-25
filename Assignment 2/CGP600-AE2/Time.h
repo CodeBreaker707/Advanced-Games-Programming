@@ -6,10 +6,16 @@ class Time
 {
 private:
 
+	
 	double countsPerSecond;
+
+	// Time between each tick
 	double deltaTime;
 
+	// Frame Count every tick
 	int frameCount;
+
+	// Frames per second
 	int fps;
 
 	__int64 CounterStart;
