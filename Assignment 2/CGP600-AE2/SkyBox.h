@@ -38,6 +38,7 @@ public:
 	// Function to create the model
 	int LoadObjModel(char* assetFile, char* textureFile);
 
+	// Function to release DirectX 11 objects
 	void ReleaseAll();
 
 	// Function to draw the asset into the scene
