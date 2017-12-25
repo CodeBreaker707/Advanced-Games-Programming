@@ -29,6 +29,9 @@ private:
 	// rotation
 	float m_prev_rot_y;
 
+	// This is for the skybox
+	float nearClipPlane;
+
 	// Vectors used to get the view matrix
 	XMVECTOR m_position, m_lookAt, m_right, m_up, m_forward;
 
@@ -54,6 +57,8 @@ public:
 	XMVECTOR GetPosition();
 
 	XMFLOAT3 GetPos();
+
+	float GetNearClipPlane();
 
 	// Returns view and projection matrix
 	// of the camera

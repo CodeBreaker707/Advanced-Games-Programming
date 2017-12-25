@@ -147,6 +147,8 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 
 	m_pD3DDevice->CreateSamplerState(&sampler_desc, &m_pSampler0);
 
+	// Creating a rasterizer using a rasterizer
+	// description
 	D3D11_RASTERIZER_DESC rasterDesc;
 	rasterDesc.FillMode = D3D11_FILL_SOLID;
 	rasterDesc.CullMode = D3D11_CULL_BACK;
@@ -159,24 +161,19 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 	rasterDesc.MultisampleEnable = FALSE;
 	rasterDesc.AntialiasedLineEnable = FALSE;
 
+	// Creating 2 Rasterising states
 	hr = m_pD3DDevice->CreateRasterizerState(&rasterDesc, &m_pRasterSolid);
 
 	rasterDesc.CullMode = D3D11_CULL_FRONT;
 	hr = m_pD3DDevice->CreateRasterizerState(&rasterDesc, &m_pRasterSkyBox);
 
+	// Creating a depth stencil state using
+	// a description
 	D3D11_DEPTH_STENCIL_DESC depthDesc;
 	depthDesc.DepthEnable = TRUE;
 	depthDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
 	depthDesc.DepthFunc = D3D11_COMPARISON_LESS;
 	depthDesc.StencilEnable = FALSE;
-	/*depthDesc.StencilReadMask = D3D11_DEFAULT_STENCIL_READ_MASK;
-	depthDesc.StencilWriteMask = D3D11_DEFAULT_STENCIL_WRITE_MASK;
-	depthDesc.FrontFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
-	depthDesc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
-	depthDesc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
-	depthDesc.BackFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
-	depthDesc.FrontFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;
-	depthDesc.BackFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;*/
 
 	hr = m_pD3DDevice->CreateDepthStencilState(&depthDesc, &m_pDepthWriteSolid);
 
@@ -186,19 +183,22 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 }
 
 
-void SkyBox::DrawSkyBox(XMMATRIX* view, XMMATRIX* projection, XMVECTOR position)
+void SkyBox::DrawSkyBox(XMMATRIX* view, XMMATRIX* projection, XMVECTOR position, float nearClip)
 {
 
 	XMMATRIX world = XMMatrixIdentity();
 
-	world *= XMMatrixScaling(1.0f, 1.0f, 1.0f);
+	// Scales with the camera's near clipping plane
+	world *= XMMatrixScaling(nearClip + 0.5f, nearClip + 0.5f, nearClip + 0.5f);
+
+	// Moves along the camera
 	world *= XMMatrixTranslation(XMVectorGetX(position), XMVectorGetY(position), XMVectorGetZ(position));
 
 	// Creating a constant buffer reference object
 	SKY_CONSTANT_BUFFER sky_cb_values;
 
 	// By multiplying these matrices, we get to place the
-	// asset in the scene correctly
+	// skybox in the scene correctly
 	sky_cb_values.WorldViewProjection = (world) * (*view) * (*projection);
 
 

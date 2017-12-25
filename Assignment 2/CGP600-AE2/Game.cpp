@@ -679,7 +679,7 @@ void Game::MainUpdate()
 		// use the first-person camera
 		if (cineCamera == false)
 		{
-			skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition());
+			skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition(), view[0]->GetNearClipPlane());
 			//rain->Draw(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), &view[0]->GetPos(), timing->GetDeltaTime());
 			m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());
 

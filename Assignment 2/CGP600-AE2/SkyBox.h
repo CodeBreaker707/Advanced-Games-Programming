@@ -19,9 +19,12 @@ class SkyBox
 	ID3D11ShaderResourceView* m_pTexture0;
 	ID3D11SamplerState* m_pSampler0;
 
+	// This is for before drawing the skybox
 	ID3D11RasterizerState*   m_pRasterSolid = 0;
-	ID3D11RasterizerState*   m_pRasterSkyBox = 0;
 	ID3D11DepthStencilState* m_pDepthWriteSolid = 0;
+
+	// This is for after drawing the skybox
+	ID3D11RasterizerState*   m_pRasterSkyBox = 0;
 	ID3D11DepthStencilState* m_pDepthWriteSkyBox = 0;
 
 
@@ -42,6 +45,6 @@ public:
 	void ReleaseAll();
 
 	// Function to draw the asset into the scene
-	void DrawSkyBox(XMMATRIX* view, XMMATRIX* projection, XMVECTOR position);
+	void DrawSkyBox(XMMATRIX* view, XMMATRIX* projection, XMVECTOR position, float nearClip);
 
 };

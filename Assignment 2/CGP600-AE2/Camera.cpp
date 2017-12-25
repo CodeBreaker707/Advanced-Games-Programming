@@ -33,6 +33,8 @@ Camera::Camera(float x, float y, float z, float camera_rotation, float FOV, floa
 	// farClip = Far Clipping Plane
 	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(FOV), winWidth / winHeight, nearClip, farClip);
 
+	nearClipPlane = nearClip;
+
 }
 
 // Rotate the camera in yaw axis
@@ -95,6 +97,11 @@ void Camera::MoveWithPlayer(float x, float y, float z)
 	m_y = XMVectorGetY(m_position);
 	m_z = XMVectorGetZ(m_position);
 
+}
+
+float Camera::GetNearClipPlane()
+{
+	return nearClipPlane;
 }
 
 XMMATRIX Camera::GetViewMatrix()
