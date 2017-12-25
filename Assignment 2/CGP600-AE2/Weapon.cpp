@@ -2,12 +2,10 @@
 
 Weapon::Weapon(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char* assetFile, char* textureFile, float x_scale, float y_scale, float z_scale)
 {
+	// Initialising the asset
 	InitialiseAsset(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale, y_scale, z_scale);
-
-	//LoadObjModel("Assets/cube2.obj", "Assets/tile.bmp");
-
-	m_cur_z = 0.0f;
 	
+	// Initialising the booleans
 	m_weaponEquipped = false;
 	m_Attacked = false;
 	m_attackComplete = false;
@@ -15,20 +13,13 @@ Weapon::Weapon(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, c
 
 }
 
+// Destructor
 Weapon::~Weapon()
 {
 
 }
 
-void Weapon::SetCurPos()
-{
-	//m_cur_z = GetZPos();
-}
-
-float Weapon::GetCurPos()
-{
-	return m_cur_z;
-}
+// SET AND GET FUNCTIONS OF ALL BOOLEANS
 
 void Weapon::SetWeaponEquipState(bool state)
 {
