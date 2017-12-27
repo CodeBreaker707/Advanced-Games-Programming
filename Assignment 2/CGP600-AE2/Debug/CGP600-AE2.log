@@ -1,4 +1,4 @@
-﻿  SceneNode.cpp
+﻿  UI.cpp
 d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
 d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
@@ -83,25 +83,17 @@ d:\directx sdk\include\xnamath.h(2732): warning C4838: conversion from 'unsigned
 d:\directx sdk\include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(37): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(78): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(80): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(84): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(85): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(129): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(150): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(175): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(255): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(554): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(557): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(575): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(601): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(809): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(822): warning C4018: '<': signed/unsigned mismatch
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(469): warning C4715: 'SceneNode::CheckCollision': not all control paths return a value
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(496): warning C4715: 'SceneNode::CheckActionCollision': not all control paths return a value
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(534): warning C4715: 'SceneNode::CheckNodeBottomCollision': not all control paths return a value
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(818): warning C4715: 'SceneNode::GetEquippedWeaponNode': not all control paths return a value
-d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(831): warning C4715: 'SceneNode::GetPushingCrate': not all control paths return a value
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(138): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(145): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(181): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(186): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(191): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(196): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(203): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(205): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(206): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(209): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(210): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\ui.cpp(212): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.exe
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.pdb (Partial PDB)

@@ -17,6 +17,8 @@ UI::UI(string filename, ID3D11Device* device, ID3D11DeviceContext* context)
 	bufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;							// Allow CPU access
 	HRESULT hr = pD3DDevice->CreateBuffer(&bufferDesc, NULL, &pVertexBuffer);	// Create the buffer
 
+	
+
 	if (FAILED(hr)) exit(0);
 
 	// Load and compile pixel and vertex shaders - use vs_5_0 to target DX11 hardware only
@@ -220,7 +222,7 @@ void UI::RenderText(void)
 	// Copy the vertices into the buffer
 	D3D11_MAPPED_SUBRESOURCE ms;
 	pImmediateContext->Map(pVertexBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);	// Lock the buffer to allow writing
-	memcpy(ms.pData, vertices, sizeof(vertices[0])*current_char * 6);						// Copy the data -  only upload those that are used
+	memcpy(ms.pData, vertices, sizeof(vertices[0]) * current_char * 6);						// Copy the data -  only upload those that are used
 	pImmediateContext->Unmap(pVertexBuffer, NULL);
 
 	// set all rendering states

@@ -8,14 +8,11 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	// Initialising the input object
 	key = new Input(hInstance, m_render_target->GetWindow());
 
-	// Initialising the UI object
-	hud = new UI("Assets/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
-
 	// Initialising the Time object
 	timing = new Time();
 
-	skybox = new SkyBox();
-	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox02.dds");
+	// Initialising the UI object
+	hud = new UI("Assets/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
 
 	//rain = new ParticleEngine(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 10);
 	//rain->InitialiseParticle();
@@ -24,9 +21,16 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	Initialised = false;
 	cineCamera = false;
 	gameRunning = true;
+	
 
 	// Calling the function to initialise assets
 	InitialiseGameAssets();
+
+	
+	skybox = new SkyBox();
+	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox02.dds");
+
+	
 
 }
 
@@ -632,7 +636,7 @@ void Game::MainUpdate()
 			view[0]->YawCamera(key->m_mouse_state.lX);
 
 			// Add text to the UI object
-			//hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
+			hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
 			//hud->AddText(to_string(timing->GetFPS()), -0.98, 0.95, 0.04);
 
 		}
@@ -679,9 +683,10 @@ void Game::MainUpdate()
 		// use the first-person camera
 		if (cineCamera == false)
 		{
-			skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition(), view[0]->GetNearClipPlane());
+			//skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition(), view[0]->GetNearClipPlane());
 			//rain->Draw(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), &view[0]->GetPos(), timing->GetDeltaTime());
 			m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());
+			
 
 
 		}
