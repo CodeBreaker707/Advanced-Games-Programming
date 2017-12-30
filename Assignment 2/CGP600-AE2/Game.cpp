@@ -59,6 +59,8 @@ void Game::MainUpdate()
 		// drawing again
 		m_render_target->ClearBuffers();
 
+		m_render_target->SetBlendState(true);
+
 		// We execute the time functions to receive
 		// delta time
 		timing->Execute();		
@@ -284,11 +286,10 @@ void Game::MainUpdate()
 				{
 					// Checking collision of every enemy 
 					// against every other object
-					m_enemy_nodes[i]->CheckCollision(objs[j]);
 
 					// If the enemy is colliding with anything,
 					// this will return true
-					if (m_enemy_nodes[i]->IsColliding())
+					if(m_enemy_nodes[i]->CheckCollision(objs[j]))
 					{
 						// Revert all enemy states
 						m_enemy_nodes[i]->SetHaltState(false);
@@ -570,7 +571,7 @@ void Game::MainUpdate()
 
 		}
 
-
+		
 		// DRAW
 
 		// If the cinematic camera is disabled,
@@ -588,6 +589,7 @@ void Game::MainUpdate()
 			m_root_node->Execute(&XMMatrixIdentity(), &view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix());
 		}
 
+		m_render_target->SetBlendState(false);
 
 		// Finally, display everything that is
 		// drawn and rendered

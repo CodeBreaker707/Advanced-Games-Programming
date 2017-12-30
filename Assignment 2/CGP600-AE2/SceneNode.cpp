@@ -4,11 +4,6 @@
 // spots the entity can travel to
 const int patrol_spots = 4;
 
-// This stores the postions
-// for the entity to move towards
-// randomly
-XMVECTOR move_spots[patrol_spots];
-
 // Constructor
 SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, char* assetFile, char* textureFile, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState)
 {
@@ -105,15 +100,11 @@ SceneNode::~SceneNode()
 
 void SceneNode::InitialisePatrolSpots()
 {
+	// Initialising the move spots for the entity to move towards
 	for (int i = 0; i < patrol_spots; i++)
 	{
-		move_spots[i] = XMVectorSet(m_pos_x + RandomBetweenFloats(-20, 20), m_pos_y, m_pos_z + RandomBetweenFloats(-20, 20), 0.0f);
+		m_move_spots.push_back(XMVectorSet(m_pos_x + RandomBetweenFloats(-20, 20), m_pos_y, m_pos_z + RandomBetweenFloats(-20, 20), 0.0f));
 	}
-	// Initialising the move spots for the entity to move towards
-	/*m_move_spots[0] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z + 20.0, 0.0f);
-	m_move_spots[1] = XMVectorSet(m_pos_x + 20.0f, m_pos_y, m_pos_z, 0.0f);
-	move_spots[2] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z - 20.0, 0.0f);
-	m_move_spots[3] = XMVectorSet(m_pos_x - 20.0f, m_pos_y, m_pos_z, 0.0f);*/
 
 	// Initialising the random spots
 	spot_num = GetRandomOf(patrol_spots);
@@ -198,7 +189,7 @@ void SceneNode::Execute(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 
 XMMATRIX SceneNode::GetWorldMatrix(XMMATRIX* world)
 {
-	// Initialing a world matrix
+	// Initialising a world matrix
 	XMMATRIX world_matrix = XMMatrixIdentity();
 
 	// Multiplying the world matrix with scaling, rotation and translation
@@ -465,20 +456,24 @@ bool SceneNode::CheckCollision(SceneNode* compare_tree)
 			if (z1 < z2 + b2 && z1 + b1 > z2)
 			{
 				m_is_colliding = true;
+				return true;
 			}
 			else
 			{
 				m_is_colliding = false;
+				return false;
 			}
 		}
 		else
 		{
 			m_is_colliding = false;
+			return false;
 		}
 	}
 	else
 	{
 		m_is_colliding = false;
+		return false;
 	}
 	
 
@@ -615,8 +610,8 @@ void SceneNode::LookAt()
 	{
 		// We get the distance between the entity
 		// and the spot's location
-		m_lookAt_dist_x = m_pos_x - XMVectorGetX(move_spots[spot_num]);
-		m_lookAt_dist_z = m_pos_z - XMVectorGetZ(move_spots[spot_num]);
+		m_lookAt_dist_x = m_pos_x - XMVectorGetX(m_move_spots[spot_num]);
+		m_lookAt_dist_z = m_pos_z - XMVectorGetZ(m_move_spots[spot_num]);
 
 		// If the entity reached the spot, this returns true
 		if (fabs(m_lookAt_dist_x) <= 0.2f && fabs(m_lookAt_dist_z) <= 0.2f)
@@ -638,8 +633,8 @@ void SceneNode::LookAt()
 			}
 
 
-			m_lookAt_dist_x = m_pos_x - XMVectorGetX(move_spots[spot_num]);
-			m_lookAt_dist_z = m_pos_z - XMVectorGetZ(move_spots[spot_num]);
+			m_lookAt_dist_x = m_pos_x - XMVectorGetX(m_move_spots[spot_num]);
+			m_lookAt_dist_z = m_pos_z - XMVectorGetZ(m_move_spots[spot_num]);
 
 		}
 	}
@@ -919,4 +914,5 @@ float SceneNode::RandomBetweenFloats(float min, float max)
 	float randValue = random * diff;
 
 	return min + randValue;
+
 }

@@ -120,6 +120,11 @@ private:
 	// if it had approached the player
 	bool m_halt_movement;
 
+	// This stores the postions
+	// for the entity to move towards
+	// randomly
+	vector<XMVECTOR> m_move_spots;
+
 public:
 
 	// Declaring Objects
