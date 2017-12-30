@@ -74,12 +74,7 @@ private:
 
 	// This is the power of the gravitional
 	// pull applied to objects
-	float m_gravity_speed;
-
-	// This stores the postions
-	// for the entity to move towards
-	// randomly
-	XMVECTOR m_move_spots[4];
+	float m_gravity_speed;	
 
 	// This to determine which spot
 	// the entity should move towards
@@ -137,6 +132,8 @@ public:
 	// Constructor and Destructor
 	SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, char* assetFile, char* textureFile, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState);
 	~SceneNode();
+
+	void InitialisePatrolSpots();
 
 	// This is to release all the DirectX 11
 	// objects of the assets
@@ -257,7 +254,7 @@ public:
 
 	// This returns a random spot
 	// for the entity to move towards
-	float GetRandomSpot();
+	float GetRandomOf(int num);
 
 	// This sets the current spot
 	// to its previous spot
@@ -285,6 +282,8 @@ public:
 
 	// Returns the size of children
 	int GetChildrenSize();
+
+	float RandomBetweenFloats(float min, float max);
 
 	// This returns the node's children nodes
 	vector<SceneNode*> GetChildren();

@@ -1,5 +1,14 @@
 #include "SceneNode.h"
 
+// This is the number of patrol
+// spots the entity can travel to
+const int patrol_spots = 4;
+
+// This stores the postions
+// for the entity to move towards
+// randomly
+XMVECTOR move_spots[patrol_spots];
+
 // Constructor
 SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, char* assetFile, char* textureFile, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState)
 {
@@ -73,28 +82,6 @@ SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateCont
 
 	// Initialising the gravity speed
 	m_gravity_speed = 4.0f;
-
-	// Initialising the move spots for the entity to move towards
-	m_move_spots[0] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z + 20.0, 0.0f);
-	m_move_spots[1] = XMVectorSet(m_pos_x + 20.0f, m_pos_y, m_pos_z, 0.0f);
-	m_move_spots[2] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z - 20.0, 0.0f);
-	m_move_spots[3] = XMVectorSet(m_pos_x - 20.0f, m_pos_y, m_pos_z, 0.0f);
-
-	// Initialising the random spots
-	spot_num = GetRandomSpot();
-	prev_spot_num = GetRandomSpot();
-
-	// This is to ensure the previous and
-	// current spot numbers are not equal
-	if (prev_spot_num == spot_num)
-	{
-		prev_spot_num += 1;
-		
-		if (prev_spot_num > 3)
-		{
-			prev_spot_num = 0;
-		}
-	}
 		
 	// Intialising the booleans
 	m_is_colliding = false;
@@ -114,6 +101,35 @@ SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateCont
 SceneNode::~SceneNode()
 {
 	
+}
+
+void SceneNode::InitialisePatrolSpots()
+{
+	for (int i = 0; i < patrol_spots; i++)
+	{
+		move_spots[i] = XMVectorSet(m_pos_x + RandomBetweenFloats(-20, 20), m_pos_y, m_pos_z + RandomBetweenFloats(-20, 20), 0.0f);
+	}
+	// Initialising the move spots for the entity to move towards
+	/*m_move_spots[0] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z + 20.0, 0.0f);
+	m_move_spots[1] = XMVectorSet(m_pos_x + 20.0f, m_pos_y, m_pos_z, 0.0f);
+	move_spots[2] = XMVectorSet(m_pos_x        , m_pos_y, m_pos_z - 20.0, 0.0f);
+	m_move_spots[3] = XMVectorSet(m_pos_x - 20.0f, m_pos_y, m_pos_z, 0.0f);*/
+
+	// Initialising the random spots
+	spot_num = GetRandomOf(patrol_spots);
+	prev_spot_num = GetRandomOf(patrol_spots);
+
+	// This is to ensure the previous and
+	// current spot numbers are not equal
+	if (prev_spot_num == spot_num)
+	{
+		prev_spot_num += 1;
+
+		if (prev_spot_num > patrol_spots - 1)
+		{
+			prev_spot_num = 0;
+		}
+	}
 }
 
 // This calls the release all function for each
@@ -568,11 +584,20 @@ void SceneNode::ResetToInitalPos()
 	m_pos_z = m_init_z;
 }
 
-float SceneNode::GetRandomSpot()
+float SceneNode::GetRandomOf(int num)
 {
-	// Returns a random between 0 and 3
+	if (num > RAND_MAX)
+	{
+		num = RAND_MAX;
+	}
+	else if (num == 0)
+	{
+		num = 1;
+	}
+
+	// Returns a random between 0 and num
 	// included
-	return rand() % 4;
+	return rand() % num;
 }
 
 void SceneNode::SetToPreviousSpot()
@@ -590,15 +615,15 @@ void SceneNode::LookAt()
 	{
 		// We get the distance between the entity
 		// and the spot's location
-		m_lookAt_dist_x = m_pos_x - XMVectorGetX(m_move_spots[spot_num]);
-		m_lookAt_dist_z = m_pos_z - XMVectorGetZ(m_move_spots[spot_num]);
+		m_lookAt_dist_x = m_pos_x - XMVectorGetX(move_spots[spot_num]);
+		m_lookAt_dist_z = m_pos_z - XMVectorGetZ(move_spots[spot_num]);
 
 		// If the entity reached the spot, this returns true
 		if (fabs(m_lookAt_dist_x) <= 0.2f && fabs(m_lookAt_dist_z) <= 0.2f)
 		{
 			// We assign a random spot
 			prev_spot_num = spot_num;
-			spot_num = GetRandomSpot();
+			spot_num = GetRandomOf(patrol_spots);
 
 			// Just like the initiation stage,
 			// we avoid both to be same
@@ -606,15 +631,15 @@ void SceneNode::LookAt()
 			{
 				spot_num += 1;
 
-				if (spot_num > 3)
+				if (spot_num > patrol_spots - 1)
 				{
 					spot_num = 0;
 				}
 			}
 
 
-			m_lookAt_dist_x = m_pos_x - XMVectorGetX(m_move_spots[spot_num]);
-			m_lookAt_dist_z = m_pos_z - XMVectorGetZ(m_move_spots[spot_num]);
+			m_lookAt_dist_x = m_pos_x - XMVectorGetX(move_spots[spot_num]);
+			m_lookAt_dist_z = m_pos_z - XMVectorGetZ(move_spots[spot_num]);
 
 		}
 	}
@@ -885,4 +910,13 @@ float SceneNode::GetZScale()
 float SceneNode::GetGravitySpeed()
 {
 	return m_gravity_speed;
+}
+
+float SceneNode::RandomBetweenFloats(float min, float max)
+{
+	float random = float(rand()) / float(RAND_MAX);
+	float diff = max - min;
+	float randValue = random * diff;
+
+	return min + randValue;
 }

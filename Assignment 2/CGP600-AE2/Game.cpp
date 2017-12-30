@@ -11,10 +11,10 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	// Initialising the Time object
 	timing = new Time();
 
-	
-
+	// Initialising the sky box
 	skybox = new SkyBox();
 	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox02.dds");
+	
 
 	//rain = new ParticleEngine(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 10);
 	//rain->InitialiseParticle();
@@ -22,14 +22,10 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	// Boolean variables are initialised
 	initialised = false;
 	cine_camera = false;
-	game_running = true;
-	
+	game_running = true;	
 
 	// Calling the function to initialise assets
 	InitialiseGameAssets();
-
-	// Initialising the UI object
-	hud = new UI("Assets/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
 
 	
 
@@ -180,7 +176,13 @@ void Game::MainUpdate()
 			// in the world against the player
 			for (int i = 0; i < objs.size(); i++)
 			{
-				objs[i]->CheckCollision(m_player_node);
+				m_player_node->CheckCollision(objs[i]);
+
+				if (m_player_node->IsColliding())
+				{
+					break;
+				}
+
 			}
 
 			// If the player has children and is carrying a weapon, this returns true
@@ -461,17 +463,13 @@ void Game::MainUpdate()
 			}
 
 			// Stopping the player at collision
-			for (int i = 0; i < objs.size(); i++)
-			{
-				m_player_node->RestrictPos(objs[i]->IsColliding());
-			}
+			m_player_node->RestrictPos(m_player_node->IsColliding());
+			
 
 			// Storing previous positions of the player
-			for (int i = 0; i < objs.size(); i++)
-			{
-				m_player_node->UpdatePos(objs[i]->IsColliding());
-			}
+			m_player_node->UpdatePos(m_player_node->IsColliding());
 
+			
 
 
 			//Check if the player is colliding with anything below		
@@ -586,6 +584,7 @@ void Game::MainUpdate()
 		// Else use the cinematic camera
 		else
 		{
+			skybox->DrawSkyBox(&view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix(), view[1]->GetPosition(), view[1]->GetNearClipPlane());
 			m_root_node->Execute(&XMMatrixIdentity(), &view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix());
 		}
 
@@ -786,6 +785,7 @@ void Game::InitialiseGameAssets()
 
 				// Initialising the enemy nodes
 				m_enemy_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_enemy_nodes[i]->InitialisePatrolSpots();
 
 				objs.push_back(m_enemy_nodes[i]);
 
@@ -862,7 +862,6 @@ void Game::InitialiseGameAssets()
 				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
 				m_statik_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
-
 				objs.push_back(m_statik_nodes[i]);
 				m_root_node->AddChildNode(m_statik_nodes[i]);
 
@@ -952,6 +951,7 @@ void Game::RestartGame()
 				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
 				m_enemy_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_enemy_nodes[i]->InitialisePatrolSpots();
 
 				objs.push_back(m_enemy_nodes[i]);
 
