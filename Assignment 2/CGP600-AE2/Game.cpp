@@ -15,6 +15,7 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	skybox = new SkyBox();
 	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox02.dds");
 	
+	//hud = new UI("Assets/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
 
 	//rain = new ParticleEngine(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 10);
 	//rain->InitialiseParticle();
@@ -229,6 +230,42 @@ void Game::MainUpdate()
 					// this returns true
 					InitiateCombat(m_player_node, key->m_mouse_state.rgbButtons[0]);
 					
+					for (int i = 1; i < m_statik_nodes.size(); i++)
+					{
+						if (IsNodeDamaged(m_player_node, m_statik_nodes[i]))
+						{
+							m_statik_nodes[i]->m_s_asset->SetTreeHealth(m_statik_nodes[i]->m_s_asset->GetTreeHealth() - 10);
+						}
+
+						if (m_statik_nodes[i]->m_s_asset->GetTreeHealth() <= 0)
+						{
+							// We now loop through every object in the game
+							for (int j = 0; j < objs.size(); j++)
+							{
+								// If the enemy object matches the
+								// object in the all objects vector,
+								// this returns true
+								if (objs[j] == m_statik_nodes[i])
+								{
+									// We erase the object from the vector
+									objs.erase(objs.begin() + j);
+								}
+							}
+
+							// Adding a new weapon
+							AddNewWeapon(m_statik_nodes[i]->GetXPos(), m_statik_nodes[i]->GetYPos(), m_statik_nodes[i]->GetZPos());
+
+							// Detaching the enemy node from the
+							// root node
+							m_root_node->DetachNode(m_statik_nodes[i]);
+
+							// Finally, we erase the enemy itself
+							m_statik_nodes.erase(m_statik_nodes.begin() + i);
+
+							
+						}
+
+					}
 
 					// We now loop through every enemy
 					// in the game
@@ -344,7 +381,9 @@ void Game::MainUpdate()
 				// If the weapon is colliding and if the player
 				// has pressed the pick up key button, this
 				// returns true
-				if (m_spear_nodes[i]->IsInteracting() == true && key->IsKeyPressed(key->pick_up))
+				if (m_spear_nodes[i]->IsInteracting() == true &&
+					m_player_node->m_p_asset->GetWeaponCarryingState() == false &&
+					key->IsKeyPressed(key->pick_up))
 				{
 					// Setting the position of the weapon
 					// from player's position
@@ -462,6 +501,8 @@ void Game::MainUpdate()
 				m_player_node->DetachNode(m_player_node->GetPushingCrate());
 
 			}
+
+			
 
 			// Stopping the player at collision
 			m_player_node->RestrictPos(m_player_node->IsColliding());
@@ -589,6 +630,10 @@ void Game::MainUpdate()
 			m_root_node->Execute(&XMMatrixIdentity(), &view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix());
 		}
 
+		//hud->AddText("HEALTH:", -0.98, 0.94, 0.04);
+
+		//hud->RenderText();
+
 		m_render_target->SetBlendState(false);
 
 		// Finally, display everything that is
@@ -596,8 +641,6 @@ void Game::MainUpdate()
 		m_render_target->Display();
 		
 	}
-
-	
 
 
 }
@@ -983,6 +1026,35 @@ void Game::RestartGame()
 
 		}
 	}
+
+}
+
+void Game::AddNewWeapon(float x, float y, float z)
+{
+	fopen_s(&new_wep_file, "Scripts/New_Weapon.txt", "r");
+
+	char node_type;
+
+	float x_scale = 0.0f;
+	float y_scale = 0.0f;
+	float z_scale = 0.0f;
+
+	char assetObj[256];
+
+	char textureFile[256];
+
+	int gravityState = 0;
+
+	fscanf(new_wep_file, " %c %s %s %f %f %f %d", &node_type, &assetObj, &textureFile, &x_scale, &y_scale, &z_scale, &gravityState);
+
+	m_spear_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile,
+		x, y, z, x_scale, y_scale, z_scale, gravityState));
+
+	objs.push_back(m_spear_nodes.back());
+
+	m_root_node->AddChildNode(m_spear_nodes.back());
+
+	fclose(new_wep_file);
 
 }
 

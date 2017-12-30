@@ -1,0 +1,1516 @@
+﻿  compilation succeeded; see D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Release\particle_shader.cso
+D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\shaders.hlsl(29,25): warning X3206: 'dot': implicit truncation of vector type
+  
+  compilation succeeded; see D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Release\shaders.cso
+  compilation succeeded; see D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Release\skyshader.cso
+  compilation succeeded; see D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Release\UIshaders.cso
+  Asset.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  Camera.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+Camera.cpp(15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Camera.cpp(16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Camera.cpp(17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Camera.cpp(48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Camera.cpp(49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Camera.cpp(70): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Camera.cpp(71): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Collider3D.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+Collider3D.cpp(37): warning C4018: '<': signed/unsigned mismatch
+Collider3D.cpp(96): warning C4018: '<': signed/unsigned mismatch
+Collider3D.cpp(140): warning C4018: '<': signed/unsigned mismatch
+  Dynamic.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  Enemy.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  Game.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  D:\DirectX SDK\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+Game.cpp(80): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+Game.cpp(94): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(102): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(111): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(165): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(180): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(207): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(208): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(209): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(236): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(250): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(280): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(286): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(314): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(339): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(366): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(389): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(425): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(453): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(454): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(455): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(478): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(495): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(497): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(519): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(533): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+Game.cpp(534): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+Game.cpp(550): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+Game.cpp(551): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+Game.cpp(642): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(663): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+Game.cpp(902): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(904): warning C4018: '<': signed/unsigned mismatch
+  Input.cpp
+  D:\DirectX SDK\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+Input.cpp(150): warning C4806: '&': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+  Light.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+d:\directx sdk\include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+d:\directx sdk\include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+d:\directx sdk\include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  main.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  D:\DirectX SDK\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  objfilemodel.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  ParticleEngine.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+ParticleEngine.cpp(19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+ParticleEngine.cpp(198): warning C4018: '<': signed/unsigned mismatch
+ParticleEngine.cpp(237): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+  Player.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  Renderer.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+Renderer.cpp(62): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+Renderer.cpp(62): warning C4244: 'initializing': conversion from 'float' to 'LONG', possible loss of data
+Renderer.cpp(216): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+Renderer.cpp(217): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+  SceneNode.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+SceneNode.cpp(41): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+SceneNode.cpp(110): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+SceneNode.cpp(111): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+SceneNode.cpp(136): warning C4018: '<': signed/unsigned mismatch
+SceneNode.cpp(157): warning C4018: '<': signed/unsigned mismatch
+SceneNode.cpp(182): warning C4018: '<': signed/unsigned mismatch
+SceneNode.cpp(262): warning C4018: '<': signed/unsigned mismatch
+SceneNode.cpp(565): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+SceneNode.cpp(568): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+SceneNode.cpp(595): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+SceneNode.cpp(621): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+SceneNode.cpp(829): warning C4018: '<': signed/unsigned mismatch
+SceneNode.cpp(842): warning C4018: '<': signed/unsigned mismatch
+  SkyBox.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  Statik.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  Time.cpp
+Time.cpp(82): warning C4244: '=': conversion from 'float' to '__int64', possible loss of data
+  UI.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+UI.cpp(138): warning C4018: '<': signed/unsigned mismatch
+UI.cpp(145): warning C4018: '<': signed/unsigned mismatch
+UI.cpp(181): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+UI.cpp(186): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+UI.cpp(191): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+UI.cpp(196): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+UI.cpp(203): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+UI.cpp(205): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+UI.cpp(206): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+UI.cpp(209): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+UI.cpp(210): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+UI.cpp(212): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+  Weapon.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+D:\DirectX SDK\Include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+D:\DirectX SDK\Include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+D:\DirectX SDK\Include\xnamath.h(2662): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2663): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2664): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2665): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2666): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2667): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2668): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2689): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2690): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2691): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2694): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2695): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2698): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2702): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2712): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2713): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2715): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2716): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2717): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2727): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2728): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2729): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2730): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2731): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2732): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+D:\DirectX SDK\Include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  Generating code
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(507): warning C4715: 'SceneNode::CheckActionCollision': not all control paths return a value
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(545): warning C4715: 'SceneNode::CheckNodeBottomCollision': not all control paths return a value
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(851): warning C4715: 'SceneNode::GetPushingCrate': not all control paths return a value
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\scenenode.cpp(838): warning C4715: 'SceneNode::GetEquippedWeaponNode': not all control paths return a value
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\asset.cpp(156): warning C4715: 'Asset::LoadObjModel': not all control paths return a value
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\skybox.cpp(194): warning C4715: 'SkyBox::LoadObjModel': not all control paths return a value
+  All 647 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Release\CGP600-AE2.exe

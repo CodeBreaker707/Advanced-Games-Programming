@@ -48,6 +48,7 @@ private:
 
 	// A FILE object to read Asset_Details.txt
 	FILE* assetFile;
+	FILE* new_wep_file;
 
 	// The prime node to parent all other
 	// nodes in the game
@@ -107,6 +108,8 @@ public:
 	// This is to erase all the objects
 	// and re-initialise them
 	void RestartGame();
+
+	void AddNewWeapon(float x, float y, float z);
 
 	// This initiates combat actions of the asset
 	void InitiateCombat(SceneNode* attacker, bool start_condition);
