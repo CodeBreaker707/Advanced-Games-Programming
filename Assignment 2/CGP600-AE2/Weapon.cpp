@@ -7,10 +7,10 @@ Weapon::Weapon(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, c
 	InitialiseAsset(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale, y_scale, z_scale);
 	
 	// Initialising the booleans
-	m_weaponEquipped = false;
-	m_Attacked = false;
-	m_attackComplete = false;
-	m_weaponHit = false;
+	m_weapon_equipped = false;
+	m_attacked = false;
+	m_attack_complete = false;
+	m_weapon_hit = false;
 
 }
 
@@ -24,40 +24,40 @@ Weapon::~Weapon()
 
 void Weapon::SetWeaponEquipState(bool state)
 {
-	m_weaponEquipped = state;
+	m_weapon_equipped = state;
 }
 
 void Weapon::SetWeaponAttackedState(bool state)
 {
-	m_Attacked = state;
+	m_attacked = state;
 }
 
 void Weapon::SetWeaponAttackCompleteState(bool state)
 {
-	m_attackComplete = state;
+	m_attack_complete = state;
 }
 
 void Weapon::SetWeaponHitState(bool state)
 {
-	m_weaponHit = state;
+	m_weapon_hit = state;
 }
 
 bool Weapon::GetWeaponEquipState()
 {
-	return m_weaponEquipped;
+	return m_weapon_equipped;
 }
 
 bool Weapon::GetWeaponAttackedState()
 {
-	return m_Attacked;
+	return m_attacked;
 }
 
 bool Weapon::GetWeaponAttackCompleteState()
 {
-	return m_attackComplete;
+	return m_attack_complete;
 }
 
 bool Weapon::GetWeaponHitState()
 {
-	return m_weaponHit;
+	return m_weapon_hit;
 }

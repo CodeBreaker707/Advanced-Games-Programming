@@ -8,19 +8,19 @@ private:
 
 	// A boolean to check if the weapon
 	// is equipped by a node
-	bool m_weaponEquipped;
+	bool m_weapon_equipped;
 	
 	// A boolean to check if it's in
 	// attack state
-	bool m_Attacked;
+	bool m_attacked;
 
 	// A boolean to check if the attack
 	// is completed
-	bool m_attackComplete;
+	bool m_attack_complete;
 
 	// A boolean to check if the weapon had
 	// hit something
-	bool m_weaponHit;
+	bool m_weapon_hit;
 
 
 public:

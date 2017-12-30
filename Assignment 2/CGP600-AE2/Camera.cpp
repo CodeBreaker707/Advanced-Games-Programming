@@ -33,7 +33,7 @@ Camera::Camera(float x, float y, float z, float camera_rotation, float FOV, floa
 	// farClip = Far Clipping Plane
 	projection = XMMatrixPerspectiveFovLH(XMConvertToRadians(FOV), winWidth / winHeight, nearClip, farClip);
 
-	nearClipPlane = nearClip;
+	near_clip_plane = nearClip;
 
 }
 
@@ -101,7 +101,7 @@ void Camera::MoveWithPlayer(float x, float y, float z)
 
 float Camera::GetNearClipPlane()
 {
-	return nearClipPlane;
+	return near_clip_plane;
 }
 
 XMMATRIX Camera::GetViewMatrix()

@@ -43,9 +43,6 @@ private:
 	//SkyBox Cube
 	SkyBox* skybox;
 
-	// This is a particle object
-	//ParticleEngine* rain;
-
 	// This is a vector of camera objects
 	vector<Camera*> view;
 
@@ -86,14 +83,14 @@ private:
 
 	// A boolean to check if all the assets 
 	// in the game are initialised
-	bool Initialised;
+	bool initialised;
 
 	// A boolean to check if the cinematic
 	// camera is enabled or not
-	bool cineCamera;
+	bool cine_camera;
 
 	// A boolean to close the game loop
-	bool gameRunning;
+	bool game_running;
 
 
 public:
@@ -110,6 +107,12 @@ public:
 	// This is to erase all the objects
 	// and re-initialise them
 	void RestartGame();
+
+	// This initiates combat actions of the asset
+	void InitiateCombat(SceneNode* attacker, bool start_condition);
+
+	// This damages the node
+	bool IsNodeDamaged(SceneNode* attacker, SceneNode* victim);
 
 	// This is to release every child of
 	// root node

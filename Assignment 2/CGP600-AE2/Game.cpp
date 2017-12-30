@@ -11,67 +11,68 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 	// Initialising the Time object
 	timing = new Time();
 
-	// Initialising the UI object
-	hud = new UI("Assets/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
+	
+
+	skybox = new SkyBox();
+	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox02.dds");
 
 	//rain = new ParticleEngine(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 10);
 	//rain->InitialiseParticle();
 
 	// Boolean variables are initialised
-	Initialised = false;
-	cineCamera = false;
-	gameRunning = true;
+	initialised = false;
+	cine_camera = false;
+	game_running = true;
 	
 
 	// Calling the function to initialise assets
 	InitialiseGameAssets();
 
-	
-	skybox = new SkyBox();
-	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox02.dds");
+	// Initialising the UI object
+	hud = new UI("Assets/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
 
 	
 
 }
 
 void Game::ReleaseEverything()
-{
-	
-	hud->ReleaseAll();
+{	
+
 	skybox->ReleaseAll();
 	m_root_node->ReleaseAll();
 	m_render_target->ReleaseAll();
 	
 }
 
+
 void Game::MainUpdate()
 {
+	// Reads if any key is pressed
+	key->ReadInputStates();
 
 	if (key->IsKeyPressed(key->closeGame))
 	{
-		gameRunning = false;
+		game_running = false;
 	}
 
-	if (gameRunning == true)
-	{
-		// Setting the blend state to true for the UI object
-		//m_render_target->SetBlendState(true);
 
+	if (game_running == true)
+	{
+		
 		// This is called to clear the screen before
 		// drawing again
 		m_render_target->ClearBuffers();
 
-		timing->Execute();
-
-		// Reads if any key is pressed
-		key->ReadInputStates();
+		// We execute the time functions to receive
+		// delta time
+		timing->Execute();		
 
 		// To check if the swapCamera key is released
 		key->IsKeyReleased(key->swapCamera);
 
 		// If the cinematic camera is not enabled,
 		// play the game
-		if (cineCamera == false)
+		if (cine_camera == false)
 		{
 			// This restricts the pitch of the player's rotation
 			m_player_node->RestrictPitch();
@@ -140,7 +141,7 @@ void Game::MainUpdate()
 			// enable the cinematic camera
 			if (key->IsKeyPressedOnce(key->swapCamera))
 			{
-				cineCamera = true;
+				cine_camera = true;
 			}
 
 			// If the sprint key is pressed, this
@@ -183,7 +184,9 @@ void Game::MainUpdate()
 			}
 
 			// If the player has children and is carrying a weapon, this returns true
-			if (m_player_node->GetChildrenSize() != 0 && m_player_node->m_p_asset->GetWeaponCarryingState() == true && m_player_node->m_p_asset->GetPushState() == false)
+			if (m_player_node->GetChildrenSize() != 0 && 
+				m_player_node->m_p_asset->GetWeaponCarryingState() == true && 
+				m_player_node->m_p_asset->GetPushState() == false)
 			{
 				// If the drop key is pressed, this returns true
 				if (key->IsKeyPressed(key->drop))
@@ -220,78 +223,19 @@ void Game::MainUpdate()
 					// If the left mouse button is pressed, the player is
 					// carrying a weapon and if the player isn't attacking,
 					// this returns true
-					if (key->m_mouse_state.rgbButtons[0] && m_player_node->m_p_asset->GetWeaponCarryingState() == true
-						&& m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == false && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
-					{
-						// Set the attack state to true
-						m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(true);
-						m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(false);
-
-						// Set the current Z position of the weapon
-						m_player_node->GetEquippedWeaponNode()->SetCurZPos();
-
-					}
-
-					// If the weapon is in attack state, 
-					// this returns true
-					if (m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true)
-					{
-						// If the weapon has reached enough distance, this
-						// will return true
-						if (m_player_node->GetEquippedWeaponNode()->GetZPos() >=
-							m_player_node->GetEquippedWeaponNode()->GetCurZPos() + 1.5)
-						{
-							// The weapon isn't attacking anymore and 
-							// is now in completed state
-							m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(false);
-							m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(true);
-						}
-						// Else move the weapon forward
-						else
-						{
-							m_player_node->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, 15.0 * timing->GetDeltaTime());
-						}
-
-					}
-
-					// If the weapon has completed its attack,
-					// this will return true
-					else if (m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == true)
-					{
-
-						// If the weapon has reached its original
-						// position, this will return true
-						if (m_player_node->GetEquippedWeaponNode()->GetZPos()
-							<= m_player_node->GetEquippedWeaponNode()->GetCurZPos())
-						{
-							// Now the weapon has attacked and completed
-							m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(false);
-						}
-						// Else move the weapon back
-						else
-						{
-							m_player_node->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, -15.0f * timing->GetDeltaTime());
-						}
-					}
+					InitiateCombat(m_player_node, key->m_mouse_state.rgbButtons[0]);
+					
 
 					// We now loop through every enemy
 					// in the game
 					for (int i = 0; i < m_enemy_nodes.size(); i++)
 					{
-						// Checking collision of every enemy,
-						// against the weapon
-						m_enemy_nodes[i]->CheckActionCollision(m_player_node->GetEquippedWeaponNode());
-
-						// If the weapon is colliding and in attack state,
-						// this returns true
-						if (m_enemy_nodes[i]->IsInteracting() == true && m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
-							m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false &&
-							m_player_node->GetEquippedWeaponNode()->m_w_asset->GetWeaponHitState() == false)
+						
+						if (IsNodeDamaged(m_player_node, m_enemy_nodes[i]))
 						{
 							// This will reduce the enemy's health by 1
 							m_enemy_nodes[i]->m_e_asset->SetEnemyHealth(m_enemy_nodes[i]->m_e_asset->GetEnemyHealth() - 10);
-
-							m_player_node->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(true);
+						}
 
 							// If the enemy's health is or below 0,
 							// this returns true
@@ -320,7 +264,7 @@ void Game::MainUpdate()
 								// Finally, we erase the enemy itself
 								m_enemy_nodes.erase(m_enemy_nodes.begin() + i);
 							}
-						}
+						
 
 					}
 				}
@@ -367,60 +311,14 @@ void Game::MainUpdate()
 
 				// If the enemy has reached closer to the player, then commence attack
 				// Same attack logic as the player
-				if (m_enemy_nodes[i]->isHalted() == true
-					&& m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == false && m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
-				{
-					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(true);
-					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(false);
-					m_enemy_nodes[i]->GetEquippedWeaponNode()->SetCurZPos();
+				InitiateCombat(m_enemy_nodes[i], m_enemy_nodes[i]->isHalted());
 
-				}
-
-				if (m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true)
-				{
-
-					if (m_enemy_nodes[i]->GetEquippedWeaponNode()->GetZPos() >=
-						m_enemy_nodes[i]->GetEquippedWeaponNode()->GetCurZPos() + 1.5)
-					{
-						m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(false);
-						m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(true);
-					}
-					else
-					{
-						m_enemy_nodes[i]->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, 15.0 * timing->GetDeltaTime());
-					}
-
-				}
-
-				else if (m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == true)
-				{
-
-					if (m_enemy_nodes[i]->GetEquippedWeaponNode()->GetZPos()
-						<= m_enemy_nodes[i]->GetEquippedWeaponNode()->GetCurZPos())
-					{
-						m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(false);
-					}
-					else
-					{
-						m_enemy_nodes[i]->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, -15.0f * timing->GetDeltaTime());
-					}
-
-				}
-
-				// Check the collision of the player 
-				// against every other enemy weapon
-				m_player_node->CheckActionCollision(m_enemy_nodes[i]->GetEquippedWeaponNode());
-
-				// If the enemy weapon is colliding with the
-				// player, this returns true
-				if (m_player_node->IsInteracting() && m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
-					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false &&
-					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->GetWeaponHitState() == false)
+				// If the player is getting damaged, this returns true
+				if (IsNodeDamaged(m_enemy_nodes[i], m_player_node))
 				{
 					// This reduces the player's health by 1
 					m_player_node->m_p_asset->SetPlayerHealth(m_player_node->m_p_asset->GetPlayerHealth() - 10);
-
-					m_enemy_nodes[i]->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(true);
+				}
 
 					// If the player has lost all its
 					// health, this will return true
@@ -429,7 +327,7 @@ void Game::MainUpdate()
 						// Restart the game
 						RestartGame();
 					}
-				}
+
 			}
 
 			// Loop through every player 
@@ -635,9 +533,7 @@ void Game::MainUpdate()
 			view[0]->PitchCamera(-key->m_mouse_state.lY);
 			view[0]->YawCamera(key->m_mouse_state.lX);
 
-			// Add text to the UI object
-			hud->AddText("HEALTH:", -0.98, 0.95, 0.04);
-			//hud->AddText(to_string(timing->GetFPS()), -0.98, 0.95, 0.04);
+			
 
 		}
 		else
@@ -646,7 +542,7 @@ void Game::MainUpdate()
 			// if the key is pressed again
 			if (key->IsKeyPressedOnce(key->swapCamera))
 			{
-				cineCamera = false;
+				cine_camera = false;
 			}
 
 			// Rotate the cinematic camera
@@ -681,13 +577,10 @@ void Game::MainUpdate()
 
 		// If the cinematic camera is disabled,
 		// use the first-person camera
-		if (cineCamera == false)
+		if (cine_camera == false)
 		{
-			//skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition(), view[0]->GetNearClipPlane());
-			//rain->Draw(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), &view[0]->GetPos(), timing->GetDeltaTime());
-			m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());
-			
-
+			skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition(), view[0]->GetNearClipPlane());
+			m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());	
 
 		}
 		// Else use the cinematic camera
@@ -697,20 +590,100 @@ void Game::MainUpdate()
 		}
 
 
-
-		// Render the text on screen
-		//hud->RenderText();
-
-		// Set the blend state to false
-		// after rendering
-		//m_render_target->SetBlendState(false);
-
 		// Finally, display everything that is
 		// drawn and rendered
 		m_render_target->Display();
+		
 	}
 
+	
 
+
+}
+
+void Game::InitiateCombat(SceneNode* attacker, bool start_condition)
+{
+	// A starting condition has to be true and
+	// if the weapon is in idle state
+	if (start_condition &&
+		attacker->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == false &&
+		attacker->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false)
+	{
+		// Set the attack state to true
+		attacker->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(true);
+		attacker->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(false);
+
+		// Set the current Z position of the weapon
+		attacker->GetEquippedWeaponNode()->SetCurZPos();
+
+	}
+
+	// If the weapon is in attack state, 
+	// this returns true
+	if (attacker->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true)
+	{
+		// If the weapon has reached enough distance, this
+		// will return true
+		if (attacker->GetEquippedWeaponNode()->GetZPos() >=
+			attacker->GetEquippedWeaponNode()->GetCurZPos() + 1.5)
+		{
+			// The weapon isn't attacking anymore and 
+			// is now in completed state
+			attacker->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackedState(false);
+			attacker->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(true);
+		}
+		// Else move the weapon forward
+		else
+		{
+			attacker->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, 15.0 * timing->GetDeltaTime());
+		}
+
+	}
+
+	// If the weapon has completed its attack,
+	// this will return true
+	else if (attacker->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == true)
+	{
+
+		// If the weapon has reached its original
+		// position, this will return true
+		if (attacker->GetEquippedWeaponNode()->GetZPos()
+			<= attacker->GetEquippedWeaponNode()->GetCurZPos())
+		{
+			// Now the weapon has attacked and completed
+			attacker->GetEquippedWeaponNode()->m_w_asset->SetWeaponAttackCompleteState(false);
+		}
+		// Else move the weapon back
+		else
+		{
+			attacker->GetEquippedWeaponNode()->MoveAsset(0.0f, 0.0f, -15.0f * timing->GetDeltaTime());
+		}
+
+	}
+}
+
+
+bool Game::IsNodeDamaged(SceneNode* attacker, SceneNode* victim)
+{
+	// Check the collision of the victim 
+	// against attacker's weapon
+	victim->CheckActionCollision(attacker->GetEquippedWeaponNode());
+
+	// If the attacker weapon is colliding with the
+	// enemy, this returns true
+	if (victim->IsInteracting() && attacker->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackedState() == true &&
+		attacker->GetEquippedWeaponNode()->m_w_asset->GetWeaponAttackCompleteState() == false &&
+		attacker->GetEquippedWeaponNode()->m_w_asset->GetWeaponHitState() == false)
+	{
+
+		attacker->GetEquippedWeaponNode()->m_w_asset->SetWeaponHitState(true);
+		return true;
+
+	}
+	else
+	{
+		return false;
+	}
 
 }
 
@@ -761,7 +734,7 @@ void Game::InitialiseGameAssets()
 
 	// Run the loop until everything
 	// is initialised
-	while (Initialised == false)
+	while (initialised == false)
 	{
 		// This scans the script to
 		// store the type of asset
@@ -897,7 +870,7 @@ void Game::InitialiseGameAssets()
 
 			// Initialised is set to true
 			// when completed
-			Initialised = true;
+			initialised = true;
 
 			// The file is closed
 			fclose(assetFile);
@@ -912,7 +885,7 @@ void Game::InitialiseGameAssets()
 void Game::RestartGame()
 {
 	// Initialised is reset to false
-	Initialised = false;
+	initialised = false;
 
 	// We open the file again
 	fopen_s(&assetFile, "Scripts/Asset_Details.txt", "r");
@@ -966,7 +939,7 @@ void Game::RestartGame()
 	char asset_type[256];
 	char node_type;
 
-	while (Initialised == false)
+	while (initialised == false)
 	{
 		fscanf(assetFile, "%s", asset_type);
 
@@ -1003,7 +976,7 @@ void Game::RestartGame()
 
 			}
 
-			Initialised = true;
+			initialised = true;
 			fclose(assetFile);
 
 		}
@@ -1013,5 +986,5 @@ void Game::RestartGame()
 
 bool Game::isGameRunning()
 {
-	return gameRunning;
+	return game_running;
 }

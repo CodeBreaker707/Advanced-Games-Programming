@@ -137,6 +137,15 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 
 	D3DX11CreateShaderResourceViewFromFile(m_pD3DDevice, textureFile, NULL, NULL, &m_pTexture0, NULL);
 
+	/*D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
+	ZeroMemory(&srvDesc, sizeof(srvDesc));
+	srvDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;
+	srvDesc.TextureCube.MostDetailedMip = 0;
+	srvDesc.TextureCube.MipLevels = 1;
+
+	hr = m_pD3DDevice->CreateShaderResourceView(&*skyRes, &srvDesc, &m_pTexture0);*/
+
 	D3D11_SAMPLER_DESC sampler_desc;
 	ZeroMemory(&sampler_desc, sizeof(sampler_desc));
 	sampler_desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
@@ -179,6 +188,8 @@ int SkyBox::LoadObjModel(char* assetFile, char* textureFile)
 
 	depthDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
 	hr = m_pD3DDevice->CreateDepthStencilState(&depthDesc, &m_pDepthWriteSkyBox);
+
+	
 
 }
 

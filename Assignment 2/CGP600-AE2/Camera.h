@@ -30,7 +30,7 @@ private:
 	float m_prev_rot_y;
 
 	// This is for the skybox
-	float nearClipPlane;
+	float near_clip_plane;
 
 	// Vectors used to get the view matrix
 	XMVECTOR m_position, m_lookAt, m_right, m_up, m_forward;
