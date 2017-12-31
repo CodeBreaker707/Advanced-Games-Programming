@@ -60,6 +60,8 @@ void Game::MainUpdate()
 		// drawing again
 		m_render_target->ClearBuffers();
 
+		// Setting the blend state to true for
+		// transparency
 		m_render_target->SetBlendState(true);
 
 		// We execute the time functions to receive
