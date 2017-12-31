@@ -21,9 +21,9 @@ Club 2
 W Assets/cubeObj.obj Assets/wood_tex.png 1.0 -0.5 1.0 0.2 0.2 1.5 0
 W Assets/cubeObj.obj Assets/wood_tex.png 1.0 -0.5 1.0 0.2 0.2 1.5 0
 
-Dynamic 1
+Block 1
 
-D Assets/cubeObj.obj Assets/rock_tex.jpg 15.0 1.0 0.0 0.5 0.5 0.5 1
+B Assets/cubeObj.obj Assets/rock_tex.jpg 15.0 1.0 0.0 0.5 0.5 0.5 1
 
 Statik 3
 

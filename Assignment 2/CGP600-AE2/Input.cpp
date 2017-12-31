@@ -17,7 +17,6 @@ Input::Input(HINSTANCE hInst, HWND hWnd)
 	interact = DIK_F;
 	swapCamera = DIK_Q;
 	closeGame = DIK_ESCAPE;
-	//attack = m_mouse_state.rgbButtons[0];
 
 	// The boolean is initialised
 	ButtonPushedOnce = false;

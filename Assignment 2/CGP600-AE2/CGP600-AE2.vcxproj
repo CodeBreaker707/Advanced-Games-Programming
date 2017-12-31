@@ -140,7 +140,7 @@
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collider3D.cpp" />
-    <ClCompile Include="Dynamic.cpp" />
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -161,7 +161,7 @@
     <ClInclude Include="Collider3D.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Dynamic.h" />
+    <ClInclude Include="Block.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />

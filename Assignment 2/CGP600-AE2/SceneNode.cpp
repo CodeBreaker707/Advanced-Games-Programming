@@ -14,7 +14,7 @@ SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateCont
 	// E = Enemy
 	// W = Weapon
 	// S = Statik
-	// D = Dynamic
+	// B = Block
 
 	if (c == 'P')
 	{
@@ -32,9 +32,9 @@ SceneNode::SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateCont
 	{
 		m_s_asset = new Statik(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
 	}
-	else if (c == 'D')
+	else if (c == 'B')
 	{
-		m_d_asset = new Dynamic(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
+		m_b_asset = new Block(D3DDevice, ImmediateContext, assetFile, textureFile, x_scale,  y_scale, z_scale);
 	}
 
 	// Initialising the random number generator
@@ -131,7 +131,7 @@ void SceneNode::ReleaseAll()
 	if (m_e_asset) m_e_asset->ReleaseAll();
 	if (m_w_asset) m_w_asset->ReleaseAll();
 	if (m_s_asset) m_s_asset->ReleaseAll();
-	if (m_d_asset) m_d_asset->ReleaseAll();
+	if (m_b_asset) m_b_asset->ReleaseAll();
 
 	for (int i = 0; i < m_children.size(); i++)
 	{
@@ -168,20 +168,23 @@ bool SceneNode::DetachNode(SceneNode* n)
 	return false;
 }
 
-void SceneNode::Execute(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
+void SceneNode::Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection)
 {
 	
 	// We call the draw function if the object is active
-	if (m_p_asset) m_p_asset->Draw(&GetWorldMatrix(world), view, projection);
+	if (m_p_asset)
+	{
+		m_p_asset->Draw(&GetWorldMatrix(world), view, projection);
+	}
 	else if (m_e_asset) m_e_asset->Draw(&GetWorldMatrix(world), view, projection);
 	else if (m_w_asset) m_w_asset->Draw(&GetWorldMatrix(world), view, projection);
 	else if (m_s_asset) m_s_asset->Draw(&GetWorldMatrix(world), view, projection);
-	else if (m_d_asset) m_d_asset->Draw(&GetWorldMatrix(world), view, projection);
+	else if (m_b_asset) m_b_asset->Draw(&GetWorldMatrix(world), view, projection);
 
 	// We execute this function for the node's children
 	for (int i = 0; i < m_children.size(); i++)
 	{
-		m_children[i]->Execute(&GetWorldMatrix(world), view, projection);
+		m_children[i]->Draw(&GetWorldMatrix(world), view, projection);
 	}
 
 
@@ -208,17 +211,6 @@ XMMATRIX SceneNode::GetWorldMatrix(XMMATRIX* world)
 
 void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 {
-	/*XMMATRIX local_world = XMMatrixIdentity();
-
-	local_world *= XMMatrixScaling(m_scale_x, m_scale_y, m_scale_z);
-
-	local_world *= XMMatrixRotationX(XMConvertToRadians(m_xangle));
-	local_world *= XMMatrixRotationY(XMConvertToRadians(m_yangle));
-	local_world *= XMMatrixRotationZ(XMConvertToRadians(m_zangle));
-
-	local_world *= XMMatrixTranslation(m_pos_x, m_pos_y, m_pos_z);
-
-	local_world *= *world;*/
 
 	XMVECTOR v;
 
@@ -240,9 +232,9 @@ void SceneNode::UpdateCollisionTree(XMMATRIX* world)
 	{
 		v = XMVectorSet(XMVectorGetX(m_s_asset->collider->GetColliderPos()), XMVectorGetY(m_s_asset->collider->GetColliderPos()), XMVectorGetZ(m_s_asset->collider->GetColliderPos()), 0.0f);
 	}
-	else if (m_d_asset)
+	else if (m_b_asset)
 	{
-		v = XMVectorSet(XMVectorGetX(m_d_asset->collider->GetColliderPos()), XMVectorGetY(m_d_asset->collider->GetColliderPos()), XMVectorGetZ(m_d_asset->collider->GetColliderPos()), 0.0f);
+		v = XMVectorSet(XMVectorGetX(m_b_asset->collider->GetColliderPos()), XMVectorGetY(m_b_asset->collider->GetColliderPos()), XMVectorGetZ(m_b_asset->collider->GetColliderPos()), 0.0f);
 	}
 	else
 	{
@@ -337,9 +329,9 @@ void SceneNode::CalculateBoxCollisionDetails(SceneNode* compare_tree)
 	{
 		CalculateBoxDimensions1(v1, m_s_asset);
 	}
-	else if (m_d_asset)
+	else if (m_b_asset)
 	{
-		CalculateBoxDimensions1(v1, m_d_asset);
+		CalculateBoxDimensions1(v1, m_b_asset);
 	}
 
 	// This is for the other asset
@@ -359,9 +351,9 @@ void SceneNode::CalculateBoxCollisionDetails(SceneNode* compare_tree)
 	{
 		CalculateBoxDimensions2(v2, compare_tree->m_s_asset);
 	}
-	else if (compare_tree->m_d_asset)
+	else if (compare_tree->m_b_asset)
 	{
-		CalculateBoxDimensions2(v2, compare_tree->m_d_asset);
+		CalculateBoxDimensions2(v2, compare_tree->m_b_asset);
 	}
 
 }
@@ -378,7 +370,6 @@ void SceneNode::CalculateSphereCollisionDetails(SceneNode* compare_tree)
 	{
 		CalculateSphereDimensions1(v1, m_p_asset);
 	}
-
 	else if (m_e_asset)
 	{
 		CalculateSphereDimensions1(v1, m_e_asset);
@@ -391,9 +382,9 @@ void SceneNode::CalculateSphereCollisionDetails(SceneNode* compare_tree)
 	{
 		CalculateSphereDimensions1(v1, m_s_asset);
 	}
-	else if (m_d_asset)
+	else if (m_b_asset)
 	{
-		CalculateSphereDimensions1(v1, m_d_asset);
+		CalculateSphereDimensions1(v1, m_b_asset);
 	}
 
 
@@ -415,9 +406,9 @@ void SceneNode::CalculateSphereCollisionDetails(SceneNode* compare_tree)
 	{
 		CalculateSphereDimensions2(v2, compare_tree->m_s_asset);
 	}
-	else if (compare_tree->m_d_asset)
+	else if (compare_tree->m_b_asset)
 	{
-		CalculateSphereDimensions2(v2, compare_tree->m_d_asset);
+		CalculateSphereDimensions2(v2, compare_tree->m_b_asset);
 	}
 
 	// Calculating distance between objects
@@ -492,9 +483,7 @@ bool SceneNode::CheckActionCollision(SceneNode* compare_tree)
 	// If the distance between the objects is
 	// less than the sum of radii, it returns 
 	// true
-	// We subtract by 1, to avoid very close
-	// checks
-	if (main_dist - 1.0 < sum_radius )
+	if (main_dist < sum_radius )
 	{
 		m_is_interacting = true;
 	}
@@ -520,7 +509,7 @@ bool SceneNode::CheckNodeBottomCollision(SceneNode* compare_tree)
 	{
 		// we just check if the bottom is above the ground
 		// but below a few units from the ground
-		if ((y1 - h1 > y2 && y1 - h1 < y2 + 0.01))
+		if ((y1 - h1 > y2 && y1 - h1 < y2 + 0.07))
 		{
 			if (z1 < z2 + b2 && z1 + b1 > z2)
 			{
@@ -577,6 +566,11 @@ void SceneNode::ResetToInitalPos()
 	m_pos_x = m_init_x;
 	m_pos_y = m_init_y;
 	m_pos_z = m_init_z;
+
+	m_prev_x = m_init_x;
+	m_prev_y = m_init_y;
+	m_prev_z = m_init_z;
+
 }
 
 float SceneNode::GetRandomOf(int num)
@@ -843,11 +837,27 @@ SceneNode* SceneNode::GetPushingCrate()
 	{
 		// If the node has a valid weapon asset,
 		// we return that child node
-		if (m_children[i]->m_d_asset)
+		if (m_children[i]->m_b_asset)
 		{
 			return m_children[i];
 		}
 	}
+}
+
+// Random Function
+float SceneNode::RandomBetweenFloats(float min, float max)
+{
+	// Calculating a random value below 1
+	float random = float(rand()) / float(RAND_MAX);
+
+	// Retrieving the difference of max and min
+	float diff = max - min;
+
+	// Getting a value to add up to the minimum
+	float randValue = random * diff;
+
+	return min + randValue;
+
 }
 
 // GET FUNCTIONS
@@ -907,12 +917,3 @@ float SceneNode::GetGravitySpeed()
 	return m_gravity_speed;
 }
 
-float SceneNode::RandomBetweenFloats(float min, float max)
-{
-	float random = float(rand()) / float(RAND_MAX);
-	float diff = max - min;
-	float randValue = random * diff;
-
-	return min + randValue;
-
-}

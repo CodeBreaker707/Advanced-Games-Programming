@@ -51,8 +51,6 @@ public:
 	unsigned char swapCamera;
 	unsigned char closeGame;
 
-	//BYTE attack;
-
 	//Class constructor and destructor
 	Input(HINSTANCE hInst, HWND hWnd);
 	~Input();

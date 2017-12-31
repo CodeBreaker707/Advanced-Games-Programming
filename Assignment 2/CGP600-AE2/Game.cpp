@@ -253,7 +253,7 @@ void Game::MainUpdate()
 							}
 
 							// Adding a new weapon
-							AddNewWeapon(m_statik_nodes[i]->GetXPos(), m_statik_nodes[i]->GetYPos(), m_statik_nodes[i]->GetZPos());
+							InstantiateWeapon(m_statik_nodes[i]->GetXPos(), m_statik_nodes[i]->GetYPos(), m_statik_nodes[i]->GetZPos());
 
 							// Detaching the enemy node from the
 							// root node
@@ -424,45 +424,45 @@ void Game::MainUpdate()
 			}
 
 			// Loop through each dynamic object in the game
-			for (int i = 0; i < m_dynamic_nodes.size(); i++)
+			for (int i = 0; i < m_block_nodes.size(); i++)
 			{
 				// If the player isn't pushing, check for collision
 				if (m_player_node->m_p_asset->GetPushState() == false)
 				{
-					m_dynamic_nodes[i]->CheckCollision(m_player_node);
+					m_block_nodes[i]->CheckCollision(m_player_node);
 				}
 
 				// Check interact collision of the dynamic object
 				// against the player
-				m_dynamic_nodes[i]->CheckActionCollision(m_player_node);
+				m_block_nodes[i]->CheckActionCollision(m_player_node);
 
 				// If the dynamic object is colliding with
 				// the player, not being pushed and if the
 				// interact key is pressed, this will return true
-				if (m_dynamic_nodes[i]->IsInteracting() && key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == false)
+				if (m_block_nodes[i]->IsInteracting() && key->IsKeyPressed(key->interact) && m_player_node->m_p_asset->GetPushState() == false)
 				{
 					// Setting the position of the object
 					// respective to the player
-					m_dynamic_nodes[i]->SetXPos(0.0f);
-					m_dynamic_nodes[i]->SetYPos(-0.5f);
-					m_dynamic_nodes[i]->SetZPos(2.0f);
+					m_block_nodes[i]->SetXPos(0.0f);
+					m_block_nodes[i]->SetYPos(-0.5f);
+					m_block_nodes[i]->SetZPos(2.0f);
 
 					// Detach the dynamic object 
 					// node from the root node
-					m_root_node->DetachNode(m_dynamic_nodes[i]);
+					m_root_node->DetachNode(m_block_nodes[i]);
 
 					// Set the push state to true
 					m_player_node->m_p_asset->SetPushState(true);
 
 					// Set the dynamic object as a child of
 					// the player
-					m_player_node->AddChildNode(m_dynamic_nodes[i]);
+					m_player_node->AddChildNode(m_block_nodes[i]);
 
 					// Same process for removing the object
 					// from the all objects vector
 					for (int j = 0; j < objs.size(); j++)
 					{
-						if (m_dynamic_nodes[i] == objs[j])
+						if (m_block_nodes[i] == objs[j])
 						{
 							objs.erase(objs.begin() + j);
 							break;
@@ -471,7 +471,7 @@ void Game::MainUpdate()
 
 					// Finally, erase the object from 
 					// the dynamic object node vector
-					m_dynamic_nodes.erase(m_dynamic_nodes.begin() + i);
+					m_block_nodes.erase(m_block_nodes.begin() + i);
 
 				}
 
@@ -485,7 +485,7 @@ void Game::MainUpdate()
 			{
 				// Similar process of dropping a weapon
 				// Refer Line 157
-				m_dynamic_nodes.push_back(m_player_node->GetPushingCrate());
+				m_block_nodes.push_back(m_player_node->GetPushingCrate());
 				m_root_node->AddChildNode(m_player_node->GetPushingCrate());
 
 				m_player_node->GetPushingCrate()->SetXPos(m_player_node->GetXPos() + sin(m_player_node->GetYAngle()) * 2.5);
@@ -620,14 +620,14 @@ void Game::MainUpdate()
 		if (cine_camera == false)
 		{
 			skybox->DrawSkyBox(&view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix(), view[0]->GetPosition(), view[0]->GetNearClipPlane());
-			m_root_node->Execute(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());	
+			m_root_node->Draw(&XMMatrixIdentity(), &view[0]->GetViewMatrix(), &view[0]->GetProjectionMatrix());	
 
 		}
 		// Else use the cinematic camera
 		else
 		{
 			skybox->DrawSkyBox(&view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix(), view[1]->GetPosition(), view[1]->GetNearClipPlane());
-			m_root_node->Execute(&XMMatrixIdentity(), &view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix());
+			m_root_node->Draw(&XMMatrixIdentity(), &view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix());
 		}
 
 		//hud->AddText("HEALTH:", -0.98, 0.94, 0.04);
@@ -878,7 +878,7 @@ void Game::InitialiseGameAssets()
 
 		}
 
-		if (strstr("Dynamic", asset_type) != 0)
+		if (strstr("Block", asset_type) != 0)
 		{
 			fscanf(assetFile, "%d", &num_assets);
 
@@ -886,11 +886,11 @@ void Game::InitialiseGameAssets()
 			{
 				fscanf(assetFile, " %c %s %s %f %f %f %f %f %f %d", &node_type, &assetObj, &textureFile, &x, &y, &z, &x_scle, &y_scle, &z_scle, &gravityState);
 
-				m_dynamic_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
+				m_block_nodes.push_back(new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), node_type, assetObj, textureFile, x, y, z, x_scle, y_scle, z_scle, gravityState));
 
-				objs.push_back(m_dynamic_nodes[i]);
+				objs.push_back(m_block_nodes[i]);
 
-				m_root_node->AddChildNode(m_dynamic_nodes[i]);
+				m_root_node->AddChildNode(m_block_nodes[i]);
 
 			}
 
@@ -1029,7 +1029,7 @@ void Game::RestartGame()
 
 }
 
-void Game::AddNewWeapon(float x, float y, float z)
+void Game::InstantiateWeapon(float x, float y, float z)
 {
 	fopen_s(&new_wep_file, "Scripts/New_Weapon.txt", "r");
 

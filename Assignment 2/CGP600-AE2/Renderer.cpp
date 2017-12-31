@@ -18,11 +18,6 @@ Renderer::Renderer(HINSTANCE hInstance, int nCmdShow)
 		DXTRACE_MSG("Failed to create Device");
 	}
 
-	//rgba_clear_colour[0] = 0.0f;
-	//rgba_clear_colour[1] = 0.74f;
-	//rgba_clear_colour[2] = 1.0f;
-	//rgba_clear_colour[3] = 1.0f;
-
 }
 
 Renderer::~Renderer()
@@ -89,8 +84,6 @@ LRESULT CALLBACK Renderer::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
 		break;
 
 	case WM_KEYDOWN:
-		/*if (wParam == VK_ESCAPE)
-			DestroyWindow(hWnd);*/
 		return 0;
 
 

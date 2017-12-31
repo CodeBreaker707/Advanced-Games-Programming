@@ -14,7 +14,7 @@
 #include "Player.h"
 #include "Statik.h"
 #include "Weapon.h"
-#include "Dynamic.h"
+#include "Block.h"
 #include "SceneNode.h"
 #include "UI.h"
 #include "Time.h"
@@ -71,8 +71,8 @@ private:
 	// Static Nodes
 	vector <SceneNode*> m_statik_nodes;
 
-	// Dynanmic Nodes
-	vector <SceneNode*> m_dynamic_nodes;
+	// Block Nodes
+	vector <SceneNode*> m_block_nodes;
 
 	// A single UI object to display
 	// text on screen
@@ -109,7 +109,7 @@ public:
 	// and re-initialise them
 	void RestartGame();
 
-	void AddNewWeapon(float x, float y, float z);
+	void InstantiateWeapon(float x, float y, float z);
 
 	// This initiates combat actions of the asset
 	void InitiateCombat(SceneNode* attacker, bool start_condition);

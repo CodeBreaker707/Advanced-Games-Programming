@@ -13,7 +13,7 @@
 #include "Enemy.h"
 #include "Weapon.h"
 #include "Statik.h"
-#include "Dynamic.h"
+#include "Block.h"
 
 class SceneNode
 {
@@ -132,7 +132,7 @@ public:
 	Enemy*  m_e_asset;
 	Weapon* m_w_asset;
 	Statik* m_s_asset;
-	Dynamic* m_d_asset;
+	Block* m_b_asset;
 
 	// Constructor and Destructor
 	SceneNode(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, char c, char* assetFile, char* textureFile, float x_pos, float y_pos, float z_pos, float x_scale, float y_scale, float z_scale, int gravityState);
@@ -152,7 +152,7 @@ public:
 
 	// This function executes the draw function of the nodes
 	// and its children
-	void Execute(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection);
+	void Draw(XMMATRIX* world, XMMATRIX* view, XMMATRIX* projection);
 
 	// This calculates and returns the world matrix
 	XMMATRIX GetWorldMatrix(XMMATRIX* world);
@@ -257,6 +257,10 @@ public:
 	// This resets to the asset's initial position
 	void ResetToInitalPos();
 
+	// A function to return a random value
+	// between the min and max
+	float RandomBetweenFloats(float min, float max);
+
 	// This returns a random spot
 	// for the entity to move towards
 	float GetRandomOf(int num);
@@ -288,7 +292,6 @@ public:
 	// Returns the size of children
 	int GetChildrenSize();
 
-	float RandomBetweenFloats(float min, float max);
 
 	// This returns the node's children nodes
 	vector<SceneNode*> GetChildren();

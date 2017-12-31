@@ -46,7 +46,7 @@ void Asset::InitialiseAsset(ID3D11Device* D3DDevice, ID3D11DeviceContext* Immedi
 	// The light vectors of the light component
 	// are being initialised
 	m_light->SetDirectionalLightPos(-1.0f, 0.0f, -1.0f, 0.0f);
-	m_light->SetDirectionalLightColour(1.0f, 1.0f, 1.0f, 1.0f);
+	m_light->SetDirectionalLightColour(2.0f, 1.0f, 0.0f, 1.0f);
 	m_light->SetAmbientLightColour(0.3f, 0.3f, 0.3f, 1.0f);
 
 	// The creation of the asset function is called
