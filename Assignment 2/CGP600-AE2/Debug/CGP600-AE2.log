@@ -1,4 +1,65 @@
-﻿  Enemy.cpp
+﻿  Renderer.cpp
+d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
+d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52946): note: see previous definition of 'DXGI_STATUS_CLIPPED'
+d:\directx sdk\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52955): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+d:\directx sdk\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52964): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+d:\directx sdk\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52973): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52982): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+d:\directx sdk\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52991): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+d:\directx sdk\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53006): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
+d:\directx sdk\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53015): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
+d:\directx sdk\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53024): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
+d:\directx sdk\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53033): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+d:\directx sdk\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53042): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+d:\directx sdk\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53051): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+d:\directx sdk\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53061): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+d:\directx sdk\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53070): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+d:\directx sdk\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53080): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+d:\directx sdk\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53089): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+d:\directx sdk\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53099): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+d:\directx sdk\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53108): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+d:\directx sdk\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53117): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+d:\directx sdk\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53127): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+d:\directx sdk\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53136): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+d:\directx sdk\include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53400): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53409): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
+d:\directx sdk\include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53419): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+d:\directx sdk\include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53428): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+d:\directx sdk\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53376): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+d:\directx sdk\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(53385): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\renderer.cpp(57): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\renderer.cpp(57): warning C4244: 'initializing': conversion from 'float' to 'LONG', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\renderer.cpp(209): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\renderer.cpp(210): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+  Game.cpp
 d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
 d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
@@ -83,5 +144,43 @@ d:\directx sdk\include\xnamath.h(2732): warning C4838: conversion from 'unsigned
 d:\directx sdk\include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
+  d:\directx sdk\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(82): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(96): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(104): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(113): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(122): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(167): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(182): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(209): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(210): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(211): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(235): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(245): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(276): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(290): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(322): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(328): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(359): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(385): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(414): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(437): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(473): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(501): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(502): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(503): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(528): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(546): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(548): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(569): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(583): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(584): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(600): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(601): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(694): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(715): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(954): warning C4018: '<': signed/unsigned mismatch
+d:\manikandan\documents\advanced games programming\advanced-games-programming\assignment 2\cgp600-ae2\game.cpp(956): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.exe
   CGP600-AE2.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Assignment 2\CGP600-AE2\Debug\CGP600-AE2.pdb (Partial PDB)
