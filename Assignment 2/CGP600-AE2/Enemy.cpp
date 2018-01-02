@@ -8,6 +8,9 @@ Enemy::Enemy(ID3D11Device* D3DDevice, ID3D11DeviceContext* ImmediateContext, cha
 	// Initialising the enemy's health
 	m_health = 100.0f;
 
+	// Initialising the enemy's movement speed
+	m_move_speed = 2.0f;
+
 }
 
 Enemy::~Enemy()
@@ -25,4 +28,9 @@ void Enemy::SetEnemyHealth(float amount)
 float Enemy::GetEnemyHealth()
 {
 	return m_health;
+}
+
+float Enemy::GetMoveSpeed()
+{
+	return m_move_speed;
 }

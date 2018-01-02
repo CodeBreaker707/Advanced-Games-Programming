@@ -514,20 +514,24 @@ bool SceneNode::CheckNodeBottomCollision(SceneNode* compare_tree)
 			if (z1 < z2 + b2 && z1 + b1 > z2)
 			{
 				m_on_ground = true;
+				return true;
 			}
 			else
 			{
 				m_on_ground = false;
+				return false;
 			}
 		}
 		else
 		{
 			m_on_ground = false;
+			return false;
 		}
 	}
 	else
 	{
 		m_on_ground = false;
+		return false;
 	}
 
 

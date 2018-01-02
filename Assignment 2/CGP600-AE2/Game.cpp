@@ -261,6 +261,8 @@ void Game::MainUpdate()
 							// root node
 							m_root_node->DetachNode(m_statik_nodes[i]);
 
+							m_statik_nodes[i]->ReleaseAll();
+
 							// Finally, we erase the enemy itself
 							m_statik_nodes.erase(m_statik_nodes.begin() + i);
 
@@ -300,6 +302,8 @@ void Game::MainUpdate()
 								// Detaching the enemy node from the
 								// root node
 								m_root_node->DetachNode(m_enemy_nodes[i]);
+
+								m_enemy_nodes[i]->ReleaseAll();
 
 								// Erasing the enemy's weapon node
 								m_eweapon_nodes.erase(m_eweapon_nodes.begin() + i);
@@ -348,8 +352,12 @@ void Game::MainUpdate()
 				// spots
 				m_enemy_nodes[i]->LookAt();
 
-				// Make the enemy move in the direction it's facing
-				m_enemy_nodes[i]->MoveAsset(sin(m_enemy_nodes[i]->GetYAngle()) * 0.001, 0.0f, cos(m_enemy_nodes[i]->GetYAngle()) * 0.001);
+				if (timing->GetDeltaTime() < 1)
+				{
+					// Make the enemy move in the direction it's facing
+					m_enemy_nodes[i]->MoveAsset(sin(m_enemy_nodes[i]->GetYAngle()) * m_enemy_nodes[i]->m_e_asset->GetMoveSpeed() * timing->GetDeltaTime(), 0.0f,
+						cos(m_enemy_nodes[i]->GetYAngle()) * m_enemy_nodes[i]->m_e_asset->GetMoveSpeed() * timing->GetDeltaTime());
+				}
 
 				// If the enemy has reached closer to the player, then commence attack
 				// Same attack logic as the player
@@ -521,9 +529,10 @@ void Game::MainUpdate()
 			{
 				// Checking collision of the player's bottom
 				// against every other object
-				m_player_node->CheckNodeBottomCollision(objs[i]);
 				
-				if (m_player_node->GetOnGroundState() == true)
+				
+				//if (m_player_node->GetOnGroundState() == true)
+				if(m_player_node->CheckNodeBottomCollision(objs[i]))
 				{
 					break;
 				}
@@ -538,9 +547,8 @@ void Game::MainUpdate()
 			{
 				for (int j = 0; j < objs.size(); j++)
 				{
-					objs[i]->CheckNodeBottomCollision(objs[j]);
-
-					if (objs[i]->GetOnGroundState() == true)
+					//if (objs[i]->GetOnGroundState() == true)
+					if(objs[i]->CheckNodeBottomCollision(objs[j]))
 					{
 						break;
 					}
@@ -641,6 +649,8 @@ void Game::MainUpdate()
 		// Finally, display everything that is
 		// drawn and rendered
 		m_render_target->Display();
+
+		
 		
 	}
 
@@ -956,6 +966,8 @@ void Game::RestartGame()
 
 		// Detach the enemy from the root node
 		m_root_node->DetachNode(m_enemy_nodes[i]);
+
+		m_enemy_nodes[i]->ReleaseAll();
 
 	}
 

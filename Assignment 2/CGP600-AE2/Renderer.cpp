@@ -1,12 +1,12 @@
 #include "Renderer.h"
 
 HWND hWnd;
-const float rgba_clear_colour[4] = { 0.0f, 0.74f, 1.0f, 1.0f };
+const float rgba_clear_colour[4] = { 0.95f, 0.25f, 0.25f, 1.0f };
 
 Renderer::Renderer(HINSTANCE hInstance, int nCmdShow)
 {
-	m_win_width = 1280.0f;
-	m_win_height = 768.0f;
+	m_win_width = 1920.0f;
+	m_win_height = 1080.0f;
 
 	if (FAILED(InitialiseWindow(hInstance, nCmdShow)))
 	{
