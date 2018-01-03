@@ -127,16 +127,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Asset.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Collider3D.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="objfilemodel.cpp" />
     <ClCompile Include="text2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="ashaders.hlsl" />
     <FxCompile Include="shaders.hlsl" />
     <FxCompile Include="text2D_shaders.hlsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asset.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Collider3D.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="objfilemodel.h" />
     <ClInclude Include="text2D.h" />
   </ItemGroup>
   <ItemGroup>

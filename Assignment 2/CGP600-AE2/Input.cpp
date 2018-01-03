@@ -83,7 +83,7 @@ HRESULT Input::InitialiseInput(HINSTANCE hInst, HWND hWnd)
 
 	if (FAILED(hr)) return hr;
 
-	hr = m_mouse_device->SetCooperativeLevel(hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+	hr = m_mouse_device->SetCooperativeLevel(hWnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
 
 	if (FAILED(hr)) return hr;
 

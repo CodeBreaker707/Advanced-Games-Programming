@@ -13,9 +13,9 @@ Game::Game(HINSTANCE hInstance, int nCmdShow)
 
 	// Initialising the sky box
 	skybox = new SkyBox();
-	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/cubeObj.obj", "Assets/skybox02.dds");
+	skybox->InitialiseSkyBox(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), "Assets/Objects/cubeObj.obj", "Assets/Textures/skybox02.dds");
 	
-	//hud = new UI("Assets/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
+	//hud = new UI("Assets/Textures/font3.png", m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext());
 
 	//rain = new ParticleEngine(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), 10);
 	//rain->InitialiseParticle();
@@ -604,20 +604,20 @@ void Game::MainUpdate()
 			// input movement keys
 			if (key->IsKeyPressed(key->mve_frwd))
 			{
-				view[1]->Move(0.0f, 0.0f, 0.01f);
+				view[1]->Move(0.0f, 0.0f, 15.0 * timing->GetDeltaTime());
 			}
 			if (key->IsKeyPressed(key->mve_lft))
 			{
-				view[1]->Move(-0.01f, 0.0f, 0.0f);
+				view[1]->Move(-15.0 * timing->GetDeltaTime(), 0.0f, 0.0f);
 			}
 			if (key->IsKeyPressed(key->mve_bck))
 			{
-				view[1]->Move(0.0f, 0.0f, -0.01f);
+				view[1]->Move(0.0f, 0.0f, -15.0 * timing->GetDeltaTime());
 
 			}
 			if (key->IsKeyPressed(key->mve_rght))
 			{
-				view[1]->Move(0.01f, 0.0f, 0.0f);
+				view[1]->Move(15.0 * timing->GetDeltaTime(), 0.0f, 0.0f);
 			}
 
 		}
@@ -640,7 +640,7 @@ void Game::MainUpdate()
 			m_root_node->Draw(&XMMatrixIdentity(), &view[1]->GetViewMatrix(), &view[1]->GetProjectionMatrix());
 		}
 
-		//hud->AddText("HEALTH:", -0.98, 0.94, 0.04);
+		//hud->AddText(to_string(timing->GetFPS()), -0.98, 0.94, 0.04);
 
 		//hud->RenderText();
 
@@ -746,7 +746,7 @@ bool Game::IsNodeDamaged(SceneNode* attacker, SceneNode* victim)
 void Game::InitialiseGameAssets()
 {
 	// Open the script file to initialise assets
-	fopen_s(&assetFile, "Scripts/Asset_Details.txt", "r");
+	fopen_s(&assetFile, "Assets/Scripts/Asset_Details.txt", "r");
 
 	// Initialising the root node
 	m_root_node = new SceneNode(m_render_target->GetD3DDevice(), m_render_target->GetDeviceContext(), '\0', NULL, NULL, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0);
@@ -944,7 +944,7 @@ void Game::RestartGame()
 	initialised = false;
 
 	// We open the file again
-	fopen_s(&assetFile, "Scripts/Asset_Details.txt", "r");
+	fopen_s(&assetFile, "Assets/Scripts/Asset_Details.txt", "r");
 
 	// Reset the player back to the original position
 	m_player_node->ResetToInitalPos();
@@ -1045,7 +1045,7 @@ void Game::RestartGame()
 
 void Game::InstantiateWeapon(float x, float y, float z)
 {
-	fopen_s(&new_wep_file, "Scripts/New_Weapon.txt", "r");
+	fopen_s(&new_wep_file, "Assets/Scripts/New_Weapon.txt", "r");
 
 	char node_type;
 

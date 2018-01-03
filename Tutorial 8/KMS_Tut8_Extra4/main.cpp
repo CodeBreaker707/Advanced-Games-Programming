@@ -8,6 +8,7 @@
 #include <xnamath.h>
 #include "text2D.h"
 #include "Camera.h"
+#include "Asset.h"
 using namespace std;
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -34,6 +35,7 @@ ID3D11BlendState* g_pAlphaBlendEnable; // 14
 ID3D11BlendState* g_pAlphaBlendDisable; // 14
 Text2D* g_2DText0;
 Text2D* g_2DText1;
+Asset* cube;
 Camera* eye;
 
 FLOAT z_position2 = 5.0f;
@@ -129,7 +131,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		else
 		{
-			g_pImmediateContext->OMSetBlendState(g_pAlphaBlendEnable, 0, 0xffffffff);
+			
 			RenderFrame();
 		}
 	}
@@ -393,6 +395,11 @@ HRESULT InitialiseD3D()
 
 	g_pD3DDevice->CreateBlendState(&b, &g_pAlphaBlendEnable);
 
+	eye = new Camera(0.0, 0.0, -0.5, 0);
+
+	cube = new Asset();
+	cube->InitialiseAsset(g_pD3DDevice, g_pImmediateContext, "Assets/cubeObj.obj", "Assets/tile.bmp", 1.0f, 1.0f, 1.0f);
+
 	g_2DText0 = new Text2D("Assets/font1.bmp", g_pD3DDevice, g_pImmediateContext);
 	g_2DText1 = new Text2D("Assets/font3.png", g_pD3DDevice, g_pImmediateContext);
 
@@ -581,7 +588,7 @@ HRESULT InitialiseGraphics()// 03-01
 
 	g_pImmediateContext->IASetInputLayout(g_pInputLayout);
 
-	eye = new Camera(0.0, 0.0, -0.5, 0);
+	
 
 	D3DX11CreateShaderResourceViewFromFile(g_pD3DDevice, "Assets/tile.bmp", NULL, NULL, &g_pTexture0, NULL);
 	D3DX11CreateShaderResourceViewFromFile(g_pD3DDevice, "Assets/hogwarts.bmp", NULL, NULL, &g_pTexture1, NULL);
@@ -603,6 +610,8 @@ HRESULT InitialiseGraphics()// 03-01
 // Render frame
 void RenderFrame(void)
 {
+	//g_pImmediateContext->OMSetBlendState(g_pAlphaBlendEnable, 0, 0xffffffff);
+
 	// Clear the back buffer - choose a colour you like
 	float rgba_clear_colour[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	g_pImmediateContext->ClearRenderTargetView(g_pBackBufferRTView, rgba_clear_colour);
@@ -620,7 +629,7 @@ void RenderFrame(void)
 	//cb0_values.ScaleAmount = 0.47f; // reduced to 47%
 
 	// Select which primitive type to use // 03-01
-	g_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	//g_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	XMMATRIX projection, world1, world2, view;
 
@@ -636,8 +645,8 @@ void RenderFrame(void)
 	//***********FIRST CUBE***********//
 	//********************************//
 
-	//world1 = XMMatrixRotationRollPitchYaw(x_rotation1, y_rotation1, 0.0f);
-	//world1 *= XMMatrixTranslation(3,0,15);
+	world1 = XMMatrixRotationRollPitchYaw(x_rotation1, y_rotation1, 0.0f);
+	world1 *= XMMatrixTranslation(0,0,4);
 
 	//cb0_values.WorldViewProjection = world1 * view * projection;
 
@@ -675,7 +684,7 @@ void RenderFrame(void)
 
 	world2 *= XMMatrixTranslation(0, 0, z_position2);
 
-	cb0_values.WorldViewProjection = world2 * view * projection;
+	//cb0_values.WorldViewProjection = world2 * view * projection;
 	g_2DText0->AddText("Health:" + to_string(90) + '/' + to_string(100), -0.98, +0.95, 0.04);
 	g_2DText1->AddText("GamerLord707", -0.98, +0.7, 0.04);
 	// upload the new values for the constant buffer
@@ -692,13 +701,14 @@ void RenderFrame(void)
 
 	g_pImmediateContext->IASetInputLayout(g_pInputLayout);
 	
-
-	g_pImmediateContext->Draw(36, 0);
+	
+	//g_pImmediateContext->Draw(36, 0);
+	cube->Draw(&world1, &view, &projection);
 
 	g_2DText0->RenderText();
-	g_2DText1->RenderText();
+	//g_2DText1->RenderText();
 
-	g_pImmediateContext->OMSetBlendState(g_pAlphaBlendDisable, 0, 0xffffffff);
+	//g_pImmediateContext->OMSetBlendState(g_pAlphaBlendDisable, 0, 0xffffffff);
 	
 	// Display what has just been rendered
 	g_pSwapChain->Present(0, 0);

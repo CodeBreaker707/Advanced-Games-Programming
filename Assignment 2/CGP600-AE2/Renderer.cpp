@@ -169,6 +169,9 @@ HRESULT Renderer::InitialiseD3D()
 	if (FAILED(hr))
 		return hr;
 
+	// Select which primitive type to use // 03-01
+	m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
 	// Create a Z buffer texture
 	D3D11_TEXTURE2D_DESC tex2dDesc;
 	ZeroMemory(&tex2dDesc, sizeof(tex2dDesc));
@@ -227,8 +230,7 @@ HRESULT Renderer::InitialiseD3D()
 
 	m_pD3DDevice->CreateBlendState(&b, &m_pAlphaBlendEnable);
 
-	// Select which primitive type to use // 03-01
-	m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	
 
 
 	return S_OK;

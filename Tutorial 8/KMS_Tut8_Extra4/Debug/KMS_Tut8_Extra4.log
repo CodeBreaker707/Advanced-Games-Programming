@@ -1,5 +1,4 @@
-﻿  compilation succeeded; see D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 8\KMS_Tut8_Extra4\Debug\shaders.cso
-  main.cpp
+﻿  main.cpp
 d:\directx sdk\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\winerror.h(52937): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
 d:\directx sdk\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
@@ -84,10 +83,10 @@ d:\directx sdk\include\xnamath.h(2732): warning C4838: conversion from 'unsigned
 d:\directx sdk\include\xnamath.h(2742): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2743): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
 d:\directx sdk\include\xnamath.h(2754): warning C4838: conversion from 'unsigned int' to 'INT' requires a narrowing conversion
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(373): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(374): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(632): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(679): warning C4305: 'argument': truncation from 'double' to 'float'
-d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(680): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(375): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(376): warning C4244: '=': conversion from 'UINT' to 'FLOAT', possible loss of data
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(641): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(688): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\manikandan\documents\advanced games programming\advanced-games-programming\tutorial 8\kms_tut8_extra4\main.cpp(689): warning C4305: 'argument': truncation from 'double' to 'float'
   KMS_Tut8_Extra4.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 8\KMS_Tut8_Extra4\Debug\KMS_Tut8_Extra4.exe
   KMS_Tut8_Extra4.vcxproj -> D:\Manikandan\Documents\Advanced Games Programming\Advanced-Games-Programming\Tutorial 8\KMS_Tut8_Extra4\Debug\KMS_Tut8_Extra4.pdb (Partial PDB)
